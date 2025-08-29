@@ -9,7 +9,6 @@ import { mockFields } from '@/lib/mock-data'
 import { designTokens } from '@/lib/design-tokens'
 import { 
   Search, 
-  Filter, 
   MapPin,
   Calendar,
   Plus,
@@ -24,8 +23,7 @@ export default function FieldsPage() {
 
   // Filter fields based on search and status
   const filteredFields = mockFields.filter(field => {
-    const matchesSearch = field.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         field.location.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesSearch = field.name.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesStatus = filterStatus === 'all' || field.status === filterStatus
     return matchesSearch && matchesStatus
   })
@@ -122,7 +120,7 @@ export default function FieldsPage() {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <input
                     type="text"
-                    placeholder="Search fields by name or location..."
+                    placeholder="Search fields by name..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
@@ -205,11 +203,11 @@ export default function FieldsPage() {
                         <div className="grid grid-cols-12 gap-4 items-center">
                           <div className="col-span-3">
                             <div className="font-medium text-gray-900">{field.name}</div>
-                            <div className="text-sm text-gray-500">{field.sport}</div>
+                            <div className="text-sm text-gray-500">{field.type}</div>
                           </div>
                           <div className="col-span-2 flex items-center">
                             <MapPin className="w-4 h-4 text-gray-400 mr-1" />
-                            <span className="text-sm text-gray-600">{field.location}</span>
+                            <span className="text-sm text-gray-600">{field.type}</span>
                           </div>
                           <div className="col-span-2">
                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
@@ -223,10 +221,10 @@ export default function FieldsPage() {
                           </div>
                           <div className="col-span-2 flex items-center">
                             <Calendar className="w-4 h-4 text-gray-400 mr-1" />
-                            <span className="text-sm text-gray-600">{field.lastTest}</span>
+                            <span className="text-sm text-gray-600">{field.lastTestingDate ? new Date(field.lastTestingDate).toLocaleDateString() : 'Never'}</span>
                           </div>
                           <div className="col-span-2">
-                            <span className="text-sm font-medium text-gray-900">{field.gmax}</span>
+                            <span className="text-sm font-medium text-gray-900">N/A</span>
                           </div>
                           <div className="col-span-1">
                             <button className="text-green-600 hover:text-green-700">

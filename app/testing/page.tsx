@@ -7,7 +7,7 @@ import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
 import { designTokens } from '@/lib/design-tokens'
 import { mockFields } from '@/lib/mock-data'
-import { parseNumberArray, calculateAverage, calculateGMAXStatus, calculateShearStatus, calculateInfillDepthStatus, calculateOverallStatus, getSportStandards } from '@/lib/utils'
+import { parseNumberArray, calculateAverage, calculateGMAXStatus, calculateShearStatus, calculateInfillDepthStatus, calculateOverallStatus } from '@/lib/utils'
 
 export default function TestingDataPage() {
   const [isFormOpen, setIsFormOpen] = useState(false)

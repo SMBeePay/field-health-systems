@@ -13,7 +13,6 @@ import {
   TrendingDown,
   Activity,
   DollarSign,
-  Calendar,
   Filter,
   Download,
   RefreshCw,
@@ -21,13 +20,12 @@ import {
   AlertTriangle,
   CheckCircle,
   Clock,
-  LineChart,
   PieChart,
   Settings
 } from 'lucide-react'
 
 export default function AnalyticsPage() {
-  const [timeframe, setTimeframe] = useState<'7d' | '30d' | '90d' | '1y'>('30d')
+  const [timeframe, setTimeframe] = useState<'7d' | '30d' | '90d'>('30d')
   const [selectedMetric, setSelectedMetric] = useState<'gmax' | 'infill' | 'shear' | 'cost'>('gmax')
   const [viewType, setViewType] = useState<'overview' | 'trends' | 'comparison'>('overview')
 
@@ -160,7 +158,7 @@ export default function AnalyticsPage() {
                   ].map(({ id, label, icon: Icon }) => (
                     <button
                       key={id}
-                      onClick={() => setViewType(id as any)}
+                      onClick={() => setViewType(id as 'overview' | 'trends' | 'comparison')}
                       className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm ${
                         viewType === id
                           ? 'border-green-500 text-green-600'
@@ -191,12 +189,11 @@ export default function AnalyticsPage() {
                       {[
                         { value: '7d', label: '7 Days' },
                         { value: '30d', label: '30 Days' },
-                        { value: '90d', label: '90 Days' },
-                        { value: '1y', label: '1 Year' }
+                        { value: '90d', label: '90 Days' }
                       ].map(option => (
                         <button
                           key={option.value}
-                          onClick={() => setTimeframe(option.value as any)}
+                          onClick={() => setTimeframe(option.value as '7d' | '30d' | '90d')}
                           className={`px-4 py-2 text-sm font-medium ${
                             timeframe === option.value
                               ? 'bg-green-600 text-white'
@@ -381,7 +378,7 @@ export default function AnalyticsPage() {
                         ].map(option => (
                           <button
                             key={option.value}
-                            onClick={() => setSelectedMetric(option.value as any)}
+                            onClick={() => setSelectedMetric(option.value as 'gmax' | 'infill' | 'shear' | 'cost')}
                             className={`px-4 py-2 text-sm font-medium ${
                               selectedMetric === option.value
                                 ? 'bg-green-600 text-white'
@@ -461,7 +458,7 @@ export default function AnalyticsPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <div>
                                   <div className="text-sm font-medium text-gray-900">{field.name}</div>
-                                  <div className="text-sm text-gray-500">{field.sport}</div>
+                                  <div className="text-sm text-gray-500">{field.type}</div>
                                 </div>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap">

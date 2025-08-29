@@ -7,7 +7,6 @@ import { Sidebar } from '@/components/layout/sidebar'
 import { designTokens } from '@/lib/design-tokens'
 import { 
   Users,
-  Plus,
   Search,
   Filter,
   Mail,
@@ -301,7 +300,7 @@ export default function TeamPage() {
                   ].map(({ id, label, icon: Icon }) => (
                     <button
                       key={id}
-                      onClick={() => setActiveTab(id as any)}
+                      onClick={() => setActiveTab(id as 'members' | 'roles' | 'permissions')}
                       className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm ${
                         activeTab === id
                           ? 'border-green-500 text-green-600'

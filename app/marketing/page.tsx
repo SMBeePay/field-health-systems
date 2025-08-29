@@ -1,31 +1,24 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { 
   Shield, 
   DollarSign, 
   TrendingUp, 
-  Clock, 
   CheckCircle, 
   Users, 
   Phone,
-  Mail,
   MapPin,
-  ArrowRight,
-  Play,
   Star,
-  Award,
   Target,
   AlertTriangle,
   FileText,
   BarChart3,
   Calendar
 } from 'lucide-react'
-import { designTokens } from '@/lib/design-tokens'
 
 export default function MarketingHomePage() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
+  // const [activeTestimonial] = useState(0)
 
   const testimonials = [
     {

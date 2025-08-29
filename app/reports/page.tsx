@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
-import { mockFields } from '@/lib/mock-data'
 import { designTokens } from '@/lib/design-tokens'
 import { 
   FileText,
@@ -15,12 +14,10 @@ import {
   Filter,
   Search,
   Plus,
-  BarChart3,
   TrendingUp,
   Clock,
   MapPin,
   CheckCircle,
-  AlertTriangle,
   Star,
   ChevronRight
 } from 'lucide-react'
@@ -28,7 +25,7 @@ import {
 export default function ReportsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterType, setFilterType] = useState<string>('all')
-  const [filterStatus, setFilterStatus] = useState<string>('all')
+  const [filterStatus] = useState<string>('all')
   const [activeTab, setActiveTab] = useState<'recent' | 'scheduled' | 'templates'>('recent')
 
   // Mock report data
@@ -241,7 +238,7 @@ export default function ReportsPage() {
                   ].map(({ id, label, icon: Icon }) => (
                     <button
                       key={id}
-                      onClick={() => setActiveTab(id as any)}
+                      onClick={() => setActiveTab(id as 'recent' | 'scheduled' | 'templates')}
                       className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm ${
                         activeTab === id
                           ? 'border-green-500 text-green-600'

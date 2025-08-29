@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AlertTriangle, TrendingUp, TrendingDown, Clock, Thermometer } from 'lucide-react'
-import { Field, TestingData, FieldType } from '@/lib/schemas'
+import { AlertTriangle, Clock, Thermometer } from 'lucide-react'
+import { Field, TestingData } from '@/lib/schemas'
 import { designTokens } from '@/lib/design-tokens'
 import { getSportStandards, formatCurrency } from '@/lib/utils'
 import { getFieldHealthInsights, calculateTemperatureAdjustedGMAX } from '@/lib/field-performance-knowledge'

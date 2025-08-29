@@ -6,7 +6,6 @@ import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
 import { designTokens } from '@/lib/design-tokens'
 import { 
-  Settings,
   User,
   Bell,
   Shield,
@@ -23,11 +22,7 @@ import {
   Eye,
   EyeOff,
   Check,
-  X,
-  AlertTriangle,
-  Info,
-  Calendar,
-  Clock
+  X
 } from 'lucide-react'
 
 export default function SettingsPage() {
@@ -147,7 +142,7 @@ export default function SettingsPage() {
                     ].map(({ id, label, icon: Icon }) => (
                       <button
                         key={id}
-                        onClick={() => setActiveTab(id as any)}
+                        onClick={() => setActiveTab(id as 'profile' | 'notifications' | 'security' | 'system' | 'appearance' | 'integrations')}
                         className={`w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left transition-colors ${
                           activeTab === id
                             ? 'bg-green-100 text-green-700 font-medium'

@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
-import { MaintenanceAlerts } from '@/components/ui/maintenance-alerts'
 import { mockMaintenanceRecommendations, mockFields } from '@/lib/mock-data'
 import { designTokens } from '@/lib/design-tokens'
 import { 
@@ -151,7 +150,7 @@ export default function MaintenancePage() {
               </div>
               <div className={`${designTokens.components.card} p-6 text-center`}>
                 <div className="text-3xl font-bold text-green-600">
-                  ${(mockMaintenanceRecommendations.reduce((sum, rec) => sum + rec.estimatedCost, 0) / 1000).toFixed(0)}K
+                  ${(mockMaintenanceRecommendations.reduce((sum, rec) => sum + (rec.estimatedCost || 0), 0) / 1000).toFixed(0)}K
                 </div>
                 <div className="text-sm text-gray-600 mt-1 flex items-center justify-center">
                   <DollarSign className="w-4 h-4 mr-1 text-green-500" />
@@ -176,7 +175,7 @@ export default function MaintenancePage() {
                   ].map(({ id, label, icon: Icon }) => (
                     <button
                       key={id}
-                      onClick={() => setActiveTab(id as any)}
+                      onClick={() => setActiveTab(id as 'scheduled' | 'recommendations' | 'history')}
                       className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-medium text-sm ${
                         activeTab === id
                           ? 'border-green-500 text-green-600'
@@ -259,11 +258,11 @@ export default function MaintenancePage() {
                             <div className="flex items-center space-x-6 text-sm text-gray-500">
                               <div className="flex items-center">
                                 <Calendar className="w-4 h-4 mr-1" />
-                                Due: {recommendation.dueDate}
+                                Due: {recommendation.dueDate ? new Date(recommendation.dueDate).toLocaleDateString() : 'N/A'}
                               </div>
                               <div className="flex items-center">
                                 <DollarSign className="w-4 h-4 mr-1" />
-                                Est. ${recommendation.estimatedCost.toLocaleString()}
+                                Est. ${(recommendation.estimatedCost || 0).toLocaleString()}
                               </div>
                             </div>
                           </div>
