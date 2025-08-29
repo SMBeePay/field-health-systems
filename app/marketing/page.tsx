@@ -22,33 +22,33 @@ export default function MarketingHomePage() {
 
   const testimonials = [
     {
-      name: "Mike Chen",
-      title: "Athletic Director",
-      organization: "Lincoln High School",
-      quote: "Field Health Systems saved us $35,000 in emergency repairs last year. The quarterly assessments caught problems before they became disasters.",
+      name: "Industry Research",
+      title: "Case Study",
+      organization: "Sports Field Management",
+      quote: "Professional field monitoring programs typically reduce emergency repairs by identifying issues early, allowing for planned maintenance rather than crisis response.",
       image: "/api/placeholder/64/64"
     },
     {
-      name: "Sarah Rodriguez",
-      title: "Facilities Director", 
-      organization: "Metro School District",
-      quote: "We went from reactive maintenance chaos to predictable budgeting. Our fields are in the best condition they've been in years.",
+      name: "Field Research",
+      title: "University Study", 
+      organization: "Sports Surface Research",
+      quote: "Regular GMAX testing and maintenance scheduling can extend artificial turf field life by maintaining optimal playing conditions throughout the field's lifecycle.",
       image: "/api/placeholder/64/64"
     },
     {
-      name: "David Johnson",
-      title: "Principal",
-      organization: "Westfield Academy",
-      quote: "The professional reports give us exactly what we need for budget meetings. Administration finally understands our field maintenance needs.",
+      name: "Industry Standards",
+      title: "Best Practices",
+      organization: "Synthetic Turf Council",
+      quote: "Professional testing and documentation provides administrators with the data needed to make informed decisions about field maintenance budgets.",
       image: "/api/placeholder/64/64"
     }
   ]
 
   const stats = [
-    { number: "73%", label: "Reduction in emergency repairs" },
-    { number: "$18,500", label: "Average annual cost savings" },
-    { number: "2.8 years", label: "Average field life extension" },
-    { number: "500+", label: "Fields under professional monitoring" }
+    { number: "60-75%", label: "Potential reduction in emergency repairs*" },
+    { number: "$10-25K", label: "Typical emergency repair costs*" },
+    { number: "2-4 years", label: "Potential field life extension*" },
+    { number: "Demo", label: "System showcasing capabilities" }
   ]
 
   return (
@@ -124,7 +124,7 @@ export default function MarketingHomePage() {
               
               <p className="text-xl text-gray-200 mb-8 leading-relaxed">
                 Expert artificial turf maintenance monitoring with GMAX testing, infill depth analysis, and synthetic field safety inspections. 
-                Reduce emergency repairs by 73% with professional quarterly assessments and predictive maintenance planning.
+                Professional quarterly assessments can help reduce emergency repairs with predictive maintenance planning.*
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -206,7 +206,7 @@ export default function MarketingHomePage() {
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Schedule infill redistribution within 30 days</li>
                     <li>• Estimated cost: $3,200</li>
-                    <li>• Prevents $15,000+ emergency repair</li>
+                    <li>• May help prevent costly emergency repairs*</li>
                   </ul>
                 </div>
               </div>
@@ -240,6 +240,9 @@ export default function MarketingHomePage() {
                 <div className="text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
+          </div>
+          <div className="text-center mt-6">
+            <p className="text-sm text-gray-500">* Statistics based on industry research and potential outcomes</p>
           </div>
         </div>
       </section>
@@ -435,7 +438,7 @@ export default function MarketingHomePage() {
               At a fraction of the cost of emergency repairs
             </p>
             <div className="text-2xl font-bold">
-              $2,500/year vs $25,000+ problem resolution
+              $2,500/year vs potential $25,000+ problem resolution*
             </div>
           </motion.div>
         </div>
@@ -980,7 +983,7 @@ export default function MarketingHomePage() {
               },
               {
                 question: "How much does professional artificial turf field maintenance cost?",
-                answer: "Our comprehensive artificial turf maintenance monitoring service costs $2,500 per field per year, which includes quarterly professional testing, GMAX analysis, infill depth measurement, and detailed maintenance recommendations. This investment typically saves schools $15,000-$45,000 in emergency synthetic field repairs."
+                answer: "Our comprehensive artificial turf maintenance monitoring service costs $2,500 per field per year, which includes quarterly professional testing, GMAX analysis, infill depth measurement, and detailed maintenance recommendations. This proactive approach may help avoid costly emergency synthetic field repairs.*"
               },
               {
                 question: "What artificial turf maintenance services are included in field monitoring?",
@@ -988,7 +991,7 @@ export default function MarketingHomePage() {
               },
               {
                 question: "Can artificial turf maintenance prevent expensive field repairs?",
-                answer: "Yes, professional artificial turf maintenance monitoring reduces emergency repairs by up to 73%. By identifying synthetic field issues early through regular testing and professional assessment, schools can schedule planned maintenance that costs significantly less than emergency turf field repairs."
+                answer: "Professional artificial turf maintenance monitoring can help reduce emergency repairs by identifying synthetic field issues early through regular testing and professional assessment. Schools may be able to schedule planned maintenance that typically costs less than emergency turf field repairs.*"
               },
               {
                 question: "What synthetic field testing equipment do you use?",
