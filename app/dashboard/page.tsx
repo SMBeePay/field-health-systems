@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
 import { StatusOverview } from '@/components/ui/status-overview'
@@ -13,6 +14,7 @@ import { designTokens } from '@/lib/design-tokens'
 
 export default function Dashboard() {
   const [selectedTimeframe, setSelectedTimeframe] = useState<'7d' | '30d' | '90d'>('30d')
+  const router = useRouter()
 
   // Calculate field status statistics
   const fieldStats = mockFields.reduce(
@@ -77,7 +79,7 @@ export default function Dashboard() {
                       >
                         <FieldStatusCard 
                           field={field}
-                          onClick={() => console.log('Navigate to field details:', field.id)}
+                          onClick={() => router.push(`/fields/${field.id}`)}
                         />
                       </motion.div>
                     ))}

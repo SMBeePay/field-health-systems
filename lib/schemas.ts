@@ -40,8 +40,33 @@ export const fieldSchema = z.object({
   totalArea: z.number().positive().optional(),
   status: fieldStatusSchema,
   lastTestingDate: z.date().optional(),
+  
+  // GPS and Mapping Data
+  latitude: z.number().optional(),
+  longitude: z.number().optional(),
+  satelliteImageUrl: z.string().url().optional(),
+  fieldDimensions: z.object({
+    length: z.number().positive(),
+    width: z.number().positive(),
+    orientation: z.number().optional() // degrees from north
+  }).optional(),
+  
   createdAt: z.date(),
   updatedAt: z.date(),
+})
+
+// Testing Location Schema
+export const testingLocationSchema = z.object({
+  id: z.string(),
+  name: z.string(), // e.g. "Goal Line Center", "50 Yard Line Left Hash"
+  position: z.object({
+    x: z.number().min(0).max(1), // normalized position 0-1 across field width
+    y: z.number().min(0).max(1), // normalized position 0-1 across field length
+  }),
+  zone: z.string().optional(), // e.g. "End Zone", "Midfield", "Goal Box"
+  gmaxReading: z.number().min(0).max(300).optional(),
+  shearReading: z.number().min(0).max(100).optional(),
+  infillDepthReading: z.number().min(0).max(100).optional(),
 })
 
 // Testing Data Schemas
@@ -53,9 +78,12 @@ export const testingDataSchema = z.object({
   weatherConditions: z.string().optional(),
   temperature: z.number().optional(),
   
-  // GMAX Testing
-  gmaxReadings: z.array(z.number().min(0).max(200)).min(1),
-  gmaxAverage: z.number().min(0).max(200),
+  // Location-specific readings
+  testingLocations: z.array(testingLocationSchema).min(1),
+  
+  // GMAX Testing (legacy arrays for backward compatibility)
+  gmaxReadings: z.array(z.number().min(0).max(300)).min(1),
+  gmaxAverage: z.number().min(0).max(300),
   gmaxStatus: fieldStatusSchema,
   
   // Shear Factor Testing
@@ -155,6 +183,7 @@ export type Organization = z.infer<typeof organizationSchema>
 export type Field = z.infer<typeof fieldSchema>
 export type FieldType = z.infer<typeof fieldTypeSchema>
 export type FieldStatus = z.infer<typeof fieldStatusSchema>
+export type TestingLocation = z.infer<typeof testingLocationSchema>
 export type TestingData = z.infer<typeof testingDataSchema>
 export type MaintenanceRecommendation = z.infer<typeof maintenanceRecommendationSchema>
 export type ComplianceReport = z.infer<typeof complianceReportSchema>

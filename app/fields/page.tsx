@@ -15,11 +15,13 @@ import {
   Download,
   Eye
 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export default function FieldsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [filterStatus, setFilterStatus] = useState<string>('all')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const router = useRouter()
 
   // Filter fields based on search and status
   const filteredFields = mockFields.filter(field => {
@@ -173,7 +175,7 @@ export default function FieldsPage() {
                     >
                       <FieldStatusCard 
                         field={field}
-                        onClick={() => console.log('Navigate to field details:', field.id)}
+                        onClick={() => router.push(`/fields/${field.id}`)}
                       />
                     </motion.div>
                   ))}
@@ -198,7 +200,7 @@ export default function FieldsPage() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
                         className="px-6 py-4 hover:bg-gray-50 cursor-pointer"
-                        onClick={() => console.log('Navigate to field details:', field.id)}
+                        onClick={() => router.push(`/fields/${field.id}`)}
                       >
                         <div className="grid grid-cols-12 gap-4 items-center">
                           <div className="col-span-3">
@@ -227,7 +229,13 @@ export default function FieldsPage() {
                             <span className="text-sm font-medium text-gray-900">N/A</span>
                           </div>
                           <div className="col-span-1">
-                            <button className="text-green-600 hover:text-green-700">
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                router.push(`/fields/${field.id}`)
+                              }}
+                              className="text-green-600 hover:text-green-700"
+                            >
                               <Eye className="w-4 h-4" />
                             </button>
                           </div>

@@ -33,6 +33,17 @@ export const mockFields: Field[] = [
     totalArea: 7200,
     status: 'good',
     lastTestingDate: new Date('2025-01-10'),
+    
+    // GPS and Mapping Data
+    latitude: 38.7223,
+    longitude: -121.3010,
+    satelliteImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=38.7223,-121.3010&zoom=19&size=800x600&maptype=satellite&key=demo',
+    fieldDimensions: {
+      length: 120, // yards including end zones
+      width: 53.33, // yards
+      orientation: 15 // degrees from north
+    },
+    
     createdAt: new Date('2024-01-15'),
     updatedAt: new Date('2025-01-15'),
   },
@@ -48,6 +59,17 @@ export const mockFields: Field[] = [
     totalArea: 6400,
     status: 'excellent',
     lastTestingDate: new Date('2025-01-12'),
+    
+    // GPS and Mapping Data
+    latitude: 38.7225,
+    longitude: -121.3015,
+    satelliteImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=38.7225,-121.3015&zoom=19&size=800x600&maptype=satellite&key=demo',
+    fieldDimensions: {
+      length: 110, // yards
+      width: 70, // yards
+      orientation: 20 // degrees from north
+    },
+    
     createdAt: new Date('2024-01-15'),
     updatedAt: new Date('2025-01-15'),
   },
@@ -63,6 +85,17 @@ export const mockFields: Field[] = [
     totalArea: 5000,
     status: 'monitor',
     lastTestingDate: new Date('2025-01-08'),
+    
+    // GPS and Mapping Data
+    latitude: 38.7218,
+    longitude: -121.3005,
+    satelliteImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=38.7218,-121.3005&zoom=19&size=800x600&maptype=satellite&key=demo',
+    fieldDimensions: {
+      length: 100, // yards
+      width: 60, // yards
+      orientation: 0 // degrees from north
+    },
+    
     createdAt: new Date('2024-01-15'),
     updatedAt: new Date('2025-01-15'),
   },
@@ -78,6 +111,17 @@ export const mockFields: Field[] = [
     totalArea: 4800,
     status: 'critical',
     lastTestingDate: new Date('2025-01-05'),
+    
+    // GPS and Mapping Data
+    latitude: 38.7220,
+    longitude: -121.2998,
+    satelliteImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=38.7220,-121.2998&zoom=19&size=800x600&maptype=satellite&key=demo',
+    fieldDimensions: {
+      length: 100, // yards practice field
+      width: 53.33, // yards
+      orientation: 10 // degrees from north
+    },
+    
     createdAt: new Date('2024-01-15'),
     updatedAt: new Date('2025-01-15'),
   },
@@ -91,6 +135,19 @@ export const mockTestingData: TestingData[] = [
     testingTechnician: 'Mike Johnson, Clean Green Turf',
     weatherConditions: 'Clear, 65°F',
     temperature: 65,
+    
+    // Testing location data for Main Football Field
+    testingLocations: [
+      { id: 'loc-1', name: '10 Yard Line Center', position: { x: 0.5, y: 0.17 }, zone: 'End Zone', gmaxReading: 118, shearReading: 32, infillDepthReading: 28 },
+      { id: 'loc-2', name: '25 Yard Line Left Hash', position: { x: 0.3, y: 0.29 }, zone: 'Field', gmaxReading: 125, shearReading: 34, infillDepthReading: 30 },
+      { id: 'loc-3', name: '25 Yard Line Right Hash', position: { x: 0.7, y: 0.29 }, zone: 'Field', gmaxReading: 112, shearReading: 31, infillDepthReading: 27 },
+      { id: 'loc-4', name: '50 Yard Line Center', position: { x: 0.5, y: 0.5 }, zone: 'Midfield', gmaxReading: 121, shearReading: 33, infillDepthReading: 31 },
+      { id: 'loc-5', name: '50 Yard Line Left Hash', position: { x: 0.3, y: 0.5 }, zone: 'Midfield', gmaxReading: 116, shearReading: 32, infillDepthReading: 29 },
+      { id: 'loc-6', name: '50 Yard Line Right Hash', position: { x: 0.7, y: 0.5 }, zone: 'Midfield', gmaxReading: 123, shearReading: 35, infillDepthReading: 30 },
+      { id: 'loc-7', name: '75 Yard Line Center', position: { x: 0.5, y: 0.71 }, zone: 'Field', gmaxReading: 115, shearReading: 33, infillDepthReading: 28 },
+      { id: 'loc-8', name: '90 Yard Line Center', position: { x: 0.5, y: 0.83 }, zone: 'End Zone', gmaxReading: 119, shearReading: 32, infillDepthReading: 29 },
+    ],
+    
     gmaxReadings: [118, 125, 112, 121, 116, 123, 115, 119],
     gmaxAverage: 118.6,
     gmaxStatus: 'good',
@@ -113,6 +170,19 @@ export const mockTestingData: TestingData[] = [
     testingTechnician: 'Sarah Davis, Clean Green Turf',
     weatherConditions: 'Partly cloudy, 58°F',
     temperature: 58,
+    
+    // Testing location data for Soccer Field A
+    testingLocations: [
+      { id: 'soc-1', name: 'Goal Box Center', position: { x: 0.5, y: 0.08 }, zone: 'Goal Box', gmaxReading: 98, shearReading: 38, infillDepthReading: 32 },
+      { id: 'soc-2', name: 'Penalty Spot', position: { x: 0.5, y: 0.18 }, zone: 'Penalty Area', gmaxReading: 105, shearReading: 41, infillDepthReading: 35 },
+      { id: 'soc-3', name: 'Left Wing', position: { x: 0.15, y: 0.3 }, zone: 'Field', gmaxReading: 94, shearReading: 36, infillDepthReading: 31 },
+      { id: 'soc-4', name: 'Center Circle', position: { x: 0.5, y: 0.5 }, zone: 'Center Circle', gmaxReading: 102, shearReading: 40, infillDepthReading: 36 },
+      { id: 'soc-5', name: 'Right Wing', position: { x: 0.85, y: 0.3 }, zone: 'Field', gmaxReading: 96, shearReading: 37, infillDepthReading: 33 },
+      { id: 'soc-6', name: 'Left Midfield', position: { x: 0.2, y: 0.7 }, zone: 'Field', gmaxReading: 108, shearReading: 42, infillDepthReading: 34 },
+      { id: 'soc-7', name: 'Right Midfield', position: { x: 0.8, y: 0.7 }, zone: 'Field', gmaxReading: 99, shearReading: 39, infillDepthReading: 32 },
+      { id: 'soc-8', name: 'Opposite Goal Area', position: { x: 0.5, y: 0.92 }, zone: 'Goal Box', gmaxReading: 101, shearReading: 38, infillDepthReading: 33 },
+    ],
+    
     gmaxReadings: [98, 105, 94, 102, 96, 108, 99, 101],
     gmaxAverage: 100.4,
     gmaxStatus: 'excellent',
@@ -135,6 +205,19 @@ export const mockTestingData: TestingData[] = [
     testingTechnician: 'Mike Johnson, Clean Green Turf',
     weatherConditions: 'Light rain, 52°F',
     temperature: 52,
+    
+    // Testing location data for Multi-Purpose Field
+    testingLocations: [
+      { id: 'mp-1', name: 'North End Center', position: { x: 0.5, y: 0.1 }, zone: 'End Zone', gmaxReading: 158, shearReading: 28, infillDepthReading: 18 },
+      { id: 'mp-2', name: 'North Left Corner', position: { x: 0.2, y: 0.2 }, zone: 'Corner', gmaxReading: 162, shearReading: 30, infillDepthReading: 20 },
+      { id: 'mp-3', name: 'North Right Corner', position: { x: 0.8, y: 0.2 }, zone: 'Corner', gmaxReading: 155, shearReading: 27, infillDepthReading: 17 },
+      { id: 'mp-4', name: 'Center Field Left', position: { x: 0.3, y: 0.5 }, zone: 'Center', gmaxReading: 160, shearReading: 29, infillDepthReading: 21 },
+      { id: 'mp-5', name: 'Center Field Right', position: { x: 0.7, y: 0.5 }, zone: 'Center', gmaxReading: 157, shearReading: 28, infillDepthReading: 19 },
+      { id: 'mp-6', name: 'South Left Corner', position: { x: 0.2, y: 0.8 }, zone: 'Corner', gmaxReading: 161, shearReading: 31, infillDepthReading: 20 },
+      { id: 'mp-7', name: 'South Right Corner', position: { x: 0.8, y: 0.8 }, zone: 'Corner', gmaxReading: 159, shearReading: 29, infillDepthReading: 18 },
+      { id: 'mp-8', name: 'South End Center', position: { x: 0.5, y: 0.9 }, zone: 'End Zone', gmaxReading: 158, shearReading: 28, infillDepthReading: 19 },
+    ],
+    
     gmaxReadings: [158, 162, 155, 160, 157, 161, 159, 158],
     gmaxAverage: 158.75,
     gmaxStatus: 'monitor',
@@ -157,6 +240,19 @@ export const mockTestingData: TestingData[] = [
     testingTechnician: 'Sarah Davis, Clean Green Turf',
     weatherConditions: 'Hot sunny day, 95°F',
     temperature: 95,
+    
+    // Testing location data for Practice Field (Critical condition)
+    testingLocations: [
+      { id: 'pf-1', name: '20 Yard Line Center', position: { x: 0.5, y: 0.2 }, zone: 'Field', gmaxReading: 198, shearReading: 22, infillDepthReading: 8 },
+      { id: 'pf-2', name: '20 Yard Left Hash', position: { x: 0.3, y: 0.2 }, zone: 'Field', gmaxReading: 205, shearReading: 24, infillDepthReading: 10 },
+      { id: 'pf-3', name: '20 Yard Right Hash', position: { x: 0.7, y: 0.2 }, zone: 'Field', gmaxReading: 194, shearReading: 21, infillDepthReading: 7 },
+      { id: 'pf-4', name: '40 Yard Line Center', position: { x: 0.5, y: 0.4 }, zone: 'Field', gmaxReading: 201, shearReading: 23, infillDepthReading: 11 },
+      { id: 'pf-5', name: '50 Yard Line Center', position: { x: 0.5, y: 0.5 }, zone: 'Midfield', gmaxReading: 196, shearReading: 22, infillDepthReading: 9 },
+      { id: 'pf-6', name: '60 Yard Line Left', position: { x: 0.3, y: 0.6 }, zone: 'Field', gmaxReading: 203, shearReading: 25, infillDepthReading: 10 },
+      { id: 'pf-7', name: '80 Yard Line Center', position: { x: 0.5, y: 0.8 }, zone: 'Field', gmaxReading: 199, shearReading: 23, infillDepthReading: 8 },
+      { id: 'pf-8', name: '90 Yard Line Center', position: { x: 0.5, y: 0.9 }, zone: 'Field', gmaxReading: 197, shearReading: 22, infillDepthReading: 9 },
+    ],
+    
     gmaxReadings: [198, 205, 194, 201, 196, 203, 199, 197],
     gmaxAverage: 199.1,
     gmaxStatus: 'critical',
