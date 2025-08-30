@@ -72,6 +72,7 @@ export default function MarketingHomePage() {
             
             <nav className="hidden md:flex items-center space-x-8">
               <a href="#services" className="text-gray-700 hover:text-green-600 font-medium">Services</a>
+              <a href="#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Athlete Safety</a>
               <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
               <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
               <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Success Stories</a>
@@ -123,8 +124,8 @@ export default function MarketingHomePage() {
               </h1>
               
               <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                Expert artificial turf maintenance monitoring with GMAX testing, infill depth analysis, and synthetic field safety inspections. 
-                Professional quarterly assessments can help reduce emergency repairs with predictive maintenance planning.*
+                <strong>Protect Your Athletes.</strong> Expert artificial turf maintenance monitoring with GMAX testing, infill depth analysis, and synthetic field safety inspections. 
+                Professional quarterly assessments help reduce emergency repairs and minimize athlete injury risks through proper field maintenance.*
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -227,6 +228,10 @@ export default function MarketingHomePage() {
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Athlete Safety is Our Priority</h2>
+            <p className="text-gray-600">Professional field monitoring protects both your investment and your athletes</p>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -244,6 +249,129 @@ export default function MarketingHomePage() {
           <div className="text-center mt-6">
             <p className="text-sm text-gray-500">* Statistics based on industry research and potential outcomes</p>
           </div>
+        </div>
+      </section>
+
+      {/* Athlete Safety Section */}
+      <section className="py-20 bg-red-50" id="athlete-safety">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                The Hidden Risks of Poorly Maintained Artificial Turf
+              </h2>
+              <p className="text-xl text-gray-600 mb-4">
+                Professional testing protects athletes from serious injuries caused by unsafe field conditions
+              </p>
+              <div className="bg-red-100 border border-red-200 rounded-lg p-4 max-w-2xl mx-auto">
+                <p className="text-red-800 font-semibold">
+                  Fields with GMAX scores above 200 increase the risk of life-threatening head injuries
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            {/* Head Injury Risks */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-red-200"
+            >
+              <div className="flex items-center space-x-3 mb-6">
+                <AlertTriangle className="w-8 h-8 text-red-500" />
+                <h3 className="text-2xl font-bold text-red-800">Head Injury & Concussion Risks</h3>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-red-50 p-4 rounded-lg">
+                  <p className="font-semibold text-red-800 mb-2">Critical Safety Thresholds:</p>
+                  <ul className="text-red-700 space-y-1 text-sm">
+                    <li>• GMAX below 165: Safe for most sports</li>
+                    <li>• GMAX 165-200: Monitor closely</li>
+                    <li>• GMAX above 200: Life-threatening risk</li>
+                    <li>• NFL uses pre-game limit of 156</li>
+                  </ul>
+                </div>
+                
+                <div className="space-y-2">
+                  <p className="text-gray-700"><strong>Research Data:</strong> 21.5% of sports-related head injuries result from surface impact</p>
+                  <p className="text-gray-700"><strong>Real Case:</strong> Boston field repeatedly failed GMAX tests with scores >200, exposing thousands of youth athletes</p>
+                  <p className="text-gray-700"><strong>Maintenance Impact:</strong> Without regular maintenance, GMAX can rise 20-30% over 3-5 years</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Lower Extremity Risks */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200"
+            >
+              <div className="flex items-center space-x-3 mb-6">
+                <AlertTriangle className="w-8 h-8 text-orange-500" />
+                <h3 className="text-2xl font-bold text-orange-800">Foot, Ankle & Knee Injuries</h3>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-orange-50 p-4 rounded-lg">
+                  <p className="font-semibold text-orange-800 mb-2">Increased Injury Rates on Poor Turf:</p>
+                  <ul className="text-orange-700 space-y-1 text-sm">
+                    <li>• ACL tears: 1.6x higher on artificial turf</li>
+                    <li>• Ankle sprains: up to 2x higher on compromised fields</li>
+                    <li>• Foot injuries: elevated risk in 75% of studies</li>
+                  </ul>
+                </div>
+                
+                <div className="space-y-2">
+                  <p className="text-gray-700"><strong>NCAA Data (2004-2014):</strong> 142 ACL tears per 10,000 exposures on turf vs 111 on grass</p>
+                  <p className="text-gray-700"><strong>2022 Review:</strong> Systematic analysis of 53 studies confirmed higher foot/ankle injury rates</p>
+                  <p className="text-gray-700"><strong>Contributing Factors:</strong> Higher friction, poor drainage, uneven surfaces from delayed maintenance</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Safety Statistics */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 rounded-2xl shadow-lg border-2 border-green-200"
+          >
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-green-800 mb-4">How Professional Testing Protects Athletes</h3>
+              <p className="text-gray-600">Regular maintenance can reduce injury risks by 20-50% while extending field life by 2+ years</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">165</div>
+                <div className="text-sm text-gray-600">GMAX safety limit recommended by Synthetic Turf Council</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">20-50%</div>
+                <div className="text-sm text-gray-600">Potential injury risk reduction with proper maintenance</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">&lt;$1,000</div>
+                <div className="text-sm text-gray-600">Annual GMAX testing cost vs. potential injury liability</div>
+              </div>
+            </div>
+            
+            <div className="mt-6 text-center">
+              <a href="/athlete-safety" className="inline-flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                <Shield className="w-5 h-5" />
+                <span>Learn More About Athlete Safety</span>
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -281,11 +409,11 @@ export default function MarketingHomePage() {
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-red-700">Reactive artificial turf maintenance leading to budget surprises ($25K-$75K emergency synthetic field repairs)</p>
+                  <p className="text-red-700">Reactive artificial turf maintenance leading to athlete injuries and budget surprises ($25K-$75K emergency synthetic field repairs)</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-red-700">No systematic artificial turf field monitoring or synthetic field safety compliance documentation</p>
+                  <p className="text-red-700">No systematic artificial turf field monitoring puts athletes at risk - no safety compliance documentation</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
@@ -1023,10 +1151,10 @@ export default function MarketingHomePage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-6">
-              Ready to Protect Your Field Investment?
+              Ready to Protect Your Athletes & Field Investment?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Get your free initial field assessment and see what professional monitoring can reveal
+              Get your free initial field safety assessment and protect your athletes from preventable injuries
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -1077,8 +1205,8 @@ export default function MarketingHomePage() {
                 </div>
               </div>
               <p className="text-gray-300 mb-4">
-                Professional field monitoring and data insights that protect your investment 
-                and your athletes through expert analysis and predictable maintenance planning.
+                Professional field monitoring that protects your athletes from injury risks while safeguarding your investment 
+                through expert safety analysis and predictive maintenance planning.
               </p>
               <div className="flex items-center space-x-4">
                 <Phone className="w-5 h-5 text-green-400" />
