@@ -304,7 +304,7 @@ export default function MarketingHomePage() {
                 
                 <div className="space-y-2">
                   <p className="text-gray-700"><strong>Research Data:</strong> 21.5% of sports-related head injuries result from surface impact</p>
-                  <p className="text-gray-700"><strong>Real Case:</strong> Boston field repeatedly failed GMAX tests with scores >200, exposing thousands of youth athletes</p>
+                  <p className="text-gray-700"><strong>Real Case:</strong> Boston field repeatedly failed GMAX tests with scores &gt;200, exposing thousands of youth athletes</p>
                   <p className="text-gray-700"><strong>Maintenance Impact:</strong> Without regular maintenance, GMAX can rise 20-30% over 3-5 years</p>
                 </div>
               </div>

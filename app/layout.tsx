@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,9 +68,10 @@ const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["LocalBusiness", "Organization"],
       "@id": "https://fieldhealthsystems.com/#organization",
       "name": "Field Health Systems",
+      "alternateName": "Field Health Systems - Artificial Turf Maintenance",
       "url": "https://fieldhealthsystems.com",
       "logo": {
         "@type": "ImageObject",
@@ -77,21 +79,120 @@ const structuredData = {
         "width": 400,
         "height": 400
       },
-      "description": "Professional artificial turf field maintenance monitoring and testing services for sports facilities.",
-      "foundingDate": "2024",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "(555) 123-8873",
-        "contactType": "Customer Service",
-        "availableLanguage": ["English"]
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://fieldhealthsystems.com/og-image.jpg",
+        "width": 1200,
+        "height": 630
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United States"
+      "description": "Professional artificial turf field maintenance monitoring and testing services. Expert GMAX testing, safety compliance, and predictive maintenance for synthetic sports fields.",
+      "foundingDate": "2024",
+      "slogan": "Professional Field Health Assessments - Protecting Athletes, Preserving Fields",
+      "knowsAbout": [
+        "Artificial Turf Maintenance",
+        "GMAX Testing",
+        "Sports Field Safety",
+        "Synthetic Turf Management",
+        "Field Testing Equipment",
+        "Athletic Field Compliance"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Professional Certification",
+          "name": "ASTM Field Testing Certification"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "(555) 123-8873",
+          "contactType": "Customer Service",
+          "availableLanguage": ["English"],
+          "hoursAvailable": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "(555) 911-FIELD",
+          "contactType": "Emergency Service",
+          "availableLanguage": ["English"],
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "State",
+          "name": "Texas"
+        },
+        {
+          "@type": "State", 
+          "name": "Oklahoma"
+        },
+        {
+          "@type": "State",
+          "name": "Arkansas"
+        },
+        {
+          "@type": "State",
+          "name": "Louisiana"
+        }
+      ],
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.7767,
+          "longitude": -96.7970
+        },
+        "geoRadius": "500 miles"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Field Testing Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "GMAX Testing",
+              "description": "Professional shock absorption testing using calibrated equipment"
+            },
+            "price": "500",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Quarterly Field Monitoring",
+              "description": "Comprehensive field health assessment and maintenance planning"
+            },
+            "price": "2500",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "2500",
+              "priceCurrency": "USD",
+              "unitText": "per field per year"
+            }
+          }
+        ]
       }
     },
     {
-      "@type": "Service",
+      "@type": "ProfessionalService",
       "@id": "https://fieldhealthsystems.com/#service",
       "name": "Artificial Turf Field Maintenance & Testing",
       "description": "Professional quarterly field monitoring and testing services including GMAX testing, infill depth analysis, and predictive maintenance planning for synthetic sports fields.",
@@ -99,9 +200,14 @@ const structuredData = {
         "@id": "https://fieldhealthsystems.com/#organization"
       },
       "serviceType": "Sports Field Maintenance",
+      "category": "Athletic Field Services",
       "areaServed": {
         "@type": "Country",
         "name": "United States"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Schools, Sports Facilities, Municipal Recreation Departments"
       },
       "offers": {
         "@type": "Offer",
@@ -112,7 +218,30 @@ const structuredData = {
           "price": "2500",
           "priceCurrency": "USD",
           "unitText": "per field per year"
-        }
+        },
+        "availability": "InStock",
+        "validFrom": "2024-01-01"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Professional Field Testing Services",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "name": "GMAX Safety Testing",
+            "description": "ASTM F1936 compliant shock absorption testing"
+          },
+          {
+            "@type": "Service", 
+            "name": "Shear Factor Analysis",
+            "description": "Rotational traction testing for injury prevention"
+          },
+          {
+            "@type": "Service",
+            "name": "Infill Depth Measurement",
+            "description": "Precise infill depth analysis and maintenance recommendations"
+          }
+        ]
       }
     },
     {
@@ -131,6 +260,9 @@ const structuredData = {
           "urlTemplate": "https://fieldhealthsystems.com/search?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
+      },
+      "mainEntity": {
+        "@id": "https://fieldhealthsystems.com/#organization"
       }
     }
   ]
@@ -159,6 +291,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <GoogleAnalytics />
         {children}
       </body>
     </html>

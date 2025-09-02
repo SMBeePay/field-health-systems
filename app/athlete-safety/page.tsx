@@ -475,7 +475,7 @@ export default function AthleteSafetyPage() {
                   <FileText className="w-6 h-6 text-green-600" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">Synthetic Turf Council</h4>
-                <p className="text-sm text-gray-600">GMAX <165 recommended for safety compliance</p>
+                <p className="text-sm text-gray-600">GMAX &lt;165 recommended for safety compliance</p>
               </div>
               
               <div className="text-center">
@@ -483,7 +483,7 @@ export default function AthleteSafetyPage() {
                   <Shield className="w-6 h-6 text-blue-600" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">ASTM Standards</h4>
-                <p className="text-sm text-gray-600">GMAX <200 to avoid life-threatening injuries</p>
+                <p className="text-sm text-gray-600">GMAX &lt;200 to avoid life-threatening injuries</p>
               </div>
               
               <div className="text-center">
