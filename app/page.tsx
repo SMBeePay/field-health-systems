@@ -14,7 +14,10 @@ import {
   AlertTriangle,
   FileText,
   BarChart3,
-  Calendar
+  Calendar,
+  Zap,
+  Satellite,
+  X
 } from 'lucide-react'
 
 export default function MarketingHomePage() {
@@ -567,6 +570,544 @@ export default function MarketingHomePage() {
             </p>
             <div className="text-2xl font-bold">
               $2,500/year vs potential $25,000+ problem resolution*
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Service-First Positioning */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Professional Service + Advanced Technology
+              </h2>
+              <p className="text-xl text-gray-600 mb-4">
+                Unlike basic logging apps, we combine certified technicians with cutting-edge software
+              </p>
+              <div className="bg-blue-100 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
+                <p className="text-blue-800 font-semibold">
+                  Human expertise ensures accurate testing, proper analysis, and immediate action when safety thresholds are exceeded
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            {/* Professional Service Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-green-200"
+            >
+              <div className="flex items-center space-x-3 mb-6">
+                <Users className="w-8 h-8 text-green-600" />
+                <h3 className="text-2xl font-bold text-green-800">Certified Professionals</h3>
+              </div>
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">20+ Years Industry Experience</p>
+                    <p className="text-sm text-gray-600">Certified technicians with decades of turf management expertise</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Professional-Grade Equipment</p>
+                    <p className="text-sm text-gray-600">$15,000+ calibrated GMAX testing equipment, not basic consumer tools</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Emergency Response</p>
+                    <p className="text-sm text-gray-600">24/7 availability for critical safety threshold breaches</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900">Legal Documentation</p>
+                    <p className="text-sm text-gray-600">Professional liability coverage and compliance reporting</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <p className="text-sm text-green-800">
+                  <strong>Professional Service:</strong> We don't just give you software - we provide expert analysis, 
+                  immediate response, and professional accountability for athlete safety.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Technology Platform Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-blue-200"
+            >
+              <div className="flex items-center space-x-3 mb-6">
+                <BarChart3 className="w-8 h-8 text-blue-600" />
+                <h3 className="text-2xl font-bold text-blue-800">Advanced Technology Platform</h3>
+              </div>
+              
+              {/* App Screenshot Mockup - Laptop */}
+              <div className="mb-6">
+                <div className="bg-gray-900 rounded-lg p-1 shadow-2xl">
+                  <div className="bg-white rounded-md p-3">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded p-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center space-x-2">
+                          <Shield className="w-5 h-5 text-green-600" />
+                          <span className="font-semibold text-gray-900">Field Health Dashboard</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                          <span className="text-xs text-gray-600">Live Data</span>
+                        </div>
+                      </div>
+                      
+                      {/* Satellite Field View */}
+                      <div className="bg-green-600 rounded-lg p-4 mb-3 relative">
+                        <div className="text-white text-center mb-2">
+                          <div className="text-xs font-medium">Main Football Field - Satellite View</div>
+                        </div>
+                        {/* Testing location markers */}
+                        <div className="grid grid-cols-3 gap-2">
+                          <div className="w-2 h-2 bg-green-400 rounded-full mx-auto"></div>
+                          <div className="w-2 h-2 bg-yellow-400 rounded-full mx-auto"></div>
+                          <div className="w-2 h-2 bg-green-400 rounded-full mx-auto"></div>
+                        </div>
+                        <div className="text-xs text-green-100 text-center mt-1">8 Test Locations</div>
+                      </div>
+                      
+                      {/* Metrics */}
+                      <div className="grid grid-cols-3 gap-2 text-center">
+                        <div className="bg-white rounded p-2">
+                          <div className="text-lg font-bold text-green-600">118.6</div>
+                          <div className="text-xs text-gray-600">GMAX</div>
+                        </div>
+                        <div className="bg-white rounded p-2">
+                          <div className="text-lg font-bold text-blue-600">32.75</div>
+                          <div className="text-xs text-gray-600">Shear</div>
+                        </div>
+                        <div className="bg-white rounded p-2">
+                          <div className="text-lg font-bold text-purple-600">29mm</div>
+                          <div className="text-xs text-gray-600">Infill</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <span className="text-gray-700">Satellite imagery with GPS-precise testing locations</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <span className="text-gray-700">Real-time alerts when safety thresholds are exceeded</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <span className="text-gray-700">Predictive analytics for maintenance planning</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <span className="text-gray-700">Mobile access for instant field status updates</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Mobile App Showcase */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 rounded-2xl shadow-lg text-center"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Professional Mobile Access</h3>
+            <div className="flex justify-center items-center space-x-8">
+              {/* Phone Mockup */}
+              <div className="relative">
+                <div className="w-48 h-96 bg-gray-900 rounded-3xl p-2 shadow-2xl">
+                  <div className="w-full h-full bg-white rounded-2xl p-3 overflow-hidden">
+                    <div className="text-center mb-3">
+                      <div className="w-24 h-1 bg-gray-900 rounded mx-auto mb-3"></div>
+                      <div className="flex items-center justify-center space-x-2 mb-3">
+                        <Shield className="w-4 h-4 text-green-600" />
+                        <span className="text-sm font-semibold text-gray-900">Field Health</span>
+                      </div>
+                    </div>
+                    
+                    {/* Alert notification */}
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-2 mb-3">
+                      <div className="flex items-center space-x-2">
+                        <AlertTriangle className="w-4 h-4 text-red-600" />
+                        <div className="text-xs">
+                          <div className="font-semibold text-red-800">Safety Alert</div>
+                          <div className="text-red-600">Practice Field GMAX: 198</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Field status cards */}
+                    <div className="space-y-2">
+                      <div className="bg-green-50 border border-green-200 rounded p-2">
+                        <div className="flex items-center justify-between">
+                          <div className="text-xs">
+                            <div className="font-semibold text-gray-900">Main Field</div>
+                            <div className="text-green-600">GMAX: 118.6</div>
+                          </div>
+                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="bg-blue-50 border border-blue-200 rounded p-2">
+                        <div className="flex items-center justify-between">
+                          <div className="text-xs">
+                            <div className="font-semibold text-gray-900">Soccer Field</div>
+                            <div className="text-blue-600">GMAX: 100.4</div>
+                          </div>
+                          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="bg-red-50 border border-red-200 rounded p-2">
+                        <div className="flex items-center justify-between">
+                          <div className="text-xs">
+                            <div className="font-semibold text-gray-900">Practice Field</div>
+                            <div className="text-red-600">GMAX: 198.1</div>
+                          </div>
+                          <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-3 text-center">
+                      <div className="text-xs text-gray-500">Tap for emergency contact</div>
+                      <div className="bg-red-600 text-white text-xs py-1 px-3 rounded mt-1">Call Tech</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-left max-w-md">
+                <h4 className="text-xl font-bold text-gray-900 mb-4">Instant Safety Alerts</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <AlertTriangle className="w-5 h-5 text-red-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm">Critical Threshold Alerts</p>
+                      <p className="text-sm text-gray-600">Immediate notifications when GMAX exceeds safety limits</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <Phone className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm">Direct Technician Contact</p>
+                      <p className="text-sm text-gray-600">One-tap access to certified professionals for emergency response</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <BarChart3 className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm">Real-Time Field Status</p>
+                      <p className="text-sm text-gray-600">Live updates on all your fields with visual safety indicators</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Comparison with Basic Apps */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 bg-gray-50 p-8 rounded-2xl"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Why Apps Alone Aren't Enough</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-red-100 p-6 rounded-lg border-2 border-red-200">
+                <h4 className="font-bold text-red-800 mb-4 flex items-center">
+                  <AlertTriangle className="w-5 h-5 mr-2" />
+                  Basic Logging Apps
+                </h4>
+                <ul className="space-y-2 text-sm text-red-700">
+                  <li>• DIY data entry - prone to human error</li>
+                  <li>• No professional equipment calibration</li>
+                  <li>• No emergency response capabilities</li>
+                  <li>• No liability protection or professional oversight</li>
+                  <li>• Miss critical safety issues requiring expert analysis</li>
+                  <li>• No legal documentation for insurance/compliance</li>
+                </ul>
+                <div className="mt-4 p-3 bg-red-200 rounded">
+                  <div className="font-bold text-red-800">Risk: Missed safety issues = potential athlete injuries</div>
+                </div>
+              </div>
+              
+              <div className="bg-green-100 p-6 rounded-lg border-2 border-green-200">
+                <h4 className="font-bold text-green-800 mb-4 flex items-center">
+                  <CheckCircle className="w-5 h-5 mr-2" />
+                  Professional Service + Technology
+                </h4>
+                <ul className="space-y-2 text-sm text-green-700">
+                  <li>• Certified technicians with 20+ years experience</li>
+                  <li>• $15,000+ calibrated professional equipment</li>
+                  <li>• 24/7 emergency response for critical thresholds</li>
+                  <li>• Professional liability coverage included</li>
+                  <li>• Expert analysis prevents missed safety issues</li>
+                  <li>• Legal compliance documentation provided</li>
+                </ul>
+                <div className="mt-4 p-3 bg-green-200 rounded">
+                  <div className="font-bold text-green-800">Result: Professional accountability + athlete protection</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Advanced Technology Showcase */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Advanced Technology Beyond Basic Logging
+              </h2>
+              <p className="text-xl text-gray-600 mb-6">
+                Professional-grade testing capabilities that basic apps can't match
+              </p>
+              <div className="bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-lg p-6 max-w-3xl mx-auto">
+                <p className="text-blue-900 font-semibold text-lg">
+                  While basic apps only log simple numbers, our system provides comprehensive field analysis 
+                  with satellite integration, predictive analytics, and professional-grade equipment calibration
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            {/* Multi-Point GMAX Testing */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-2xl border-2 border-green-200 text-center"
+            >
+              <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Target className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Multi-Point GMAX Testing</h3>
+              <div className="space-y-4 text-gray-700">
+                <p className="text-sm">8+ GPS-precise testing locations per field</p>
+                <div className="bg-white p-4 rounded-lg">
+                  <div className="grid grid-cols-4 gap-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mx-auto"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mx-auto"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mx-auto"></div>
+                  </div>
+                  <div className="grid grid-cols-4 gap-2 mt-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full mx-auto"></div>
+                    <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mx-auto"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full mx-auto"></div>
+                  </div>
+                  <div className="text-xs text-gray-600 mt-2">Real field mapping</div>
+                </div>
+                <p className="text-sm font-semibold text-green-800">Basic apps: Single-point logging only</p>
+              </div>
+            </motion.div>
+
+            {/* Shear Factor Analysis */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl border-2 border-blue-200 text-center"
+            >
+              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Zap className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Shear Factor Analysis</h3>
+              <div className="space-y-4 text-gray-700">
+                <p className="text-sm">Measures rotational traction and slip resistance</p>
+                <div className="bg-white p-4 rounded-lg">
+                  <div className="flex justify-center items-center space-x-2 mb-2">
+                    <div className="w-8 h-1 bg-blue-500 rounded transform rotate-45"></div>
+                    <div className="text-sm font-mono">32.7 N·m</div>
+                  </div>
+                  <div className="text-xs text-gray-600">Optimal traction range: 25-50 N·m</div>
+                  <div className="mt-2 bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Within Safe Range</div>
+                </div>
+                <p className="text-sm font-semibold text-blue-800">Basic apps: GMAX only, no shear analysis</p>
+              </div>
+            </motion.div>
+
+            {/* Satellite Integration */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-purple-200 text-center"
+            >
+              <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Satellite className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Satellite Integration</h3>
+              <div className="space-y-4 text-gray-700">
+                <p className="text-sm">High-resolution field imagery with test overlay</p>
+                <div className="bg-white p-4 rounded-lg">
+                  <div className="bg-green-600 rounded p-3 relative">
+                    <div className="text-white text-xs text-center mb-2">Field Satellite View</div>
+                    <div className="absolute top-2 left-2 w-2 h-2 bg-yellow-400 rounded-full"></div>
+                    <div className="absolute top-2 right-2 w-2 h-2 bg-green-400 rounded-full"></div>
+                    <div className="absolute bottom-2 left-2 w-2 h-2 bg-red-400 rounded-full"></div>
+                    <div className="absolute bottom-2 right-2 w-2 h-2 bg-green-400 rounded-full"></div>
+                    <div className="text-xs text-green-100 text-center">GPS coordinates locked</div>
+                  </div>
+                </div>
+                <p className="text-sm font-semibold text-purple-800">Basic apps: Text-only data, no visual context</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Comprehensive Feature Comparison */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gray-50 p-8 rounded-2xl"
+          >
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              Professional Technology vs Basic App Logging
+            </h3>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b-2 border-gray-300">
+                    <th className="text-left py-4 px-6 font-bold text-gray-900">Feature</th>
+                    <th className="text-center py-4 px-6 font-bold text-red-700">Basic Logging Apps</th>
+                    <th className="text-center py-4 px-6 font-bold text-green-700">Field Health Systems</th>
+                  </tr>
+                </thead>
+                <tbody className="text-sm">
+                  <tr className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-4 px-6 font-medium text-gray-900">Testing Equipment</td>
+                    <td className="py-4 px-6 text-center text-red-700">
+                      <X className="w-5 h-5 mx-auto mb-1" />
+                      Consumer-grade tools
+                    </td>
+                    <td className="py-4 px-6 text-center text-green-700">
+                      <CheckCircle className="w-5 h-5 mx-auto mb-1" />
+                      $15,000+ calibrated professional equipment
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-4 px-6 font-medium text-gray-900">Multi-Point Testing</td>
+                    <td className="py-4 px-6 text-center text-red-700">
+                      <X className="w-5 h-5 mx-auto mb-1" />
+                      Single point logging
+                    </td>
+                    <td className="py-4 px-6 text-center text-green-700">
+                      <CheckCircle className="w-5 h-5 mx-auto mb-1" />
+                      8+ GPS-precise locations per field
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-4 px-6 font-medium text-gray-900">Shear Factor Testing</td>
+                    <td className="py-4 px-6 text-center text-red-700">
+                      <X className="w-5 h-5 mx-auto mb-1" />
+                      Not available
+                    </td>
+                    <td className="py-4 px-6 text-center text-green-700">
+                      <CheckCircle className="w-5 h-5 mx-auto mb-1" />
+                      Professional rotational traction analysis
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-4 px-6 font-medium text-gray-900">Satellite Integration</td>
+                    <td className="py-4 px-6 text-center text-red-700">
+                      <X className="w-5 h-5 mx-auto mb-1" />
+                      Text-only data entry
+                    </td>
+                    <td className="py-4 px-6 text-center text-green-700">
+                      <CheckCircle className="w-5 h-5 mx-auto mb-1" />
+                      High-resolution imagery with test overlay
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-4 px-6 font-medium text-gray-900">Predictive Analytics</td>
+                    <td className="py-4 px-6 text-center text-red-700">
+                      <X className="w-5 h-5 mx-auto mb-1" />
+                      Historical data only
+                    </td>
+                    <td className="py-4 px-6 text-center text-green-700">
+                      <CheckCircle className="w-5 h-5 mx-auto mb-1" />
+                      3-5 year maintenance forecasting
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-4 px-6 font-medium text-gray-900">Emergency Response</td>
+                    <td className="py-4 px-6 text-center text-red-700">
+                      <X className="w-5 h-5 mx-auto mb-1" />
+                      No professional support
+                    </td>
+                    <td className="py-4 px-6 text-center text-green-700">
+                      <CheckCircle className="w-5 h-5 mx-auto mb-1" />
+                      24/7 technician availability for critical alerts
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 hover:bg-white">
+                    <td className="py-4 px-6 font-medium text-gray-900">Legal Documentation</td>
+                    <td className="py-4 px-6 text-center text-red-700">
+                      <X className="w-5 h-5 mx-auto mb-1" />
+                      DIY reports, no liability coverage
+                    </td>
+                    <td className="py-4 px-6 text-center text-green-700">
+                      <CheckCircle className="w-5 h-5 mx-auto mb-1" />
+                      Professional compliance reports + liability coverage
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-8 bg-gradient-to-r from-green-100 to-blue-100 p-6 rounded-lg border border-green-200 text-center">
+              <h4 className="text-xl font-bold text-gray-900 mb-2">The Technology Advantage</h4>
+              <p className="text-gray-700">
+                Our advanced testing platform provides <strong>comprehensive field analysis</strong> that basic logging apps simply cannot match. 
+                Professional equipment, expert analysis, and emergency response capabilities ensure your athletes' safety and your liability protection.
+              </p>
             </div>
           </motion.div>
         </div>
