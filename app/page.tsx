@@ -845,7 +845,7 @@ export default function MarketingHomePage() {
             viewport={{ once: true }}
             className="mt-16 bg-gray-50 p-8 rounded-2xl"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Why Apps Alone Aren't Enough</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Why Apps Alone Aren&apos;t Enough</h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-red-100 p-6 rounded-lg border-2 border-red-200">
@@ -1106,7 +1106,7 @@ export default function MarketingHomePage() {
               <h4 className="text-xl font-bold text-gray-900 mb-2">The Technology Advantage</h4>
               <p className="text-gray-700">
                 Our advanced testing platform provides <strong>comprehensive field analysis</strong> that basic logging apps simply cannot match. 
-                Professional equipment, expert analysis, and emergency response capabilities ensure your athletes' safety and your liability protection.
+                Professional equipment, expert analysis, and emergency response capabilities ensure your athletes&apos; safety and your liability protection.
               </p>
             </div>
           </motion.div>

@@ -128,7 +128,7 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
                   {tabs.map((tab) => (
                     <button
                       key={tab.id}
-                      onClick={() => setSelectedTab(tab.id as any)}
+                      onClick={() => setSelectedTab(tab.id as 'overview' | 'testing' | 'maintenance' | 'compliance')}
                       className={`py-2 px-1 border-b-2 font-medium text-sm flex items-center space-x-2 ${
                         selectedTab === tab.id
                           ? 'border-green-500 text-green-600'

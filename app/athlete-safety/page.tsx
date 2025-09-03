@@ -285,7 +285,7 @@ export default function AthleteSafetyPage() {
               <h2 className="text-4xl font-bold text-gray-900">Lower Extremity Injuries</h2>
             </div>
             <p className="text-xl text-gray-600">
-              Artificial turf's higher friction and hardness increase foot, ankle, knee, and hip injury rates
+              Artificial turf&apos;s higher friction and hardness increase foot, ankle, knee, and hip injury rates
             </p>
           </motion.div>
 
@@ -539,7 +539,7 @@ export default function AthleteSafetyPage() {
                   <div>
                     <h4 className="font-semibold text-red-800">Emergency GMAX Testing</h4>
                     <p className="text-sm text-red-700">
-                      If any field hasn't been tested in over 12 months, schedule immediate GMAX assessment
+                      If any field hasn&apos;t been tested in over 12 months, schedule immediate GMAX assessment
                     </p>
                   </div>
                 </div>
@@ -663,7 +663,7 @@ export default function AthleteSafetyPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-6">
-              Don't Wait for an Injury to Take Action
+              Don&apos;t Wait for an Injury to Take Action
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Professional field testing costs a fraction of potential injury liability. 

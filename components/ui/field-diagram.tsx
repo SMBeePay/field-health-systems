@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Field, TestingLocation, TestingData } from '@/lib/schemas'
 import { designTokens } from '@/lib/design-tokens'
 
@@ -57,7 +58,7 @@ export function FieldDiagram({ field, testingData, className = '' }: FieldDiagra
           <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
             {field.fieldDimensions && (
               <span>
-                {field.fieldDimensions.length}" × {field.fieldDimensions.width}"
+                {field.fieldDimensions.length}&quot; × {field.fieldDimensions.width}&quot;
               </span>
             )}
             {testingData && (
@@ -76,9 +77,11 @@ export function FieldDiagram({ field, testingData, className = '' }: FieldDiagra
           {/* Satellite Image */}
           {field.satelliteImageUrl ? (
             <div className="relative">
-              <img
+              <Image
                 src={field.satelliteImageUrl}
                 alt={`Satellite view of ${field.name}`}
+                width={800}
+                height={384}
                 className="w-full h-96 object-cover"
                 onError={(e) => {
                   // Fallback to placeholder if satellite image fails
