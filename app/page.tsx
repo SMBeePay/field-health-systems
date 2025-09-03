@@ -644,7 +644,7 @@ export default function MarketingHomePage() {
               
               <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                 <p className="text-sm text-green-800">
-                  <strong>Professional Service:</strong> We don't just give you software - we provide expert analysis, 
+                  <strong>Professional Service:</strong> We don&apos;t just give you software - we provide expert analysis, 
                   immediate response, and professional accountability for athlete safety.
                 </p>
               </div>
@@ -901,7 +901,7 @@ export default function MarketingHomePage() {
                 Advanced Technology Beyond Basic Logging
               </h2>
               <p className="text-xl text-gray-600 mb-6">
-                Professional-grade testing capabilities that basic apps can't match
+                Professional-grade testing capabilities that basic apps can&apos;t match
               </p>
               <div className="bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-lg p-6 max-w-3xl mx-auto">
                 <p className="text-blue-900 font-semibold text-lg">

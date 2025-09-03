@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { 
   Shield, 
   AlertTriangle, 
@@ -38,10 +39,10 @@ export default function AthleteSafetyPage() {
             </div>
             
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="/#services" className="text-gray-700 hover:text-green-600 font-medium">Services</a>
-              <a href="/#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
-              <a href="/#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
-              <a href="/" className="text-gray-700 hover:text-green-600 font-medium">Home</a>
+              <Link href="/#services" className="text-gray-700 hover:text-green-600 font-medium">Services</Link>
+              <Link href="/#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</Link>
+              <Link href="/#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</Link>
+              <Link href="/" className="text-gray-700 hover:text-green-600 font-medium">Home</Link>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
