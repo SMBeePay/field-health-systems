@@ -317,7 +317,6 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
                   <MaintenanceAlerts
                     recommendations={fieldMaintenanceRecommendations}
                     onViewAll={() => {}}
-                    showTitle={false}
                   />
                 </div>
               )}
