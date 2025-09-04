@@ -66,6 +66,22 @@ a {
     transform: translateZ(0);
   }
   
+  /* Improve mobile touch targets */
+  button, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better text readability on mobile */
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
   /* Reduce motion for better mobile performance */
   @media (prefers-reduced-motion: reduce) {
     *,

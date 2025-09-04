@@ -152,8 +152,8 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
               {selectedTab === 'overview' && (
                 <div className="space-y-6">
                   {/* Field Information Cards */}
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-                    <div className={designTokens.components.card + ' p-6'}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6">
+                    <div className={designTokens.components.card + ' p-4 sm:p-6'}>
                       <h3 className="text-lg font-medium text-gray-900 mb-4">Field Details</h3>
                       <div className="space-y-3">
                         <div>
@@ -181,12 +181,12 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
 
                     {/* Latest Test Results */}
                     {latestTesting && (
-                      <div className={designTokens.components.card + ' p-6'}>
+                      <div className={designTokens.components.card + ' p-4 sm:p-6'}>
                         <h3 className="text-lg font-medium text-gray-900 mb-4">Latest Test Results</h3>
                         <div className="space-y-3">
                           <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-500">GMAX Average:</span>
-                            <span className={`font-medium ${
+                            <span className="text-xs sm:text-sm text-gray-500">GMAX Average:</span>
+                            <span className={`text-lg sm:text-xl font-bold ${
                               latestTesting.gmaxAverage < 120 ? 'text-green-600' :
                               latestTesting.gmaxAverage < 165 ? 'text-yellow-600' :
                               latestTesting.gmaxAverage < 200 ? 'text-orange-600' : 'text-red-600'
@@ -195,8 +195,8 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
                             </span>
                           </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-500">Shear Average:</span>
-                            <span className="font-medium">{latestTesting.shearAverage} N·m</span>
+                            <span className="text-xs sm:text-sm text-gray-500">Shear Average:</span>
+                            <span className="text-base sm:text-lg font-semibold">{latestTesting.shearAverage} N·m</span>
                           </div>
                           <div className="flex items-center justify-between">
                             <span className="text-sm text-gray-500">Infill Depth:</span>
@@ -218,7 +218,7 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
                     )}
 
                     {/* Maintenance Alerts */}
-                    <div className={designTokens.components.card + ' p-6'}>
+                    <div className={designTokens.components.card + ' p-4 sm:p-6'}>
                       <h3 className="text-lg font-medium text-gray-900 mb-4">Maintenance Status</h3>
                       {fieldMaintenanceRecommendations.length > 0 ? (
                         <div className="space-y-3">

@@ -59,8 +59,8 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
   }
 
   return (
-    <div className={designTokens.components.card + ' p-6'}>
-      <div className="flex items-center justify-between mb-6">
+    <div className={designTokens.components.card + ' p-4 sm:p-6'}>
+      <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between mb-6">
         <div>
           <h2 className={designTokens.typography.heading.h3}>{title}</h2>
           <div className="flex items-center space-x-2 mt-1">
@@ -77,14 +77,14 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
           </div>
         </div>
         
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1 sm:space-x-2">
           {(['7d', '30d', '90d'] as const).map((period) => (
             <motion.button
               key={period}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => onTimeframeChange?.(period)}
-              className={`px-3 py-1 text-sm font-medium rounded-md transition-colors ${
+              className={`px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium rounded-md transition-colors ${
                 timeframe === period
                   ? 'bg-green-100 text-green-700'
                   : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
@@ -96,7 +96,7 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
         </div>
       </div>
 
-      <div className="h-64">
+      <div className="h-48 sm:h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />

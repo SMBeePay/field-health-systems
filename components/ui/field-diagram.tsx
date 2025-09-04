@@ -51,11 +51,11 @@ export function FieldDiagram({ field, testingData, className = '' }: FieldDiagra
     <div className={`relative ${className}`}>
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Header */}
-        <div className="p-4 bg-gray-50 border-b">
-          <h3 className={designTokens.typography.heading.h3}>
+        <div className="p-3 sm:p-4 bg-gray-50 border-b">
+          <h3 className={`${designTokens.typography.heading.h3} text-base sm:text-lg`}>
             {field.name} - Field Diagram
           </h3>
-          <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2 text-xs sm:text-sm text-gray-600">
             {field.fieldDimensions && (
               <span>
                 {field.fieldDimensions.length}&quot; × {field.fieldDimensions.width}&quot;
@@ -82,7 +82,7 @@ export function FieldDiagram({ field, testingData, className = '' }: FieldDiagra
                 alt={`Satellite view of ${field.name}`}
                 width={800}
                 height={384}
-                className="w-full h-96 object-cover"
+                className="w-full h-48 sm:h-64 md:h-96 object-cover"
                 onError={(e) => {
                   // Fallback to placeholder if satellite image fails
                   e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNGFkNTRhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZpZWxkIExheW91dDwvdGV4dD48L3N2Zz4='
@@ -112,7 +112,7 @@ export function FieldDiagram({ field, testingData, className = '' }: FieldDiagra
                   onMouseLeave={() => setHoveredLocation(null)}
                 >
                   <div
-                    className={`w-4 h-4 rounded-full border-2 border-white shadow-lg ${getMarkerColor(location)} 
+                    className={`w-6 h-6 sm:w-4 sm:h-4 rounded-full border-2 border-white shadow-lg ${getMarkerColor(location)} 
                                hover:scale-125 transition-transform duration-200`}
                   />
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-white bg-black bg-opacity-75 px-2 py-1 rounded whitespace-nowrap">
@@ -185,7 +185,7 @@ export function FieldDiagram({ field, testingData, className = '' }: FieldDiagra
                   onMouseLeave={() => setHoveredLocation(null)}
                 >
                   <div
-                    className={`w-4 h-4 rounded-full border-2 border-white shadow-lg ${getMarkerColor(location)} 
+                    className={`w-6 h-6 sm:w-4 sm:h-4 rounded-full border-2 border-white shadow-lg ${getMarkerColor(location)} 
                                hover:scale-125 transition-transform duration-200`}
                   />
                   <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs font-medium text-white bg-black bg-opacity-75 px-2 py-1 rounded whitespace-nowrap">
