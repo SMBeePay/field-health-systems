@@ -12,7 +12,7 @@ import {
   Heart,
   Brain,
   Calendar,
-  Phone,
+  Mail,
   FileText,
   BarChart3,
   Target
@@ -681,8 +681,10 @@ export default function AthleteSafetyPage() {
               </motion.button>
               
               <div className="flex items-center space-x-4 text-white">
-                <Phone className="w-5 h-5" />
-                <span className="text-lg font-semibold">(555) 123-TURF</span>
+                <Mail className="w-5 h-5" />
+                <a href="mailto:andrew@fieldhealthsystems.com" className="text-lg font-semibold hover:text-green-200 transition-colors">
+                  andrew@fieldhealthsystems.com
+                </a>
               </div>
             </div>
             
@@ -720,8 +722,10 @@ export default function AthleteSafetyPage() {
               Protecting athletes through professional field monitoring and safety assessments
             </p>
             <div className="flex items-center justify-center space-x-4">
-              <Phone className="w-5 h-5 text-green-400" />
-              <span>(555) 123-TURF</span>
+              <Mail className="w-5 h-5 text-green-400" />
+              <a href="mailto:andrew@fieldhealthsystems.com" className="hover:text-white transition-colors">
+                andrew@fieldhealthsystems.com
+              </a>
             </div>
           </div>
           

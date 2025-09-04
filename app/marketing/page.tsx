@@ -1,13 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { 
   Shield, 
   DollarSign, 
   TrendingUp, 
   CheckCircle, 
   Users, 
-  Phone,
+  Mail,
   MapPin,
   Star,
   Target,
@@ -74,7 +75,8 @@ export default function MarketingHomePage() {
               <a href="#services" className="text-gray-700 hover:text-green-600 font-medium">Services</a>
               <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
               <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Success Stories</a>
+              <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Research</a>
+              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -134,7 +136,7 @@ export default function MarketingHomePage() {
                   className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
                 >
                   <Calendar className="w-5 h-5" />
-                  <span>Get Your Free Assessment</span>
+                  <span>Schedule Your Assessment</span>
                 </motion.button>
               </div>
               
@@ -816,10 +818,10 @@ export default function MarketingHomePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Success Stories
+                Industry Research & Insights
               </h2>
               <p className="text-xl text-gray-600">
-                See how schools across the country are protecting their investments
+                Data-driven insights on proactive field monitoring benefits
               </p>
             </motion.div>
           </div>
@@ -1026,7 +1028,7 @@ export default function MarketingHomePage() {
               Ready to Protect Your Field Investment?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Get your free initial field assessment and see what professional monitoring can reveal
+              Get your initial field assessment and see what professional monitoring can reveal
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -1036,12 +1038,14 @@ export default function MarketingHomePage() {
                 className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
               >
                 <Calendar className="w-5 h-5" />
-                <span>Schedule Free Assessment</span>
+                <span>Schedule Assessment</span>
               </motion.button>
               
               <div className="flex items-center space-x-4 text-white">
-                <Phone className="w-5 h-5" />
-                <span className="text-lg font-semibold">(555) 123-TURF</span>
+                <Mail className="w-5 h-5" />
+                <a href="mailto:andrew@fieldhealthsystems.com" className="text-lg font-semibold hover:text-green-200 transition-colors">
+                  andrew@fieldhealthsystems.com
+                </a>
               </div>
             </div>
             
@@ -1081,30 +1085,77 @@ export default function MarketingHomePage() {
                 and your athletes through expert analysis and predictable maintenance planning.
               </p>
               <div className="flex items-center space-x-4">
-                <Phone className="w-5 h-5 text-green-400" />
-                <span>(555) 123-TURF</span>
+                <Mail className="w-5 h-5 text-green-400" />
+                <a href="mailto:andrew@fieldhealthsystems.com" className="hover:text-white transition-colors">
+                  andrew@fieldhealthsystems.com
+                </a>
               </div>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-300">
-                <li>Field Health Monitoring</li>
-                <li>Professional Assessments</li>
-                <li>Data Analytics Platform</li>
-                <li>Maintenance Planning</li>
-                <li>Compliance Reporting</li>
+                <li>
+                  <Link href="/dashboard" className="hover:text-white transition-colors">
+                    Field Health Monitoring
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/schedule-assessment" className="hover:text-white transition-colors">
+                    Professional Assessments
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/analytics" className="hover:text-white transition-colors">
+                    Data Analytics Platform
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/maintenance" className="hover:text-white transition-colors">
+                    Maintenance Planning
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/reports" className="hover:text-white transition-colors">
+                    Compliance Reporting
+                  </Link>
+                </li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-300">
-                <li>About Us</li>
-                <li>Success Stories</li>
-                <li>Contact Us</li>
-                <li>Schedule Assessment</li>
-                <li>Support</li>
+                <li>
+                  <Link href="/marketing" className="hover:text-white transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/athlete-safety" className="hover:text-white transition-colors">
+                    Success Stories
+                  </Link>
+                </li>
+                <li>
+                  <a href="mailto:andrew@fieldhealthsystems.com" className="hover:text-white transition-colors">
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <Link href="/schedule-assessment" className="hover:text-white transition-colors">
+                    Schedule Assessment
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/partnerships" className="hover:text-white transition-colors">
+                    Insurance Partnerships
+                  </Link>
+                </li>
+                <li>
+                  <a href="mailto:andrew@fieldhealthsystems.com?subject=Support Request" className="hover:text-white transition-colors">
+                    Support
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

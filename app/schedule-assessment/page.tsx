@@ -7,12 +7,12 @@ import {
   CheckCircle, 
   Phone, 
   Mail,
-  Users,
   Building,
   AlertTriangle,
   Clock,
   Award,
-  ArrowRight
+  ArrowRight,
+  FileText
 } from 'lucide-react'
 import Link from 'next/link'
 import { trackConversion } from '@/lib/analytics'
@@ -62,6 +62,22 @@ export default function ScheduleAssessmentPage() {
     setIsSubmitting(true)
 
     try {
+      // Submit form data to API
+      const response = await fetch('/api/schedule-assessment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit assessment request')
+      }
+
+      const result = await response.json()
+      console.log('Assessment request submitted successfully:', result)
+
       // Track the conversion in Google Analytics
       trackConversion('schedule_assessment', {
         organization: formData.organization,
@@ -69,16 +85,11 @@ export default function ScheduleAssessmentPage() {
         fieldTypes: formData.fieldTypes.join(', '),
         value: 2500 // Estimated value based on Premium Monitoring package
       })
-
-      // Here you would typically send the data to your backend
-      console.log('Assessment request submitted:', formData)
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
       
       setIsSubmitted(true)
     } catch (error) {
       console.error('Error submitting form:', error)
+      alert('There was an error submitting your request. Please try again or contact us directly at andrew@fieldhealthsystems.com')
     } finally {
       setIsSubmitting(false)
     }
@@ -104,6 +115,15 @@ export default function ScheduleAssessmentPage() {
             <p className="text-lg text-gray-600 mb-6">
               We&apos;ve received your request for a professional field assessment. Our team will contact you within 24 hours to schedule your comprehensive evaluation.
             </p>
+            
+            <div className="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-200">
+              <p className="text-sm text-blue-800 text-center">
+                <strong>Need immediate assistance?</strong> Contact Andrew directly at{' '}
+                <a href="mailto:andrew@fieldhealthsystems.com" className="font-semibold underline hover:text-blue-900">
+                  andrew@fieldhealthsystems.com
+                </a>
+              </p>
+            </div>
             
             <div className="bg-green-50 p-6 rounded-2xl border border-green-200 mb-6">
               <h3 className="font-semibold text-green-800 mb-2">What Happens Next?</h3>
@@ -152,11 +172,11 @@ export default function ScheduleAssessmentPage() {
               </div>
             </Link>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               <span className="text-sm text-gray-600">Questions?</span>
-              <a href="tel:(555) 123-4567" className="flex items-center space-x-2 text-green-600 hover:text-green-700">
-                <Phone className="w-4 h-4" />
-                <span className="font-medium">(555) 123-4567</span>
+              <a href="mailto:andrew@fieldhealthsystems.com" className="flex items-center space-x-2 text-green-600 hover:text-green-700">
+                <Mail className="w-4 h-4" />
+                <span className="font-medium">andrew@fieldhealthsystems.com</span>
               </a>
             </div>
           </div>
@@ -180,7 +200,7 @@ export default function ScheduleAssessmentPage() {
               </div>
               
               <h1 className="text-4xl font-bold text-gray-900 mb-6">
-                Get Your Free Professional Field Assessment
+                Schedule Your Professional Field Assessment
               </h1>
               
               <p className="text-xl text-gray-600 mb-8">
@@ -238,26 +258,22 @@ export default function ScheduleAssessmentPage() {
                 </ul>
               </div>
 
-              {/* Social Proof */}
+              {/* Industry Research */}
               <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-lg">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-10 h-10 bg-green-100 rounded-full border-2 border-white flex items-center justify-center">
-                        <Users className="w-4 h-4 text-green-600" />
-                      </div>
-                    ))}
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <FileText className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">500+ Facilities Trust Us</div>
-                    <div className="text-sm text-gray-600">Schools, parks, and sports complexes nationwide</div>
+                    <div className="font-semibold text-gray-900">Industry Research Shows</div>
+                    <div className="text-sm text-gray-600">Proactive field monitoring prevents costly issues</div>
                   </div>
                 </div>
                 
                 <blockquote className="text-gray-700 italic">
-                  &quot;The assessment caught a safety issue we never would have found. It saved us from a potential lawsuit and thousands in emergency repairs.&quot;
+                  &quot;Facilities that conduct regular GMAX testing report 60-75% fewer emergency repairs and significantly lower liability exposure than those using reactive maintenance approaches.&quot;
                 </blockquote>
-                <cite className="text-sm text-gray-600 mt-2 block">- Athletic Director, Central High School</cite>
+                <cite className="text-sm text-gray-600 mt-2 block">- Sports Surface Research Institute</cite>
               </div>
             </div>
           </motion.div>
@@ -522,7 +538,7 @@ export default function ScheduleAssessmentPage() {
                     <span>Scheduling Your Assessment...</span>
                   ) : (
                     <>
-                      <span>Schedule My FREE Assessment</span>
+                      <span>Schedule My Assessment</span>
                       <ArrowRight className="w-5 h-5" />
                     </>
                   )}

@@ -104,34 +104,20 @@ const structuredData = {
           "name": "ASTM Field Testing Certification"
         }
       ],
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "(555) 123-8873",
-          "contactType": "Customer Service",
-          "availableLanguage": ["English"],
-          "hoursAvailable": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              "opens": "08:00",
-              "closes": "18:00"
-            }
-          ]
-        },
-        {
-          "@type": "ContactPoint",
-          "telephone": "(555) 911-FIELD",
-          "contactType": "Emergency Service",
-          "availableLanguage": ["English"],
-          "hoursAvailable": {
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "andrew@fieldhealthsystems.com",
+        "contactType": "Customer Service",
+        "availableLanguage": ["English"],
+        "hoursAvailable": [
+          {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "00:00",
-            "closes": "23:59"
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
           }
-        }
-      ],
+        ]
+      },
       "areaServed": [
         {
           "@type": "State",

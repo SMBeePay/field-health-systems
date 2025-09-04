@@ -9,6 +9,7 @@ import {
   CheckCircle, 
   Users, 
   Phone,
+  Mail,
   MapPin,
   Star,
   Target,
@@ -79,7 +80,8 @@ export default function MarketingHomePage() {
               <a href="#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Athlete Safety</a>
               <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
               <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Success Stories</a>
+              <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Research</a>
+              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
               <Link href="/schedule-assessment">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -141,7 +143,7 @@ export default function MarketingHomePage() {
                   className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
                 >
                   <Calendar className="w-5 h-5" />
-                  <span>Get Your Free Assessment</span>
+                  <span>Schedule Your Assessment</span>
                 </motion.button>
               </div>
               
@@ -1325,7 +1327,7 @@ export default function MarketingHomePage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* One-Time Testing */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -1389,7 +1391,11 @@ export default function MarketingHomePage() {
                   "Digital photo documentation",
                   "Professional written reports",
                   "Full software dashboard access",
-                  "Budget planning consultation",
+                  "Comprehensive field audit & baseline",
+                  "Historical data migration",
+                  "Staff training on platform",
+                  "Custom maintenance calendar",
+                  "Insurance documentation package",
                   "Priority customer support",
                   "Mobile app access"
                 ].map((feature, index) => (
@@ -1437,52 +1443,51 @@ export default function MarketingHomePage() {
                 </button>
               </Link>
             </motion.div>
+          </div>
 
-            {/* Standard Monitoring */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-200"
-            >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Standard Monitoring</h3>
-                <div className="text-4xl font-bold text-gray-600 mb-2">$1,250</div>
-                <div className="text-gray-600">one-time setup + monitoring</div>
+          {/* Volume Discount Information */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-12 bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center max-w-4xl mx-auto"
+          >
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Multiple Fields?</h3>
+              <p className="text-gray-600">We offer volume discounts for facilities with multiple artificial turf fields</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Target className="w-8 h-8 text-green-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-1">2-5 Fields</h4>
+                <p className="text-sm text-gray-600">Significant savings on multi-field packages</p>
               </div>
-              
-              <div className="space-y-4 mb-8">
-                {[
-                  "Comprehensive field audit & baseline",
-                  "Historical data migration",  
-                  "Staff training on platform",
-                  "Custom maintenance calendar",
-                  "Insurance documentation package",
-                  "Basic customer support"
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
-                ))}
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Users className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-1">6-10 Fields</h4>
+                <p className="text-sm text-gray-600">Enhanced discounts for large facilities</p>
               </div>
-              
-              <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                <h4 className="font-semibold text-gray-900 mb-2">Volume Discounts</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• 2-3 fields: $2,400/field (4% off)</li>
-                  <li>• 4-6 fields: $2,250/field (10% off)</li>
-                  <li>• 7+ fields: $2,100/field (16% off)</li>
-                  <li>• Annual payment: 5% additional discount</li>
-                </ul>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Star className="w-8 h-8 text-purple-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-1">11+ Fields</h4>
+                <p className="text-sm text-gray-600">Enterprise pricing with premium support</p>
               </div>
-              
-              <button className="w-full border-2 border-green-600 text-green-600 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+            </div>
+
+            <Link href="/schedule-assessment">
+              <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
                 Get Custom Quote
               </button>
-            </motion.div>
-          </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -1496,10 +1501,10 @@ export default function MarketingHomePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Success Stories
+                Industry Research & Insights
               </h2>
               <p className="text-xl text-gray-600">
-                See how schools across the country are protecting their investments
+                Data-driven insights on proactive field monitoring benefits
               </p>
             </motion.div>
           </div>
@@ -1706,7 +1711,7 @@ export default function MarketingHomePage() {
               Ready to Protect Your Athletes & Field Investment?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Get your free initial field safety assessment and protect your athletes from preventable injuries
+              Get your initial field safety assessment and protect your athletes from preventable injuries
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -1717,13 +1722,15 @@ export default function MarketingHomePage() {
                   className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
                 >
                   <Calendar className="w-5 h-5" />
-                  <span>Schedule Free Assessment</span>
+                  <span>Schedule Assessment</span>
                 </motion.button>
               </Link>
               
-              <div className="flex items-center space-x-4 text-white">
-                <Phone className="w-5 h-5" />
-                <span className="text-lg font-semibold">(555) 123-TURF</span>
+              <div className="flex justify-center">
+                <a href="mailto:andrew@fieldhealthsystems.com" className="flex items-center space-x-2 hover:text-green-200 transition-colors text-white">
+                  <Mail className="w-5 h-5" />
+                  <span className="text-base font-medium">andrew@fieldhealthsystems.com</span>
+                </a>
               </div>
             </div>
             
@@ -1763,30 +1770,77 @@ export default function MarketingHomePage() {
                 through expert safety analysis and predictive maintenance planning.
               </p>
               <div className="flex items-center space-x-4">
-                <Phone className="w-5 h-5 text-green-400" />
-                <span>(555) 123-TURF</span>
+                <Mail className="w-5 h-5 text-green-400" />
+                <a href="mailto:andrew@fieldhealthsystems.com" className="hover:text-white transition-colors">
+                  andrew@fieldhealthsystems.com
+                </a>
               </div>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-300">
-                <li>Field Health Monitoring</li>
-                <li>Professional Assessments</li>
-                <li>Data Analytics Platform</li>
-                <li>Maintenance Planning</li>
-                <li>Compliance Reporting</li>
+                <li>
+                  <Link href="/dashboard" className="hover:text-white transition-colors">
+                    Field Health Monitoring
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/schedule-assessment" className="hover:text-white transition-colors">
+                    Professional Assessments
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/analytics" className="hover:text-white transition-colors">
+                    Data Analytics Platform
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/maintenance" className="hover:text-white transition-colors">
+                    Maintenance Planning
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/reports" className="hover:text-white transition-colors">
+                    Compliance Reporting
+                  </Link>
+                </li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-300">
-                <li>About Us</li>
-                <li>Success Stories</li>
-                <li>Contact Us</li>
-                <li>Schedule Assessment</li>
-                <li>Support</li>
+                <li>
+                  <Link href="/marketing" className="hover:text-white transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/athlete-safety" className="hover:text-white transition-colors">
+                    Success Stories
+                  </Link>
+                </li>
+                <li>
+                  <a href="mailto:andrew@fieldhealthsystems.com" className="hover:text-white transition-colors">
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <Link href="/schedule-assessment" className="hover:text-white transition-colors">
+                    Schedule Assessment
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/partnerships" className="hover:text-white transition-colors">
+                    Insurance Partnerships
+                  </Link>
+                </li>
+                <li>
+                  <a href="mailto:andrew@fieldhealthsystems.com?subject=Support Request" className="hover:text-white transition-colors">
+                    Support
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
