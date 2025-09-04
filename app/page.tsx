@@ -1323,7 +1323,7 @@ export default function MarketingHomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Standard Package */}
+            {/* One-Time Testing */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1331,33 +1331,33 @@ export default function MarketingHomePage() {
               className="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-200"
             >
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Standard Monitoring</h3>
-                <div className="text-4xl font-bold text-green-600 mb-2">$2,500</div>
-                <div className="text-gray-600">per field, per year</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">One-Time Testing</h3>
+                <div className="text-4xl font-bold text-green-600 mb-2">$1,500</div>
+                <div className="text-gray-600">single field inspection</div>
               </div>
               
               <div className="space-y-4 mb-8">
                 {[
-                  "4 quarterly professional assessments",
                   "Comprehensive GMAX, shear, infill testing",
-                  "Digital photo documentation",
-                  "Professional written reports",
-                  "Software dashboard access",
-                  "Budget planning consultation"
+                  "Digital photo documentation", 
+                  "Professional written report",
+                  "Safety compliance assessment",
+                  "Maintenance recommendations",
+                  "No ongoing software access"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <CheckCircle className={`w-5 h-5 flex-shrink-0 ${index === 5 ? 'text-gray-400' : 'text-green-500'}`} />
+                    <span className={`${index === 5 ? 'text-gray-500' : 'text-gray-700'}`}>{feature}</span>
                   </div>
                 ))}
               </div>
               
               <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                Get Started
+                Schedule Testing
               </button>
             </motion.div>
 
-            {/* Premium Package */}
+            {/* Premium Monitoring Package */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1372,19 +1372,21 @@ export default function MarketingHomePage() {
               </div>
               
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-2">Premium Setup</h3>
-                <div className="text-4xl font-bold mb-2">$1,250</div>
-                <div className="text-green-100">one-time setup fee</div>
+                <h3 className="text-2xl font-bold mb-2">Premium Monitoring</h3>
+                <div className="text-4xl font-bold mb-2">$2,500</div>
+                <div className="text-green-100">per field, per year</div>
               </div>
               
               <div className="space-y-4 mb-8">
                 {[
-                  "Comprehensive field audit & baseline",
-                  "Historical data migration",
-                  "Staff training on platform",
-                  "Custom maintenance calendar",
-                  "Insurance documentation package",
-                  "Priority customer support"
+                  "4 quarterly professional assessments",
+                  "Comprehensive GMAX, shear, infill testing",
+                  "Digital photo documentation",
+                  "Professional written reports",
+                  "Full software dashboard access",
+                  "Budget planning consultation",
+                  "Priority customer support",
+                  "Mobile app access"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-green-200 flex-shrink-0" />
@@ -1425,11 +1427,11 @@ export default function MarketingHomePage() {
               </div>
               
               <button className="w-full bg-white text-green-600 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                Add Premium Setup
+                Start Monitoring
               </button>
             </motion.div>
 
-            {/* Volume Discounts */}
+            {/* Standard Monitoring */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1438,32 +1440,34 @@ export default function MarketingHomePage() {
               className="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-200"
             >
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Volume Discounts</h3>
-                <div className="text-lg text-gray-600">Multiple fields save more</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Standard Monitoring</h3>
+                <div className="text-4xl font-bold text-gray-600 mb-2">$1,250</div>
+                <div className="text-gray-600">one-time setup + monitoring</div>
               </div>
               
-              <div className="space-y-6 mb-8">
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-700">2-3 fields</span>
-                  <span className="font-semibold text-green-600">$2,400/field (4% off)</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-700">4-6 fields</span>
-                  <span className="font-semibold text-green-600">$2,250/field (10% off)</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-gray-700">7+ fields</span>
-                  <span className="font-semibold text-green-600">$2,100/field (16% off)</span>
-                </div>
+              <div className="space-y-4 mb-8">
+                {[
+                  "Comprehensive field audit & baseline",
+                  "Historical data migration",  
+                  "Staff training on platform",
+                  "Custom maintenance calendar",
+                  "Insurance documentation package",
+                  "Basic customer support"
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">{feature}</span>
+                  </div>
+                ))}
               </div>
               
               <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                <h4 className="font-semibold text-gray-900 mb-2">Payment Options</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Volume Discounts</h4>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Annual payment (5% discount)</li>
-                  <li>• Quarterly payments</li>
-                  <li>• Monthly payments available</li>
-                  <li>• Budget year alignment</li>
+                  <li>• 2-3 fields: $2,400/field (4% off)</li>
+                  <li>• 4-6 fields: $2,250/field (10% off)</li>
+                  <li>• 7+ fields: $2,100/field (16% off)</li>
+                  <li>• Annual payment: 5% additional discount</li>
                 </ul>
               </div>
               
