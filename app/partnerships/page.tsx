@@ -81,47 +81,6 @@ export default function PartnershipsPage() {
     }
   ]
 
-  const targetMarkets = [
-    {
-      type: "State Education Risk Pools",
-      priority: "HIGHEST PRIORITY",
-      scope: "1,000+ School Districts",
-      description: "Large state-managed risk pools covering multiple districts with significant artificial turf exposure",
-      characteristics: [
-        "Focus on risk mitigation and proactive safety measures",
-        "Strong emphasis on member education and loss prevention", 
-        "Established track record of innovative safety partnerships",
-        "Direct relationships with facility managers and athletic directors"
-      ],
-      opportunity: "State risk pools value solutions that demonstrate measurable risk reduction across their member base."
-    },
-    {
-      type: "Education-Focused Insurance Carriers",
-      priority: "HIGH PRIORITY", 
-      scope: "Regional and National Reach",
-      description: "Specialized insurers focusing on K-12 schools, colleges, and universities with athletic programs",
-      characteristics: [
-        "Specific coverage for athletic injuries and field-related claims",
-        "Understanding of education sector liability exposures",
-        "Established broker networks and distribution channels",
-        "Interest in member retention and competitive differentiation"
-      ],
-      opportunity: "Education specialists understand the unique risks of school athletic programs and value proactive safety partnerships."
-    },
-    {
-      type: "Commercial Insurance Brokers",
-      priority: "MEDIUM-HIGH PRIORITY",
-      scope: "Regional Education Specialists", 
-      description: "Large commercial brokers with dedicated education practices serving schools and districts",
-      characteristics: [
-        "Direct client relationships with decision makers",
-        "Expertise in education sector risk management",
-        "Interest in value-added services for clients", 
-        "Ability to package field monitoring with insurance programs"
-      ],
-      opportunity: "Brokers seek unique value propositions that help them win and retain education sector clients."
-    }
-  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -129,13 +88,13 @@ export default function PartnershipsPage() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
+            <Link href="/" className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Shield className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Field Health Systems</h1>
-                <p className="text-sm text-gray-600">Insurance Partnerships</p>
+                <h1 className="text-xl font-bold text-gray-900 leading-tight">Field Health Systems</h1>
+                <p className="text-sm text-gray-600 leading-tight">Insurance Partnerships</p>
               </div>
             </Link>
             
@@ -147,13 +106,9 @@ export default function PartnershipsPage() {
                 <Link href="/marketing" className="text-gray-600 hover:text-gray-900">Marketing</Link>
               </nav>
               
-              <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-600">Partnership Inquiries:</span>
-                <a href="mailto:andrew@fieldhealthsystems.com" className="flex items-center space-x-2 text-green-600 hover:text-green-700">
-                  <Mail className="w-4 h-4" />
-                  <span className="font-medium">andrew@fieldhealthsystems.com</span>
-                </a>
-              </div>
+              <a href="#partnership-form" className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
+                Request Partnership Info
+              </a>
             </div>
           </div>
         </div>
@@ -183,14 +138,14 @@ export default function PartnershipsPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <a href="mailto:andrew@fieldhealthsystems.com?subject=Insurance Partnership Inquiry - Priority Discussion">
+              <a href="#partnership-form">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-green-600 text-white px-10 py-5 rounded-lg text-xl font-bold hover:bg-green-700 transition-colors flex items-center space-x-3 shadow-lg"
                 >
                   <Handshake className="w-6 h-6" />
-                  <span>Schedule 15-Minute Discovery Call</span>
+                  <span>Request Partnership Information</span>
                 </motion.button>
               </a>
               
@@ -334,103 +289,6 @@ export default function PartnershipsPage() {
         </div>
       </section>
 
-      {/* Target Insurance Markets */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Target Partnership Markets
-            </h2>
-            <p className="text-xl text-gray-600">
-              Strategic opportunities with education-focused insurance providers
-            </p>
-          </div>
-
-          <div className="space-y-12">
-            {targetMarkets.map((market, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-3xl border border-gray-200"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                  {/* Market Overview */}
-                  <div className="lg:col-span-2">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <Building className="w-6 h-6 text-blue-600" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900">{market.type}</h3>
-                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                          {market.priority}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="bg-white p-4 rounded-lg border border-gray-200 mb-6">
-                      <div className="font-semibold text-gray-900 mb-2">Market Scope</div>
-                      <div className="text-lg font-medium text-blue-600">{market.scope}</div>
-                      <p className="text-gray-600 mt-2">{market.description}</p>
-                    </div>
-
-                    <div className="bg-white p-4 rounded-lg border border-gray-200 mb-4">
-                      <h4 className="font-semibold text-gray-900 mb-3">Key Characteristics</h4>
-                      <ul className="space-y-2">
-                        {market.characteristics.map((characteristic, charIndex) => (
-                          <li key={charIndex} className="flex items-start space-x-2">
-                            <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{characteristic}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                      <h4 className="font-semibold text-green-800 mb-2">Partnership Opportunity</h4>
-                      <p className="text-green-700">{market.opportunity}</p>
-                    </div>
-                  </div>
-
-                  {/* Market Potential */}
-                  <div className="bg-white p-6 rounded-2xl border border-gray-200">
-                    <h4 className="font-semibold text-gray-900 mb-4">Market Potential</h4>
-                    
-                    <div className="space-y-4">
-                      <div className="text-center p-4 bg-blue-50 rounded-lg">
-                        <div className="text-2xl font-bold text-blue-600">$500M+</div>
-                        <div className="text-sm text-blue-700">Artificial Turf Market</div>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-green-50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">10,000+</div>
-                        <div className="text-sm text-green-700">Artificial Turf Fields</div>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-purple-50 rounded-lg">
-                        <div className="text-2xl font-bold text-purple-600">$25K-75K</div>
-                        <div className="text-sm text-purple-700">Average Emergency Repair</div>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                      <h5 className="font-semibold text-gray-900 mb-2">Partnership Benefits</h5>
-                      <ul className="text-sm text-gray-600 space-y-1">
-                        <li>• Risk reduction opportunities</li>
-                        <li>• Member value enhancement</li>
-                        <li>• Competitive differentiation</li>
-                        <li>• Claims prevention potential</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Partnership Program Details */}
       <section className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
@@ -517,6 +375,183 @@ export default function PartnershipsPage() {
         </div>
       </section>
 
+      {/* Partnership Request Form */}
+      <section className="py-20 bg-white" id="partnership-form">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Request Partnership Information
+            </h2>
+            <p className="text-xl text-gray-600">
+              Get detailed information about our insurance partnership program tailored to your organization
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-3xl border border-gray-200">
+            <form className="space-y-6">
+              {/* Contact Information */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    First Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    placeholder="John"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Last Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    placeholder="Smith"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <Mail className="w-4 h-4 inline mr-1" />
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    placeholder="john@insurancecompany.com"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
+              </div>
+
+              {/* Company Information */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <Building className="w-4 h-4 inline mr-1" />
+                    Company/Organization *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    placeholder="ABC Insurance Company"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Title *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    placeholder="Risk Manager"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Company Type
+                </label>
+                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                  <option value="">Select company type</option>
+                  <option value="insurance-carrier">Insurance Carrier</option>
+                  <option value="risk-pool">State/Regional Risk Pool</option>
+                  <option value="insurance-broker">Insurance Broker</option>
+                  <option value="tpa">Third Party Administrator</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              {/* Partnership Interest */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Areas of Interest (check all that apply)
+                </label>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {[
+                    'Claims Reduction',
+                    'Member Retention',
+                    'Risk Assessment',
+                    'Safety Programs',
+                    'Competitive Advantage',
+                    'Cost Management'
+                  ].map((interest) => (
+                    <label key={interest} className="flex items-center space-x-2">
+                      <input
+                        type="checkbox"
+                        className="rounded border-gray-300 text-green-600 focus:ring-green-500"
+                      />
+                      <span className="text-sm text-gray-700">{interest}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Current Education Sector Exposure
+                </label>
+                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                  <option value="">Select exposure level</option>
+                  <option value="high">High (500+ education clients)</option>
+                  <option value="medium">Medium (100-500 education clients)</option>
+                  <option value="low">Low (Under 100 education clients)</option>
+                  <option value="none">No current education sector focus</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Additional Information
+                </label>
+                <textarea
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
+                  placeholder="Tell us about your specific partnership goals, member base, or any questions about our program..."
+                />
+              </div>
+
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-green-600 text-white py-4 px-6 rounded-lg text-lg font-semibold hover:bg-green-700 transition-all flex items-center justify-center space-x-2"
+              >
+                <Handshake className="w-5 h-5" />
+                <span>Request Partnership Information</span>
+              </motion.button>
+
+              <p className="text-xs text-gray-500 text-center">
+                We&apos;ll respond within 24 hours with detailed partnership information and next steps.
+                No spam, just valuable insights about reducing field-related claims.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
       {/* Final Call to Action */}
       <section className="py-24 bg-gradient-to-br from-gray-900 to-green-900 text-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
@@ -566,14 +601,14 @@ export default function PartnershipsPage() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-              <a href="mailto:andrew@fieldhealthsystems.com?subject=Insurance Partnership Inquiry - Priority Discussion&body=I'm interested in learning more about your insurance partnership program. Please contact me to schedule a 15-minute discovery call.%0A%0AName: %0ACompany: %0ATitle: %0APhone: %0A%0ABest time to call:">
+              <a href="#partnership-form">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-green-600 text-white px-12 py-5 rounded-lg text-xl font-bold hover:bg-green-700 transition-colors flex items-center space-x-3 shadow-2xl"
                 >
                   <Handshake className="w-6 h-6" />
-                  <span>Schedule Discovery Call Now</span>
+                  <span>Request Partnership Information</span>
                 </motion.button>
               </a>
               
@@ -589,16 +624,16 @@ export default function PartnershipsPage() {
             <div className="border-t border-white/20 pt-8">
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-12 text-white/60">
                 <div className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4" />
-                  <span>andrew@fieldhealthsystems.com</span>
-                </div>
-                <div className="flex items-center space-x-2">
                   <Shield className="w-4 h-4" />
                   <span>ASTM-Certified Field Testing</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Award className="w-4 h-4" />
                   <span>Pioneer Safety Technology</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Handshake className="w-4 h-4" />
+                  <span>Insurance Partnership Ready</span>
                 </div>
               </div>
             </div>
