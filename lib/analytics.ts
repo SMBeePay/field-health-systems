@@ -84,3 +84,95 @@ export const trackServiceInterest = (serviceName: string, price: number) => {
     }]
   })
 }
+
+// Track conversions - specifically for lead generation
+export const trackConversion = (conversionAction: string, parameters: {
+  organization?: string
+  numberOfFields?: string
+  fieldTypes?: string
+  value?: number
+  [key: string]: string | number | undefined
+}) => {
+  if (typeof window === 'undefined') return
+  
+  // Track the specific conversion event
+  window.gtag('event', conversionAction, {
+    event_category: 'Lead Generation',
+    event_label: parameters.organization || 'Unknown Organization',
+    value: parameters.value || 2500,
+    currency: 'USD',
+    custom_parameters: {
+      number_of_fields: parameters.numberOfFields,
+      field_types: parameters.fieldTypes,
+      organization_name: parameters.organization,
+      lead_source: 'schedule_assessment_page'
+    }
+  })
+
+  // Track the generic conversion for goal tracking in GA4
+  window.gtag('event', 'conversion', {
+    send_to: `${GA_MEASUREMENT_ID}/schedule_assessment`,
+    event_category: 'Lead Generation',
+    event_label: 'Assessment Request',
+    value: parameters.value || 2500,
+    currency: 'USD'
+  })
+
+  // Track as a goal completion (GA4 recommended event)
+  window.gtag('event', 'generate_lead', {
+    event_category: 'Lead Generation', 
+    event_label: 'Schedule Assessment',
+    value: parameters.value || 2500,
+    currency: 'USD',
+    lead_type: 'assessment_request',
+    organization: parameters.organization,
+    field_count: parameters.numberOfFields
+  })
+}
+
+// Track form interactions for optimization
+export const trackFormStep = (step: string, formData?: Record<string, string | number | boolean>) => {
+  if (typeof window === 'undefined') return
+  
+  window.gtag('event', 'form_step', {
+    event_category: 'Form Interaction',
+    event_label: step,
+    form_name: 'schedule_assessment',
+    ...formData
+  })
+}
+
+// Track CTA button clicks with location context
+export const trackButtonClick = (buttonName: string, location: string) => {
+  if (typeof window === 'undefined') return
+  
+  window.gtag('event', 'click', {
+    event_category: 'CTA Click',
+    event_label: buttonName,
+    page_location: location,
+    button_type: 'cta'
+  })
+}
+
+// Track phone number clicks for lead attribution
+export const trackPhoneClick = () => {
+  if (typeof window === 'undefined') return
+  
+  window.gtag('event', 'phone_call_click', {
+    event_category: 'Contact',
+    event_label: 'Phone Number Click',
+    value: 500, // Estimated value of a phone lead
+    currency: 'USD'
+  })
+}
+
+// Track email clicks for lead attribution  
+export const trackEmailClick = () => {
+  if (typeof window === 'undefined') return
+  
+  window.gtag('event', 'email_click', {
+    event_category: 'Contact',
+    event_label: 'Email Click',
+    contact_method: 'email'
+  })
+}

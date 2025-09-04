@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { 
   Shield, 
   DollarSign, 
@@ -79,13 +80,15 @@ export default function MarketingHomePage() {
               <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
               <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
               <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Success Stories</a>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
-              >
-                Schedule Assessment
-              </motion.button>
+              <Link href="/schedule-assessment">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
+                >
+                  Schedule Assessment
+                </motion.button>
+              </Link>
             </nav>
           </div>
         </div>
@@ -1352,9 +1355,11 @@ export default function MarketingHomePage() {
                 ))}
               </div>
               
-              <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                Schedule Testing
-              </button>
+              <Link href="/schedule-assessment" className="w-full">
+                <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                  Schedule Assessment
+                </button>
+              </Link>
             </motion.div>
 
             {/* Premium Monitoring Package */}
@@ -1426,9 +1431,11 @@ export default function MarketingHomePage() {
                 </div>
               </div>
               
-              <button className="w-full bg-white text-green-600 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                Start Monitoring
-              </button>
+              <Link href="/schedule-assessment" className="w-full">
+                <button className="w-full bg-white text-green-600 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                  Start Monitoring
+                </button>
+              </Link>
             </motion.div>
 
             {/* Standard Monitoring */}
@@ -1703,14 +1710,16 @@ export default function MarketingHomePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
-              >
-                <Calendar className="w-5 h-5" />
-                <span>Schedule Free Assessment</span>
-              </motion.button>
+              <Link href="/schedule-assessment">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                >
+                  <Calendar className="w-5 h-5" />
+                  <span>Schedule Free Assessment</span>
+                </motion.button>
+              </Link>
               
               <div className="flex items-center space-x-4 text-white">
                 <Phone className="w-5 h-5" />
