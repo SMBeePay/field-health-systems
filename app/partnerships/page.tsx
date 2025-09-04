@@ -77,7 +77,7 @@ export default function PartnershipsPage() {
     {
       icon: <Award className="w-6 h-6 text-green-600" />,
       title: "Competitive Differentiation",
-      description: "Be the first insurance carrier to offer comprehensive field safety partnerships - a unique value proposition in the education market."
+      description: "Comprehensive field safety partnerships provide a unique value proposition that differentiates your offerings in the education market."
     }
   ]
 
@@ -122,9 +122,9 @@ export default function PartnershipsPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-red-100 rounded-full text-red-800 font-medium mb-6">
-              <AlertTriangle className="w-5 h-5 mr-2" />
-              Exclusive Partnership Opportunity - Limited Time
+            <div className="inline-flex items-center px-4 py-2 bg-green-100 rounded-full text-green-800 font-medium mb-6">
+              <Handshake className="w-5 h-5 mr-2" />
+              Partnership Opportunity Available
             </div>
             
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -133,7 +133,7 @@ export default function PartnershipsPage() {
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              <strong>Be the first insurance carrier</strong> to offer comprehensive field safety partnerships to your education sector clients. 
+              Partner with us to offer comprehensive field safety monitoring to your education sector clients. 
               Our proven monitoring technology prevents costly emergency repairs and reduces liability exposure while strengthening member relationships.
             </p>
 
@@ -177,45 +177,45 @@ export default function PartnershipsPage() {
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Award className="w-6 h-6 text-purple-600" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Lead Market</h3>
-                <p className="text-gray-600 text-center text-sm">Be the first carrier to offer field safety partnerships</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Market Leadership</h3>
+                <p className="text-gray-600 text-center text-sm">Innovative field safety partnerships for competitive advantage</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Urgency Section */}
-      <section className="py-16 bg-gradient-to-r from-red-50 to-orange-50 border-y border-red-200">
+      {/* Market Opportunity Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50 border-y border-blue-200">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center px-4 py-2 bg-red-100 rounded-full text-red-800 font-semibold mb-4">
-              <Clock className="w-5 h-5 mr-2" />
-              Market Window Closing Fast
+            <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-800 font-semibold mb-4">
+              <BarChart3 className="w-5 h-5 mr-2" />
+              Growing Market Opportunity
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              First-Mover Advantage Available Now
+              Significant Partnership Potential
             </h2>
             <p className="text-lg text-gray-700 mb-6 max-w-4xl mx-auto">
-              The artificial turf market is growing rapidly, but <strong>no insurance carrier has yet partnered with a field monitoring company</strong>. 
-              This exclusive opportunity to lead the market won&apos;t last long as competitors recognize this advantage.
+              The artificial turf market continues to expand rapidly, creating new opportunities for innovative insurance partnerships. 
+              Field safety monitoring represents a valuable addition to traditional risk management approaches.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="bg-white p-4 rounded-lg border border-red-200">
-                <div className="font-bold text-red-600">10,000+</div>
+              <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <div className="font-bold text-blue-600">10,000+</div>
                 <div className="text-gray-600">Artificial turf fields nationwide</div>
               </div>
-              <div className="bg-white p-4 rounded-lg border border-red-200">
-                <div className="font-bold text-red-600">$500M+</div>
+              <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <div className="font-bold text-blue-600">$500M+</div>
                 <div className="text-gray-600">Annual maintenance market</div>
               </div>
-              <div className="bg-white p-4 rounded-lg border border-red-200">
-                <div className="font-bold text-red-600">Zero</div>
-                <div className="text-gray-600">Current insurance partnerships</div>
+              <div className="bg-white p-4 rounded-lg border border-blue-200">
+                <div className="font-bold text-blue-600">Growing</div>
+                <div className="text-gray-600">Partnership opportunities</div>
               </div>
             </div>
           </motion.div>
@@ -562,15 +562,15 @@ export default function PartnershipsPage() {
           >
             <div className="inline-flex items-center px-4 py-2 bg-green-600 rounded-full text-white font-semibold mb-6">
               <Target className="w-5 h-5 mr-2" />
-              Exclusive Partnership Available
+              Partnership Program Available
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Secure Your Competitive Advantage
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-4xl mx-auto">
-              This is your opportunity to be the <strong>first insurance carrier</strong> to offer field safety partnerships. 
-              While your competitors continue with traditional approaches, you&apos;ll be protecting student athletes and reducing claims.
+              Partner with us to enhance your risk management offerings with innovative field safety monitoring. 
+              While others rely solely on traditional approaches, you&apos;ll be proactively protecting student athletes and reducing claims.
             </p>
             
             <div className="bg-white/10 p-8 rounded-2xl mb-8 max-w-4xl mx-auto">
@@ -617,7 +617,7 @@ export default function PartnershipsPage() {
                   <Clock className="w-4 h-4" />
                   <span>24-Hour Response Guarantee</span>
                 </div>
-                <div className="text-sm opacity-75">Limited partnerships available</div>
+                <div className="text-sm opacity-75">Professional partnership consultation</div>
               </div>
             </div>
             
