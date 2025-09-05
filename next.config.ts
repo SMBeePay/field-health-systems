@@ -43,9 +43,9 @@ const nextConfig: NextConfig = {
     ]
   },
 
-  // Resolve workspace root warning
-  turbopack: {
-    root: __dirname,
+  // Environment variables that should be available in the browser
+  env: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 
   // Generate sitemap and robots.txt
