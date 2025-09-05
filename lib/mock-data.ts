@@ -37,7 +37,7 @@ export const mockFields: Field[] = [
     // GPS and Mapping Data
     latitude: 38.7223,
     longitude: -121.3010,
-    satelliteImageUrl: 'https://maps.googleapis.com/maps/api/staticmap?center=38.7223,-121.3010&zoom=19&size=800x600&maptype=satellite&key=demo',
+    satelliteImageUrl: '/field-satellite.png',
     fieldDimensions: {
       length: 120, // yards including end zones
       width: 53.33, // yards
@@ -144,8 +144,8 @@ export const mockTestingData: TestingData[] = [
       { id: 'loc-4', name: '50 Yard Line Center', position: { x: 0.5, y: 0.5 }, zone: 'Midfield', gmaxReading: 121, shearReading: 33, infillDepthReading: 31 },
       { id: 'loc-5', name: '50 Yard Line Left Hash', position: { x: 0.3, y: 0.5 }, zone: 'Midfield', gmaxReading: 116, shearReading: 32, infillDepthReading: 29 },
       { id: 'loc-6', name: '50 Yard Line Right Hash', position: { x: 0.7, y: 0.5 }, zone: 'Midfield', gmaxReading: 123, shearReading: 35, infillDepthReading: 30 },
-      { id: 'loc-7', name: '75 Yard Line Center', position: { x: 0.5, y: 0.71 }, zone: 'Field', gmaxReading: 115, shearReading: 33, infillDepthReading: 28 },
-      { id: 'loc-8', name: '90 Yard Line Center', position: { x: 0.5, y: 0.83 }, zone: 'End Zone', gmaxReading: 119, shearReading: 32, infillDepthReading: 29 },
+      { id: 'loc-7', name: 'South End 25 Yard Line Center', position: { x: 0.5, y: 0.71 }, zone: 'Field', gmaxReading: 115, shearReading: 33, infillDepthReading: 28 },
+      { id: 'loc-8', name: 'South End 10 Yard Line Center', position: { x: 0.5, y: 0.83 }, zone: 'End Zone', gmaxReading: 119, shearReading: 32, infillDepthReading: 29 },
     ],
     
     gmaxReadings: [118, 125, 112, 121, 116, 123, 115, 119],
@@ -250,7 +250,7 @@ export const mockTestingData: TestingData[] = [
       { id: 'pf-5', name: '50 Yard Line Center', position: { x: 0.5, y: 0.5 }, zone: 'Midfield', gmaxReading: 196, shearReading: 22, infillDepthReading: 9 },
       { id: 'pf-6', name: '60 Yard Line Left', position: { x: 0.3, y: 0.6 }, zone: 'Field', gmaxReading: 203, shearReading: 25, infillDepthReading: 10 },
       { id: 'pf-7', name: '80 Yard Line Center', position: { x: 0.5, y: 0.8 }, zone: 'Field', gmaxReading: 199, shearReading: 23, infillDepthReading: 8 },
-      { id: 'pf-8', name: '90 Yard Line Center', position: { x: 0.5, y: 0.9 }, zone: 'Field', gmaxReading: 197, shearReading: 22, infillDepthReading: 9 },
+      { id: 'pf-8', name: 'North End 10 Yard Line Center', position: { x: 0.5, y: 0.9 }, zone: 'End Zone', gmaxReading: 197, shearReading: 22, infillDepthReading: 9 },
     ],
     
     gmaxReadings: [198, 205, 194, 201, 196, 203, 199, 197],
