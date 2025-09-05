@@ -89,8 +89,8 @@ export default function PartnershipsPage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Shield className="w-7 h-7 text-white" />
+              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
+                <img src="/logo-icon.svg" alt="Field Health Systems" className="w-12 h-12" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900 leading-tight">Field Health Systems</h1>

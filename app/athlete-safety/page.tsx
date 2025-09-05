@@ -30,8 +30,8 @@ export default function AthleteSafetyPage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img src="/logo-icon.svg" alt="Field Health Systems" className="w-10 h-10" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">Field Health Systems</h1>
@@ -711,8 +711,8 @@ export default function AthleteSafetyPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img src="/logo-icon.svg" alt="Field Health Systems" className="w-10 h-10" />
               </div>
               <div>
                 <h3 className="text-xl font-bold">Field Health Systems</h3>

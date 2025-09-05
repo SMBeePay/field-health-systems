@@ -19,9 +19,9 @@ export function Header() {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center justify-center w-10 h-10 bg-green-600 rounded-lg"
+            className="flex items-center justify-center w-10 h-10"
           >
-            <Activity className="w-6 h-6 text-white" />
+            <img src="/logo-icon.svg" alt="Field Health Systems" className="w-10 h-10" />
           </motion.div>
           <div>
             <h1 className={designTokens.typography.heading.h4}>Field Health Systems</h1>

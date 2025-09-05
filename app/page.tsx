@@ -67,12 +67,11 @@ export default function MarketingHomePage() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Field Health Systems</h1>
-              </div>
+              <img 
+                src="/logo-full.svg" 
+                alt="Field Health Systems" 
+                className="h-10 w-auto"
+              />
             </div>
             
             <nav className="hidden md:flex items-center space-x-8">
@@ -82,6 +81,7 @@ export default function MarketingHomePage() {
               <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
               <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Research</a>
               <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
+              <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
               <Link href="/schedule-assessment">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -489,8 +489,8 @@ export default function MarketingHomePage() {
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-                      <Shield className="w-5 h-5 text-white" />
+                    <div className="w-8 h-8 flex items-center justify-center">
+                      <img src="/logo-icon.svg" alt="Field Health Systems" className="w-8 h-8" />
                     </div>
                     <h4 className="font-semibold text-gray-900">Field Health Systems Dashboard</h4>
                   </div>
@@ -1758,8 +1758,8 @@ export default function MarketingHomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 flex items-center justify-center">
+                  <img src="/logo-icon.svg" alt="Field Health Systems" className="w-10 h-10" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Field Health Systems</h3>
