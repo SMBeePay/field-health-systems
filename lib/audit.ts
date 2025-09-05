@@ -8,9 +8,9 @@ interface AuditLogData {
   resourceId?: string
   ipAddress?: string
   userAgent?: string
-  oldValues?: Record<string, any>
-  newValues?: Record<string, any>
-  metadata?: Record<string, any>
+  oldValues?: Record<string, unknown>
+  newValues?: Record<string, unknown>
+  metadata?: Record<string, unknown>
 }
 
 export class AuditLogger {
@@ -41,9 +41,9 @@ export class AuditLogger {
     resource: string,
     resourceId?: string,
     additionalData?: {
-      oldValues?: Record<string, any>
-      newValues?: Record<string, any>
-      metadata?: Record<string, any>
+      oldValues?: Record<string, unknown>
+      newValues?: Record<string, unknown>
+      metadata?: Record<string, unknown>
     }
   ) {
     return this.log({
@@ -59,7 +59,7 @@ export class AuditLogger {
     action: AuditAction,
     resource: string,
     resourceId?: string,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ) {
     return this.log({
       action,
@@ -106,7 +106,7 @@ export class AuditLogger {
     userId: string,
     resource: string,
     resourceId: string,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ) {
     return this.log({
       userId,
@@ -122,8 +122,8 @@ export class AuditLogger {
     action: 'CREATE' | 'UPDATE' | 'DELETE',
     resource: string,
     resourceId: string,
-    oldValues?: Record<string, any>,
-    newValues?: Record<string, any>
+    oldValues?: Record<string, unknown>,
+    newValues?: Record<string, unknown>
   ) {
     return this.log({
       userId,
@@ -155,7 +155,7 @@ export class AuditLogger {
     userId: string,
     resource: string,
     exportType: string,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ) {
     return this.log({
       userId,
@@ -173,7 +173,7 @@ export class AuditLogger {
     resource: string,
     importType: string,
     recordsCount: number,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ) {
     return this.log({
       userId,

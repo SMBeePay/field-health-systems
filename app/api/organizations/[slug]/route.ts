@@ -5,7 +5,7 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -17,7 +17,7 @@ export async function GET(
       )
     }
 
-    const { slug } = params
+    const { slug } = await context.params
 
     // Find the organization
     const organization = await prisma.organization.findUnique({

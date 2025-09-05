@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Activity, User, Settings, LogOut } from 'lucide-react'
+import { User, Settings, LogOut } from 'lucide-react'
 import { designTokens } from '@/lib/design-tokens'
 import { mockUser } from '@/lib/mock-data'
 
