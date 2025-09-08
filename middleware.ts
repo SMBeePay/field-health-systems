@@ -104,12 +104,17 @@ export default withAuth(
 export const config = {
   matcher: [
     /*
-     * Match all request paths except for the ones starting with:
-     * - api/auth (NextAuth API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
+     * Only apply middleware to protected routes:
+     * - /app/* (organization dashboards)  
+     * - /admin/* (admin panel)
+     * - /dashboard/* (authenticated user dashboards)
+     * - /settings/* (user settings)
+     * - /fields/* (field management - authenticated)
      */
-    '/((?!api/auth|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+    '/app/:path*',
+    '/admin/:path*', 
+    '/dashboard/:path*',
+    '/settings/:path*',
+    '/fields/:path*'
   ],
 }
