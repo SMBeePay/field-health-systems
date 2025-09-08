@@ -77,7 +77,7 @@ Submitted: ${new Date().toLocaleString()}
       `)
       
       // Open email client with pre-filled data
-      window.location.href = `mailto:partnerships@fieldhealthsystems.com?subject=${emailSubject}&body=${emailBody}`
+      window.location.href = `mailto:andrew@fieldhealthsystems.com?subject=${emailSubject}&body=${emailBody}`
       
       // Show success message
       setShowSuccess(true)
