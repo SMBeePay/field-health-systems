@@ -380,7 +380,7 @@ Submitted: ${new Date().toLocaleString()}
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
                 <p className="text-gray-600 mb-6">
-                  Your partnership request has been submitted successfully. We'll respond within 24 hours with detailed partnership information.
+                  Your partnership request has been submitted successfully. We&apos;ll respond within 24 hours with detailed partnership information.
                 </p>
                 <button
                   onClick={() => setShowSuccess(false)}
