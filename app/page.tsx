@@ -70,7 +70,7 @@ export default function MarketingHomePage() {
               <img 
                 src="/logo-header.svg" 
                 alt="Field Health Systems" 
-                className="h-10 w-auto"
+                className="h-20 w-auto"
               />
             </div>
             
