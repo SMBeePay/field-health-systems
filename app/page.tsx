@@ -75,8 +75,8 @@ export default function MarketingHomePage() {
             </div>
             
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-green-600 font-medium">Services</a>
-              <a href="#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Athlete Safety</a>
+              <a href="#services" className="text-gray-700 hover:text-green-600 font-medium">Platform</a>
+              <a href="#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Field Safety</a>
               <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
               <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
               <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Research</a>
@@ -88,7 +88,7 @@ export default function MarketingHomePage() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
                 >
-                  Schedule Assessment
+                  Request Demo
                 </motion.button>
               </Link>
             </nav>
@@ -122,18 +122,18 @@ export default function MarketingHomePage() {
             >
               <div className="mb-6">
                 <span className="bg-green-500/20 text-green-300 border border-green-400/30 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
-                  Professional Field Monitoring + Analytics
+                  Independent 3rd Party Testing & Field Management Software
                 </span>
               </div>
               
               <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
-                Professional Artificial Turf Field Maintenance &
-                <span className="text-green-400"> Testing Services</span>
+                Data-Driven Athletic Field
+                <span className="text-green-400"> Management Platform</span>
               </h1>
               
               <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                <strong>Protect Your Athletes.</strong> Expert artificial turf maintenance monitoring with GMAX testing, infill depth analysis, and synthetic field safety inspections. 
-                Professional quarterly assessments help reduce emergency repairs and minimize athlete injury risks through proper field maintenance.*
+                <strong>Protect Your Athletes & Investment.</strong> Independent 3rd party field testing combined with intelligent software that tracks, monitors, and predicts maintenance needs. 
+                Our platform helps organizations make data-driven decisions about field safety and maintenance scheduling.*
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -142,19 +142,19 @@ export default function MarketingHomePage() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
                 >
-                  <Calendar className="w-5 h-5" />
-                  <span>Schedule Your Assessment</span>
+                  <BarChart3 className="w-5 h-5" />
+                  <span>See Platform Demo</span>
                 </motion.button>
               </div>
               
               <div className="flex items-center space-x-6 text-sm text-gray-300">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>No equipment purchase required</span>
+                  <span>Independent 3rd party testing</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Professional service from day one</span>
+                  <span>Predictive maintenance insights</span>
                 </div>
               </div>
             </motion.div>
@@ -167,7 +167,7 @@ export default function MarketingHomePage() {
             >
               <div className="bg-white rounded-2xl shadow-2xl p-8">
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Quarterly Field Health Report</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Intelligent Field Management Dashboard</h3>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
                       <div className="flex items-center space-x-3">
@@ -211,11 +211,11 @@ export default function MarketingHomePage() {
                 </div>
                 
                 <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">Recommended Actions</h4>
+                  <h4 className="font-medium text-gray-900 mb-2">AI-Powered Maintenance Predictions</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Schedule infill redistribution within 30 days</li>
-                    <li>• Estimated cost: $3,200</li>
-                    <li>• May help prevent costly emergency repairs*</li>
+                    <li>• Infill redistribution recommended within 30 days</li>
+                    <li>• Predicted maintenance cost: $3,200</li>
+                    <li>• 67% chance of emergency repair if delayed*</li>
                   </ul>
                 </div>
               </div>
@@ -237,8 +237,8 @@ export default function MarketingHomePage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Athlete Safety is Our Priority</h2>
-            <p className="text-gray-600">Professional field monitoring protects both your investment and your athletes</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Data-Driven Field Management Results</h2>
+            <p className="text-gray-600">Our platform combines independent testing with predictive analytics to maximize field safety and longevity</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -568,13 +568,13 @@ export default function MarketingHomePage() {
             className="text-center bg-gradient-to-r from-green-600 to-blue-600 text-white p-12 rounded-2xl"
           >
             <h3 className="text-3xl font-bold mb-4">
-              Professional field health assessments, just like regular medical check-ups
+              Independent testing + intelligent software = unbiased field management decisions
             </h3>
             <p className="text-xl mb-6 opacity-90">
-              At a fraction of the cost of emergency repairs
+              No conflicts of interest, no upselling - just data-driven recommendations
             </p>
             <div className="text-2xl font-bold">
-              $2,500/year vs potential $25,000+ problem resolution*
+              Predictive insights prevent 60-75% of emergency repairs*
             </div>
           </motion.div>
         </div>
@@ -590,14 +590,14 @@ export default function MarketingHomePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Professional Service + Advanced Technology
+                Independent Testing + Intelligent Analytics
               </h2>
               <p className="text-xl text-gray-600 mb-4">
-                Unlike basic logging apps, we combine certified technicians with cutting-edge software
+                3rd party objectivity combined with AI-powered predictive maintenance recommendations
               </p>
               <div className="bg-blue-100 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
                 <p className="text-blue-800 font-semibold">
-                  Human expertise ensures accurate testing, proper analysis, and immediate action when safety thresholds are exceeded
+                  Unbiased testing data feeds intelligent software that predicts maintenance needs before they become costly problems
                 </p>
               </div>
             </motion.div>
@@ -613,7 +613,7 @@ export default function MarketingHomePage() {
             >
               <div className="flex items-center space-x-3 mb-6">
                 <Users className="w-8 h-8 text-green-600" />
-                <h3 className="text-2xl font-bold text-green-800">Certified Professionals</h3>
+                <h3 className="text-2xl font-bold text-green-800">Independent 3rd Party Testing</h3>
               </div>
               
               <div className="space-y-4 mb-6">
@@ -634,8 +634,8 @@ export default function MarketingHomePage() {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900">Emergency Response</p>
-                    <p className="text-sm text-gray-600">24/7 availability for critical safety threshold breaches</p>
+                    <p className="font-semibold text-gray-900">Unbiased Recommendations</p>
+                    <p className="text-sm text-gray-600">No maintenance services to upsell - just objective data and insights</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -1128,10 +1128,10 @@ export default function MarketingHomePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Professional Artificial Turf Field Maintenance Services
+                Independent 3rd Party Testing & Field Management Platform
               </h2>
               <p className="text-xl text-gray-600">
-                Comprehensive synthetic field testing and monitoring to protect your turf investment and athlete safety
+                Unbiased field testing combined with intelligent software that predicts maintenance needs and optimizes field performance
               </p>
             </motion.div>
           </div>
@@ -1148,8 +1148,8 @@ export default function MarketingHomePage() {
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
                 <Users className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Technicians</h3>
-              <p className="text-gray-600 mb-4">Certified technicians conduct comprehensive quarterly assessments using professional-grade equipment</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Independent Field Testing</h3>
+              <p className="text-gray-600 mb-4">Unbiased 3rd party testing by certified technicians using professional-grade equipment for accurate, reliable data</p>
               
               {/* Field Testing Image Placeholder */}
               <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-lg p-4 border border-green-200">
@@ -1243,8 +1243,8 @@ export default function MarketingHomePage() {
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
                 <FileText className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Reports</h3>
-              <p className="text-gray-600 mb-4">Detailed quarterly reports with maintenance recommendations, budget planning, and compliance documentation</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Predictive Maintenance Insights</h3>
+              <p className="text-gray-600 mb-4">AI-powered recommendations with cost predictions, timeline forecasting, and proactive maintenance scheduling</p>
               
               {/* Report Preview */}
               <div className="bg-white rounded-lg border-2 border-gray-200 p-3">
