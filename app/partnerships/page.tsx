@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useState } from 'react'
 import { 
   Shield, 
   TrendingDown, 
@@ -19,6 +20,88 @@ import {
 } from 'lucide-react'
 
 export default function PartnershipsPage() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+    title: '',
+    companyType: '',
+    interests: [],
+    educationExposure: '',
+    additionalInfo: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleInterestChange = (interest, checked) => {
+    setFormData(prev => ({
+      ...prev,
+      interests: checked 
+        ? [...prev.interests, interest]
+        : prev.interests.filter(i => i !== interest)
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      // For now, we'll use a simple mailto approach
+      // In production, this should be replaced with a proper API endpoint
+      const emailSubject = encodeURIComponent('Partnership Form Submission - Field Health Systems')
+      const emailBody = encodeURIComponent(`
+Partnership Form Submission:
+
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company}
+Title: ${formData.title}
+Company Type: ${formData.companyType}
+Interests: ${formData.interests.join(', ')}
+Education Exposure: ${formData.educationExposure}
+Additional Info: ${formData.additionalInfo}
+
+Submitted: ${new Date().toLocaleString()}
+      `)
+      
+      // Open email client with pre-filled data
+      window.location.href = `mailto:partnerships@fieldhealthsystems.com?subject=${emailSubject}&body=${emailBody}`
+      
+      // Show success message
+      setShowSuccess(true)
+      
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        title: '',
+        companyType: '',
+        interests: [],
+        educationExposure: '',
+        additionalInfo: ''
+      })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      alert('There was an error submitting the form. Please try again or contact us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   const partnershipBenefits = [
     {
@@ -286,7 +369,28 @@ export default function PartnershipsPage() {
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-3xl border border-gray-200">
-            <form className="space-y-6">
+            {showSuccess ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-12"
+              >
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+                <p className="text-gray-600 mb-6">
+                  Your partnership request has been submitted successfully. We'll respond within 24 hours with detailed partnership information.
+                </p>
+                <button
+                  onClick={() => setShowSuccess(false)}
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  Submit Another Request
+                </button>
+              </motion.div>
+            ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Contact Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -295,6 +399,9 @@ export default function PartnershipsPage() {
                   </label>
                   <input
                     type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                     placeholder="John"
@@ -307,6 +414,9 @@ export default function PartnershipsPage() {
                   </label>
                   <input
                     type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                     placeholder="Smith"
@@ -322,6 +432,9 @@ export default function PartnershipsPage() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                     placeholder="john@insurancecompany.com"
@@ -334,6 +447,9 @@ export default function PartnershipsPage() {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                     placeholder="(555) 123-4567"
                   />
@@ -349,6 +465,9 @@ export default function PartnershipsPage() {
                   </label>
                   <input
                     type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                     placeholder="ABC Insurance Company"
@@ -361,6 +480,9 @@ export default function PartnershipsPage() {
                   </label>
                   <input
                     type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleInputChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                     placeholder="Risk Manager"
@@ -372,7 +494,12 @@ export default function PartnershipsPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Company Type
                 </label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                <select 
+                  name="companyType"
+                  value={formData.companyType}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                >
                   <option value="">Select company type</option>
                   <option value="insurance-carrier">Insurance Carrier</option>
                   <option value="risk-pool">State/Regional Risk Pool</option>
@@ -399,6 +526,8 @@ export default function PartnershipsPage() {
                     <label key={interest} className="flex items-center space-x-2">
                       <input
                         type="checkbox"
+                        checked={formData.interests.includes(interest)}
+                        onChange={(e) => handleInterestChange(interest, e.target.checked)}
                         className="rounded border-gray-300 text-green-600 focus:ring-green-500"
                       />
                       <span className="text-sm text-gray-700">{interest}</span>
@@ -411,7 +540,12 @@ export default function PartnershipsPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Current Education Sector Exposure
                 </label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors">
+                <select 
+                  name="educationExposure"
+                  value={formData.educationExposure}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                >
                   <option value="">Select exposure level</option>
                   <option value="high">High (500+ education clients)</option>
                   <option value="medium">Medium (100-500 education clients)</option>
@@ -426,6 +560,9 @@ export default function PartnershipsPage() {
                 </label>
                 <textarea
                   rows={4}
+                  name="additionalInfo"
+                  value={formData.additionalInfo}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors resize-none"
                   placeholder="Tell us about your specific partnership goals, member base, or any questions about our program..."
                 />
@@ -433,12 +570,17 @@ export default function PartnershipsPage() {
 
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-green-600 text-white py-4 px-6 rounded-lg text-lg font-semibold hover:bg-green-700 transition-all flex items-center justify-center space-x-2"
+                disabled={isSubmitting}
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                className={`w-full py-4 px-6 rounded-lg text-lg font-semibold transition-all flex items-center justify-center space-x-2 ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed text-white' 
+                    : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
               >
                 <Handshake className="w-5 h-5" />
-                <span>Request Partnership Information</span>
+                <span>{isSubmitting ? 'Submitting...' : 'Request Partnership Information'}</span>
               </motion.button>
 
               <p className="text-xs text-gray-500 text-center">
@@ -446,6 +588,7 @@ export default function PartnershipsPage() {
                 No spam, just valuable insights about reducing field-related claims.
               </p>
             </form>
+            )}
           </div>
         </div>
       </section>
