@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -448,4 +448,58 @@ model NotificationLog {
   updatedAt    DateTime           @updatedAt
 
   @@map("notification_logs")
+}
+
+// Form Submissions
+enum FormType {
+  PARTNERSHIP
+  SCHEDULE_ASSESSMENT
+  CONTACT
+  MARKETING_INQUIRY
+}
+
+enum SubmissionStatus {
+  NEW
+  REVIEWED
+  RESPONDED
+  ARCHIVED
+}
+
+model FormSubmission {
+  id             String           @id @default(cuid())
+  
+  // Form Details
+  formType       FormType
+  status         SubmissionStatus @default(NEW)
+  
+  // Contact Information
+  firstName      String
+  lastName       String
+  email          String
+  phone          String?
+  company        String?
+  title          String?
+  
+  // Form-specific Data (stored as JSON for flexibility)
+  formData       Json
+  
+  // Metadata
+  ipAddress      String?
+  userAgent      String?
+  source         String?          // e.g., "website", "referral"
+  
+  // Email Information
+  emailSent      Boolean          @default(false)
+  emailSentAt    DateTime?
+  emailError     String?
+  
+  // Admin Notes
+  adminNotes     String?
+  reviewedBy     String?
+  reviewedAt     DateTime?
+  
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@map("form_submissions")
 }

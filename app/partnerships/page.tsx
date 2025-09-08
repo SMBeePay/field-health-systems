@@ -34,6 +34,7 @@ export default function PartnershipsPage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -55,30 +56,35 @@ export default function PartnershipsPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setErrorMessage('')
 
     try {
-      // For now, we'll use a simple mailto approach
-      // In production, this should be replaced with a proper API endpoint
-      const emailSubject = encodeURIComponent('Partnership Form Submission - Field Health Systems')
-      const emailBody = encodeURIComponent(`
-Partnership Form Submission:
+      const response = await fetch('/api/forms/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'PARTNERSHIP',
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          title: formData.title,
+          companyType: formData.companyType,
+          interests: formData.interests,
+          educationExposure: formData.educationExposure,
+          additionalInfo: formData.additionalInfo,
+        }),
+      })
 
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Company: ${formData.company}
-Title: ${formData.title}
-Company Type: ${formData.companyType}
-Interests: ${formData.interests.join(', ')}
-Education Exposure: ${formData.educationExposure}
-Additional Info: ${formData.additionalInfo}
+      const result = await response.json()
 
-Submitted: ${new Date().toLocaleString()}
-      `)
-      
-      // Open email client with pre-filled data
-      window.location.href = `mailto:andrew@fieldhealthsystems.com?subject=${emailSubject}&body=${emailBody}`
-      
+      if (!response.ok) {
+        throw new Error(result.message || 'Form submission failed')
+      }
+
       // Show success message
       setShowSuccess(true)
       
@@ -97,7 +103,7 @@ Submitted: ${new Date().toLocaleString()}
       })
     } catch (error) {
       console.error('Form submission error:', error)
-      alert('There was an error submitting the form. Please try again or contact us directly.')
+      setErrorMessage(error.message || 'There was an error submitting the form. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -391,6 +397,20 @@ Submitted: ${new Date().toLocaleString()}
               </motion.div>
             ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-red-50 border border-red-200 rounded-lg p-4"
+                >
+                  <div className="flex items-center">
+                    <div className="text-red-600 text-sm">
+                      <strong>Error:</strong> {errorMessage}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
               {/* Contact Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
