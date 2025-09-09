@@ -50,7 +50,7 @@ function createEmailTransporter() {
     return null
   }
 
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     host: process.env.EMAIL_SERVER_HOST,
     port: parseInt(process.env.EMAIL_SERVER_PORT || '587'),
     secure: false,
