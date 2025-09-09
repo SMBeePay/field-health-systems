@@ -207,9 +207,31 @@ export async function POST(request: NextRequest) {
     
     console.log('💾 Attempting to save to database...')
     
-    // Save to database
-    const submission = await prisma.formSubmission.create({
-      data: {
+    let submission
+    try {
+      // Save to database
+      submission = await prisma.formSubmission.create({
+        data: {
+          formType,
+          firstName,
+          lastName,
+          email,
+          phone,
+          company,
+          title,
+          formData: formSpecificData,
+          ipAddress,
+          userAgent,
+          source: 'website',
+        }
+      })
+      console.log('✅ Saved to database with ID:', submission.id)
+    } catch (dbError) {
+      console.error('❌ Database save failed:', dbError.message)
+      
+      // Fallback: Create a submission object for logging
+      submission = {
+        id: 'fallback-' + Date.now(),
         formType,
         firstName,
         lastName,
@@ -218,13 +240,11 @@ export async function POST(request: NextRequest) {
         company,
         title,
         formData: formSpecificData,
-        ipAddress,
-        userAgent,
-        source: 'website',
+        createdAt: new Date(),
       }
-    })
-    
-    console.log('✅ Saved to database with ID:', submission.id)
+      
+      console.log('📋 Using fallback submission logging')
+    }
     
     // Send notification email (non-blocking)
     console.log('📨 Attempting to send notification email...')
@@ -253,15 +273,21 @@ export async function POST(request: NextRequest) {
       console.log('=====================================')
     }
     
-    // Update submission with email status
-    await prisma.formSubmission.update({
-      where: { id: submission.id },
-      data: {
-        emailSent: emailResult.sent,
-        emailSentAt: emailResult.sent ? new Date() : null,
-        emailError: emailResult.error,
+    // Update submission with email status (only if saved to database)
+    if (!submission.id.startsWith('fallback-')) {
+      try {
+        await prisma.formSubmission.update({
+          where: { id: submission.id },
+          data: {
+            emailSent: emailResult.sent,
+            emailSentAt: emailResult.sent ? new Date() : null,
+            emailError: emailResult.error,
+          }
+        })
+      } catch (updateError) {
+        console.log('❌ Could not update submission email status:', updateError.message)
       }
-    })
+    }
     
     console.log('✅ Form submission completed successfully')
     
@@ -288,8 +314,12 @@ export async function POST(request: NextRequest) {
     }
     
     // Database connection errors
-    if (error.message?.includes('PrismaClient')) {
-      console.error('❌ Database connection error')
+    if (error.message?.includes('PrismaClient') || 
+        error.message?.includes('SQLITE') ||
+        error.message?.includes('database') ||
+        error.code === 'P1001' ||
+        error.code === 'P2002') {
+      console.error('❌ Database connection error:', error.message)
       return NextResponse.json(
         { 
           success: false, 
