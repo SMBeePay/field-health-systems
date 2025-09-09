@@ -45,11 +45,18 @@ const formSchema = z.discriminatedUnion('formType', [
 
 // Email transporter setup
 function createEmailTransporter() {
-  if (!process.env.EMAIL_SERVER_HOST || !process.env.EMAIL_SERVER_USER) {
-    console.warn('Email configuration incomplete - emails will not be sent')
+  // Check if we have real email credentials (not placeholders)
+  const hasRealCredentials = process.env.EMAIL_SERVER_USER && 
+                           process.env.EMAIL_SERVER_PASSWORD &&
+                           process.env.EMAIL_SERVER_USER !== 'your-email@gmail.com' &&
+                           process.env.EMAIL_SERVER_PASSWORD !== 'your-app-password'
+
+  if (!hasRealCredentials) {
+    console.log('📧 Email configuration uses placeholder values - skipping email sending')
     return null
   }
 
+  console.log('📧 Creating email transporter with real credentials')
   return nodemailer.createTransport({
     host: process.env.EMAIL_SERVER_HOST,
     port: parseInt(process.env.EMAIL_SERVER_PORT || '587'),
@@ -179,11 +186,15 @@ function generateEmailContent(submission: {
 }
 
 export async function POST(request: NextRequest) {
+  console.log('📧 Form submission received')
+  
   try {
     const body = await request.json()
+    console.log('📧 Request body parsed:', { ...body, email: body.email ? '[REDACTED]' : 'missing' })
     
     // Validate the form data
     const validatedData = formSchema.parse(body)
+    console.log('✅ Form data validated successfully')
     
     // Get request metadata
     const ipAddress = request.headers.get('x-forwarded-for') || 
@@ -193,6 +204,8 @@ export async function POST(request: NextRequest) {
     
     // Prepare form-specific data
     const { formType, firstName, lastName, email, phone, company, title, ...formSpecificData } = validatedData
+    
+    console.log('💾 Attempting to save to database...')
     
     // Save to database
     const submission = await prisma.formSubmission.create({
@@ -211,9 +224,34 @@ export async function POST(request: NextRequest) {
       }
     })
     
-    // Send notification email
+    console.log('✅ Saved to database with ID:', submission.id)
+    
+    // Send notification email (non-blocking)
+    console.log('📨 Attempting to send notification email...')
     const transporter = createEmailTransporter()
     const emailResult = await sendNotificationEmail(submission, transporter)
+    
+    if (emailResult.sent) {
+      console.log('✅ Email sent successfully')
+    } else {
+      console.log('❌ Email failed:', emailResult.error)
+      
+      // Fallback: Log to console for manual checking
+      console.log('📋 FORM SUBMISSION RECEIVED (for manual review):')
+      console.log('=====================================')
+      console.log(`Name: ${firstName} ${lastName}`)
+      console.log(`Email: ${email}`)
+      console.log(`Company: ${company}`)
+      console.log(`Title: ${title}`)
+      console.log(`Phone: ${phone || 'Not provided'}`)
+      console.log(`Form Type: ${formType}`)
+      console.log(`Submission ID: ${submission.id}`)
+      console.log(`Time: ${new Date().toLocaleString()}`)
+      if (formSpecificData.additionalInfo) {
+        console.log(`Additional Info: ${formSpecificData.additionalInfo}`)
+      }
+      console.log('=====================================')
+    }
     
     // Update submission with email status
     await prisma.formSubmission.update({
@@ -225,30 +263,46 @@ export async function POST(request: NextRequest) {
       }
     })
     
+    console.log('✅ Form submission completed successfully')
+    
     return NextResponse.json({
       success: true,
-      message: 'Form submitted successfully',
-      submissionId: submission.id
+      message: 'Form submitted successfully. We\'ll respond within 24 hours.',
+      submissionId: submission.id,
+      emailSent: emailResult.sent
     })
     
   } catch (error) {
-    console.error('Form submission error:', error)
+    console.error('❌ Form submission error:', error)
     
     if (error instanceof z.ZodError) {
+      console.error('❌ Validation error:', error.errors)
       return NextResponse.json(
         { 
           success: false, 
-          message: 'Validation error',
+          message: 'Please check all required fields and try again.',
           errors: error.errors 
         },
         { status: 400 }
       )
     }
     
+    // Database connection errors
+    if (error.message?.includes('PrismaClient')) {
+      console.error('❌ Database connection error')
+      return NextResponse.json(
+        { 
+          success: false, 
+          message: 'Database connection failed. Please try again in a moment.' 
+        },
+        { status: 500 }
+      )
+    }
+    
     return NextResponse.json(
       { 
         success: false, 
-        message: 'Internal server error' 
+        message: 'An unexpected error occurred. Please try again or contact support.' 
       },
       { status: 500 }
     )
