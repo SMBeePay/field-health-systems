@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const baseUrl = 'https://fieldhealthsystems.com'
+  const baseUrl = 'https://www.fieldhealthsystems.com'
   
   // Define static pages
   const staticPages = [

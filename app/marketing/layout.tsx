@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Professional Artificial Turf Field Maintenance Services | Expert Testing & Monitoring",
     description: "Leading artificial turf maintenance and testing services. Professional GMAX testing, synthetic field monitoring, and predictive maintenance planning. Reduce field emergency repairs by 73%.",
-    url: "https://fieldhealthsystems.com",
+    url: "https://www.fieldhealthsystems.com",
     type: "website",
     images: [
       {
-        url: "https://fieldhealthsystems.com/services-og.jpg",
+        url: "https://www.fieldhealthsystems.com/services-og.jpg",
         width: 1200,
         height: 630,
         alt: "Professional artificial turf field maintenance and testing services"
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: "Expert GMAX testing, synthetic field monitoring, and predictive maintenance. Reduce emergency repairs by 73% with quarterly field health assessments."
   },
   alternates: {
-    canonical: "https://fieldhealthsystems.com"
+    canonical: "https://www.fieldhealthsystems.com"
   }
 }
 

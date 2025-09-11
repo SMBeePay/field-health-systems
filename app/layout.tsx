@@ -36,13 +36,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://fieldhealthsystems.com",
+    url: "https://www.fieldhealthsystems.com",
     title: "Professional Artificial Turf Field Maintenance & Testing Services",
     description: "Expert monitoring and maintenance planning for synthetic sports fields. Professional GMAX testing, safety compliance, and predictive maintenance that reduces emergency repairs by 73%.",
     siteName: "Field Health Systems",
     images: [
       {
-        url: "https://fieldhealthsystems.com/og-image.jpg",
+        url: "https://www.fieldhealthsystems.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Field Health Systems - Professional Artificial Turf Maintenance"
@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Professional Artificial Turf Field Maintenance & Testing Services",
     description: "Expert monitoring and maintenance planning for synthetic sports fields. Reduce emergency repairs by 73% with professional field health assessments.",
-    images: ["https://fieldhealthsystems.com/twitter-image.jpg"]
+    images: ["https://www.fieldhealthsystems.com/twitter-image.jpg"]
   },
   alternates: {
-    canonical: "https://fieldhealthsystems.com"
+    canonical: "https://www.fieldhealthsystems.com"
   },
   other: {
     "geo.region": "US",
@@ -71,19 +71,19 @@ const structuredData = {
   "@graph": [
     {
       "@type": ["LocalBusiness", "Organization"],
-      "@id": "https://fieldhealthsystems.com/#organization",
+      "@id": "https://www.fieldhealthsystems.com/#organization",
       "name": "Field Health Systems",
       "alternateName": "Field Health Systems - Artificial Turf Maintenance",
-      "url": "https://fieldhealthsystems.com",
+      "url": "https://www.fieldhealthsystems.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://fieldhealthsystems.com/logo.png",
+        "url": "https://www.fieldhealthsystems.com/logo.svg",
         "width": 400,
         "height": 400
       },
       "image": {
         "@type": "ImageObject",
-        "url": "https://fieldhealthsystems.com/og-image.jpg",
+        "url": "https://www.fieldhealthsystems.com/og-image.jpg",
         "width": 1200,
         "height": 630
       },
@@ -181,11 +181,11 @@ const structuredData = {
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://fieldhealthsystems.com/#service",
+      "@id": "https://www.fieldhealthsystems.com/#service",
       "name": "Artificial Turf Field Maintenance & Testing",
       "description": "Professional quarterly field monitoring and testing services including GMAX testing, infill depth analysis, and predictive maintenance planning for synthetic sports fields.",
       "provider": {
-        "@id": "https://fieldhealthsystems.com/#organization"
+        "@id": "https://www.fieldhealthsystems.com/#organization"
       },
       "serviceType": "Sports Field Maintenance",
       "category": "Athletic Field Services",
@@ -234,23 +234,23 @@ const structuredData = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://fieldhealthsystems.com/#website",
-      "url": "https://fieldhealthsystems.com",
+      "@id": "https://www.fieldhealthsystems.com/#website",
+      "url": "https://www.fieldhealthsystems.com",
       "name": "Field Health Systems",
       "description": "Professional artificial turf field maintenance and testing services",
       "publisher": {
-        "@id": "https://fieldhealthsystems.com/#organization"
+        "@id": "https://www.fieldhealthsystems.com/#organization"
       },
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://fieldhealthsystems.com/search?q={search_term_string}"
+          "urlTemplate": "https://www.fieldhealthsystems.com/search?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       },
       "mainEntity": {
-        "@id": "https://fieldhealthsystems.com/#organization"
+        "@id": "https://www.fieldhealthsystems.com/#organization"
       }
     }
   ]
@@ -268,7 +268,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
