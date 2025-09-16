@@ -10,47 +10,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
-    {
-      url: `${baseUrl}/dashboard`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.8,
-    },
+    // Main service pages
     {
       url: `${baseUrl}/testing`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/services/artificial-turf-maintenance`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/maintenance`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // Service-specific pages
     {
       url: `${baseUrl}/services/gmax-testing`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/synthetic-field-monitoring`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.95,
     },
     // Resources section
     {
@@ -60,16 +38,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/resources/testing`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/resources/testing/education-hub`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/resources/maintenance`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/resources/maintenance/guides/artificial-turf-maintenance-complete-guide`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    // Other important pages
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/schedule-assessment`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/athlete-safety`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/partnerships`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
   ]
 }
