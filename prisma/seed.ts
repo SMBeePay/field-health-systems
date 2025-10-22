@@ -29,12 +29,15 @@ async function main() {
   console.log('✅ Created demo organization:', demoOrg.name)
 
   // Create admin user (SUPER_ADMIN)
-  const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'AdminPassword123!', 12)
+  if (!process.env.ADMIN_PASSWORD || !process.env.ADMIN_EMAIL) {
+    throw new Error('ADMIN_PASSWORD and ADMIN_EMAIL environment variables are required')
+  }
+  const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 12)
   const adminUser = await prisma.user.upsert({
-    where: { email: process.env.ADMIN_EMAIL || 'andrew@fieldhealthsystems.com' },
-    update: {},
+    where: { email: process.env.ADMIN_EMAIL },
+    update: { password: adminPassword }, // Update password if user exists
     create: {
-      email: process.env.ADMIN_EMAIL || 'andrew@fieldhealthsystems.com',
+      email: process.env.ADMIN_EMAIL,
       name: 'Andrew Martinez',
       password: adminPassword,
       role: 'SUPER_ADMIN',
@@ -47,12 +50,15 @@ async function main() {
   console.log('✅ Created admin user:', adminUser.email)
 
   // Create demo user
-  const demoPassword = await bcrypt.hash(process.env.DEMO_PASSWORD || 'DemoPassword123!', 12)
+  if (!process.env.DEMO_PASSWORD || !process.env.DEMO_EMAIL) {
+    throw new Error('DEMO_PASSWORD and DEMO_EMAIL environment variables are required')
+  }
+  const demoPassword = await bcrypt.hash(process.env.DEMO_PASSWORD, 12)
   const demoUser = await prisma.user.upsert({
-    where: { email: process.env.DEMO_EMAIL || 'demo@fieldhealthsystems.com' },
-    update: {},
+    where: { email: process.env.DEMO_EMAIL },
+    update: { password: demoPassword }, // Update password if user exists
     create: {
-      email: process.env.DEMO_EMAIL || 'demo@fieldhealthsystems.com',
+      email: process.env.DEMO_EMAIL,
       name: 'Demo User',
       password: demoPassword,
       role: 'ORG_ADMIN',
@@ -194,11 +200,11 @@ async function main() {
   console.log('🎉 Database seeding completed successfully!')
   console.log('\n📋 Demo Account Details:')
   console.log(`Demo User: ${demoUser.email}`)
-  console.log(`Demo Password: ${process.env.DEMO_PASSWORD || 'DemoPassword123!'}`)
+  console.log(`Demo Password: [CONFIGURED VIA ENVIRONMENT VARIABLE]`)
   console.log(`Organization: ${demoOrg.name} (/${demoOrg.slug})`)
   console.log('\n👨‍💼 Admin Account Details:')
   console.log(`Admin User: ${adminUser.email}`)
-  console.log(`Admin Password: ${process.env.ADMIN_PASSWORD || 'AdminPassword123!'}`)
+  console.log(`Admin Password: [CONFIGURED VIA ENVIRONMENT VARIABLE]`)
   console.log(`Role: ${adminUser.role}`)
 }
 
