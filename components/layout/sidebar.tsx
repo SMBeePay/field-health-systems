@@ -3,17 +3,19 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { 
-  LayoutDashboard, 
-  MapPin, 
-  TestTube, 
-  Wrench, 
-  FileText, 
-  BarChart3, 
+import {
+  LayoutDashboard,
+  MapPin,
+  TestTube,
+  Wrench,
+  FileText,
+  BarChart3,
   Users,
-  Settings
+  Settings,
+  Zap
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { designTokens } from '@/lib/design-tokens'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -30,13 +32,41 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ x: -20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.3, delay: 0.1 }}
-      className="w-64 bg-white border-r border-gray-200 px-3 py-6"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="relative w-64 bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30 border-r-2 border-indigo-100/50 px-4 py-6 overflow-hidden"
     >
-      <div className="space-y-1">
+      {/* Field Grid Pattern Background */}
+      <div className={cn(
+        "absolute inset-0 opacity-30",
+        designTokens.patterns.fieldGrid
+      )} />
+
+      {/* Gradient Accent Bar */}
+      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-indigo-600 via-purple-600 to-pink-600" />
+
+      {/* Logo/Brand Section */}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="relative mb-8 pb-6 border-b-2 border-gradient-to-r from-indigo-200 to-purple-200"
+      >
+        <div className="flex items-center space-x-3">
+          <div className="p-2 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl shadow-lg shadow-indigo-500/30">
+            <Zap className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-slate-800">Field Health</p>
+            <p className="text-xs text-slate-600">Systems</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Navigation Items */}
+      <div className="relative space-y-2">
         {navigation.map((item, index) => {
           const isActive = pathname === item.href
           return (
@@ -44,35 +74,62 @@ export function Sidebar() {
               key={item.name}
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.2, delay: index * 0.05 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.05 + 0.3,
+                ease: "easeOut"
+              }}
             >
               <Link
                 href={item.href}
                 className={cn(
-                  'group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
+                  'group relative flex items-center px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 overflow-hidden',
                   isActive
-                    ? 'bg-green-50 text-green-700 border-r-2 border-green-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/30'
+                    : 'text-slate-700 hover:bg-white/60 hover:shadow-md hover:scale-[1.02]'
                 )}
               >
+                {/* Active state glow effect */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeGlow"
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-20 blur-xl"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+
+                {/* Icon with enhanced animations */}
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.15, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="relative z-10"
                 >
                   <item.icon
                     className={cn(
-                      'mr-3 h-5 w-5 flex-shrink-0 transition-colors duration-200',
-                      isActive 
-                        ? 'text-green-600' 
-                        : 'text-gray-500 group-hover:text-gray-900'
+                      'mr-3 h-5 w-5 flex-shrink-0 transition-all duration-300',
+                      isActive
+                        ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]'
+                        : 'text-indigo-600 group-hover:text-purple-600'
                     )}
                   />
                 </motion.div>
-                {item.name}
+
+                <span className="relative z-10">{item.name}</span>
+
+                {/* Active indicator - floating orb */}
                 {isActive && (
                   <motion.div
-                    layoutId="activeTab"
-                    className="absolute right-0 w-1 h-6 bg-green-600 rounded-l-full"
+                    layoutId="activeOrb"
+                    className="absolute right-3 w-2 h-2 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+
+                {/* Hover effect - shimmer */}
+                {!isActive && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-100/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
                   />
                 )}
               </Link>
@@ -80,6 +137,9 @@ export function Sidebar() {
           )
         })}
       </div>
+
+      {/* Decorative gradient blob */}
+      <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-3xl opacity-20" />
     </motion.nav>
   )
 }

@@ -58,35 +58,41 @@ export default function MarketingHomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <motion.header 
+      {/* Header - Redesigned */}
+      <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="bg-white border-b border-gray-200 sticky top-0 z-50"
+        className="bg-white/80 backdrop-blur-xl border-b-2 border-indigo-100/50 sticky top-0 z-50 shadow-sm"
       >
+        {/* Top gradient bar */}
+        <div className="h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600" />
+
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img 
-                src="/logo-header.svg" 
-                alt="Field Health Systems" 
-                className="h-20 w-auto"
-              />
+              <div className="p-2 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl shadow-lg shadow-indigo-500/30">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                  Field Health Systems
+                </h1>
+              </div>
             </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-green-600 font-medium">Platform</a>
-              <a href="#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Field Safety</a>
-              <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
-              <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Research</a>
-              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
-              <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
+
+            <nav className="hidden md:flex items-center space-x-6">
+              <a href="#services" className="text-slate-700 hover:text-indigo-600 font-semibold transition-colors">Platform</a>
+              <a href="#athlete-safety" className="text-slate-700 hover:text-indigo-600 font-semibold transition-colors">Field Safety</a>
+              <a href="#solutions" className="text-slate-700 hover:text-indigo-600 font-semibold transition-colors">Solutions</a>
+              <a href="#pricing" className="text-slate-700 hover:text-indigo-600 font-semibold transition-colors">Pricing</a>
+              <a href="#testimonials" className="text-slate-700 hover:text-indigo-600 font-semibold transition-colors">Research</a>
+              <Link href="/partnerships" className="text-slate-700 hover:text-indigo-600 font-semibold transition-colors">Partnerships</Link>
+              <Link href="/auth/login" className="text-slate-700 hover:text-indigo-600 font-semibold transition-colors">Login</Link>
               <Link href="/schedule-assessment">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-xl font-bold shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/50 transition-all"
                 >
                   Request Demo
                 </motion.button>
@@ -121,40 +127,49 @@ export default function MarketingHomePage() {
               transition={{ duration: 0.6 }}
             >
               <div className="mb-6">
-                <span className="bg-green-500/20 text-green-300 border border-green-400/30 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+                <span className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 text-indigo-200 border-2 border-indigo-400/30 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm shadow-lg shadow-indigo-500/20">
                   Independent 3rd Party Testing & Field Management Software
                 </span>
               </div>
-              
-              <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
+
+              <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
                 Data-Driven Athletic Field
-                <span className="text-green-400"> Management Platform</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400"> Management Platform</span>
               </h1>
-              
+
               <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                <strong>Protect Your Athletes & Investment.</strong> Independent 3rd party field testing combined with intelligent software that tracks, monitors, and predicts maintenance needs. 
+                <strong>Protect Your Athletes & Investment.</strong> Independent 3rd party field testing combined with intelligent software that tracks, monitors, and predicts maintenance needs.
                 Our platform helps organizations make data-driven decisions about field safety and maintenance scheduling.*
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                  className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-2xl shadow-indigo-500/50 hover:shadow-indigo-500/70 transition-all flex items-center justify-center space-x-2"
                 >
                   <BarChart3 className="w-5 h-5" />
                   <span>See Platform Demo</span>
                 </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition-all flex items-center justify-center space-x-2"
+                >
+                  <Satellite className="w-5 h-5" />
+                  <span>Learn More</span>
+                </motion.button>
               </div>
-              
-              <div className="flex items-center space-x-6 text-sm text-gray-300">
+
+              <div className="flex items-center space-x-6 text-sm text-gray-200">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Independent 3rd party testing</span>
+                  <CheckCircle className="w-5 h-5 text-cyan-400" />
+                  <span className="font-semibold">Independent 3rd party testing</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Predictive maintenance insights</span>
+                  <CheckCircle className="w-5 h-5 text-cyan-400" />
+                  <span className="font-semibold">Predictive maintenance insights</span>
                 </div>
               </div>
             </motion.div>
@@ -165,66 +180,78 @@ export default function MarketingHomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-white rounded-2xl shadow-2xl p-8">
+              <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border-2 border-indigo-100">
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Intelligent Field Management Dashboard</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                  <h3 className="text-lg font-bold text-slate-900 mb-4">Intelligent Field Management Dashboard</h3>
+                  <div className="space-y-3">
+                    <motion.div
+                      whileHover={{ scale: 1.02, x: 4 }}
+                      className="flex items-center justify-between p-4 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl border-2 border-cyan-200/50"
+                    >
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/30">
                           <CheckCircle className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900">GMAX Safety</p>
-                          <p className="text-sm text-gray-600">68.5 (Excellent)</p>
+                          <p className="font-bold text-slate-900">GMAX Safety</p>
+                          <p className="text-sm text-cyan-600 font-semibold">68.5 (Excellent)</p>
                         </div>
                       </div>
-                      <TrendingUp className="w-5 h-5 text-green-500" />
-                    </div>
-                    
-                    <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                      <TrendingUp className="w-5 h-5 text-cyan-600" />
+                    </motion.div>
+
+                    <motion.div
+                      whileHover={{ scale: 1.02, x: 4 }}
+                      className="flex items-center justify-between p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border-2 border-indigo-200/50"
+                    >
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30">
                           <CheckCircle className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900">Shear Factor</p>
-                          <p className="text-sm text-gray-600">28.7 Nm (Good)</p>
+                          <p className="font-bold text-slate-900">Shear Factor</p>
+                          <p className="text-sm text-indigo-600 font-semibold">28.7 Nm (Good)</p>
                         </div>
                       </div>
-                      <BarChart3 className="w-5 h-5 text-blue-500" />
-                    </div>
-                    
-                    <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
+                      <BarChart3 className="w-5 h-5 text-indigo-600" />
+                    </motion.div>
+
+                    <motion.div
+                      whileHover={{ scale: 1.02, x: 4 }}
+                      className="flex items-center justify-between p-4 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border-2 border-amber-200/50"
+                    >
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/30">
                           <AlertTriangle className="w-5 h-5 text-white" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900">Infill Depth</p>
-                          <p className="text-sm text-gray-600">12.3mm (Monitor)</p>
+                          <p className="font-bold text-slate-900">Infill Depth</p>
+                          <p className="text-sm text-amber-600 font-semibold">12.3mm (Monitor)</p>
                         </div>
                       </div>
-                      <Target className="w-5 h-5 text-yellow-500" />
-                    </div>
+                      <Target className="w-5 h-5 text-amber-600" />
+                    </motion.div>
                   </div>
                 </div>
-                
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">AI-Powered Maintenance Predictions</h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
+
+                <div className="p-4 bg-gradient-to-br from-slate-50 to-indigo-50 rounded-xl border-2 border-slate-200">
+                  <h4 className="font-bold text-slate-900 mb-2 flex items-center space-x-2">
+                    <Zap className="w-4 h-4 text-indigo-600" />
+                    <span>AI-Powered Maintenance Predictions</span>
+                  </h4>
+                  <ul className="text-sm text-slate-700 space-y-1 font-medium">
                     <li>• Infill redistribution recommended within 30 days</li>
                     <li>• Predicted maintenance cost: $3,200</li>
                     <li>• 67% chance of emergency repair if delayed*</li>
                   </ul>
                 </div>
               </div>
-              
+
               {/* Floating elements */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-4 -right-4 bg-green-500 text-white p-3 rounded-full shadow-lg"
+                className="absolute -top-4 -right-4 bg-gradient-to-br from-indigo-600 to-purple-600 text-white p-4 rounded-2xl shadow-2xl shadow-indigo-500/50"
               >
                 <Shield className="w-6 h-6" />
               </motion.div>
