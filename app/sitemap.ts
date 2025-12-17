@@ -61,6 +61,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/resources/gmax-testing-ultimate-guide`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
     // Blog section
     {
       url: `${baseUrl}/blog`,
