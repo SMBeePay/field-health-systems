@@ -79,7 +79,8 @@ export default function MarketingHomePage() {
               <a href="#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Field Safety</a>
               <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
               <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Research</a>
+              <Link href="/resources" className="text-gray-700 hover:text-green-600 font-medium">Resources</Link>
+              <Link href="/blog" className="text-gray-700 hover:text-green-600 font-medium">Blog</Link>
               <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
               <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
               <Link href="/schedule-assessment">
