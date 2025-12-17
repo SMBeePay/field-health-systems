@@ -15,23 +15,6 @@ import {
   ExternalLink
 } from 'lucide-react'
 
-export const metadata = {
-  title: 'GMAX Testing Ultimate Guide for School Districts | ASTM F1936 Compliance',
-  description: 'Protect athletes & reduce liability with expert GMAX testing. Learn ASTM F1936 requirements, testing frequency, and how to interpret results. Free assessment.',
-  openGraph: {
-    title: 'The Complete Guide to GMAX Testing for School Athletic Fields',
-    description: 'Everything athletic directors need to know about GMAX testing, ASTM F1936 compliance, and protecting athletes.',
-    url: 'https://www.fieldhealthsystems.com/resources/gmax-testing-ultimate-guide',
-    type: 'article',
-    images: [{
-      url: 'https://www.fieldhealthsystems.com/sports-field-bg.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Complete guide to GMAX testing for school athletic fields'
-    }]
-  }
-}
-
 export default function GMAXTestingGuidePage() {
   return (
     <div className="min-h-screen bg-white">
