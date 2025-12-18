@@ -1,5 +1,8 @@
 # Demo User Credentials
 
+> 🚨 **IMPORTANT:** If you're getting a "Configuration" error, you need to set up environment variables first!
+> **See:** [VERCEL_SETUP_REQUIRED.md](./VERCEL_SETUP_REQUIRED.md) for complete setup instructions.
+
 ## Live Site Access
 
 **URL:** https://www.fieldhealthsystems.com/auth/login
@@ -23,19 +26,38 @@ The demo user has access to:
 
 ## Setup Instructions (For Deployment)
 
-### First-Time Setup in Vercel
+> ⚠️ **Getting "Configuration" Error?**
+> You need to set up ALL required environment variables first.
+> **Follow:** [VERCEL_SETUP_REQUIRED.md](./VERCEL_SETUP_REQUIRED.md) for complete setup guide.
 
-1. **Set Environment Variables:**
-   ```bash
-   # In Vercel Dashboard > Settings > Environment Variables
-   DEMO_EMAIL=demo@fieldhealthsystems.com
-   DEMO_PASSWORD=DemoField2025!
-   ```
+### Required Environment Variables in Vercel
 
-2. **Run Database Seed:**
+These must be set in Vercel Dashboard → Settings → Environment Variables:
+
+```bash
+# Critical - NextAuth Configuration
+NEXTAUTH_SECRET=st36y3oyNtw+w4Fvr/ler5PEUkV2MUgXAdqvA+Jcq9I=
+NEXTAUTH_URL=https://www.fieldhealthsystems.com
+
+# Critical - Database
+DATABASE_URL=<your-production-database-url>
+
+# User Credentials
+ADMIN_EMAIL=andrew@fieldhealthsystems.com
+ADMIN_PASSWORD=<your-secure-password>
+DEMO_EMAIL=demo@fieldhealthsystems.com
+DEMO_PASSWORD=DemoField2025!
+```
+
+### After Setting Environment Variables
+
+1. **Initialize Database:**
    ```bash
+   npx prisma db push
    npx prisma db seed
    ```
+
+2. **Redeploy in Vercel** (to pick up new environment variables)
 
 ### Updating Demo Password
 
