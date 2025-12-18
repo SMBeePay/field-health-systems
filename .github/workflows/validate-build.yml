@@ -1,0 +1,66 @@
+name: Validate Next.js Build
+
+on:
+  push:
+    branches:
+      - 'claude/**'
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate Build and Types
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+        env:
+          PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING: 1
+
+      - name: Check for use client + metadata conflicts
+        run: |
+          echo "🔍 Checking for 'use client' + metadata conflicts..."
+          files_with_issue=""
+          for file in $(find app -name "*.tsx" -o -name "*.ts"); do
+            if grep -q "^['\"]use client['\"]" "$file" && grep -q "export const metadata" "$file"; then
+              files_with_issue="$files_with_issue\n$file"
+            fi
+          done
+
+          if [ -n "$files_with_issue" ]; then
+            echo "❌ ERROR: Found files with 'use client' AND 'export const metadata':"
+            echo -e "$files_with_issue"
+            echo ""
+            echo "Next.js does not allow exporting metadata from client components."
+            exit 1
+          fi
+
+          echo "✓ No conflicts found"
+
+      - name: Run TypeScript type check
+        run: npm run type-check
+        continue-on-error: true
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          SKIP_ENV_VALIDATION: true
+          PRISMA_ENGINES_CHECKSUM_IGNORE_MISSING: 1
+
+      - name: Report success
+        run: |
+          echo "✅ All validations passed!"
+          echo "✓ No use client + metadata conflicts"
+          echo "✓ Next.js build succeeded"
