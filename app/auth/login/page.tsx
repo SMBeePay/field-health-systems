@@ -35,7 +35,7 @@ function LoginForm() {
         if (session?.user.role === 'SUPER_ADMIN') {
           router.push('/admin')
         } else if (session?.user.organizationSlug) {
-          router.push(`/app/${session.user.organizationSlug}`)
+          router.push(`/app/${session.user.organizationSlug}/dashboard`)
         } else {
           router.push(callbackUrl)
         }

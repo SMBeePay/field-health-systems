@@ -2,29 +2,42 @@ import { withAuth } from 'next-auth/middleware'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+// Public routes that don't require authentication
+const publicPaths = [
+  '/api/auth',
+  '/auth',
+  '/',
+  '/partnerships',
+  '/schedule-assessment',
+  '/athlete-safety',
+  '/marketing',
+  '/resources',
+  '/blog',
+  '/contact',
+  '/services',
+  '/_next',
+  '/public',
+]
+
+function isPublicPath(pathname: string): boolean {
+  // Check if it's a public path
+  if (publicPaths.some(path => pathname === path || pathname.startsWith(path + '/'))) {
+    return true
+  }
+  // Check if it's a static file
+  if (pathname.includes('.')) {
+    return true
+  }
+  return false
+}
+
 export default withAuth(
   function middleware(request: NextRequest) {
     const token = request.nextauth.token
     const { pathname } = request.nextUrl
 
     // Allow public routes
-    if (
-      pathname.startsWith('/api/auth') ||
-      pathname.startsWith('/auth') ||
-      pathname === '/' ||
-      pathname.startsWith('/partnerships') ||
-      pathname.startsWith('/schedule-assessment') ||
-      pathname.startsWith('/athlete-safety') ||
-      pathname.startsWith('/testing') ||
-      pathname.startsWith('/maintenance') ||
-      pathname.startsWith('/analytics') ||
-      pathname.startsWith('/reports') ||
-      pathname.startsWith('/team') ||
-      pathname.startsWith('/marketing') ||
-      pathname.startsWith('/_next') ||
-      pathname.startsWith('/public') ||
-      pathname.includes('.')
-    ) {
+    if (isPublicPath(pathname)) {
       return NextResponse.next()
     }
 
@@ -43,7 +56,7 @@ export default withAuth(
       return NextResponse.next()
     }
 
-    // Organization routes - /app/[orgSlug]
+    // Organization app routes - /app/[orgSlug]/*
     if (pathname.startsWith('/app/')) {
       const pathParts = pathname.split('/')
       const orgSlug = pathParts[2]
@@ -61,9 +74,13 @@ export default withAuth(
       return NextResponse.next()
     }
 
-    // Dashboard routes - authenticated users only
-    if (pathname.startsWith('/dashboard') || pathname.startsWith('/settings')) {
-      return NextResponse.next()
+    // Legacy dashboard/settings routes - redirect to new app structure
+    if (pathname.startsWith('/dashboard') || pathname.startsWith('/settings') || pathname.startsWith('/fields')) {
+      if (token.organizationSlug) {
+        const newPath = pathname.replace(/^\/(dashboard|settings|fields)/, `/app/${token.organizationSlug}/$1`)
+        return NextResponse.redirect(new URL(newPath, request.url))
+      }
+      return NextResponse.redirect(new URL('/auth/login', request.url))
     }
 
     return NextResponse.next()
@@ -71,26 +88,10 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ token, req }) => {
-        // Allow access to public routes without a token
         const { pathname } = req.nextUrl
-        
-        if (
-          pathname.startsWith('/api/auth') ||
-          pathname.startsWith('/auth') ||
-          pathname === '/' ||
-          pathname.startsWith('/partnerships') ||
-          pathname.startsWith('/schedule-assessment') ||
-          pathname.startsWith('/athlete-safety') ||
-          pathname.startsWith('/testing') ||
-          pathname.startsWith('/maintenance') ||
-          pathname.startsWith('/analytics') ||
-          pathname.startsWith('/reports') ||
-          pathname.startsWith('/team') ||
-          pathname.startsWith('/marketing') ||
-          pathname.startsWith('/_next') ||
-          pathname.startsWith('/public') ||
-          pathname.includes('.')
-        ) {
+
+        // Allow access to public routes without a token
+        if (isPublicPath(pathname)) {
           return true
         }
 
@@ -104,17 +105,12 @@ export default withAuth(
 export const config = {
   matcher: [
     /*
-     * Only apply middleware to protected routes:
-     * - /app/* (organization dashboards)  
-     * - /admin/* (admin panel)
-     * - /dashboard/* (authenticated user dashboards)
-     * - /settings/* (user settings)
-     * - /fields/* (field management - authenticated)
+     * Match all routes except:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public files (files in public directory)
      */
-    '/app/:path*',
-    '/admin/:path*', 
-    '/dashboard/:path*',
-    '/settings/:path*',
-    '/fields/:path*'
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }

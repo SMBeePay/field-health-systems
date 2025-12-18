@@ -65,7 +65,7 @@ export const authOptions: NextAuthOptions = {
         token.role = user.role
         token.organizationId = user.organizationId
         token.organizationSlug = user.organizationSlug
-        
+
         // Log successful login
         await AuditLogger.logLogin(user.id)
       }
@@ -79,6 +79,20 @@ export const authOptions: NextAuthOptions = {
         session.user.organizationSlug = token.organizationSlug as string
       }
       return session
+    },
+    async redirect({ url, baseUrl }) {
+      // Handle relative URLs
+      if (url.startsWith('/')) {
+        return `${baseUrl}${url}`
+      }
+
+      // Handle same-origin URLs
+      if (url.startsWith(baseUrl)) {
+        return url
+      }
+
+      // Default redirect to base URL
+      return baseUrl
     }
   },
   pages: {
