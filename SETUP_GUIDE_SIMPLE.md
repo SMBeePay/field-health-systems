@@ -8,24 +8,63 @@
 
 ## Step 1: Add a Database (3 minutes)
 
+Since Vercel doesn't have built-in Postgres anymore, we'll use **Neon** (free PostgreSQL database) from the Marketplace.
+
+### Option A: Via Vercel Marketplace (Easiest)
+
 1. **Go to Vercel Dashboard:**
    - Visit: https://vercel.com
    - Click on your project: **field-health-systems**
 
-2. **Add Vercel Postgres:**
+2. **Access Marketplace:**
    - Click the **Storage** tab at the top
-   - Click **Create Database**
-   - Select **Postgres**
-   - Name it: `field-health-production`
-   - Region: Choose closest to you (default is fine)
-   - Click **Create**
+   - Scroll down to find **"Explore Marketplace Postgres integrations"**
+   - Click that link, OR go directly to: https://vercel.com/integrations/neon
 
-3. **Connect to Your Project:**
-   - It will ask "Connect to a project"
-   - Select: **field-health-systems**
-   - Click **Connect**
+3. **Add Neon Integration:**
+   - Click **Add Integration** on the Neon card
+   - Select your Vercel account/team
+   - Click **Continue**
+   - Select your project: **field-health-systems**
+   - Click **Continue** and **Add Integration**
 
-✅ **Done!** The `DATABASE_URL` environment variable is now automatically set.
+4. **Authorize Neon:**
+   - You'll be redirected to Neon
+   - Click **Authorize** to connect Vercel and Neon
+   - Neon will create a free database automatically
+
+5. **Database Created:**
+   - Return to Vercel Dashboard → **Settings** → **Environment Variables**
+   - You should now see `DATABASE_URL` automatically added! ✅
+
+### Option B: Manual Neon Setup (If Option A doesn't work)
+
+1. **Create Neon Account:**
+   - Go to: https://console.neon.tech/signup
+   - Sign up (it's free, no credit card needed)
+
+2. **Create Database:**
+   - Click **Create a project**
+   - Name: `field-health-systems`
+   - Region: Choose closest to you
+   - Click **Create project**
+
+3. **Copy Connection String:**
+   - You'll see a connection string like:
+   ```
+   postgresql://username:password@ep-xxx-xxx.neon.tech/neondb?sslmode=require
+   ```
+   - Click **Copy** to copy it
+
+4. **Add to Vercel:**
+   - Go to Vercel Dashboard → **Settings** → **Environment Variables**
+   - Click **Add New**
+   - Name: `DATABASE_URL`
+   - Value: Paste your Neon connection string
+   - Environment: **Production** ✓
+   - Click **Save**
+
+✅ **Done!** The `DATABASE_URL` environment variable is now set.
 
 ---
 
