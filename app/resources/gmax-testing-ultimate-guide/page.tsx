@@ -1,6 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   Shield,
@@ -145,11 +142,7 @@ export default function GMAXTestingGuidePage() {
       />
 
       {/* Header */}
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white border-b border-gray-200 sticky top-0 z-50"
-      >
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -170,18 +163,14 @@ export default function GMAXTestingGuidePage() {
               <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
               <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
               <Link href="/schedule-assessment">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
-                >
+                <button className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
                   Request Demo
-                </motion.button>
+                </button>
               </Link>
             </nav>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Breadcrumbs */}
       <div className="max-w-5xl mx-auto px-6 pt-6">
@@ -196,11 +185,7 @@ export default function GMAXTestingGuidePage() {
 
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-6 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           <div className="mb-6">
             <span className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium">
               Field Safety & Compliance
@@ -231,15 +216,11 @@ export default function GMAXTestingGuidePage() {
           </div>
 
           <Link href="/schedule-assessment">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors mb-8"
-            >
+            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors mb-8">
               Schedule Your Field Assessment →
-            </motion.button>
+            </button>
           </Link>
-        </motion.div>
+        </div>
       </section>
 
       {/* Table of Contents */}
@@ -475,14 +456,10 @@ export default function GMAXTestingGuidePage() {
           </p>
 
           <Link href="/schedule-assessment">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center space-x-2"
-            >
+            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center space-x-2">
               <span>Schedule Professional GMAX Testing</span>
               <Shield className="w-5 h-5" />
-            </motion.button>
+            </button>
           </Link>
         </section>
 
@@ -723,14 +700,10 @@ export default function GMAXTestingGuidePage() {
           </p>
 
           <Link href="/schedule-assessment">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center space-x-2"
-            >
+            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center space-x-2">
               <span>Get Your Field Tested Today</span>
               <TrendingUp className="w-5 h-5" />
-            </motion.button>
+            </button>
           </Link>
         </section>
 
@@ -926,24 +899,16 @@ export default function GMAXTestingGuidePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/schedule-assessment">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center justify-center space-x-2"
-                >
+                <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center justify-center space-x-2">
                   <Calendar className="w-5 h-5" />
                   <span>Schedule Assessment</span>
-                </motion.button>
+                </button>
               </Link>
               <Link href="/services/gmax-testing">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors inline-flex items-center justify-center space-x-2 border-2 border-green-600"
-                >
+                <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors inline-flex items-center justify-center space-x-2 border-2 border-green-600">
                   <FileText className="w-5 h-5" />
                   <span>Learn More</span>
-                </motion.button>
+                </button>
               </Link>
             </div>
             <p className="text-sm text-gray-600 mt-4">
@@ -1028,24 +993,16 @@ export default function GMAXTestingGuidePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/schedule-assessment">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center space-x-2"
-              >
+              <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center space-x-2">
                 <Calendar className="w-5 h-5" />
                 <span>Schedule Assessment</span>
-              </motion.button>
+              </button>
             </Link>
             <Link href="tel:+1234567890">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-800 transition-colors inline-flex items-center space-x-2 border-2 border-white"
-              >
+              <button className="bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-800 transition-colors inline-flex items-center space-x-2 border-2 border-white">
                 <Phone className="w-5 h-5" />
                 <span>Call for Quote</span>
-              </motion.button>
+              </button>
             </Link>
           </div>
           <p className="text-green-100 mt-6">
