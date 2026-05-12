@@ -100,8 +100,9 @@ async function main() {
 
   console.log('✅ Created demo field:', demoField.name)
 
-  // Create demo testing data with realistic values
-  const testingData = await prisma.testingData.create({
+  // Create demo testing data (idempotent — skip if already exists)
+  const existingTestingData = await prisma.testingData.findFirst({ where: { fieldId: demoField.id } })
+  const testingData = existingTestingData ?? await prisma.testingData.create({
     data: {
       fieldId: demoField.id,
       testingDate: new Date('2024-08-15'),
@@ -153,8 +154,9 @@ async function main() {
 
   console.log('✅ Created demo testing data')
 
-  // Create maintenance recommendations
-  const maintenanceRec = await prisma.maintenanceRecommendation.create({
+  // Create maintenance recommendations (idempotent)
+  const existingMaintRec = await prisma.maintenanceRecommendation.findFirst({ where: { fieldId: demoField.id } })
+  const maintenanceRec = existingMaintRec ?? await prisma.maintenanceRecommendation.create({
     data: {
       fieldId: demoField.id,
       organizationId: demoOrg.id,
@@ -172,8 +174,9 @@ async function main() {
 
   console.log('✅ Created maintenance recommendations')
 
-  // Create compliance report
-  const complianceReport = await prisma.complianceReport.create({
+  // Create compliance report (idempotent)
+  const existingReport = await prisma.complianceReport.findFirst({ where: { fieldId: demoField.id } })
+  const complianceReport = existingReport ?? await prisma.complianceReport.create({
     data: {
       fieldId: demoField.id,
       organizationId: demoOrg.id,
