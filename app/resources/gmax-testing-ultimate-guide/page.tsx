@@ -290,15 +290,15 @@ export default function GMAXTestingGuidePage() {
           </div>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            As an athletic director, you're responsible for student-athlete safety across every aspect of your program. Your school district has likely invested anywhere from $300,000 to $800,000 in your artificial turf athletic field. Yet most schools have no systematic way to monitor whether that field continues to provide adequate shock absorption and player protection.
+            As an athletic director, you&apos;re responsible for student-athlete safety across every aspect of your program. Your school district has likely invested anywhere from $300,000 to $800,000 in your artificial turf athletic field. Yet most schools have no systematic way to monitor whether that field continues to provide adequate shock absorption and player protection.
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            That's where GMAX testing comes in. GMAX testing is the gold standard for measuring athletic field impact absorption and safety. It provides objective, quantifiable data about whether your field meets safety standards or poses a risk to your athletes.
+            That&apos;s where GMAX testing comes in. GMAX testing is the gold standard for measuring athletic field impact absorption and safety. It provides objective, quantifiable data about whether your field meets safety standards or poses a risk to your athletes.
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            In this comprehensive guide, you'll learn everything you need to know about GMAX testing for school athletic fields, including:
+            In this comprehensive guide, you&apos;ll learn everything you need to know about GMAX testing for school athletic fields, including:
           </p>
 
           <ul className="space-y-3 mb-8 text-gray-700">
@@ -333,7 +333,7 @@ export default function GMAXTestingGuidePage() {
           </ul>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            By the end of this guide, you'll have the knowledge to make informed decisions about athletic field safety, protect your student-athletes, demonstrate duty of care, and defend your district against potential liability.
+            By the end of this guide, you&apos;ll have the knowledge to make informed decisions about athletic field safety, protect your student-athletes, demonstrate duty of care, and defend your district against potential liability.
           </p>
 
           <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
@@ -351,7 +351,7 @@ export default function GMAXTestingGuidePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">What is GMAX Testing?</h2>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            GMAX testing is a standardized method for measuring the shock-absorbing properties of athletic playing surfaces. The term "GMAX" refers to the maximum G-force experienced during impact, measured in units called "Gs." One G equals the force of Earth's gravity—the force you feel standing still. Higher GMAX scores indicate harder surfaces with less shock absorption.
+            GMAX testing is a standardized method for measuring the shock-absorbing properties of athletic playing surfaces. The term &quot;GMAX&quot; refers to the maximum G-force experienced during impact, measured in units called &quot;Gs.&quot; One G equals the force of Earth's gravity—the force you feel standing still. Higher GMAX scores indicate harder surfaces with less shock absorption.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">The Science Behind GMAX</h3>
@@ -361,7 +361,7 @@ export default function GMAXTestingGuidePage() {
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Over time, several factors can reduce a field's ability to absorb impact:
+            Over time, several factors can reduce a field&apos;s ability to absorb impact:
           </p>
 
           <ul className="space-y-2 mb-8 text-gray-700">
@@ -379,7 +379,7 @@ export default function GMAXTestingGuidePage() {
           <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">How GMAX Testing Equipment Works</h3>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Professional GMAX testing uses specialized equipment that meets the ASTM F355-A specification. Here's how the testing process works:
+            Professional GMAX testing uses specialized equipment that meets the ASTM F355-A specification. Here&apos;s how the testing process works:
           </p>
 
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 mb-8">
@@ -421,7 +421,7 @@ export default function GMAXTestingGuidePage() {
             <li className="flex items-start space-x-3">
               <span className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">4</span>
               <div>
-                <strong>Data Recording:</strong> Results are recorded for each drop. The highest of the three readings at each location is used as that location's GMAX score.
+                <strong>Data Recording:</strong> Results are recorded for each drop. The highest of the three readings at each location is used as that location&apos;s GMAX score.
               </div>
             </li>
             <li className="flex items-start space-x-3">
@@ -637,7 +637,7 @@ export default function GMAXTestingGuidePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Understanding GMAX Scores: What the Numbers Mean</h2>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            GMAX scores range from approximately 80 G (very soft, like natural grass) to 200+ G (dangerously hard). Here's how to interpret your test results and take appropriate action:
+            GMAX scores range from approximately 80 G (very soft, like natural grass) to 200+ G (dangerously hard). Here&apos;s how to interpret your test results and take appropriate action:
           </p>
 
           <div className="space-y-4 mb-8">
@@ -712,7 +712,7 @@ export default function GMAXTestingGuidePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">7 Warning Signs Your Field Needs Testing Now</h2>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Don't wait for your scheduled testing if you notice any of these red flags:
+            Don&apos;t wait for your scheduled testing if you notice any of these red flags:
           </p>
 
           <div className="space-y-4 mb-8">
@@ -775,7 +775,7 @@ export default function GMAXTestingGuidePage() {
 
           <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6">
             <p className="text-yellow-900">
-              <strong>When in doubt, test.</strong> A $750 test is a small investment compared to a career-ending injury or million-dollar lawsuit. If something doesn't feel right, trust your instincts and schedule professional testing.
+              <strong>When in doubt, test.</strong> A $750 test is a small investment compared to a career-ending injury or million-dollar lawsuit. If something doesn&apos;t feel right, trust your instincts and schedule professional testing.
             </p>
           </div>
         </section>
@@ -785,7 +785,7 @@ export default function GMAXTestingGuidePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Choosing a GMAX Testing Provider</h2>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Not all GMAX testing is created equal. Here's what to look for in a professional testing provider:
+            Not all GMAX testing is created equal. Here&apos;s what to look for in a professional testing provider:
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">Required Qualifications</h3>
@@ -847,7 +847,7 @@ export default function GMAXTestingGuidePage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Your Action Plan for Field Safety</h2>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            Protecting your student-athletes through professional GMAX testing is one of the most important decisions you'll make as an athletic director. Here's how to get started:
+            Protecting your student-athletes through professional GMAX testing is one of the most important decisions you&apos;ll make as an athletic director. Here&apos;s how to get started:
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -889,7 +889,7 @@ export default function GMAXTestingGuidePage() {
           </p>
 
           <p className="text-xl text-gray-700 leading-relaxed mb-8">
-            The question isn't whether you can afford to test your fields. It's whether you can afford NOT to.
+            The question isn&apos;t whether you can afford to test your fields. It&apos;s whether you can afford NOT to.
           </p>
 
           <div className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-300 rounded-2xl p-8">

@@ -21,11 +21,6 @@ const eslintConfig = [
     ],
   },
   {
-    rules: {
-      "react/no-unescaped-entities": "off",
-    },
-  },
-  {
     files: ["lib/field-performance-knowledge.ts"],
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
