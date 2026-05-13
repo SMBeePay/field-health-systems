@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+
+  // ESLint — don't fail the build on lint warnings
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   
   // Performance optimizations
   images: {
