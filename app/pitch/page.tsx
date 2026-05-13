@@ -2,70 +2,120 @@
 
 import { useState, useEffect, useCallback } from 'react'
 
-const slides = [
-  { id: 'cover' },
-  { id: 'risk' },
-  { id: 'conflict' },
-  { id: 'solution' },
-  { id: 'platform' },
-  { id: 'platform2' },
-  { id: 'insurance' },
-  { id: 'pricing' },
-  { id: 'ask' },
-]
+// ─── Flat SVG icons ───────────────────────────────────────────────────────────
 
-const slideTitles: Record<string, string> = {
-  cover: 'Field Health Systems',
-  risk: 'The Stakes',
-  conflict: 'The Testing Problem',
-  solution: 'What We Do',
-  platform: 'The Platform — Dashboard',
-  platform2: 'The Platform — Field Detail',
-  insurance: 'For Risk Managers',
-  pricing: 'Pricing',
-  ask: 'Next Steps',
+function Icon({ name, className = 'w-6 h-6' }: { name: string; className?: string }) {
+  const icons: Record<string, React.ReactNode> = {
+    shield: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    ),
+    clipboard: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+      </svg>
+    ),
+    chart: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+      </svg>
+    ),
+    bell: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+      </svg>
+    ),
+    truck: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+      </svg>
+    ),
+    grid: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+      </svg>
+    ),
+    person: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      </svg>
+    ),
+    document: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+      </svg>
+    ),
+    warning: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+      </svg>
+    ),
+    scale: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.97zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.97z" />
+      </svg>
+    ),
+    check: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+      </svg>
+    ),
+    arrow: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+      </svg>
+    ),
+    building: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+      </svg>
+    ),
+    handshake: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+      </svg>
+    ),
+    monitor: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3" />
+      </svg>
+    ),
+    wrench: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+      </svg>
+    ),
+    calendar: (
+      <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+      </svg>
+    ),
+  }
+  return <>{icons[name] ?? null}</>
 }
 
-// ─── App UI mockup components (accurate to real codebase) ───────────────────
+// ─── App UI mockup (accurate to real codebase) ───────────────────────────────
 
-function AppShell({ children, org = 'Plano ISD', page = 'Dashboard' }: {
-  children: React.ReactNode
-  org?: string
-  page?: string
-}) {
+function AppShell({ children, page = 'Dashboard' }: { children: React.ReactNode; page?: string }) {
   return (
     <div className="flex h-full rounded-xl overflow-hidden border border-gray-200 shadow-2xl bg-gray-50 text-gray-900 text-xs">
-      {/* Sidebar */}
       <div className="w-44 bg-white border-r border-gray-200 flex flex-col flex-shrink-0">
         <div className="px-4 py-3 border-b border-gray-100">
           <div className="font-bold text-emerald-600 text-sm">Field Health</div>
-          <div className="text-gray-400 text-xs mt-0.5">{org}</div>
+          <div className="text-gray-400 text-xs mt-0.5">Plano ISD</div>
         </div>
         <nav className="flex-1 py-2 px-2 space-y-0.5">
-          {[
-            { label: 'Dashboard', icon: '▣', active: page === 'Dashboard' },
-            { label: 'Fields', icon: '◉', active: page === 'Fields' },
-            { label: 'Testing', icon: '◎', active: page === 'Testing' },
-            { label: 'Maintenance', icon: '⚙', active: page === 'Maintenance' },
-            { label: 'Reports', icon: '◈', active: page === 'Reports' },
-            { label: 'Analytics', icon: '◈', active: page === 'Analytics' },
-          ].map(({ label, icon, active }) => (
-            <div
-              key={label}
-              className={`flex items-center gap-2 px-2 py-1.5 rounded-md cursor-pointer ${
-                active
-                  ? 'bg-emerald-50 text-emerald-700 font-semibold'
-                  : 'text-gray-500 hover:bg-gray-50'
-              }`}
-            >
-              <span className="text-xs">{icon}</span>
+          {['Dashboard', 'Fields', 'Testing', 'Maintenance', 'Reports', 'Analytics'].map((label) => (
+            <div key={label} className={`flex items-center gap-2 px-2 py-1.5 rounded-md ${label === page ? 'bg-emerald-50 text-emerald-700 font-semibold' : 'text-gray-500'}`}>
+              <div className="w-3 h-3 rounded-sm border border-current opacity-60" />
               <span>{label}</span>
             </div>
           ))}
         </nav>
         <div className="px-4 py-3 border-t border-gray-100">
           <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-xs">A</div>
+            <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs">A</div>
             <div>
               <div className="font-medium text-gray-700" style={{ fontSize: '10px' }}>Athletic Dir.</div>
               <div className="text-gray-400" style={{ fontSize: '9px' }}>plano-isd.edu</div>
@@ -73,19 +123,12 @@ function AppShell({ children, org = 'Plano ISD', page = 'Dashboard' }: {
           </div>
         </div>
       </div>
-      {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Topbar */}
         <div className="bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between flex-shrink-0">
           <span className="font-semibold text-gray-800 text-xs">{page}</span>
-          <div className="flex items-center gap-2">
-            <div className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center text-xs">🔔</div>
-            <span className="text-gray-400" style={{ fontSize: '10px' }}>Last tested: Dec 4, 2024</span>
-          </div>
+          <span className="text-gray-400" style={{ fontSize: '10px' }}>Last tested: Dec 4, 2024</span>
         </div>
-        <div className="flex-1 overflow-hidden p-4">
-          {children}
-        </div>
+        <div className="flex-1 overflow-hidden p-4">{children}</div>
       </div>
     </div>
   )
@@ -98,11 +141,7 @@ function StatusPill({ status }: { status: string }) {
     MONITOR: 'bg-amber-100 text-amber-700 border-amber-200',
     CRITICAL: 'bg-red-100 text-red-700 border-red-200',
   }
-  return (
-    <span className={`text-xs font-semibold px-1.5 py-0.5 rounded-full border ${map[status] ?? 'bg-gray-100 text-gray-500'}`}>
-      {status}
-    </span>
-  )
+  return <span className={`text-xs font-semibold px-1.5 py-0.5 rounded-full border ${map[status] ?? 'bg-gray-100 text-gray-500'}`}>{status}</span>
 }
 
 function DashboardMockup() {
@@ -113,12 +152,10 @@ function DashboardMockup() {
     { name: 'Plano East Soccer Complex', type: 'Soccer', gmax: 98, status: 'EXCELLENT', last: 'Dec 4, 2024' },
     { name: 'Junior HS Lacrosse Field', type: 'Multi-Use', gmax: 145, status: 'GOOD', last: 'Nov 28, 2024' },
   ]
-
   return (
-    <AppShell org="Plano ISD" page="Dashboard">
+    <AppShell page="Dashboard">
       <div className="space-y-3">
-        {/* Summary cards */}
-        <div className="grid grid-cols-4 gap-2 mb-1">
+        <div className="grid grid-cols-4 gap-2">
           {[
             { label: 'Total Fields', value: '8', sub: 'Plano ISD' },
             { label: 'Critical', value: '1', sub: 'Needs attention', color: 'text-red-600' },
@@ -132,22 +169,13 @@ function DashboardMockup() {
             </div>
           ))}
         </div>
-
-        {/* Field list */}
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div className="px-3 py-2 border-b border-gray-100 flex items-center justify-between">
-            <span className="font-semibold text-gray-700" style={{ fontSize: '10px' }}>Field Status</span>
-            <span className="text-gray-400" style={{ fontSize: '9px' }}>Sorted by risk</span>
+            <span className="font-semibold text-gray-700" style={{ fontSize: '10px' }}>Field Status — Sorted by Risk</span>
           </div>
           {fields.map(({ name, type, gmax, status, last }) => (
-            <div key={name} className="flex items-center gap-3 px-3 py-2 border-b border-gray-50 hover:bg-gray-50">
-              <div
-                className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-                  status === 'CRITICAL' ? 'bg-red-500' :
-                  status === 'MONITOR' ? 'bg-amber-500' :
-                  status === 'GOOD' ? 'bg-emerald-500' : 'bg-sky-500'
-                }`}
-              />
+            <div key={name} className="flex items-center gap-3 px-3 py-2 border-b border-gray-50">
+              <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${status === 'CRITICAL' ? 'bg-red-500' : status === 'MONITOR' ? 'bg-amber-500' : status === 'GOOD' ? 'bg-emerald-500' : 'bg-sky-500'}`} />
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-gray-800 truncate" style={{ fontSize: '10px' }}>{name}</div>
                 <div className="text-gray-400" style={{ fontSize: '9px' }}>{type} · Last tested {last}</div>
@@ -166,11 +194,9 @@ function DashboardMockup() {
 
 function FieldDetailMockup() {
   const readings = [62, 58, 188, 59, 185, 64, 57, 182, 63, 66, 180, 62]
-
   return (
-    <AppShell org="Plano ISD" page="Fields">
+    <AppShell page="Fields">
       <div className="grid grid-cols-5 gap-3 h-full">
-        {/* Left — field info */}
         <div className="col-span-2 space-y-2">
           <div className="bg-white rounded-lg border border-gray-200 p-3">
             <div className="flex items-start justify-between mb-2">
@@ -183,9 +209,9 @@ function FieldDetailMockup() {
             <div className="grid grid-cols-2 gap-1.5 mt-2">
               {[
                 { label: 'GMAX Avg', value: '188', warn: true },
-                { label: 'ASTM Limit', value: '200', warn: false },
+                { label: 'HIC Score', value: '912', warn: true },
+                { label: 'Shear Factor', value: '24 Nm', warn: false },
                 { label: 'Infill Depth', value: '1.4"', warn: true },
-                { label: 'Last Tested', value: 'Nov 15', warn: false },
               ].map(({ label, value, warn }) => (
                 <div key={label} className="bg-gray-50 rounded px-2 py-1.5">
                   <div className="text-gray-400" style={{ fontSize: '8px' }}>{label}</div>
@@ -194,16 +220,10 @@ function FieldDetailMockup() {
               ))}
             </div>
           </div>
-
-          {/* Alert card */}
           <div className="bg-red-50 border border-red-200 rounded-lg p-2.5">
-            <div className="text-red-700 font-semibold" style={{ fontSize: '9px' }}>⚡ Maintenance Alert</div>
-            <div className="text-red-600 mt-1" style={{ fontSize: '9px' }}>
-              GMAX readings in NE quadrant exceeding 180. Field requires priority inspection before next scheduled event (Dec 12).
-            </div>
+            <div className="text-red-700 font-semibold" style={{ fontSize: '9px' }}>Maintenance Alert</div>
+            <div className="text-red-600 mt-1" style={{ fontSize: '9px' }}>GMAX and HIC readings in NE quadrant near limits. Priority inspection recommended before Dec 12 game.</div>
           </div>
-
-          {/* Compliance */}
           <div className="bg-white rounded-lg border border-gray-200 p-2.5">
             <div className="font-semibold text-gray-700 mb-1.5" style={{ fontSize: '9px' }}>ASTM F1936 Compliance</div>
             <div className="flex items-center gap-2 mb-1">
@@ -215,41 +235,21 @@ function FieldDetailMockup() {
             <div className="text-gray-400" style={{ fontSize: '8px' }}>12 G-units from ASTM failure threshold</div>
           </div>
         </div>
-
-        {/* Right — heat map + readings */}
         <div className="col-span-3 space-y-2">
-          {/* GMAX heat map */}
           <div className="bg-white rounded-lg border border-gray-200 p-3">
             <div className="font-semibold text-gray-700 mb-2" style={{ fontSize: '10px' }}>GMAX Reading Map — 12-Point Grid</div>
             <div className="relative bg-emerald-900/10 rounded border border-emerald-200 overflow-hidden" style={{ height: '110px' }}>
-              {/* Field lines */}
-              <div className="absolute inset-0 flex flex-col justify-between py-1 opacity-20">
-                {[0,1,2,3,4].map(i => (
-                  <div key={i} className="border-t border-emerald-600 border-dashed mx-2" />
-                ))}
-              </div>
-              {/* Reading dots */}
               <div className="absolute inset-2 grid grid-cols-4 grid-rows-3 gap-1">
                 {readings.map((r, i) => {
                   const color = r >= 180 ? 'bg-red-500 text-white' : r >= 160 ? 'bg-amber-400 text-white' : 'bg-emerald-500 text-white'
                   return (
-                    <div
-                      key={i}
-                      className={`${color} rounded-full flex items-center justify-center font-bold shadow`}
-                      style={{ fontSize: '8px' }}
-                    >
-                      {r}
-                    </div>
+                    <div key={i} className={`${color} rounded-full flex items-center justify-center font-bold shadow`} style={{ fontSize: '8px' }}>{r}</div>
                   )
                 })}
               </div>
             </div>
             <div className="flex gap-3 mt-1.5">
-              {[
-                { color: 'bg-red-500', label: '≥180 Critical' },
-                { color: 'bg-amber-400', label: '160–179 Monitor' },
-                { color: 'bg-emerald-500', label: '<160 Good' },
-              ].map(({ color, label }) => (
+              {[{ color: 'bg-red-500', label: '≥180 Critical' }, { color: 'bg-amber-400', label: '160–179 Monitor' }, { color: 'bg-emerald-500', label: '<160 Good' }].map(({ color, label }) => (
                 <div key={label} className="flex items-center gap-1">
                   <div className={`w-2 h-2 rounded-full ${color}`} />
                   <span className="text-gray-400" style={{ fontSize: '8px' }}>{label}</span>
@@ -257,21 +257,20 @@ function FieldDetailMockup() {
               ))}
             </div>
           </div>
-
-          {/* Recent tests table */}
           <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
             <div className="px-3 py-2 border-b border-gray-100">
               <span className="font-semibold text-gray-700" style={{ fontSize: '10px' }}>Testing History</span>
             </div>
             {[
-              { date: 'Nov 15, 2024', tech: 'S. Johnson, ASTF', gmax: 188, result: 'FAIL', color: 'text-red-600' },
-              { date: 'Aug 12, 2024', tech: 'M. Davis, ASTF', gmax: 171, result: 'WARN', color: 'text-amber-600' },
-              { date: 'Apr 8, 2024', tech: 'S. Johnson, ASTF', gmax: 154, result: 'PASS', color: 'text-emerald-600' },
-            ].map(({ date, tech, gmax, result, color }) => (
-              <div key={date} className="flex items-center px-3 py-1.5 border-b border-gray-50 gap-3">
+              { date: 'Nov 15, 2024', tech: 'S. Johnson, ASTF Cert.', gmax: 188, hic: 912, result: 'WARN', color: 'text-red-600' },
+              { date: 'Aug 12, 2024', tech: 'M. Davis, ASTF Cert.', gmax: 171, hic: 820, result: 'WARN', color: 'text-amber-600' },
+              { date: 'Apr 8, 2024', tech: 'S. Johnson, ASTF Cert.', gmax: 154, hic: 741, result: 'PASS', color: 'text-emerald-600' },
+            ].map(({ date, tech, gmax, hic, result, color }) => (
+              <div key={date} className="flex items-center px-3 py-1.5 border-b border-gray-50 gap-2">
                 <span className="text-gray-500 w-20 flex-shrink-0" style={{ fontSize: '9px' }}>{date}</span>
                 <span className="text-gray-400 flex-1" style={{ fontSize: '9px' }}>{tech}</span>
-                <span className="font-mono font-bold text-gray-600" style={{ fontSize: '9px' }}>G{gmax}</span>
+                <span className="font-mono text-gray-600" style={{ fontSize: '9px' }}>G{gmax}</span>
+                <span className="font-mono text-gray-600" style={{ fontSize: '9px' }}>HIC {hic}</span>
                 <span className={`font-bold ${color}`} style={{ fontSize: '9px' }}>{result}</span>
               </div>
             ))}
@@ -287,28 +286,27 @@ function FieldDetailMockup() {
 function CoverSlide() {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center px-16">
-      <div className="mb-8">
-        <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-1.5 text-emerald-400 text-sm font-medium mb-8">
-          Texas Independent GMAX Testing
-        </div>
-        <h1 className="text-7xl font-black text-white mb-4 tracking-tight">
-          Field Health
-          <span className="text-emerald-400"> Systems</span>
-        </h1>
-        <p className="text-2xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
-          Independent GMAX testing and compliance software for artificial turf fields —
-          with <span className="text-white font-medium">zero conflicts of interest</span>.
-        </p>
+      <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-1.5 text-emerald-400 text-sm font-medium mb-8">
+        Texas Independent Field Testing
       </div>
-      <div className="mt-12 grid grid-cols-3 gap-8 text-center max-w-xl mx-auto">
+      <h1 className="text-7xl font-black text-white mb-4 tracking-tight">
+        Field Health<span className="text-emerald-400"> Systems</span>
+      </h1>
+      <p className="text-2xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed mb-12">
+        We come to your field. We test it. We give you the documentation and software to manage it — independently, with no conflicts of interest.
+      </p>
+      <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto w-full">
         {[
-          { icon: '🏟️', label: 'ASTM F1936 Certified Testing' },
-          { icon: '⚖️', label: 'Independent — No Installer Ties' },
-          { icon: '📊', label: 'Compliance Software Platform' },
-        ].map(({ icon, label }) => (
-          <div key={label} className="bg-slate-800/60 border border-slate-700 rounded-xl p-4">
-            <div className="text-3xl mb-2">{icon}</div>
-            <div className="text-slate-300 text-sm">{label}</div>
+          { icon: 'truck', label: 'On-Site Field Testing', sub: 'ASTM F1936 certified technicians' },
+          { icon: 'shield', label: 'Independent Results', sub: 'Zero installer ties or conflicts' },
+          { icon: 'monitor', label: 'Compliance Software', sub: 'Records, history, maintenance alerts' },
+        ].map(({ icon, label, sub }) => (
+          <div key={label} className="bg-slate-800/60 border border-slate-700 rounded-xl p-5 text-center">
+            <div className="flex justify-center text-emerald-400 mb-3">
+              <Icon name={icon} className="w-7 h-7" />
+            </div>
+            <div className="text-white font-semibold text-sm mb-1">{label}</div>
+            <div className="text-slate-500 text-xs">{sub}</div>
           </div>
         ))}
       </div>
@@ -323,39 +321,41 @@ function RiskSlide() {
         <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">The Stakes</div>
         <h2 className="text-5xl font-black text-white mb-4">When a field fails,<br />districts pay.</h2>
         <p className="text-slate-400 text-lg max-w-xl">
-          ASTM F1936 sets the safety standard. A GMAX reading above 200 means the field is no longer
-          safe for play — and no longer defensible in court.
+          ASTM F1936 is the federal safety standard for artificial turf. Most Texas fields have no documented independent test on record — leaving athletic directors and administrators exposed.
         </p>
       </div>
       <div className="grid grid-cols-3 gap-6">
         {[
           {
-            icon: '⚠️',
+            icon: 'warning',
             title: 'GMAX > 200',
-            desc: 'ASTM F1936 failure threshold. Every G-unit above 165 increases concussion risk measurably. Most fields are never tested — so no one knows where they stand.',
+            desc: 'ASTM F1936 failure threshold. A field above this limit is no longer certifiable as safe for play. Most fields are never tested — so no one knows where they stand.',
             color: 'border-red-500/40 bg-red-500/5',
             badge: 'Safety Limit',
             badgeColor: 'bg-red-500/20 text-red-400',
+            iconColor: 'text-red-400',
           },
           {
-            icon: '⚖️',
+            icon: 'scale',
             title: 'Duty of Care',
-            desc: 'Districts have a documented legal duty to maintain safe playing surfaces. Undocumented fields leave athletic directors and administrators personally exposed.',
+            desc: 'Districts have a documented legal obligation to maintain safe playing surfaces. Without independent test records, that obligation is unmet and undefended.',
             color: 'border-amber-500/40 bg-amber-500/5',
             badge: 'Legal Exposure',
             badgeColor: 'bg-amber-500/20 text-amber-400',
+            iconColor: 'text-amber-400',
           },
           {
-            icon: '📋',
-            title: 'No Paper Trail',
-            desc: 'A plaintiff\'s attorney will ask: "When did you last test this field?" Without independent records, you have no answer. A PDF from your installer is not independent.',
+            icon: 'document',
+            title: 'No Independent Record',
+            desc: 'A plaintiff\'s attorney will ask: "When did you last have this field independently tested?" A report from your installer is not an independent answer.',
             color: 'border-slate-600/60 bg-slate-800/40',
             badge: 'Litigation Risk',
             badgeColor: 'bg-slate-600/30 text-slate-400',
+            iconColor: 'text-slate-400',
           },
-        ].map(({ icon, title, desc, color, badge, badgeColor }) => (
+        ].map(({ icon, title, desc, color, badge, badgeColor, iconColor }) => (
           <div key={title} className={`rounded-2xl border ${color} p-6`}>
-            <div className="text-3xl mb-4">{icon}</div>
+            <div className={`${iconColor} mb-4`}><Icon name={icon} className="w-8 h-8" /></div>
             <div className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-3 ${badgeColor}`}>{badge}</div>
             <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
             <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
@@ -363,10 +363,9 @@ function RiskSlide() {
         ))}
       </div>
       <div className="mt-8 bg-slate-800/60 border border-slate-700 rounded-xl px-6 py-4 flex items-center gap-4">
-        <div className="text-2xl">🏫</div>
+        <div className="text-slate-400 flex-shrink-0"><Icon name="building" className="w-6 h-6" /></div>
         <p className="text-slate-300 text-sm">
-          Texas has <span className="text-white font-semibold">thousands of artificial turf fields</span> across its school districts.
-          Most have no documented independent testing program — and no compliance record to show their insurer.
+          Texas has <span className="text-white font-semibold">thousands of artificial turf fields</span> across its school districts. Most have no documented independent testing program and no compliance record on file with their insurer.
         </p>
       </div>
     </div>
@@ -378,56 +377,51 @@ function ConflictSlide() {
     <div className="flex flex-col justify-center h-full px-20">
       <div className="mb-10">
         <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">The Testing Problem</div>
-        <h2 className="text-5xl font-black text-white mb-4">
-          Who is testing<br />your fields right now?
-        </h2>
+        <h2 className="text-5xl font-black text-white mb-4">Who is testing<br />your fields right now?</h2>
         <p className="text-slate-400 text-lg max-w-2xl">
-          Most fields are either <span className="text-white font-medium">not tested at all</span>, or tested by
-          the same contractor who built or maintains them — which could create a conflict of interest
-          your insurer cannot ignore.
+          Most fields are either <span className="text-white font-medium">not tested at all</span>, or tested by the same contractor who built or maintains them —
+          which could create a conflict of interest your insurer cannot ignore.
         </p>
       </div>
       <div className="grid grid-cols-2 gap-8">
         <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-8">
-          <div className="text-amber-400 font-bold text-sm uppercase tracking-widest mb-4">Common Scenario</div>
-          <div className="space-y-3">
+          <div className="text-amber-400 font-bold text-sm uppercase tracking-widest mb-5">Common Scenario</div>
+          <div className="space-y-4">
             {[
-              { step: '1', label: 'Installer builds the field' },
-              { step: '2', label: 'Installer also offers testing services' },
-              { step: '3', label: 'Installer earns maintenance revenue' },
-              { step: '4', label: 'Results may be influenced by that relationship' },
-            ].map(({ step, label }) => (
-              <div key={step} className="flex items-center gap-3">
-                <div className="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-xs font-bold flex-shrink-0">{step}</div>
-                <div className="text-slate-300 text-sm">{label}</div>
+              'Installer builds the field',
+              'Installer also offers testing services',
+              'Installer earns ongoing maintenance revenue',
+              'Test results may be influenced by that relationship',
+            ].map((label, i) => (
+              <div key={label} className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-xs font-bold flex-shrink-0 mt-0.5">{i + 1}</div>
+                <div className="text-slate-300 text-sm pt-0.5">{label}</div>
               </div>
             ))}
           </div>
-          <div className="mt-6 pt-5 border-t border-amber-500/20">
-            <p className="text-amber-400 text-sm font-medium">
-              ⚡ When the same company builds, tests, and maintains — objectivity is hard to guarantee
-            </p>
+          <div className="mt-6 pt-5 border-t border-amber-500/20 text-amber-400 text-sm">
+            When the same company builds, tests, and maintains — objectivity is hard to guarantee.
           </div>
         </div>
         <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-8">
-          <div className="text-emerald-400 font-bold text-sm uppercase tracking-widest mb-4">Field Health Systems</div>
-          <div className="space-y-3">
+          <div className="text-emerald-400 font-bold text-sm uppercase tracking-widest mb-5">Field Health Systems</div>
+          <div className="space-y-4">
             {[
-              { step: '✓', label: 'We test fields we did not build' },
-              { step: '✓', label: 'We sell no maintenance or construction services' },
-              { step: '✓', label: 'We earn the same fee whether a field passes or fails' },
-              { step: '✓', label: 'Our only product is an accurate, independent result' },
-            ].map(({ step, label }) => (
-              <div key={label} className="flex items-center gap-3">
-                <div className="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-sm font-bold flex-shrink-0">{step}</div>
-                <div className="text-slate-300 text-sm">{label}</div>
+              'We test fields we did not build',
+              'We sell no maintenance or construction services',
+              'We earn the same fee whether a field passes or fails',
+              'Our only product is an accurate, independent result',
+            ].map((label) => (
+              <div key={label} className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0 mt-0.5">
+                  <Icon name="check" className="w-3 h-3" />
+                </div>
+                <div className="text-slate-300 text-sm pt-0.5">{label}</div>
               </div>
             ))}
           </div>
-          <div className="mt-6 pt-5 border-t border-emerald-500/20">
-            <p className="text-emerald-400 text-sm font-medium">
-              ✅ Zero financial stake in outcomes = results insurers and administrators can stand behind
-            </p>
+          <div className="mt-6 pt-5 border-t border-emerald-500/20 text-emerald-400 text-sm">
+            Zero financial stake in outcomes — results administrators and insurers can stand behind.
           </div>
         </div>
       </div>
@@ -435,74 +429,91 @@ function ConflictSlide() {
   )
 }
 
-function SolutionSlide() {
+function TestingProcessSlide() {
   return (
     <div className="flex flex-col justify-center h-full px-20">
-      <div className="mb-10">
-        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">What We Do</div>
-        <h2 className="text-5xl font-black text-white mb-4">
-          Certified testing.<br />Permanent records.<br />Full compliance.
-        </h2>
+      <div className="mb-8">
+        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">How We Test</div>
+        <h2 className="text-5xl font-black text-white mb-3">We come to your field.<br />Here is what happens.</h2>
+        <p className="text-slate-400 text-lg max-w-2xl">Our certified technicians conduct a full on-site evaluation using a calibrated missile drop device across a standardized 12-point grid — producing a complete ASTM F1936 compliance record.</p>
       </div>
-      <div className="grid grid-cols-3 gap-6">
+
+      {/* Steps */}
+      <div className="flex items-start gap-4 mb-10">
         {[
-          {
-            icon: '📏',
-            title: 'GMAX Testing',
-            items: [
-              'ASTM F1936 certified protocol',
-              '12-point field grid minimum',
-              'GMAX, shear, and infill depth',
-              'Same-day preliminary results',
-            ],
-          },
-          {
-            icon: '📊',
-            title: 'Compliance Reports',
-            items: [
-              'Insurance-grade documentation',
-              'Technician name + credentials',
-              'Weather conditions logged',
-              'PDF + permanent digital record',
-            ],
-          },
-          {
-            icon: '🔔',
-            title: 'Platform & Alerts',
-            items: [
-              'Field health dashboard',
-              'Year-over-year trend data',
-              'Pre-failure alert system',
-              'Insurer-ready report access',
-            ],
-          },
-        ].map(({ icon, title, items }) => (
-          <div key={title} className="rounded-2xl border border-slate-700 bg-slate-800/40 p-6">
-            <div className="text-4xl mb-4">{icon}</div>
-            <h3 className="text-white font-bold text-lg mb-4">{title}</h3>
-            <ul className="space-y-2">
-              {items.map((item) => (
-                <li key={item} className="text-slate-400 text-sm flex items-start gap-2">
-                  <span className="text-emerald-400 mt-0.5 flex-shrink-0">·</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+          { icon: 'calendar', step: '01', label: 'Schedule', desc: 'We coordinate a visit around your game calendar — 4 times per year per field.' },
+          { icon: 'truck', step: '02', label: 'Arrive On-Site', desc: 'A certified ASTF technician arrives with calibrated testing equipment.' },
+          { icon: 'grid', step: '03', label: 'Test the Grid', desc: 'Minimum 12 points across the field using a standardized location protocol.' },
+          { icon: 'clipboard', step: '04', label: 'Report & Upload', desc: 'Full results delivered within 24 hours and synced to your dashboard.' },
+        ].map(({ icon, step, label, desc }, i, arr) => (
+          <div key={step} className="flex items-start gap-4 flex-1">
+            <div className="flex flex-col items-center">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                <Icon name={icon} className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="flex-1 pt-1">
+              <div className="text-emerald-400 text-xs font-bold mb-0.5">{step}</div>
+              <div className="text-white font-bold text-sm mb-1">{label}</div>
+              <div className="text-slate-400 text-xs leading-relaxed">{desc}</div>
+            </div>
+            {i < arr.length - 1 && (
+              <div className="text-slate-700 pt-2.5 flex-shrink-0">
+                <Icon name="arrow" className="w-4 h-4" />
+              </div>
+            )}
           </div>
         ))}
       </div>
-      <div className="mt-8 grid grid-cols-4 gap-4">
-        {[
-          { label: 'Visits / Field / Year', value: '4' },
-          { label: 'Avg. Test Duration', value: '2–3 hrs' },
-          { label: 'Report Turnaround', value: '24 hrs' },
-          { label: 'Standard', value: 'ASTM F1936' },
-        ].map(({ label, value }) => (
-          <div key={label} className="rounded-xl bg-slate-800/60 border border-slate-700 p-4 text-center">
-            <div className="text-2xl font-black text-emerald-400">{value}</div>
-            <div className="text-slate-400 text-xs mt-1">{label}</div>
-          </div>
-        ))}
+
+      {/* Measurements */}
+      <div className="border-t border-slate-800 pt-8">
+        <div className="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-4">What We Measure at Every Test Point</div>
+        <div className="grid grid-cols-4 gap-4">
+          {[
+            {
+              label: 'GMAX',
+              full: 'Peak G-Force',
+              limit: 'Limit: 200g',
+              desc: 'Measures the maximum deceleration force on impact — the primary indicator of concussion risk. ASTM F1936 requires GMAX below 200 at every test point.',
+              color: 'border-red-500/30 bg-red-500/5',
+              badge: 'text-red-400',
+            },
+            {
+              label: 'HIC',
+              full: 'Head Injury Criterion',
+              limit: 'Limit: 1,000',
+              desc: 'A calculated score that integrates the deceleration curve over time. Directly correlated to traumatic brain injury risk — stricter than GMAX alone.',
+              color: 'border-amber-500/30 bg-amber-500/5',
+              badge: 'text-amber-400',
+            },
+            {
+              label: 'Shear Factor',
+              full: 'Rotational Resistance',
+              limit: 'Target: < 25 Nm',
+              desc: 'Measures how much rotational force the surface applies to a cleat. High shear increases ACL and knee injury risk — especially relevant for soccer and football.',
+              color: 'border-violet-500/30 bg-violet-500/5',
+              badge: 'text-violet-400',
+            },
+            {
+              label: 'Infill Depth',
+              full: 'Fiber & Infill Levels',
+              limit: 'Per manufacturer spec',
+              desc: 'Low infill is the leading cause of rising GMAX. We measure depth at every point to identify where the surface is compressing and proactive maintenance is needed.',
+              color: 'border-sky-500/30 bg-sky-500/5',
+              badge: 'text-sky-400',
+            },
+          ].map(({ label, full, limit, desc, color, badge }) => (
+            <div key={label} className={`rounded-xl border ${color} p-4`}>
+              <div className="flex items-center justify-between mb-1">
+                <span className={`font-black text-base ${badge}`}>{label}</span>
+                <span className={`text-xs font-semibold ${badge} opacity-70`}>{limit}</span>
+              </div>
+              <div className="text-slate-500 text-xs mb-2">{full}</div>
+              <p className="text-slate-400 text-xs leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -512,17 +523,30 @@ function PlatformSlide() {
   return (
     <div className="flex flex-col justify-center h-full px-20">
       <div className="mb-6">
-        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-2">The Platform</div>
-        <h2 className="text-4xl font-black text-white mb-1">Every field. One dashboard.</h2>
-        <p className="text-slate-400 text-base">Real-time health status, compliance history, and automated alerts — sorted by risk so the most urgent issues surface first.</p>
+        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-2">The Software Platform</div>
+        <h2 className="text-4xl font-black text-white mb-2">Test results don&apos;t live in a PDF.</h2>
+        <p className="text-slate-400 text-base max-w-2xl">
+          After every visit, results are uploaded to your district dashboard — giving you a permanent, searchable record of every test, every technician, and every field across your entire campus.
+          Sort by risk, generate compliance reports in one click, and track how your fields trend over time.
+        </p>
       </div>
-      <div className="flex-1 min-h-0" style={{ height: '340px' }}>
+      <div className="flex-1 min-h-0" style={{ height: '320px' }}>
         <DashboardMockup />
       </div>
-      <div className="mt-4 flex items-center gap-6 text-slate-400 text-sm">
-        <span>→ <span className="text-white">Sorted by risk</span> — highest GMAX at top</span>
-        <span>→ <span className="text-white">1-click compliance reports</span> for any field</span>
-        <span>→ <span className="text-white">Role-based access</span> for ADs, risk managers, and insurers</span>
+      <div className="mt-4 grid grid-cols-3 gap-4">
+        {[
+          { icon: 'chart', label: 'Historical trending', sub: 'See how GMAX moves season over season' },
+          { icon: 'bell', label: 'Automated alerts', sub: 'Notified before readings reach critical levels' },
+          { icon: 'shield', label: 'Insurer portal access', sub: 'Risk managers get direct read-only access' },
+        ].map(({ icon, label, sub }) => (
+          <div key={label} className="flex items-start gap-3 bg-slate-800/40 border border-slate-700 rounded-xl p-3">
+            <div className="text-emerald-400 flex-shrink-0 mt-0.5"><Icon name={icon} className="w-5 h-5" /></div>
+            <div>
+              <div className="text-white text-sm font-semibold">{label}</div>
+              <div className="text-slate-500 text-xs mt-0.5">{sub}</div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -532,20 +556,30 @@ function Platform2Slide() {
   return (
     <div className="flex flex-col justify-center h-full px-20">
       <div className="mb-6">
-        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-2">The Platform — Field Detail</div>
-        <h2 className="text-4xl font-black text-white mb-1">The GMAX 188 moment.</h2>
-        <p className="text-slate-400 text-base">
-          This is a real demo field — 12 G-units from the ASTM failure limit. The platform surfaces this automatically,
-          flags it for re-test, and generates documentation before anyone has to ask.
+        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-2">Field Detail View</div>
+        <h2 className="text-4xl font-black text-white mb-2">Every test point. On a map.</h2>
+        <p className="text-slate-400 text-base max-w-2xl">
+          The field detail view shows your GMAX, HIC, and shear readings mapped to the exact grid point where they were taken.
+          One field in this demo is sitting at GMAX 188 — 12 G-units from the ASTM failure limit — with the hot zone clearly visible in the northeast quadrant.
         </p>
       </div>
-      <div className="flex-1 min-h-0" style={{ height: '340px' }}>
+      <div className="flex-1 min-h-0" style={{ height: '320px' }}>
         <FieldDetailMockup />
       </div>
-      <div className="mt-4 flex items-center gap-6 text-slate-400 text-sm">
-        <span>→ <span className="text-white">Heat map</span> shows which zones are high-risk</span>
-        <span>→ <span className="text-white">Full test history</span> with technician credentials on every record</span>
-        <span>→ <span className="text-white">Automated alert</span> sent to AD before next scheduled game</span>
+      <div className="mt-4 grid grid-cols-3 gap-4">
+        {[
+          { icon: 'grid', label: 'Zone-level heat map', sub: 'Identifies exactly which areas of the field need attention' },
+          { icon: 'wrench', label: 'Maintenance decisions', sub: 'Use data to prioritize infill top-ups and grooming' },
+          { icon: 'document', label: 'Full audit trail', sub: 'Every test logged with technician credentials and weather conditions' },
+        ].map(({ icon, label, sub }) => (
+          <div key={label} className="flex items-start gap-3 bg-slate-800/40 border border-slate-700 rounded-xl p-3">
+            <div className="text-emerald-400 flex-shrink-0 mt-0.5"><Icon name={icon} className="w-5 h-5" /></div>
+            <div>
+              <div className="text-white text-sm font-semibold">{label}</div>
+              <div className="text-slate-500 text-xs mt-0.5">{sub}</div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -556,33 +590,30 @@ function InsuranceSlide() {
     <div className="flex flex-col justify-center h-full px-20">
       <div className="mb-10">
         <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">For Risk Managers</div>
-        <h2 className="text-5xl font-black text-white mb-4">
-          The documentation<br />your underwriters need.
-        </h2>
+        <h2 className="text-5xl font-black text-white mb-4">The documentation<br />your underwriters need.</h2>
         <p className="text-slate-400 text-lg max-w-2xl">
-          When a claim is filed, the question is always &ldquo;what did you know, and when did you know it?&rdquo;
-          FHS gives you a defensible answer.
+          When a claim is filed, the question is always &ldquo;what did you know, and when did you know it?&rdquo; FHS gives you a defensible, timestamped answer.
         </p>
       </div>
       <div className="grid grid-cols-2 gap-8">
         <div className="space-y-4">
           {[
             {
-              icon: '🏛️',
+              icon: 'building',
               title: 'TASB Risk Management Fund',
               desc: 'Covers 1,000+ member ISDs across Texas. A preferred partner relationship converts the entire member network from cold prospect to warm referral.',
               tag: 'Primary Target',
               tagColor: 'bg-emerald-500/20 text-emerald-400',
             },
             {
-              icon: '🎓',
+              icon: 'person',
               title: 'United Educators',
-              desc: 'Serves premium Texas districts. Independent testing documentation directly supports their underwriting requirements for turf field coverage.',
+              desc: 'Serves premium Texas districts. Independent testing documentation directly supports their underwriting requirements for turf field liability coverage.',
               tag: 'Secondary Target',
               tagColor: 'bg-sky-500/20 text-sky-400',
             },
             {
-              icon: '🤝',
+              icon: 'handshake',
               title: 'Regional Brokers',
               desc: 'Epic Insurance, Hotchkiss, and regional specialists. Commission-based referral structure — FHS pays per enrolled district.',
               tag: 'Partnership Channel',
@@ -590,7 +621,7 @@ function InsuranceSlide() {
             },
           ].map(({ icon, title, desc, tag, tagColor }) => (
             <div key={title} className="flex gap-4 rounded-xl border border-slate-700 bg-slate-800/40 p-5">
-              <div className="text-2xl flex-shrink-0">{icon}</div>
+              <div className="text-slate-400 flex-shrink-0 mt-0.5"><Icon name={icon} className="w-5 h-5" /></div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-white font-semibold text-sm">{title}</span>
@@ -605,15 +636,15 @@ function InsuranceSlide() {
           <div className="text-emerald-400 font-bold text-sm uppercase tracking-widest mb-6">What FHS Provides Insurers</div>
           <div className="space-y-5">
             {[
-              { label: 'Timestamped test records', sub: 'Every test logged with technician, weather, and GPS coordinates' },
-              { label: 'Chain of custody documentation', sub: 'Who tested, when, with what equipment, calibration certifications' },
-              { label: 'Trend analysis', sub: 'Year-over-year GMAX trajectory shows proactive risk management' },
-              { label: 'Pre-injury documentation', sub: 'If a claim is filed, the district already has a documented record' },
-              { label: 'Insurer portal access', sub: 'Direct read-only access for underwriters and risk managers' },
+              { label: 'Timestamped test records', sub: 'Every test logged with technician, weather conditions, and GPS coordinates' },
+              { label: 'Chain of custody documentation', sub: 'Who tested, when, with what calibrated equipment, and certification numbers' },
+              { label: 'GMAX & HIC trend analysis', sub: 'Year-over-year trajectory — shows proactive risk management at the district level' },
+              { label: 'Pre-injury documentation', sub: 'If a claim is filed, the district already has a complete independent record on file' },
+              { label: 'Insurer portal access', sub: 'Direct read-only access for underwriters and risk managers — no email requests needed' },
             ].map(({ label, sub }) => (
               <div key={label} className="flex gap-3">
-                <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0 mt-0.5">
+                  <Icon name="check" className="w-3 h-3" />
                 </div>
                 <div>
                   <div className="text-white text-sm font-semibold">{label}</div>
@@ -634,7 +665,7 @@ function PricingSlide() {
       <div className="mb-10">
         <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">Pricing</div>
         <h2 className="text-5xl font-black text-white mb-4">Simple. Predictable. Defensible.</h2>
-        <p className="text-slate-400 text-lg">Annual contracts. Four visits per field per year. Platform included.</p>
+        <p className="text-slate-400 text-lg">Annual contracts. Four on-site visits per field per year. Platform included.</p>
       </div>
       <div className="grid grid-cols-3 gap-6">
         {[
@@ -643,7 +674,7 @@ function PricingSlide() {
             price: '$2,500',
             per: 'per field / year',
             desc: '1–2 fields',
-            features: ['4 GMAX test visits', 'ASTM F1936 compliance reports', 'Field Health dashboard access', '24-hr report turnaround', 'Email + phone support'],
+            features: ['4 on-site testing visits', 'GMAX, HIC, shear, infill depth', 'ASTM F1936 compliance reports', 'Field Health dashboard access', '24-hr report turnaround'],
             highlight: false,
           },
           {
@@ -651,7 +682,7 @@ function PricingSlide() {
             price: '$2,000',
             per: 'per field / year',
             desc: '6–10 fields',
-            features: ['Everything in Standard', 'Priority scheduling', 'Athletic Director dashboard', 'Annual field health summary', 'Dedicated account rep'],
+            features: ['Everything in Standard', 'Priority scheduling', 'Athletic Director dashboard', 'Year-over-year trend reports', 'Dedicated account rep'],
             highlight: true,
           },
           {
@@ -663,29 +694,18 @@ function PricingSlide() {
             highlight: false,
           },
         ].map(({ name, price, per, desc, features, highlight }) => (
-          <div
-            key={name}
-            className={`rounded-2xl border p-7 relative ${
-              highlight
-                ? 'border-emerald-500/50 bg-emerald-500/5 ring-1 ring-emerald-500/20'
-                : 'border-slate-700 bg-slate-800/40'
-            }`}
-          >
+          <div key={name} className={`rounded-2xl border p-7 relative ${highlight ? 'border-emerald-500/50 bg-emerald-500/5 ring-1 ring-emerald-500/20' : 'border-slate-700 bg-slate-800/40'}`}>
             {highlight && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-black text-xs font-bold px-3 py-1 rounded-full">
-                Most Popular
-              </div>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-black text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
             )}
             <div className="text-slate-400 text-sm font-semibold mb-1">{name}</div>
-            <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-4xl font-black text-white">{price}</span>
-            </div>
+            <div className="text-4xl font-black text-white mb-1">{price}</div>
             <div className="text-slate-500 text-xs mb-1">{per}</div>
             <div className="text-emerald-400 text-xs font-medium mb-5">{desc}</div>
             <ul className="space-y-2">
               {features.map((f) => (
                 <li key={f} className="text-slate-400 text-sm flex items-start gap-2">
-                  <span className="text-emerald-400 flex-shrink-0">✓</span>
+                  <div className="text-emerald-400 flex-shrink-0 mt-0.5"><Icon name="check" className="w-3.5 h-3.5" /></div>
                   {f}
                 </li>
               ))}
@@ -707,21 +727,21 @@ function AskSlide() {
     <div className="flex flex-col items-center justify-center h-full text-center px-20">
       <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-6">Next Steps</div>
       <h2 className="text-6xl font-black text-white mb-6 max-w-3xl leading-tight">
-        Let&apos;s protect your fields —
-        and your district.
+        Let&apos;s protect your fields — and your district.
       </h2>
       <p className="text-slate-400 text-xl max-w-2xl mb-12 leading-relaxed">
-        Start with a free pilot test on one field. We&apos;ll deliver a full ASTM-compliant report,
-        show you exactly where your risk is, and let the data make the case.
+        Start with a free pilot test on one field. We&apos;ll come out, run the full ASTM protocol, and deliver a complete compliance report — no obligation.
       </p>
       <div className="grid grid-cols-3 gap-6 w-full max-w-3xl mb-12">
         {[
-          { step: '1', label: 'Schedule a pilot test', sub: 'One field, free, no obligation' },
-          { step: '2', label: 'Review your report', sub: 'Full ASTM F1936 compliance documentation' },
-          { step: '3', label: 'Enroll your district', sub: 'Annual contract, all fields covered' },
-        ].map(({ step, label, sub }) => (
+          { icon: 'calendar', step: '1', label: 'Schedule a pilot test', sub: 'One field, free, no obligation' },
+          { icon: 'clipboard', step: '2', label: 'Review your report', sub: 'Full ASTM F1936 compliance documentation' },
+          { icon: 'shield', step: '3', label: 'Enroll your district', sub: 'Annual contract, all fields covered' },
+        ].map(({ icon, step, label, sub }) => (
           <div key={step} className="rounded-xl border border-slate-700 bg-slate-800/40 p-5">
-            <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-sm mx-auto mb-3">{step}</div>
+            <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto mb-3">
+              <Icon name={icon} className="w-4 h-4" />
+            </div>
             <div className="text-white font-semibold text-sm mb-1">{label}</div>
             <div className="text-slate-500 text-xs">{sub}</div>
           </div>
@@ -742,21 +762,43 @@ function AskSlide() {
   )
 }
 
-// ─── Slide registry ───────────────────────────────────────────────────────────
+// ─── Registry & shell ─────────────────────────────────────────────────────────
+
+const slides = [
+  { id: 'cover' },
+  { id: 'risk' },
+  { id: 'conflict' },
+  { id: 'testing' },
+  { id: 'platform' },
+  { id: 'platform2' },
+  { id: 'insurance' },
+  { id: 'pricing' },
+  { id: 'ask' },
+]
+
+const slideTitles: Record<string, string> = {
+  cover: 'Field Health Systems',
+  risk: 'The Stakes',
+  conflict: 'The Testing Problem',
+  testing: 'How We Test',
+  platform: 'The Software Platform',
+  platform2: 'Field Detail View',
+  insurance: 'For Risk Managers',
+  pricing: 'Pricing',
+  ask: 'Next Steps',
+}
 
 const slideComponents: Record<string, React.ComponentType> = {
   cover: CoverSlide,
   risk: RiskSlide,
   conflict: ConflictSlide,
-  solution: SolutionSlide,
+  testing: TestingProcessSlide,
   platform: PlatformSlide,
   platform2: Platform2Slide,
   insurance: InsuranceSlide,
   pricing: PricingSlide,
   ask: AskSlide,
 }
-
-// ─── Shell ────────────────────────────────────────────────────────────────────
 
 export default function PitchDeck() {
   const [current, setCurrent] = useState(0)
@@ -782,41 +824,23 @@ export default function PitchDeck() {
           <SlideComponent />
         </div>
       </div>
-
-      {/* Bottom nav */}
       <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-8 py-4 bg-slate-950/80 border-t border-slate-800/60 backdrop-blur-sm">
         <div className="text-slate-500 text-sm">
           <span className="text-slate-300 font-semibold">Field Health Systems</span>
           <span className="mx-2">·</span>
           <span>{slideTitles[slides[current].id]}</span>
         </div>
-
         <div className="flex items-center gap-2">
           {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-2 rounded-full transition-all ${
-                i === current ? 'bg-emerald-400 w-6' : 'bg-slate-700 hover:bg-slate-500 w-2'
-              }`}
-            />
+            <button key={i} onClick={() => setCurrent(i)} className={`h-2 rounded-full transition-all ${i === current ? 'bg-emerald-400 w-6' : 'bg-slate-700 hover:bg-slate-500 w-2'}`} />
           ))}
         </div>
-
         <div className="flex items-center gap-3">
-          <button
-            onClick={prev}
-            disabled={current === 0}
-            className="px-4 py-1.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-          >
+          <button onClick={prev} disabled={current === 0} className="px-4 py-1.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
             ← Prev
           </button>
           <span className="text-slate-600 text-sm">{current + 1} / {slides.length}</span>
-          <button
-            onClick={next}
-            disabled={current === slides.length - 1}
-            className="px-4 py-1.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-          >
+          <button onClick={next} disabled={current === slides.length - 1} className="px-4 py-1.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
             Next →
           </button>
         </div>
