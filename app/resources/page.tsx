@@ -50,7 +50,7 @@ const featuredResources: ResourceCard[] = [
     icon: "🔧"
   },
   {
-    title: "GMAX Testing Complete Guide", 
+    title: "GMAX Testing Complete Guide",
     description: "Everything you need to know about GMAX testing procedures, equipment requirements, and regulatory compliance for artificial turf fields.",
     href: "/resources/testing/gmax/gmax-testing-complete-guide",
     category: "Testing",
@@ -73,7 +73,7 @@ const allResources: ResourceCard[] = [
     title: "Maintenance Schedule Templates",
     description: "Downloadable maintenance schedule templates for quarterly, seasonal, and annual turf field care planning.",
     href: "/resources/maintenance/schedules/maintenance-schedule-templates",
-    category: "Maintenance", 
+    category: "Maintenance",
     readTime: "Download",
     icon: "📅"
   },
@@ -88,7 +88,7 @@ const allResources: ResourceCard[] = [
   {
     title: "Field Testing Protocols",
     description: "Standardized testing procedures for comprehensive artificial turf field assessment and safety compliance.",
-    href: "/resources/testing/procedures/field-testing-protocols", 
+    href: "/resources/testing/procedures/field-testing-protocols",
     category: "Testing",
     readTime: "7 min read",
     icon: "📋"
@@ -98,7 +98,7 @@ const allResources: ResourceCard[] = [
     description: "Comprehensive reviews and comparisons of artificial turf testing equipment, from handheld devices to professional systems.",
     href: "/resources/testing/equipment/testing-equipment-reviews",
     category: "Testing",
-    readTime: "15 min read", 
+    readTime: "15 min read",
     icon: "⚙️"
   },
   {
@@ -112,12 +112,12 @@ const allResources: ResourceCard[] = [
 ]
 
 function ResourceCard({ resource }: { resource: ResourceCard }) {
-  const cardClasses = resource.featured 
-    ? "bg-gradient-to-br from-green-50 to-blue-50 border-green-200 hover:from-green-100 hover:to-blue-100" 
+  const cardClasses = resource.featured
+    ? "bg-gradient-to-br from-green-50 to-blue-50 border-green-200 hover:from-green-100 hover:to-blue-100"
     : "bg-white border-gray-200 hover:bg-gray-50"
 
   return (
-    <Link 
+    <Link
       href={resource.href}
       onClick={() => trackResourceClick(resource.title, resource.category)}
       className={`block p-6 rounded-lg border-2 transition-colors duration-200 ${cardClasses}`}
@@ -126,7 +126,10 @@ function ResourceCard({ resource }: { resource: ResourceCard }) {
         <span className="text-2xl flex-shrink-0">{resource.icon}</span>
         <div className="flex-grow">
           <div className="flex items-center space-x-2 mb-2">
-            <span className="text-xs font-semibold text-green-600 bg-green-100 px-2 py-1 rounded">
+            <span
+              className="text-xs font-semibold bg-green-100 px-2 py-1 rounded"
+              style={{ color: '#4CAF50' }}
+            >
               {resource.category}
             </span>
             <span className="text-xs text-gray-500">{resource.readTime}</span>
@@ -177,7 +180,7 @@ export default function ResourcesPage() {
           Artificial Turf Resources
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Expert guides, calculators, and tools to help you maintain, test, and optimize your artificial turf fields. 
+          Expert guides, calculators, and tools to help you maintain, test, and optimize your artificial turf fields.
           From daily maintenance to long-term planning, find everything you need to maximize field performance and safety.
         </p>
       </div>
@@ -188,7 +191,7 @@ export default function ResourcesPage() {
           <h2 className="text-2xl font-bold text-gray-900">Featured Resources</h2>
           <div className="ml-4 flex-grow h-px bg-gray-200"></div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredResources.map((resource, index) => (
             <ResourceCard key={index} resource={resource} />
@@ -202,9 +205,9 @@ export default function ResourcesPage() {
           <h2 className="text-2xl font-bold text-gray-900">Browse by Category</h2>
           <div className="ml-4 flex-grow h-px bg-gray-200"></div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Link 
+          <Link
             href="/resources/maintenance"
             className="p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-colors"
           >
@@ -214,8 +217,8 @@ export default function ResourcesPage() {
               <p className="text-sm text-gray-600">Cleaning, care, and maintenance schedules for optimal field performance</p>
             </div>
           </Link>
-          
-          <Link 
+
+          <Link
             href="/resources/testing"
             className="p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-colors"
           >
@@ -225,8 +228,8 @@ export default function ResourcesPage() {
               <p className="text-sm text-gray-600">GMAX testing, safety compliance, and field assessment procedures</p>
             </div>
           </Link>
-          
-          <Link 
+
+          <Link
             href="/resources/cost-analysis"
             className="p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-colors"
           >
@@ -236,8 +239,8 @@ export default function ResourcesPage() {
               <p className="text-sm text-gray-600">Budget calculators, ROI tools, and cost optimization strategies</p>
             </div>
           </Link>
-          
-          <Link 
+
+          <Link
             href="/resources/industry-insights"
             className="p-6 bg-white border-2 border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-colors"
           >
@@ -256,7 +259,7 @@ export default function ResourcesPage() {
           <h2 className="text-2xl font-bold text-gray-900">All Resources</h2>
           <div className="ml-4 flex-grow h-px bg-gray-200"></div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {allResources.map((resource, index) => (
             <ResourceCard key={index} resource={resource} />
@@ -265,14 +268,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="mt-16 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg p-8 text-center text-white">
+      <section className="mt-16 rounded-lg p-8 text-center text-white" style={{ background: 'linear-gradient(to right, #4CAF50, #2563eb)' }}>
         <h2 className="text-2xl font-bold mb-4">Need Expert Field Assessment?</h2>
         <p className="text-lg mb-6 opacity-90">
           Get professional GMAX testing and comprehensive field health analysis from certified experts.
         </p>
-        <Link 
+        <Link
           href="/contact"
-          className="inline-block bg-white text-green-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+          className="inline-block bg-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+          style={{ color: '#4CAF50' }}
         >
           Schedule Consultation
         </Link>

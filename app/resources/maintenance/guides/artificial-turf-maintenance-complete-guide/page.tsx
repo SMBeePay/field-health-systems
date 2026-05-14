@@ -56,7 +56,7 @@ export default function ArtificialTurfMaintenanceGuide() {
                 "name": "Turf brush or power broom"
               },
               {
-                "@type": "HowToSupply", 
+                "@type": "HowToSupply",
                 "name": "Infill spreader"
               },
               {
@@ -73,7 +73,7 @@ export default function ArtificialTurfMaintenanceGuide() {
               },
               {
                 "@type": "HowToStep",
-                "name": "Weekly Brushing", 
+                "name": "Weekly Brushing",
                 "text": "Brush turf fibers to prevent matting and redistribute infill",
                 "position": 2
               },
@@ -102,9 +102,9 @@ export default function ArtificialTurfMaintenanceGuide() {
 
       {/* Breadcrumbs */}
       <nav className="flex mb-8 text-sm">
-        <Link href="/resources" className="text-green-600 hover:text-green-700">Resources</Link>
+        <Link href="/resources" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Resources</Link>
         <span className="mx-2 text-gray-500">/</span>
-        <Link href="/resources/maintenance" className="text-green-600 hover:text-green-700">Maintenance</Link>
+        <Link href="/resources/maintenance" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Maintenance</Link>
         <span className="mx-2 text-gray-500">/</span>
         <span className="text-gray-700">Complete Maintenance Guide</span>
       </nav>
@@ -118,14 +118,14 @@ export default function ArtificialTurfMaintenanceGuide() {
             </span>
             <span className="text-gray-500 text-sm">15 min read</span>
           </div>
-          
+
           <h1 className="text-4xl font-bold text-gray-900 mb-6">
             Complete Artificial Turf Maintenance Guide
           </h1>
-          
+
           <p className="text-xl text-gray-600 leading-relaxed mb-6">
-            Proper artificial turf maintenance extends field life by up to 40% and reduces emergency repairs by 73%. 
-            This comprehensive guide covers everything from daily cleaning to quarterly assessments, helping you maximize 
+            Proper artificial turf maintenance extends field life by up to 40% and reduces emergency repairs by 73%.
+            This comprehensive guide covers everything from daily cleaning to quarterly assessments, helping you maximize
             your field investment while ensuring optimal player safety and performance.
           </p>
 
@@ -145,21 +145,21 @@ export default function ArtificialTurfMaintenanceGuide() {
         <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-12">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Table of Contents</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-            <a href="#daily-maintenance" className="text-green-600 hover:text-green-700 hover:underline">1. Daily Maintenance Protocols</a>
-            <a href="#weekly-maintenance" className="text-green-600 hover:text-green-700 hover:underline">2. Weekly Care Procedures</a>
-            <a href="#monthly-deep-cleaning" className="text-green-600 hover:text-green-700 hover:underline">3. Monthly Deep Cleaning</a>
-            <a href="#seasonal-maintenance" className="text-green-600 hover:text-green-700 hover:underline">4. Seasonal Maintenance</a>
-            <a href="#infill-management" className="text-green-600 hover:text-green-700 hover:underline">5. Infill Management</a>
-            <a href="#testing-schedules" className="text-green-600 hover:text-green-700 hover:underline">6. Testing & Assessment</a>
-            <a href="#equipment-guide" className="text-green-600 hover:text-green-700 hover:underline">7. Equipment Selection Guide</a>
-            <a href="#cost-optimization" className="text-green-600 hover:text-green-700 hover:underline">8. Cost Optimization Strategies</a>
+            <a href="#daily-maintenance" className="hover:underline" style={{ color: '#4CAF50' }}>1. Daily Maintenance Protocols</a>
+            <a href="#weekly-maintenance" className="hover:underline" style={{ color: '#4CAF50' }}>2. Weekly Care Procedures</a>
+            <a href="#monthly-deep-cleaning" className="hover:underline" style={{ color: '#4CAF50' }}>3. Monthly Deep Cleaning</a>
+            <a href="#seasonal-maintenance" className="hover:underline" style={{ color: '#4CAF50' }}>4. Seasonal Maintenance</a>
+            <a href="#infill-management" className="hover:underline" style={{ color: '#4CAF50' }}>5. Infill Management</a>
+            <a href="#testing-schedules" className="hover:underline" style={{ color: '#4CAF50' }}>6. Testing & Assessment</a>
+            <a href="#equipment-guide" className="hover:underline" style={{ color: '#4CAF50' }}>7. Equipment Selection Guide</a>
+            <a href="#cost-optimization" className="hover:underline" style={{ color: '#4CAF50' }}>8. Cost Optimization Strategies</a>
           </div>
         </div>
 
         {/* Content Sections */}
         <section id="daily-maintenance" className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">1. Daily Maintenance Protocols</h2>
-          
+
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
             <p className="text-yellow-800 font-medium">⏱️ Time Required: 15-30 minutes per field</p>
           </div>
@@ -167,25 +167,25 @@ export default function ArtificialTurfMaintenanceGuide() {
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Pre-Activity Inspection</h3>
           <ul className="space-y-3 mb-6 pl-6">
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Visual debris removal:</strong> Remove leaves, paper, bottles, and other foreign objects that could cause injury or damage
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Drainage check:</strong> Ensure all drains are clear and water flows properly (especially after rain)
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Surface damage assessment:</strong> Look for tears, seam separation, or loose areas that need immediate attention
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Infill displacement check:</strong> Identify areas where infill has been kicked out or worn thin
               </div>
@@ -195,19 +195,19 @@ export default function ArtificialTurfMaintenanceGuide() {
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Post-Activity Care</h3>
           <ul className="space-y-3 mb-6 pl-6">
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Immediate cleaning:</strong> Remove any new debris, particularly in high-traffic areas like goal mouths
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Spot treatment:</strong> Address any spills or stains immediately to prevent permanent damage
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Documentation:</strong> Log any issues or areas of concern in your maintenance record
               </div>
@@ -217,7 +217,7 @@ export default function ArtificialTurfMaintenanceGuide() {
 
         <section id="weekly-maintenance" className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">2. Weekly Care Procedures</h2>
-          
+
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
             <p className="text-yellow-800 font-medium">⏱️ Time Required: 2-4 hours per field</p>
           </div>
@@ -236,19 +236,19 @@ export default function ArtificialTurfMaintenanceGuide() {
           <h3 className="text-xl font-semibold text-gray-900 mb-4">Infill Redistribution</h3>
           <ul className="space-y-3 mb-6 pl-6">
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Level check:</strong> Use a depth probe to measure infill levels across the field (target: 1/2 to 2/3 of fiber height)
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Redistribution:</strong> Use a drag mat or brush to move excess infill from low-traffic to high-traffic areas
               </div>
             </li>
             <li className="flex items-start">
-              <span className="text-green-600 mr-3 font-bold">✓</span>
+              <span className="mr-3 font-bold" style={{ color: '#4CAF50' }}>✓</span>
               <div>
                 <strong>Top-off application:</strong> Add new infill where levels are consistently low (document quantities used)
               </div>
@@ -258,7 +258,7 @@ export default function ArtificialTurfMaintenanceGuide() {
 
         <section id="monthly-deep-cleaning" className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">3. Monthly Deep Cleaning</h2>
-          
+
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
             <p className="text-yellow-800 font-medium">⏱️ Time Required: 6-8 hours per field</p>
           </div>
@@ -304,9 +304,10 @@ export default function ArtificialTurfMaintenanceGuide() {
                 <li>• Identifies areas needing maintenance</li>
                 <li>• Documents field performance over time</li>
               </ul>
-              <Link 
+              <Link
                 href="/resources/testing/gmax/gmax-testing-complete-guide"
-                className="inline-block mt-4 text-green-600 hover:text-green-700 font-medium"
+                className="inline-block mt-4 font-medium hover:underline"
+                style={{ color: '#4CAF50' }}
               >
                 Learn more about GMAX testing →
               </Link>
@@ -320,9 +321,10 @@ export default function ArtificialTurfMaintenanceGuide() {
                 <li>• Seam integrity assessment</li>
                 <li>• Long-term maintenance planning</li>
               </ul>
-              <Link 
+              <Link
                 href="/contact"
-                className="inline-block mt-4 text-green-600 hover:text-green-700 font-medium"
+                className="inline-block mt-4 font-medium hover:underline"
+                style={{ color: '#4CAF50' }}
               >
                 Schedule professional assessment →
               </Link>
@@ -356,9 +358,10 @@ export default function ArtificialTurfMaintenanceGuide() {
           </div>
 
           <div className="text-center">
-            <Link 
+            <Link
               href="/resources/cost-analysis/calculators/maintenance-cost-calculator"
-              className="inline-block bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+              className="inline-block text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              style={{ background: '#4CAF50' }}
             >
               Calculate Your Maintenance Costs
             </Link>
@@ -366,22 +369,24 @@ export default function ArtificialTurfMaintenanceGuide() {
         </section>
 
         {/* Call to Action */}
-        <section className="bg-gradient-to-r from-green-600 to-blue-600 rounded-lg p-8 text-center text-white">
+        <section className="rounded-lg p-8 text-center text-white" style={{ background: 'linear-gradient(to right, #4CAF50, #2563eb)' }}>
           <h2 className="text-2xl font-bold mb-4">Need Professional Field Assessment?</h2>
           <p className="text-lg mb-6 opacity-90">
-            Our certified experts can evaluate your current maintenance practices and develop a customized care plan 
+            Our certified experts can evaluate your current maintenance practices and develop a customized care plan
             to maximize your field investment.
           </p>
           <div className="space-x-4">
-            <Link 
+            <Link
               href="/contact"
-              className="inline-block bg-white text-green-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-block bg-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+              style={{ color: '#4CAF50' }}
             >
               Schedule Consultation
             </Link>
-            <Link 
+            <Link
               href="/resources/maintenance/schedules/maintenance-schedule-templates"
-              className="inline-block border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-green-600 transition-colors"
+              className="inline-block border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white transition-colors"
+              style={{}}
             >
               Download Schedule Templates
             </Link>
@@ -392,21 +397,21 @@ export default function ArtificialTurfMaintenanceGuide() {
         <section className="mt-12 pt-8 border-t border-gray-200">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Related Resources</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link 
+            <Link
               href="/resources/maintenance/schedules/maintenance-schedule-templates"
               className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <h4 className="font-medium text-gray-900 mb-2">Maintenance Schedule Templates</h4>
               <p className="text-sm text-gray-600">Downloadable templates for planning your field maintenance</p>
             </Link>
-            <Link 
+            <Link
               href="/resources/testing/gmax/gmax-testing-complete-guide"
               className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <h4 className="font-medium text-gray-900 mb-2">GMAX Testing Guide</h4>
               <p className="text-sm text-gray-600">Complete guide to safety testing requirements and procedures</p>
             </Link>
-            <Link 
+            <Link
               href="/resources/maintenance/troubleshooting/common-turf-problems-solutions"
               className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
             >

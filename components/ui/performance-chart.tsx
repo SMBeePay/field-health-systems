@@ -15,7 +15,7 @@ interface PerformanceChartProps {
 export function PerformanceChart({ title, timeframe, onTimeframeChange }: PerformanceChartProps) {
   const days = timeframe === '7d' ? 7 : timeframe === '30d' ? 30 : 90
   const data = generateTimeSeriesData(days)
-  
+
   // Calculate trends
   const recent = data.slice(-7)
   const older = data.slice(-14, -7)
@@ -25,8 +25,8 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
 
   const getTrendIcon = (trend: number) => {
     if (Math.abs(trend) < 1) return <Minus className="w-4 h-4 text-gray-500" />
-    return trend > 0 ? 
-      <TrendingUp className="w-4 h-4 text-red-500" /> : 
+    return trend > 0 ?
+      <TrendingUp className="w-4 h-4 text-red-500" /> :
       <TrendingDown className="w-4 h-4 text-green-500" />
   }
 
@@ -42,8 +42,8 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
           <p className="text-sm font-medium text-gray-900 mb-2">{label}</p>
           {payload.map((entry: { color: string; name: string; value: number; dataKey: string }, index: number) => (
             <div key={index} className="flex items-center space-x-2 text-sm">
-              <div 
-                className="w-3 h-3 rounded-full" 
+              <div
+                className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: entry.color }}
               />
               <span className="text-gray-600">{entry.name}:</span>
@@ -70,13 +70,13 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
             <div className={`flex items-center space-x-1 ${getTrendColor(gmaxTrend)}`}>
               {getTrendIcon(gmaxTrend)}
               <span className="text-sm font-medium">
-                {Math.abs(gmaxTrend) < 1 ? 'Stable' : 
+                {Math.abs(gmaxTrend) < 1 ? 'Stable' :
                  gmaxTrend > 0 ? `+${gmaxTrend.toFixed(1)}` : gmaxTrend.toFixed(1)}
               </span>
             </div>
           </div>
         </div>
-        
+
         <div className="flex items-center space-x-1 sm:space-x-2">
           {(['7d', '30d', '90d'] as const).map((period) => (
             <motion.button
@@ -100,41 +100,41 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-            <XAxis 
-              dataKey="date" 
+            <XAxis
+              dataKey="date"
               stroke="#666"
               fontSize={12}
               tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
             />
             <YAxis stroke="#666" fontSize={12} />
             <Tooltip content={<CustomTooltip />} />
-            
+
             {/* Reference lines for safe limits */}
             <ReferenceLine y={100} stroke="#ef4444" strokeDasharray="4 4" />
             <ReferenceLine y={20} stroke="#f97316" strokeDasharray="4 4" />
-            
-            <Line 
-              type="monotone" 
-              dataKey="gmax" 
-              stroke="#dc2626" 
+
+            <Line
+              type="monotone"
+              dataKey="gmax"
+              stroke="#dc2626"
               strokeWidth={2}
               dot={{ fill: '#dc2626', strokeWidth: 0, r: 3 }}
               activeDot={{ r: 5, stroke: '#dc2626', strokeWidth: 2, fill: 'white' }}
               name="GMAX"
             />
-            <Line 
-              type="monotone" 
-              dataKey="shear" 
-              stroke="#2563eb" 
+            <Line
+              type="monotone"
+              dataKey="shear"
+              stroke="#1F8A8A"
               strokeWidth={2}
-              dot={{ fill: '#2563eb', strokeWidth: 0, r: 3 }}
-              activeDot={{ r: 5, stroke: '#2563eb', strokeWidth: 2, fill: 'white' }}
+              dot={{ fill: '#1F8A8A', strokeWidth: 0, r: 3 }}
+              activeDot={{ r: 5, stroke: '#1F8A8A', strokeWidth: 2, fill: 'white' }}
               name="Shear"
             />
-            <Line 
-              type="monotone" 
-              dataKey="infill" 
-              stroke="#16a34a" 
+            <Line
+              type="monotone"
+              dataKey="infill"
+              stroke="#16a34a"
               strokeWidth={2}
               dot={{ fill: '#16a34a', strokeWidth: 0, r: 3 }}
               activeDot={{ r: 5, stroke: '#16a34a', strokeWidth: 2, fill: 'white' }}
@@ -143,14 +143,14 @@ export function PerformanceChart({ title, timeframe, onTimeframeChange }: Perfor
           </LineChart>
         </ResponsiveContainer>
       </div>
-      
+
       <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-gray-100">
         <div className="text-center">
           <div className="text-red-600 font-semibold">{recentAvgGmax.toFixed(1)}</div>
           <div className={designTokens.typography.body.xs + ' text-gray-500'}>Avg GMAX (7d)</div>
         </div>
         <div className="text-center">
-          <div className="text-blue-600 font-semibold">{recent.reduce((s, d) => s + d.shear, 0) / recent.length | 0}</div>
+          <div className="text-teal-600 font-semibold">{recent.reduce((s, d) => s + d.shear, 0) / recent.length | 0}</div>
           <div className={designTokens.typography.body.xs + ' text-gray-500'}>Avg Shear (7d)</div>
         </div>
         <div className="text-center">

@@ -5,7 +5,7 @@ import { Send, CheckCircle, AlertTriangle } from 'lucide-react'
 
 const serviceTypes = [
   "GMAX Testing & Field Assessment",
-  "Maintenance Consultation", 
+  "Maintenance Consultation",
   "Training & Education",
   "Emergency Field Evaluation",
   "Compliance Documentation",
@@ -63,7 +63,7 @@ export default function ContactForm() {
 
       // Show success message
       setShowSuccess(true)
-      
+
       // Reset form
       setFormData({
         firstName: '',
@@ -99,12 +99,12 @@ export default function ContactForm() {
     <>
       {/* Success Message */}
       {showSuccess && (
-        <div className="mb-8 bg-green-50 border border-green-200 rounded-lg p-6">
+        <div className="mb-8 bg-teal-50 border border-teal-200 rounded-lg p-6">
           <div className="flex items-start space-x-3">
-            <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+            <CheckCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="text-lg font-semibold text-green-900 mb-2">Message Sent Successfully!</h3>
-              <p className="text-green-800">
+              <h3 className="text-lg font-semibold text-teal-900 mb-2">Message Sent Successfully!</h3>
+              <p className="text-teal-800">
                 Thank you for contacting us. We&apos;ll review your request and respond within 24-48 hours.
                 For urgent matters, please call us directly.
               </p>
@@ -129,7 +129,7 @@ export default function ContactForm() {
       {/* Contact Form */}
       <div className="bg-white border border-gray-200 rounded-lg p-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Name Fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -283,7 +283,8 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            className="w-full text-white font-semibold px-6 py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+            style={{ background: '#4CAF50' }}
           >
             {isSubmitting ? (
               <>

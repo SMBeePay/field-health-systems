@@ -11,7 +11,7 @@ function ResetPasswordForm() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
   const [tokenValid, setTokenValid] = useState<boolean | null>(null)
-  
+
   const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
@@ -44,7 +44,7 @@ function ResetPasswordForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (password !== confirmPassword) {
       setError('Passwords do not match')
       return
@@ -85,9 +85,9 @@ function ResetPasswordForm() {
 
   if (tokenValid === null) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: '#F7FAFC' }}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto" style={{ borderColor: '#4CAF50' }}></div>
           <p className="mt-2 text-gray-600">Verifying reset token...</p>
         </div>
       </div>
@@ -96,7 +96,7 @@ function ResetPasswordForm() {
 
   if (tokenValid === false) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ background: '#F7FAFC' }}>
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
             <h2 className="mt-6 text-3xl font-extrabold text-red-600">
@@ -108,7 +108,8 @@ function ResetPasswordForm() {
             <div className="mt-6">
               <Link
                 href="/auth/forgot-password"
-                className="text-green-600 hover:text-green-500"
+                className="text-sm font-medium hover:underline"
+                style={{ color: '#1F8A8A' }}
               >
                 Request a new reset link
               </Link>
@@ -121,7 +122,7 @@ function ResetPasswordForm() {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ background: '#F7FAFC' }}>
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
             <h2 className="mt-6 text-3xl font-extrabold text-green-600">
@@ -133,7 +134,8 @@ function ResetPasswordForm() {
             <div className="mt-6">
               <Link
                 href="/auth/login"
-                className="text-green-600 hover:text-green-500"
+                className="text-sm font-medium hover:underline"
+                style={{ color: '#1F8A8A' }}
               >
                 Go to login now
               </Link>
@@ -145,10 +147,10 @@ function ResetPasswordForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ background: '#F7FAFC' }}>
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold" style={{ color: '#12324A' }}>
             Set new password
           </h2>
         </div>
@@ -164,10 +166,12 @@ function ResetPasswordForm() {
                 type="password"
                 required
                 minLength={8}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none sm:text-sm"
                 placeholder="Enter new password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div>
@@ -180,10 +184,12 @@ function ResetPasswordForm() {
                 type="password"
                 required
                 minLength={8}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none sm:text-sm"
                 placeholder="Confirm new password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
           </div>
@@ -198,7 +204,8 @@ function ResetPasswordForm() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{ background: '#4CAF50' }}
             >
               {loading ? 'Resetting...' : 'Reset Password'}
             </button>
@@ -212,10 +219,10 @@ function ResetPasswordForm() {
 export default function ResetPasswordPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ background: '#F7FAFC' }}>
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto" style={{ borderColor: '#4CAF50' }}></div>
             <p className="mt-2 text-sm text-gray-600">Loading...</p>
           </div>
         </div>

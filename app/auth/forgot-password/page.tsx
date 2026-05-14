@@ -38,10 +38,10 @@ export default function ForgotPasswordPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ background: '#F7FAFC' }}>
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
-            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-3xl font-extrabold" style={{ color: '#12324A' }}>
               Check your email
             </h2>
             <p className="mt-2 text-sm text-gray-600">
@@ -50,7 +50,8 @@ export default function ForgotPasswordPage() {
             <div className="mt-6">
               <Link
                 href="/auth/login"
-                className="text-green-600 hover:text-green-500"
+                className="text-sm font-medium hover:underline"
+                style={{ color: '#1F8A8A' }}
               >
                 Back to login
               </Link>
@@ -62,10 +63,10 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ background: '#F7FAFC' }}>
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold" style={{ color: '#12324A' }}>
             Reset your password
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -82,10 +83,13 @@ export default function ForgotPasswordPage() {
               name="email"
               type="email"
               required
-              className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+              className="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:z-10 sm:text-sm"
+              style={{ '--tw-ring-color': '#1F8A8A' } as React.CSSProperties}
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+              onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
             />
           </div>
 
@@ -99,7 +103,8 @@ export default function ForgotPasswordPage() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{ background: '#4CAF50', '--tw-ring-color': '#4CAF50' } as React.CSSProperties}
             >
               {loading ? 'Sending...' : 'Send reset link'}
             </button>
@@ -108,7 +113,8 @@ export default function ForgotPasswordPage() {
           <div className="text-center">
             <Link
               href="/auth/login"
-              className="text-sm text-green-600 hover:text-green-500"
+              className="text-sm font-medium hover:underline"
+              style={{ color: '#1F8A8A' }}
             >
               Back to login
             </Link>

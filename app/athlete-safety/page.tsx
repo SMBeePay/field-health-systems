@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { 
-  Shield, 
-  AlertTriangle, 
+import {
+  Shield,
+  AlertTriangle,
   Activity,
   TrendingDown,
-  CheckCircle, 
-  Users, 
+  CheckCircle,
+  Users,
   Heart,
   Brain,
   Calendar,
@@ -17,43 +17,12 @@ import {
   BarChart3,
   Target
 } from 'lucide-react'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export default function AthleteSafetyPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <motion.header 
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white border-b border-gray-200 sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <img src="/logo-icon.svg" alt="Field Health Systems" className="w-10 h-10" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Field Health Systems</h1>
-              </div>
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/#services" className="text-gray-700 hover:text-green-600 font-medium">Services</Link>
-              <Link href="/#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</Link>
-              <Link href="/#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</Link>
-              <Link href="/" className="text-gray-700 hover:text-green-600 font-medium">Home</Link>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
-              >
-                Schedule Assessment
-              </motion.button>
-            </nav>
-          </div>
-        </div>
-      </motion.header>
+      <MarketingNav activePath="/athlete-safety" />
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden bg-gradient-to-br from-red-50 via-white to-red-50">
@@ -68,24 +37,24 @@ export default function AthleteSafetyPage() {
                 Critical Information for Athletic Directors
               </span>
             </div>
-            
+
             <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              The Hidden Dangers of Poorly Maintained 
+              The Hidden Dangers of Poorly Maintained
               <span className="text-red-600"> Artificial Turf Fields</span>
             </h1>
-            
+
             <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
-              Comprehensive research shows that artificial turf fields with poor maintenance significantly increase 
+              Comprehensive research shows that artificial turf fields with poor maintenance significantly increase
               the risk of serious athlete injuries, including life-threatening head trauma and career-ending ACL tears.
             </p>
-            
+
             <div className="bg-red-100 border-2 border-red-200 rounded-lg p-6 max-w-3xl mx-auto">
               <div className="flex items-center justify-center space-x-3 mb-3">
                 <AlertTriangle className="w-8 h-8 text-red-600" />
                 <h3 className="text-xl font-bold text-red-800">Critical Safety Alert</h3>
               </div>
               <p className="text-red-800 font-semibold text-lg">
-                Fields with GMAX scores above 200 can increase the risk of fatal head injuries. 
+                Fields with GMAX scores above 200 can increase the risk of fatal head injuries.
                 The Synthetic Turf Council recommends GMAX below 165 for safety.
               </p>
             </div>
@@ -100,7 +69,7 @@ export default function AthleteSafetyPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">The Research is Clear</h2>
             <p className="text-xl text-gray-600">Data from peer-reviewed studies and real-world cases</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -112,7 +81,7 @@ export default function AthleteSafetyPage() {
               <div className="text-gray-700 text-sm">of sports-related head injuries result from surface impact</div>
               <div className="text-xs text-gray-500 mt-2">Source: Sports injury research</div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +93,7 @@ export default function AthleteSafetyPage() {
               <div className="text-gray-700 text-sm">higher ACL tear rate on artificial turf vs. natural grass</div>
               <div className="text-xs text-gray-500 mt-2">Source: NCAA data 2004-2014</div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +105,7 @@ export default function AthleteSafetyPage() {
               <div className="text-gray-700 text-sm">GMAX increase over 3-5 years without proper maintenance</div>
               <div className="text-xs text-gray-500 mt-2">Source: Field testing reports</div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -179,7 +148,7 @@ export default function AthleteSafetyPage() {
               className="bg-white p-8 rounded-2xl shadow-lg"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Critical GMAX Safety Thresholds</h3>
-              
+
               <div className="space-y-4 mb-6">
                 <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
                   <div>
@@ -188,7 +157,7 @@ export default function AthleteSafetyPage() {
                   </div>
                   <CheckCircle className="w-6 h-6 text-green-600" />
                 </div>
-                
+
                 <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <div>
                     <div className="font-semibold text-gray-900">GMAX 156 (NFL Standard)</div>
@@ -196,7 +165,7 @@ export default function AthleteSafetyPage() {
                   </div>
                   <Target className="w-6 h-6 text-blue-600" />
                 </div>
-                
+
                 <div className="flex items-center justify-between p-4 bg-orange-50 rounded-lg border border-orange-200">
                   <div>
                     <div className="font-semibold text-gray-900">GMAX 165-200</div>
@@ -204,7 +173,7 @@ export default function AthleteSafetyPage() {
                   </div>
                   <AlertTriangle className="w-6 h-6 text-orange-600" />
                 </div>
-                
+
                 <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
                   <div>
                     <div className="font-semibold text-gray-900">GMAX Above 200</div>
@@ -213,10 +182,10 @@ export default function AthleteSafetyPage() {
                   <AlertTriangle className="w-6 h-6 text-red-600" />
                 </div>
               </div>
-              
+
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-sm text-gray-700">
-                  <strong>ASTM Standard:</strong> GMAX limit of 200 to avoid life-threatening head injuries. 
+                  <strong>ASTM Standard:</strong> GMAX limit of 200 to avoid life-threatening head injuries.
                   Scores above 200 can increase the risk of fatal outcomes.
                 </p>
               </div>
@@ -230,38 +199,38 @@ export default function AthleteSafetyPage() {
               className="bg-white p-8 rounded-2xl shadow-lg"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Real-World Case Studies</h3>
-              
+
               <div className="space-y-6">
                 <div className="border-l-4 border-red-500 pl-4">
                   <h4 className="font-semibold text-red-800 mb-2">Boston Youth Athletics Field</h4>
                   <p className="text-gray-700 text-sm mb-2">
-                    An aging turf field repeatedly failed GMAX tests with scores exceeding 200 in multiple locations, 
+                    An aging turf field repeatedly failed GMAX tests with scores exceeding 200 in multiple locations,
                     exposing thousands of youth athletes to dangerous concussion risks.
                   </p>
                   <p className="text-xs text-red-600 font-medium">Status: Field closed pending remediation</p>
                 </div>
-                
+
                 <div className="border-l-4 border-orange-500 pl-4">
                   <h4 className="font-semibold text-orange-800 mb-2">Hardy Middle School, DC</h4>
                   <p className="text-gray-700 text-sm mb-2">
-                    Testing revealed 6 out of 10 test spots with GMAX readings above 165, correlating with 
+                    Testing revealed 6 out of 10 test spots with GMAX readings above 165, correlating with
                     higher sub-concussive impacts during gameplay.
                   </p>
                   <p className="text-xs text-orange-600 font-medium">Action: Immediate maintenance required</p>
                 </div>
-                
+
                 <div className="border-l-4 border-red-500 pl-4">
                   <h4 className="font-semibold text-red-800 mb-2">Maryland High School Field</h4>
                   <p className="text-gray-700 text-sm mb-2">
-                    Field testing showed GMAX readings exceeding 185, well above safety guidelines 
+                    Field testing showed GMAX readings exceeding 185, well above safety guidelines
                     and significantly increasing player injury risks.
                   </p>
                   <p className="text-xs text-red-600 font-medium">Result: Season suspended until repairs</p>
                 </div>
-                
+
                 <div className="bg-red-50 p-4 rounded-lg border border-red-200">
                   <p className="text-sm text-red-800">
-                    <strong>Maintenance Factor:</strong> Without regular infill replenishment and grooming, 
+                    <strong>Maintenance Factor:</strong> Without regular infill replenishment and grooming,
                     GMAX can rise 20-30% over 3-5 years, per field testing reports.
                   </p>
                 </div>
@@ -298,12 +267,12 @@ export default function AthleteSafetyPage() {
               className="bg-white p-8 rounded-2xl shadow-lg"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Peer-Reviewed Research Data</h3>
-              
+
               <div className="space-y-6">
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                   <h4 className="font-semibold text-blue-800 mb-2">2022 PubMed Systematic Review</h4>
                   <p className="text-sm text-gray-700 mb-2">
-                    Analysis of 53 studies (1972-2020) found consistently higher foot/ankle injury rates 
+                    Analysis of 53 studies (1972-2020) found consistently higher foot/ankle injury rates
                     on artificial turf vs. natural grass:
                   </p>
                   <ul className="text-sm text-gray-700 space-y-1">
@@ -312,7 +281,7 @@ export default function AthleteSafetyPage() {
                     <li>• Elite football players: Higher knee injury rates consistently observed</li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                   <h4 className="font-semibold text-green-800 mb-2">2023 Lancet Review</h4>
                   <p className="text-sm text-gray-700 mb-2">
@@ -324,11 +293,11 @@ export default function AthleteSafetyPage() {
                     <li>• Higher frictional coefficients on turf contribute to injury rates</li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
                   <h4 className="font-semibold text-orange-800 mb-2">NCAA Data (2004-2014)</h4>
                   <p className="text-sm text-gray-700">
-                    <strong>ACL Tears:</strong> 1.6x higher on turf for Divisions 2/3 athletes 
+                    <strong>ACL Tears:</strong> 1.6x higher on turf for Divisions 2/3 athletes
                     (142 on turf vs. 111 on grass per 10,000 exposures)
                   </p>
                 </div>
@@ -343,7 +312,7 @@ export default function AthleteSafetyPage() {
               className="bg-white p-8 rounded-2xl shadow-lg"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">How Poor Maintenance Increases Risk</h3>
-              
+
               <div className="space-y-6">
                 <div className="border-l-4 border-orange-500 pl-4">
                   <h4 className="font-semibold text-orange-800 mb-2">Compromised Drainage</h4>
@@ -354,7 +323,7 @@ export default function AthleteSafetyPage() {
                     Solution: Regular drainage inspections and maintenance
                   </div>
                 </div>
-                
+
                 <div className="border-l-4 border-red-500 pl-4">
                   <h4 className="font-semibold text-red-800 mb-2">Uneven Surfaces</h4>
                   <p className="text-gray-700 text-sm mb-2">
@@ -364,7 +333,7 @@ export default function AthleteSafetyPage() {
                     Impact: Increased risk of trips, falls, and awkward landings
                   </div>
                 </div>
-                
+
                 <div className="border-l-4 border-yellow-500 pl-4">
                   <h4 className="font-semibold text-yellow-800 mb-2">Infill Degradation</h4>
                   <p className="text-gray-700 text-sm mb-2">
@@ -374,11 +343,11 @@ export default function AthleteSafetyPage() {
                     Standard: 25-38mm infill depth for optimal performance
                   </div>
                 </div>
-                
+
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h4 className="font-semibold text-gray-800 mb-2">The Cost of Inaction</h4>
                   <p className="text-sm text-gray-700">
-                    Each preventable injury can cost hundreds of thousands in medical expenses, 
+                    Each preventable injury can cost hundreds of thousands in medical expenses,
                     liability, and potential litigation - far exceeding the cost of preventive maintenance.
                   </p>
                 </div>
@@ -423,7 +392,7 @@ export default function AthleteSafetyPage() {
               <div className="text-2xl font-bold text-green-600">$15,000</div>
               <div className="text-sm text-gray-500">Equipment cost for in-house testing</div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -441,7 +410,7 @@ export default function AthleteSafetyPage() {
               <div className="text-2xl font-bold text-blue-600">20-50%</div>
               <div className="text-sm text-gray-500">Potential injury risk reduction</div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -469,7 +438,7 @@ export default function AthleteSafetyPage() {
             className="bg-white p-8 rounded-2xl shadow-lg"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Industry Standards & Guidelines</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -478,7 +447,7 @@ export default function AthleteSafetyPage() {
                 <h4 className="font-semibold text-gray-900 mb-2">Synthetic Turf Council</h4>
                 <p className="text-sm text-gray-600">GMAX &lt;165 recommended for safety compliance</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Shield className="w-6 h-6 text-blue-600" />
@@ -486,7 +455,7 @@ export default function AthleteSafetyPage() {
                 <h4 className="font-semibold text-gray-900 mb-2">ASTM Standards</h4>
                 <p className="text-sm text-gray-600">GMAX &lt;200 to avoid life-threatening injuries</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <BarChart3 className="w-6 h-6 text-purple-600" />
@@ -494,7 +463,7 @@ export default function AthleteSafetyPage() {
                 <h4 className="font-semibold text-gray-900 mb-2">DC Guidelines</h4>
                 <p className="text-sm text-gray-600">Annual testing protocols for municipal fields</p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Users className="w-6 h-6 text-orange-600" />
@@ -532,7 +501,7 @@ export default function AthleteSafetyPage() {
               className="space-y-6"
             >
               <h3 className="text-2xl font-bold text-gray-900">Immediate Actions</h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-3 p-4 bg-red-50 rounded-lg border border-red-200">
                   <AlertTriangle className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
@@ -543,7 +512,7 @@ export default function AthleteSafetyPage() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3 p-4 bg-orange-50 rounded-lg border border-orange-200">
                   <Calendar className="w-6 h-6 text-orange-600 mt-1 flex-shrink-0" />
                   <div>
@@ -553,7 +522,7 @@ export default function AthleteSafetyPage() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
                   <FileText className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
@@ -565,7 +534,7 @@ export default function AthleteSafetyPage() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -573,7 +542,7 @@ export default function AthleteSafetyPage() {
               className="space-y-6"
             >
               <h3 className="text-2xl font-bold text-gray-900">Long-term Strategy</h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-3 p-4 bg-green-50 rounded-lg border border-green-200">
                   <Heart className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
@@ -584,7 +553,7 @@ export default function AthleteSafetyPage() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3 p-4 bg-purple-50 rounded-lg border border-purple-200">
                   <BarChart3 className="w-6 h-6 text-purple-600 mt-1 flex-shrink-0" />
                   <div>
@@ -594,7 +563,7 @@ export default function AthleteSafetyPage() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-3 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                   <Users className="w-6 h-6 text-yellow-600 mt-1 flex-shrink-0" />
                   <div>
@@ -616,7 +585,7 @@ export default function AthleteSafetyPage() {
             className="mt-16 bg-gray-50 p-8 rounded-2xl"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Cost of Prevention vs. Cost of Consequences</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-green-100 p-6 rounded-lg border-2 border-green-200">
                 <h4 className="font-bold text-green-800 mb-4 flex items-center">
@@ -633,7 +602,7 @@ export default function AthleteSafetyPage() {
                   <div className="font-bold text-green-800">Total: $6,500-8,500/year</div>
                 </div>
               </div>
-              
+
               <div className="bg-red-100 p-6 rounded-lg border-2 border-red-200">
                 <h4 className="font-bold text-red-800 mb-4 flex items-center">
                   <AlertTriangle className="w-5 h-5 mr-2" />
@@ -666,20 +635,23 @@ export default function AthleteSafetyPage() {
               Don&apos;t Wait for an Injury to Take Action
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Professional field testing costs a fraction of potential injury liability. 
+              Professional field testing costs a fraction of potential injury liability.
               Protect your athletes and your institution with regular safety assessments.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
-              >
-                <Shield className="w-5 h-5" />
-                <span>Schedule Emergency Field Assessment</span>
-              </motion.button>
-              
+              <Link href="/schedule-assessment">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                  style={{ color: '#4CAF50' }}
+                >
+                  <Shield className="w-5 h-5" />
+                  <span>Schedule Emergency Field Assessment</span>
+                </motion.button>
+              </Link>
+
               <div className="flex items-center space-x-4 text-white">
                 <Mail className="w-5 h-5" />
                 <a href="mailto:andrew@fieldhealthsystems.com" className="text-lg font-semibold hover:text-green-200 transition-colors">
@@ -687,7 +659,7 @@ export default function AthleteSafetyPage() {
                 </a>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm opacity-80">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4" />
@@ -728,7 +700,7 @@ export default function AthleteSafetyPage() {
               </a>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Field Health Systems. All rights reserved.</p>
           </div>

@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  CheckCircle, 
-  Phone, 
+import {
+  CheckCircle,
+  Phone,
   Mail,
   Building,
   AlertTriangle,
@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { trackConversion } from '@/lib/analytics'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export default function ScheduleAssessmentPage() {
   const [formData, setFormData] = useState({
@@ -37,13 +38,13 @@ export default function ScheduleAssessmentPage() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target
-    
+
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked
       if (name === 'fieldTypes') {
         setFormData(prev => ({
           ...prev,
-          fieldTypes: checked 
+          fieldTypes: checked
             ? [...prev.fieldTypes, value]
             : prev.fieldTypes.filter(type => type !== value)
         }))
@@ -84,7 +85,7 @@ export default function ScheduleAssessmentPage() {
         fieldTypes: formData.fieldTypes.join(', '),
         value: 2500 // Estimated value based on Premium Monitoring package
       })
-      
+
       setIsSubmitted(true)
     } catch (error) {
       console.error('Error submitting form:', error)
@@ -106,15 +107,15 @@ export default function ScheduleAssessmentPage() {
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
-            
+
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
               Thank You! Assessment Scheduled
             </h1>
-            
+
             <p className="text-lg text-gray-600 mb-6">
               We&apos;ve received your request for a professional field assessment. Our team will contact you within 24 hours to schedule your comprehensive evaluation.
             </p>
-            
+
             <div className="bg-blue-50 p-4 rounded-lg mb-6 border border-blue-200">
               <p className="text-sm text-blue-800 text-center">
                 <strong>Need immediate assistance?</strong> Contact Andrew directly at{' '}
@@ -123,30 +124,38 @@ export default function ScheduleAssessmentPage() {
                 </a>
               </p>
             </div>
-            
+
             <div className="bg-green-50 p-6 rounded-2xl border border-green-200 mb-6">
               <h3 className="font-semibold text-green-800 mb-2">What Happens Next?</h3>
               <ul className="text-left space-y-2 text-green-700">
                 <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ background: '#4CAF50' }}></div>
                   <span>Our field assessment specialist will call you within 24 hours</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ background: '#4CAF50' }}></div>
                   <span>We&apos;ll schedule your comprehensive field evaluation at your convenience</span>
                 </li>
                 <li className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                  <div className="w-2 h-2 rounded-full mt-2 flex-shrink-0" style={{ background: '#4CAF50' }}></div>
                   <span>You&apos;ll receive a detailed assessment proposal with transparent pricing</span>
                 </li>
               </ul>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/" className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              <Link
+                href="/"
+                className="text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                style={{ background: '#4CAF50' }}
+              >
                 Return to Homepage
               </Link>
-              <Link href="/athlete-safety" className="border-2 border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+              <Link
+                href="/athlete-safety"
+                className="px-6 py-3 rounded-lg font-semibold border-2 transition-colors hover:bg-green-50"
+                style={{ borderColor: '#4CAF50', color: '#4CAF50' }}
+              >
                 Learn About Field Safety
               </Link>
             </div>
@@ -158,29 +167,7 @@ export default function ScheduleAssessmentPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <img src="/logo-icon.svg" alt="Field Health Systems" className="w-10 h-10" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Field Health Systems</h1>
-              </div>
-            </Link>
-            
-            <div className="flex items-center space-x-6">
-              <span className="text-sm text-gray-600">Questions?</span>
-              <a href="mailto:andrew@fieldhealthsystems.com" className="flex items-center space-x-2 text-green-600 hover:text-green-700">
-                <Mail className="w-4 h-4" />
-                <span className="font-medium">andrew@fieldhealthsystems.com</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <MarketingNav activePath="/schedule-assessment" />
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -197,11 +184,11 @@ export default function ScheduleAssessmentPage() {
                   Professional Assessment
                 </span>
               </div>
-              
+
               <h1 className="text-4xl font-bold text-gray-900 mb-6">
                 Schedule Your Professional Field Assessment
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8">
                 Discover hidden issues before they become expensive problems. Our certified technicians will evaluate your field&apos;s safety, performance, and compliance in a comprehensive 60-90 minute assessment.
               </p>
@@ -268,7 +255,7 @@ export default function ScheduleAssessmentPage() {
                     <div className="text-sm text-gray-600">Proactive field monitoring prevents costly issues</div>
                   </div>
                 </div>
-                
+
                 <blockquote className="text-gray-700 italic">
                   &quot;Facilities that conduct regular GMAX testing report 60-75% fewer emergency repairs and significantly lower liability exposure than those using reactive maintenance approaches.&quot;
                 </blockquote>
@@ -291,7 +278,7 @@ export default function ScheduleAssessmentPage() {
                 <p className="text-gray-600">
                   Get started with a comprehensive evaluation of your field
                 </p>
-                <div className="flex items-center justify-center space-x-2 mt-4 text-green-600">
+                <div className="flex items-center justify-center space-x-2 mt-4" style={{ color: '#4CAF50' }}>
                   <Clock className="w-4 h-4" />
                   <span className="text-sm font-medium">Takes 2-3 minutes to complete</span>
                 </div>
@@ -316,7 +303,7 @@ export default function ScheduleAssessmentPage() {
                         placeholder="John"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Last Name *
@@ -332,7 +319,7 @@ export default function ScheduleAssessmentPage() {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -349,7 +336,7 @@ export default function ScheduleAssessmentPage() {
                         placeholder="john@school.edu"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         <Phone className="w-4 h-4 inline mr-1" />
@@ -387,7 +374,7 @@ export default function ScheduleAssessmentPage() {
                         placeholder="Central High School"
                       />
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Your Title
@@ -407,7 +394,7 @@ export default function ScheduleAssessmentPage() {
                 {/* Field Information */}
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Field Information</h3>
-                  
+
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Number of Artificial Turf Fields *
@@ -426,7 +413,7 @@ export default function ScheduleAssessmentPage() {
                       <option value="7+">7+ fields</option>
                     </select>
                   </div>
-                  
+
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Field Types (check all that apply)
@@ -446,7 +433,7 @@ export default function ScheduleAssessmentPage() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Primary Concern or Reason for Assessment
@@ -472,7 +459,7 @@ export default function ScheduleAssessmentPage() {
                 {/* Scheduling Preferences */}
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Scheduling Preferences</h3>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -489,7 +476,7 @@ export default function ScheduleAssessmentPage() {
                         <option value="both">Either email or phone</option>
                       </select>
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Preferred Timeframe
@@ -531,7 +518,8 @@ export default function ScheduleAssessmentPage() {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-green-600 text-white py-4 px-6 rounded-lg text-lg font-semibold hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center space-x-2"
+                  className="w-full text-white py-4 px-6 rounded-lg text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center space-x-2"
+                  style={{ background: '#4CAF50' }}
                 >
                   {isSubmitting ? (
                     <span>Scheduling Your Assessment...</span>
@@ -544,7 +532,7 @@ export default function ScheduleAssessmentPage() {
                 </motion.button>
 
                 <p className="text-xs text-gray-500 text-center">
-                  By submitting this form, you agree to be contacted by our team regarding your field assessment. 
+                  By submitting this form, you agree to be contacted by our team regarding your field assessment.
                   No spam, just helpful information about keeping your fields safe.
                 </p>
               </form>

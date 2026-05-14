@@ -7,7 +7,7 @@ import { Sidebar } from '@/components/layout/sidebar'
 import { PerformanceChart } from '@/components/ui/performance-chart'
 import { mockFields } from '@/lib/mock-data'
 import { designTokens } from '@/lib/design-tokens'
-import { 
+import {
   BarChart3,
   TrendingUp,
   TrendingDown,
@@ -68,7 +68,7 @@ export default function AnalyticsPage() {
       change: -1.8,
       trend: 'down',
       icon: Activity,
-      color: 'blue'
+      color: 'teal'
     },
     {
       title: 'Shear Factor',
@@ -103,12 +103,12 @@ export default function AnalyticsPage() {
   const statusDistribution = getStatusDistribution()
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-7xl mx-auto">
             {/* Page Header */}
@@ -196,9 +196,10 @@ export default function AnalyticsPage() {
                           onClick={() => setTimeframe(option.value as '7d' | '30d' | '90d')}
                           className={`px-4 py-2 text-sm font-medium ${
                             timeframe === option.value
-                              ? 'bg-green-600 text-white'
+                              ? 'text-white'
                               : 'bg-white text-gray-700 hover:bg-gray-50'
                           }`}
+                          style={timeframe === option.value ? { background: '#4CAF50' } : undefined}
                         >
                           {option.label}
                         </button>
@@ -251,13 +252,13 @@ export default function AnalyticsPage() {
                           </div>
                           <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
                             metric.color === 'green' ? 'bg-green-100' :
-                            metric.color === 'blue' ? 'bg-blue-100' :
+                            metric.color === 'teal' ? 'bg-teal-100' :
                             metric.color === 'yellow' ? 'bg-yellow-100' :
                             'bg-gray-100'
                           }`}>
                             <metric.icon className={`w-6 h-6 ${
                               metric.color === 'green' ? 'text-green-600' :
-                              metric.color === 'blue' ? 'text-blue-600' :
+                              metric.color === 'teal' ? 'text-teal-600' :
                               metric.color === 'yellow' ? 'text-yellow-600' :
                               'text-gray-600'
                             }`} />
@@ -281,7 +282,7 @@ export default function AnalyticsPage() {
                       <div className="space-y-4">
                         {[
                           { status: 'excellent', count: statusDistribution.excellent, color: 'green', label: 'Excellent' },
-                          { status: 'good', count: statusDistribution.good, color: 'blue', label: 'Good' },
+                          { status: 'good', count: statusDistribution.good, color: 'teal', label: 'Good' },
                           { status: 'monitor', count: statusDistribution.monitor, color: 'yellow', label: 'Monitor' },
                           { status: 'critical', count: statusDistribution.critical, color: 'red', label: 'Critical' }
                         ].map((item) => {
@@ -291,7 +292,7 @@ export default function AnalyticsPage() {
                               <div className="flex items-center space-x-3">
                                 <div className={`w-3 h-3 rounded-full ${
                                   item.color === 'green' ? 'bg-green-500' :
-                                  item.color === 'blue' ? 'bg-blue-500' :
+                                  item.color === 'teal' ? 'bg-teal-500' :
                                   item.color === 'yellow' ? 'bg-yellow-500' :
                                   'bg-red-500'
                                 }`} />
@@ -300,10 +301,10 @@ export default function AnalyticsPage() {
                               <div className="flex items-center space-x-2">
                                 <span className="text-sm text-gray-600">{item.count}</span>
                                 <div className="w-16 bg-gray-200 rounded-full h-2">
-                                  <div 
+                                  <div
                                     className={`h-2 rounded-full ${
                                       item.color === 'green' ? 'bg-green-500' :
-                                      item.color === 'blue' ? 'bg-blue-500' :
+                                      item.color === 'teal' ? 'bg-teal-500' :
                                       item.color === 'yellow' ? 'bg-yellow-500' :
                                       'bg-red-500'
                                     }`}
@@ -347,8 +348,8 @@ export default function AnalyticsPage() {
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
-                        <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <DollarSign className="w-4 h-4 text-blue-600" />
+                        <div className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <DollarSign className="w-4 h-4 text-teal-600" />
                         </div>
                         <div>
                           <p className="font-medium text-gray-900">Cost Savings Update</p>
@@ -381,9 +382,10 @@ export default function AnalyticsPage() {
                             onClick={() => setSelectedMetric(option.value as 'gmax' | 'infill' | 'shear' | 'cost')}
                             className={`px-4 py-2 text-sm font-medium ${
                               selectedMetric === option.value
-                                ? 'bg-green-600 text-white'
+                                ? 'text-white'
                                 : 'bg-white text-gray-700 hover:bg-gray-50'
                             }`}
+                            style={selectedMetric === option.value ? { background: '#4CAF50' } : undefined}
                           >
                             {option.label}
                           </button>
@@ -430,12 +432,12 @@ export default function AnalyticsPage() {
                 <div className="space-y-6">
                   {/* Field Comparison Table */}
                   <div className={`${designTokens.components.card} overflow-hidden`}>
-                    <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                    <div className="px-6 py-4 border-b border-gray-200" style={{ background: '#F7FAFC' }}>
                       <h3 className="text-lg font-semibold text-gray-900">Field Performance Comparison</h3>
                     </div>
                     <div className="overflow-x-auto">
                       <table className="min-w-full divide-y divide-gray-200">
-                        <thead className="bg-gray-50">
+                        <thead style={{ background: '#F7FAFC' }}>
                           <tr>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Field</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -486,10 +488,10 @@ export default function AnalyticsPage() {
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="flex items-center">
                                   <div className="w-16 bg-gray-200 rounded-full h-2 mr-2">
-                                    <div 
+                                    <div
                                       className={`h-2 rounded-full ${
                                         field.status === 'excellent' ? 'bg-green-500' :
-                                        field.status === 'good' ? 'bg-blue-500' :
+                                        field.status === 'good' ? 'bg-teal-500' :
                                         field.status === 'monitor' ? 'bg-yellow-500' :
                                         'bg-red-500'
                                       }`}

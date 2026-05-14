@@ -50,7 +50,7 @@ export default function MaintenanceResourcesPage() {
     <>
       {/* Breadcrumbs */}
       <nav className="flex mb-8 text-sm">
-        <Link href="/resources" className="text-green-600 hover:text-green-700">Resources</Link>
+        <Link href="/resources" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Resources</Link>
         <span className="mx-2 text-gray-500">/</span>
         <span className="text-gray-700">Maintenance</span>
       </nav>
@@ -62,8 +62,8 @@ export default function MaintenanceResourcesPage() {
             Artificial Turf Maintenance Resources
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Professional maintenance guides, schedules, and troubleshooting resources to help you extend 
-            field life, ensure player safety, and optimize your maintenance investment. From daily care 
+            Professional maintenance guides, schedules, and troubleshooting resources to help you extend
+            field life, ensure player safety, and optimize your maintenance investment. From daily care
             to seasonal deep maintenance, find everything you need to keep your artificial turf performing at its best.
           </p>
         </header>
@@ -71,7 +71,7 @@ export default function MaintenanceResourcesPage() {
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-            <div className="text-2xl font-bold text-green-600 mb-2">73%</div>
+            <div className="text-2xl font-bold mb-2" style={{ color: '#4CAF50' }}>73%</div>
             <div className="text-sm text-green-800">Reduction in emergency repairs with proper maintenance</div>
           </div>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
@@ -87,9 +87,9 @@ export default function MaintenanceResourcesPage() {
         {/* Resource Categories */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Maintenance Resource Categories</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <Link 
+            <Link
               href="/resources/maintenance/guides"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all"
             >
@@ -98,7 +98,7 @@ export default function MaintenanceResourcesPage() {
               <p className="text-gray-600 text-sm">Comprehensive guides covering all aspects of turf care and maintenance</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/maintenance/schedules"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all"
             >
@@ -107,7 +107,7 @@ export default function MaintenanceResourcesPage() {
               <p className="text-gray-600 text-sm">Maintenance calendars, schedules, and planning templates</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/maintenance/troubleshooting"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all"
             >
@@ -121,10 +121,10 @@ export default function MaintenanceResourcesPage() {
         {/* Featured Resources */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Maintenance Resources</h2>
-          
+
           <div className="space-y-6">
             {maintenanceResources.map((resource, index) => (
-              <Link 
+              <Link
                 key={index}
                 href={resource.href}
                 className="block bg-white border border-gray-200 rounded-lg p-6 hover:border-green-300 hover:shadow-lg transition-all"
@@ -133,7 +133,7 @@ export default function MaintenanceResourcesPage() {
                   <span className="text-2xl flex-shrink-0">{resource.icon}</span>
                   <div className="flex-grow">
                     <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-xs font-semibold text-green-600 bg-green-100 px-2 py-1 rounded">
+                      <span className="text-xs font-semibold bg-green-100 px-2 py-1 rounded" style={{ color: '#4CAF50' }}>
                         {resource.category}
                       </span>
                       <span className="text-xs text-gray-500">{resource.readTime}</span>
@@ -152,15 +152,16 @@ export default function MaintenanceResourcesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gradient-to-r from-green-600 to-blue-600 rounded-lg p-8 text-center text-white">
+        <section className="rounded-lg p-8 text-center text-white" style={{ background: 'linear-gradient(to right, #4CAF50, #2563eb)' }}>
           <h2 className="text-2xl font-bold mb-4">Need Professional Maintenance Assessment?</h2>
           <p className="text-lg mb-6 opacity-90">
-            Get expert evaluation of your current maintenance practices and develop a customized care plan 
+            Get expert evaluation of your current maintenance practices and develop a customized care plan
             that maximizes field performance and minimizes costs.
           </p>
-          <Link 
+          <Link
             href="/contact"
-            className="inline-block bg-white text-green-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+            style={{ color: '#4CAF50' }}
           >
             Schedule Maintenance Consultation
           </Link>

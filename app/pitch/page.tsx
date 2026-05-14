@@ -1,6 +1,46 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { FieldDiagram } from '@/components/ui/field-diagram'
+
+// ─── Pitch-deck field stubs (typed as any — display only) ────────────────────
+
+const PITCH_FOOTBALL = { id: 'pitch-fb', name: 'Senior HS Varsity Football', type: 'football', status: 'monitor' } as any
+const PITCH_SOCCER   = { id: 'pitch-sc', name: 'Plano East Soccer Complex',  type: 'soccer',   status: 'good'    } as any
+const PITCH_BASEBALL = { id: 'pitch-bb', name: 'Varsity Baseball Complex',   type: 'baseball', status: 'good'    } as any
+
+// Custom test data for pitch — tells a story: mostly good, critical cluster in south end zone
+const PITCH_FOOTBALL_DATA = {
+  fieldId: 'pitch-fb',
+  testingDate: new Date('2024-11-15'),
+  testingTechnician: 'S. Johnson — ASTM F1936 Protocol',
+  weatherConditions: 'Clear, 68°F',
+  temperature: 68,
+  gmaxReadings: [112, 178, 167, 105, 173, 95, 88, 188, 192, 196, 162, 108],
+  gmaxAverage: 155,
+  gmaxStatus: 'monitor',
+  shearReadings: [22, 34, 31, 24, 32, 21, 20, 37, 39, 41, 30, 24],
+  shearAverage: 30,
+  shearStatus: 'good',
+  infillDepthReadings: [44, 29, 32, 46, 31, 47, 48, 27, 25, 23, 33, 45],
+  infillDepthAverage: 36,
+  infillDepthStatus: 'monitor',
+  overallStatus: 'monitor',
+  testingLocations: [
+    { id: 'p1',  name: 'N Goal Line — Center',  zone: 'Goal Line',     position: { x: 0.5,  y: 0.083 }, gmaxReading: 112, shearReading: 22, infillDepthReading: 44 },
+    { id: 'p2',  name: 'N 25-Yd — Left Hash',   zone: 'North Quarter', position: { x: 0.33, y: 0.292 }, gmaxReading: 178, shearReading: 34, infillDepthReading: 29 },
+    { id: 'p3',  name: 'N 25-Yd — Right Hash',  zone: 'North Quarter', position: { x: 0.67, y: 0.292 }, gmaxReading: 167, shearReading: 31, infillDepthReading: 32 },
+    { id: 'p4',  name: 'N 40-Yd — Center',      zone: 'North Third',   position: { x: 0.5,  y: 0.417 }, gmaxReading: 105, shearReading: 24, infillDepthReading: 46 },
+    { id: 'p5',  name: '50-Yd — Left Hash',     zone: 'Midfield',      position: { x: 0.33, y: 0.500 }, gmaxReading: 173, shearReading: 32, infillDepthReading: 31 },
+    { id: 'p6',  name: '50-Yd — Center',        zone: 'Midfield',      position: { x: 0.5,  y: 0.500 }, gmaxReading: 95,  shearReading: 21, infillDepthReading: 47 },
+    { id: 'p7',  name: '50-Yd — Right Hash',    zone: 'Midfield',      position: { x: 0.67, y: 0.500 }, gmaxReading: 88,  shearReading: 20, infillDepthReading: 48 },
+    { id: 'p8',  name: 'S 40-Yd — Center',      zone: 'South Third',   position: { x: 0.5,  y: 0.583 }, gmaxReading: 188, shearReading: 37, infillDepthReading: 27 },
+    { id: 'p9',  name: 'S 25-Yd — Left Hash',   zone: 'South Quarter', position: { x: 0.33, y: 0.708 }, gmaxReading: 192, shearReading: 39, infillDepthReading: 25 },
+    { id: 'p10', name: 'S 25-Yd — Right Hash',  zone: 'South Quarter', position: { x: 0.67, y: 0.708 }, gmaxReading: 196, shearReading: 41, infillDepthReading: 23 },
+    { id: 'p11', name: 'S 10-Yd — Center',      zone: 'South Goal Area',position:{ x: 0.5,  y: 0.833 }, gmaxReading: 162, shearReading: 30, infillDepthReading: 33 },
+    { id: 'p12', name: 'S Goal Line — Center',  zone: 'Goal Line',     position: { x: 0.5,  y: 0.917 }, gmaxReading: 108, shearReading: 24, infillDepthReading: 45 },
+  ],
+} as any
 
 // ─── Flat SVG icons ───────────────────────────────────────────────────────────
 
@@ -146,11 +186,11 @@ function StatusPill({ status }: { status: string }) {
 
 function DashboardMockup() {
   const fields = [
-    { name: 'Senior HS Varsity Football', type: 'Football', gmax: 188, status: 'CRITICAL', last: 'Nov 15, 2024' },
-    { name: 'Williams MS Football', type: 'Football', gmax: 162, status: 'MONITOR', last: 'Nov 18, 2024' },
-    { name: 'Clark HS Varsity Football', type: 'Football', gmax: 134, status: 'GOOD', last: 'Dec 1, 2024' },
-    { name: 'Plano East Soccer Complex', type: 'Soccer', gmax: 98, status: 'EXCELLENT', last: 'Dec 4, 2024' },
-    { name: 'Junior HS Lacrosse Field', type: 'Multi-Use', gmax: 145, status: 'GOOD', last: 'Nov 28, 2024' },
+    { name: 'Senior HS Varsity Football', type: 'Football', score: 32, status: 'CRITICAL', last: 'Nov 15, 2024' },
+    { name: 'Williams MS Football', type: 'Football', score: 57, status: 'MONITOR', last: 'Nov 18, 2024' },
+    { name: 'Junior HS Lacrosse Field', type: 'Multi-Use', score: 68, status: 'GOOD', last: 'Nov 28, 2024' },
+    { name: 'Clark HS Varsity Football', type: 'Football', score: 76, status: 'GOOD', last: 'Dec 1, 2024' },
+    { name: 'Plano East Soccer Complex', type: 'Soccer', score: 91, status: 'EXCELLENT', last: 'Dec 4, 2024' },
   ]
   return (
     <AppShell page="Dashboard">
@@ -171,9 +211,10 @@ function DashboardMockup() {
         </div>
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
           <div className="px-3 py-2 border-b border-gray-100 flex items-center justify-between">
-            <span className="font-semibold text-gray-700" style={{ fontSize: '10px' }}>Field Status — Sorted by Risk</span>
+            <span className="font-semibold text-gray-700" style={{ fontSize: '10px' }}>Fields — Sorted by Field Health Score</span>
+            <span className="text-gray-400" style={{ fontSize: '9px' }}>Score = GMAX + HIC + Shear + Infill</span>
           </div>
-          {fields.map(({ name, type, gmax, status, last }) => (
+          {fields.map(({ name, type, score, status, last }) => (
             <div key={name} className="flex items-center gap-3 px-3 py-2 border-b border-gray-50">
               <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${status === 'CRITICAL' ? 'bg-red-500' : status === 'MONITOR' ? 'bg-amber-500' : status === 'GOOD' ? 'bg-emerald-500' : 'bg-sky-500'}`} />
               <div className="flex-1 min-w-0">
@@ -181,7 +222,7 @@ function DashboardMockup() {
                 <div className="text-gray-400" style={{ fontSize: '9px' }}>{type} · Last tested {last}</div>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
-                <span className="font-mono font-bold text-gray-600" style={{ fontSize: '10px' }}>G{gmax}</span>
+                <span className={`font-bold tabular-nums ${status === 'CRITICAL' ? 'text-red-600' : status === 'MONITOR' ? 'text-amber-600' : status === 'GOOD' ? 'text-emerald-700' : 'text-sky-600'}`} style={{ fontSize: '10px' }}>{score}/100</span>
                 <StatusPill status={status} />
               </div>
             </div>
@@ -467,15 +508,15 @@ function TestingProcessSlide() {
       </div>
 
       {/* Measurements */}
-      <div className="border-t border-slate-800 pt-8">
+      <div className="border-t border-slate-800 pt-6">
         <div className="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-4">What We Measure at Every Test Point</div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 mb-4">
           {[
             {
               label: 'GMAX',
               full: 'Peak G-Force',
               limit: 'Limit: 200g',
-              desc: 'Measures the maximum deceleration force on impact — the primary indicator of concussion risk. ASTM F1936 requires GMAX below 200 at every test point.',
+              desc: 'Measures the maximum deceleration force on impact — a key indicator of concussion risk. ASTM F1936 requires GMAX below 200 at every test point.',
               color: 'border-red-500/30 bg-red-500/5',
               badge: 'text-red-400',
             },
@@ -514,6 +555,14 @@ function TestingProcessSlide() {
             </div>
           ))}
         </div>
+        <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl px-5 py-3 flex items-center gap-4">
+          <div className="text-emerald-400 flex-shrink-0"><Icon name="chart" className="w-5 h-5" /></div>
+          <p className="text-slate-300 text-sm">
+            All four measurements feed into our proprietary <span className="text-emerald-400 font-bold">Field Health Score</span> — a single composite indicator that determines each field&apos;s status:&nbsp;
+            <span className="text-sky-400 font-semibold">EXCELLENT</span>, <span className="text-emerald-400 font-semibold">GOOD</span>, <span className="text-amber-400 font-semibold">MONITOR</span>, or <span className="text-red-400 font-semibold">CRITICAL</span>.
+            No single metric tells the whole story — the score combines them all.
+          </p>
+        </div>
       </div>
     </div>
   )
@@ -527,7 +576,7 @@ function PlatformSlide() {
         <h2 className="text-4xl font-black text-white mb-2">Test results don&apos;t live in a PDF.</h2>
         <p className="text-slate-400 text-base max-w-2xl">
           After every visit, results are uploaded to your district dashboard — giving you a permanent, searchable record of every test, every technician, and every field across your entire campus.
-          Sort by risk, generate compliance reports in one click, and track how your fields trend over time.
+          Fields are ranked by their <span className="text-emerald-400 font-semibold">Field Health Score</span>, a composite of GMAX, HIC, Shear Factor, and Infill Depth, so you always know which field needs attention first.
         </p>
       </div>
       <div className="flex-1 min-h-0" style={{ height: '320px' }}>
@@ -535,7 +584,7 @@ function PlatformSlide() {
       </div>
       <div className="mt-4 grid grid-cols-3 gap-4">
         {[
-          { icon: 'chart', label: 'Historical trending', sub: 'See how GMAX moves season over season' },
+          { icon: 'chart', label: 'Historical trending', sub: 'Track Field Health Scores season over season' },
           { icon: 'bell', label: 'Automated alerts', sub: 'Notified before readings reach critical levels' },
           { icon: 'shield', label: 'Insurer portal access', sub: 'Risk managers get direct read-only access' },
         ].map(({ icon, label, sub }) => (
@@ -554,30 +603,97 @@ function PlatformSlide() {
 
 function Platform2Slide() {
   return (
-    <div className="flex flex-col justify-center h-full px-20">
+    <div className="flex h-full px-16 gap-8 items-center">
+      {/* Left: diagram */}
+      <div className="w-56 flex-shrink-0">
+        <FieldDiagram
+          field={PITCH_FOOTBALL}
+          testingData={PITCH_FOOTBALL_DATA}
+          maxDiagramHeight="420px"
+        />
+      </div>
+
+      {/* Right: narrative */}
+      <div className="flex-1 flex flex-col justify-center">
+        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">Field Detail View</div>
+        <h2 className="text-5xl font-black text-white mb-4 leading-tight">
+          Every test point.<br />Mapped to the exact spot.
+        </h2>
+        <p className="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed">
+          The south end zone on this field has three readings above 185 — all trending toward the ASTM limit of 200.
+          The platform surfaced it in November, six weeks before the December playoffs.
+        </p>
+        <div className="space-y-4">
+          {[
+            {
+              icon: 'grid',
+              label: 'Hot zones visible at a glance',
+              sub: 'Red markers cluster where infill has compacted and GMAX is rising. No spreadsheet required.',
+            },
+            {
+              icon: 'wrench',
+              label: 'Target maintenance exactly',
+              sub: 'Crews work the south end zone — not the whole field. Data-driven, not guesswork.',
+            },
+            {
+              icon: 'document',
+              label: 'Every reading on the record',
+              sub: 'Technician name, date, GPS coordinates, equipment calibration certificate — all attached.',
+            },
+          ].map(({ icon, label, sub }) => (
+            <div key={label} className="flex items-start gap-4">
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0 mt-0.5">
+                <Icon name={icon} className="w-4 h-4" />
+              </div>
+              <div>
+                <div className="text-white font-semibold text-sm mb-0.5">{label}</div>
+                <div className="text-slate-500 text-xs leading-relaxed">{sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MultiSportSlide() {
+  return (
+    <div className="flex flex-col justify-center h-full px-16">
       <div className="mb-6">
-        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-2">Field Detail View</div>
-        <h2 className="text-4xl font-black text-white mb-2">Every test point. On a map.</h2>
+        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-2">Every Field Type</div>
+        <h2 className="text-4xl font-black text-white mb-2">Football. Soccer. Baseball.<br />Every surface you manage.</h2>
         <p className="text-slate-400 text-base max-w-2xl">
-          The field detail view shows your GMAX, HIC, and shear readings mapped to the exact grid point where they were taken.
-          One field in this demo is sitting at GMAX 188 — 12 G-units from the ASTM failure limit — with the hot zone clearly visible in the northeast quadrant.
+          The same independent testing protocol and Field Health Score applies across every sport and every surface —
+          whether your district has two fields or twenty.
         </p>
       </div>
-      <div className="flex-1 min-h-0" style={{ height: '320px' }}>
-        <FieldDetailMockup />
-      </div>
-      <div className="mt-4 grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-5 flex-1 min-h-0" style={{ maxHeight: '400px' }}>
         {[
-          { icon: 'grid', label: 'Zone-level heat map', sub: 'Identifies exactly which areas of the field need attention' },
-          { icon: 'wrench', label: 'Maintenance decisions', sub: 'Use data to prioritize infill top-ups and grooming' },
-          { icon: 'document', label: 'Full audit trail', sub: 'Every test logged with technician credentials and weather conditions' },
-        ].map(({ icon, label, sub }) => (
-          <div key={label} className="flex items-start gap-3 bg-slate-800/40 border border-slate-700 rounded-xl p-3">
-            <div className="text-emerald-400 flex-shrink-0 mt-0.5"><Icon name={icon} className="w-5 h-5" /></div>
-            <div>
-              <div className="text-white text-sm font-semibold">{label}</div>
-              <div className="text-slate-500 text-xs mt-0.5">{sub}</div>
-            </div>
+          {
+            field: PITCH_FOOTBALL,
+            data: PITCH_FOOTBALL_DATA,
+            caption: '12-point grid — yard lines & hash marks',
+          },
+          {
+            field: PITCH_SOCCER,
+            data: undefined,
+            caption: '13-point grid — penalty areas, wings, center',
+          },
+          {
+            field: PITCH_BASEBALL,
+            data: undefined,
+            caption: '12-point grid — bases, mound, outfield zones',
+          },
+        ].map(({ field, data, caption }) => (
+          <div key={field.id} className="flex flex-col gap-2 min-h-0">
+            <FieldDiagram
+              field={field}
+              testingData={data}
+              maxDiagramHeight="300px"
+              className="flex-1 min-h-0"
+            />
+            <p className="text-center text-slate-500 text-xs">{caption}</p>
           </div>
         ))}
       </div>
@@ -653,8 +769,8 @@ function SafetyInvestmentSlide() {
                 sub: 'Infill compacts and migrates over time. When depth drops below spec, GMAX rises — often without any visible sign on the surface. Testing catches this early.',
               },
               {
-                label: 'A $400 top-up vs. a $60,000 emergency',
-                sub: 'Infill redistribution and grooming caught early is routine maintenance. Caught after a major reading spike — or after a failure — it becomes an urgent capital expense.',
+                label: 'Scheduled maintenance vs. unplanned emergency',
+                sub: 'Infill issues caught early through regular testing are budgeted, scheduled work. Caught after a critical reading spike — or after an athlete is hurt — they become unplanned emergency capital expenses.',
               },
               {
                 label: 'Data-driven maintenance scheduling',
@@ -863,6 +979,7 @@ const slides = [
   { id: 'safety' },
   { id: 'platform' },
   { id: 'platform2' },
+  { id: 'multisport' },
   { id: 'insurance' },
   { id: 'pricing' },
   { id: 'ask' },
@@ -876,6 +993,7 @@ const slideTitles: Record<string, string> = {
   safety: 'Athletes & Investment',
   platform: 'The Software Platform',
   platform2: 'Field Detail View',
+  multisport: 'Every Field Type',
   insurance: 'For Risk Managers',
   pricing: 'Pricing',
   ask: 'Next Steps',
@@ -889,6 +1007,7 @@ const slideComponents: Record<string, React.ComponentType> = {
   safety: SafetyInvestmentSlide,
   platform: PlatformSlide,
   platform2: Platform2Slide,
+  multisport: MultiSportSlide,
   insurance: InsuranceSlide,
   pricing: PricingSlide,
   ask: AskSlide,

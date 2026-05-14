@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { 
-  Shield, 
-  DollarSign, 
-  TrendingUp, 
-  CheckCircle, 
-  Users, 
+import {
+  Shield,
+  DollarSign,
+  TrendingUp,
+  CheckCircle,
+  Users,
   Mail,
   MapPin,
   Star,
@@ -17,6 +17,7 @@ import {
   BarChart3,
   Calendar
 } from 'lucide-react'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export default function MarketingHomePage() {
   // const [activeTestimonial] = useState(0)
@@ -31,7 +32,7 @@ export default function MarketingHomePage() {
     },
     {
       name: "Field Research",
-      title: "University Study", 
+      title: "University Study",
       organization: "Sports Surface Research",
       quote: "Regular GMAX testing and maintenance scheduling can extend artificial turf field life by maintaining optimal playing conditions throughout the field's lifecycle.",
       image: "/api/placeholder/64/64"
@@ -54,46 +55,13 @@ export default function MarketingHomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <motion.header 
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white border-b border-gray-200 sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <img src="/logo-icon.svg" alt="Field Health Systems" className="w-10 h-10" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Field Health Systems</h1>
-              </div>
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-green-600 font-medium">Services</a>
-              <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
-              <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium">Research</a>
-              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
-              >
-                Schedule Assessment
-              </motion.button>
-            </nav>
-          </div>
-        </div>
-      </motion.header>
+      <MarketingNav activePath="/marketing" />
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Background Image with Dark Gradient Overlay */}
         <div className="absolute inset-0 z-0">
-          <div 
+          <div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url('/sports-field-bg.jpg')`,
@@ -104,7 +72,7 @@ export default function MarketingHomePage() {
           {/* Dark gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/30" />
         </div>
-        
+
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -114,44 +82,45 @@ export default function MarketingHomePage() {
               transition={{ duration: 0.6 }}
             >
               <div className="mb-6">
-                <span className="bg-green-500/20 text-green-300 border border-green-400/30 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+                <span className="px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border" style={{ background: 'rgba(76,175,80,0.15)', color: '#4CAF50', borderColor: 'rgba(76,175,80,0.3)' }}>
                   Professional Field Monitoring + Analytics
                 </span>
               </div>
-              
+
               <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
                 Professional Artificial Turf Field Maintenance &
-                <span className="text-green-400"> Testing Services</span>
+                <span style={{ color: '#4CAF50' }}> Testing Services</span>
               </h1>
-              
+
               <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                Expert artificial turf maintenance monitoring with GMAX testing, infill depth analysis, and synthetic field safety inspections. 
+                Expert artificial turf maintenance monitoring with GMAX testing, infill depth analysis, and synthetic field safety inspections.
                 Professional quarterly assessments can help reduce emergency repairs with predictive maintenance planning.*
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                  className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-opacity hover:opacity-90 flex items-center justify-center space-x-2"
+                  style={{ background: '#4CAF50' }}
                 >
                   <Calendar className="w-5 h-5" />
                   <span>Schedule Your Assessment</span>
                 </motion.button>
               </div>
-              
+
               <div className="flex items-center space-x-6 text-sm text-gray-300">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <CheckCircle className="w-5 h-5" style={{ color: '#4CAF50' }} />
                   <span>No equipment purchase required</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <CheckCircle className="w-5 h-5" style={{ color: '#4CAF50' }} />
                   <span>Professional service from day one</span>
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -174,7 +143,7 @@ export default function MarketingHomePage() {
                       </div>
                       <TrendingUp className="w-5 h-5 text-green-500" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
@@ -187,7 +156,7 @@ export default function MarketingHomePage() {
                       </div>
                       <BarChart3 className="w-5 h-5 text-blue-500" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
@@ -202,7 +171,7 @@ export default function MarketingHomePage() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <h4 className="font-medium text-gray-900 mb-2">Recommended Actions</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
@@ -212,7 +181,7 @@ export default function MarketingHomePage() {
                   </ul>
                 </div>
               </div>
-              
+
               {/* Floating elements */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
@@ -238,7 +207,7 @@ export default function MarketingHomePage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-green-600 mb-2">{stat.number}</div>
+                <div className="text-4xl font-bold mb-2" style={{ color: '#4CAF50' }}>{stat.number}</div>
                 <div className="text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
@@ -279,7 +248,7 @@ export default function MarketingHomePage() {
                 <AlertTriangle className="w-8 h-8 text-red-500" />
                 <h3 className="text-2xl font-bold text-red-800">The Current Reality</h3>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
@@ -311,7 +280,7 @@ export default function MarketingHomePage() {
                 <Shield className="w-8 h-8 text-green-600" />
                 <h3 className="text-2xl font-bold text-green-800">Our Solution</h3>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
@@ -348,7 +317,7 @@ export default function MarketingHomePage() {
                 Our software platform gives you instant visibility into field conditions with professional insights
               </p>
             </div>
-            
+
             {/* Dashboard Mockup */}
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
@@ -365,15 +334,15 @@ export default function MarketingHomePage() {
                     <span className="text-sm text-gray-600">Live Data</span>
                   </div>
                 </div>
-                
+
                 {/* Status Overview */}
                 <div className="grid grid-cols-4 gap-4 mb-6">
                   <div className="bg-green-50 p-3 rounded-lg text-center">
                     <div className="text-2xl font-bold text-green-600">4</div>
                     <div className="text-xs text-gray-600">Excellent</div>
                   </div>
-                  <div className="bg-blue-50 p-3 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-blue-600">2</div>
+                  <div className="bg-teal-50 p-3 rounded-lg text-center">
+                    <div className="text-2xl font-bold text-teal-600">2</div>
                     <div className="text-xs text-gray-600">Good</div>
                   </div>
                   <div className="bg-yellow-50 p-3 rounded-lg text-center">
@@ -385,7 +354,7 @@ export default function MarketingHomePage() {
                     <div className="text-xs text-gray-600">Critical</div>
                   </div>
                 </div>
-                
+
                 {/* Field Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-green-50 p-4 rounded-lg border border-green-200">
@@ -404,7 +373,7 @@ export default function MarketingHomePage() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="font-medium text-gray-900">South Field - Soccer</h5>
@@ -478,7 +447,7 @@ export default function MarketingHomePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Technicians</h3>
               <p className="text-gray-600 mb-4">Certified technicians conduct comprehensive quarterly assessments using professional-grade equipment</p>
-              
+
               {/* Field Testing Image Placeholder */}
               <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-lg p-4 border border-green-200">
                 <div className="flex items-center space-x-3 mb-3">
@@ -520,7 +489,7 @@ export default function MarketingHomePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Data Analytics Platform</h3>
               <p className="text-gray-600 mb-4">Proprietary software platform with real-time dashboards, trend analysis, and predictive insights</p>
-              
+
               {/* Dashboard Screenshot Mockup */}
               <div className="bg-white rounded-lg border-2 border-gray-200 p-3">
                 <div className="flex items-center justify-between mb-3">
@@ -536,8 +505,8 @@ export default function MarketingHomePage() {
                     <div className="text-lg font-bold text-green-600">4</div>
                     <div className="text-xs text-gray-600">Excellent</div>
                   </div>
-                  <div className="bg-blue-50 p-2 rounded text-center">
-                    <div className="text-lg font-bold text-blue-600">2</div>
+                  <div className="bg-teal-50 p-2 rounded text-center">
+                    <div className="text-lg font-bold text-teal-600">2</div>
                     <div className="text-xs text-gray-600">Good</div>
                   </div>
                 </div>
@@ -550,9 +519,9 @@ export default function MarketingHomePage() {
                     <span className="text-xs text-gray-600">75%</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
                     <div className="flex-1 bg-gray-200 h-1 rounded-full">
-                      <div className="bg-blue-500 h-1 rounded-full" style={{width: '60%'}}></div>
+                      <div className="bg-teal-500 h-1 rounded-full" style={{width: '60%'}}></div>
                     </div>
                     <span className="text-xs text-gray-600">60%</span>
                   </div>
@@ -573,7 +542,7 @@ export default function MarketingHomePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Reports</h3>
               <p className="text-gray-600 mb-4">Detailed quarterly reports with maintenance recommendations, budget planning, and compliance documentation</p>
-              
+
               {/* Report Preview */}
               <div className="bg-white rounded-lg border-2 border-gray-200 p-3">
                 <div className="flex items-center space-x-2 mb-3">
@@ -601,7 +570,7 @@ export default function MarketingHomePage() {
                 <div className="mt-3 pt-2 border-t border-gray-200">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-500">12 pages • PDF</span>
-                    <span className="text-xs text-green-600 font-medium">Ready for Review</span>
+                    <span className="text-xs font-medium" style={{ color: '#4CAF50' }}>Ready for Review</span>
                   </div>
                 </div>
               </div>
@@ -616,7 +585,7 @@ export default function MarketingHomePage() {
             className="bg-gray-50 p-8 rounded-2xl"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">What&apos;s Included in Every Assessment</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: Target, title: "GMAX Testing", desc: "Shock absorption measurement" },
@@ -665,10 +634,10 @@ export default function MarketingHomePage() {
             >
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Standard Monitoring</h3>
-                <div className="text-4xl font-bold text-green-600 mb-2">$2,500</div>
+                <div className="text-4xl font-bold mb-2" style={{ color: '#4CAF50' }}>$2,500</div>
                 <div className="text-gray-600">per field, per year</div>
               </div>
-              
+
               <div className="space-y-4 mb-8">
                 {[
                   "4 quarterly professional assessments",
@@ -684,8 +653,11 @@ export default function MarketingHomePage() {
                   </div>
                 ))}
               </div>
-              
-              <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+
+              <button
+                className="w-full text-white py-3 rounded-lg font-semibold transition-opacity hover:opacity-90"
+                style={{ background: '#4CAF50' }}
+              >
                 Get Started
               </button>
             </motion.div>
@@ -696,20 +668,21 @@ export default function MarketingHomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-green-600 p-8 rounded-2xl shadow-lg border-2 border-green-600 text-white relative"
+              className="p-8 rounded-2xl shadow-lg border-2 text-white relative"
+              style={{ background: '#4CAF50', borderColor: '#4CAF50' }}
             >
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <span className="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-medium">
                   Most Popular
                 </span>
               </div>
-              
+
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">Premium Setup</h3>
                 <div className="text-4xl font-bold mb-2">$1,250</div>
                 <div className="text-green-100">one-time setup fee</div>
               </div>
-              
+
               <div className="space-y-4 mb-8">
                 {[
                   "Comprehensive field audit & baseline",
@@ -725,7 +698,7 @@ export default function MarketingHomePage() {
                   </div>
                 ))}
               </div>
-              
+
               {/* Mobile App Preview */}
               <div className="mb-6">
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
@@ -741,9 +714,9 @@ export default function MarketingHomePage() {
                             <div className="text-xs text-gray-900">North Field</div>
                             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                           </div>
-                          <div className="flex justify-between items-center p-1 bg-blue-50 rounded">
+                          <div className="flex justify-between items-center p-1 bg-teal-50 rounded">
                             <div className="text-xs text-gray-900">East Field</div>
-                            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-teal-500 rounded-full"></div>
                           </div>
                           <div className="flex justify-between items-center p-1 bg-yellow-50 rounded">
                             <div className="text-xs text-gray-900">South Field</div>
@@ -756,8 +729,8 @@ export default function MarketingHomePage() {
                   <p className="text-center text-green-100 text-sm">Mobile access included</p>
                 </div>
               </div>
-              
-              <button className="w-full bg-white text-green-600 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+
+              <button className="w-full bg-white py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors" style={{ color: '#4CAF50' }}>
                 Add Premium Setup
               </button>
             </motion.div>
@@ -774,22 +747,22 @@ export default function MarketingHomePage() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Volume Discounts</h3>
                 <div className="text-lg text-gray-600">Multiple fields save more</div>
               </div>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700">2-3 fields</span>
-                  <span className="font-semibold text-green-600">$2,400/field (4% off)</span>
+                  <span className="font-semibold" style={{ color: '#4CAF50' }}>$2,400/field (4% off)</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700">4-6 fields</span>
-                  <span className="font-semibold text-green-600">$2,250/field (10% off)</span>
+                  <span className="font-semibold" style={{ color: '#4CAF50' }}>$2,250/field (10% off)</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700">7+ fields</span>
-                  <span className="font-semibold text-green-600">$2,100/field (16% off)</span>
+                  <span className="font-semibold" style={{ color: '#4CAF50' }}>$2,100/field (16% off)</span>
                 </div>
               </div>
-              
+
               <div className="bg-gray-50 p-4 rounded-lg mb-6">
                 <h4 className="font-semibold text-gray-900 mb-2">Payment Options</h4>
                 <ul className="text-sm text-gray-600 space-y-1">
@@ -799,8 +772,11 @@ export default function MarketingHomePage() {
                   <li>• Budget year alignment</li>
                 </ul>
               </div>
-              
-              <button className="w-full border-2 border-green-600 text-green-600 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+
+              <button
+                className="w-full border-2 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                style={{ borderColor: '#4CAF50', color: '#4CAF50' }}
+              >
                 Get Custom Quote
               </button>
             </motion.div>
@@ -842,11 +818,11 @@ export default function MarketingHomePage() {
                       <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  
+
                   <blockquote className="text-gray-700 mb-4 text-base leading-relaxed">
                     &ldquo;{testimonial.quote}&rdquo;
                   </blockquote>
-                  
+
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                       <span className="text-green-600 font-semibold text-sm">
@@ -862,7 +838,7 @@ export default function MarketingHomePage() {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Professional Report Interface Screenshot */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -874,13 +850,13 @@ export default function MarketingHomePage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Professional Reporting Interface</h3>
                 <p className="text-gray-600">Generate comprehensive reports that administrators trust</p>
               </div>
-              
+
               <div className="bg-white rounded-lg border-2 border-gray-200 p-4 shadow-lg">
                 {/* Report Header */}
                 <div className="border-b border-gray-200 pb-4 mb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: '#4CAF50' }}>
                         <FileText className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -889,12 +865,12 @@ export default function MarketingHomePage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm font-medium text-green-600">Report Ready</div>
+                      <div className="text-sm font-medium" style={{ color: '#4CAF50' }}>Report Ready</div>
                       <div className="text-xs text-gray-500">Generated: Jan 28, 2025</div>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Report Sections */}
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
@@ -905,7 +881,7 @@ export default function MarketingHomePage() {
                     </div>
                     <div className="text-xs text-green-600 font-medium">Complete</div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
                     <BarChart3 className="w-5 h-5 text-blue-600" />
                     <div className="flex-1">
@@ -914,7 +890,7 @@ export default function MarketingHomePage() {
                     </div>
                     <div className="text-xs text-blue-600 font-medium">Complete</div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3 p-3 bg-yellow-50 rounded-lg">
                     <Calendar className="w-5 h-5 text-yellow-600" />
                     <div className="flex-1">
@@ -923,7 +899,7 @@ export default function MarketingHomePage() {
                     </div>
                     <div className="text-xs text-yellow-600 font-medium">Action Required</div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                     <DollarSign className="w-5 h-5 text-gray-600" />
                     <div className="flex-1">
@@ -933,10 +909,13 @@ export default function MarketingHomePage() {
                     <div className="text-xs text-gray-600 font-medium">Complete</div>
                   </div>
                 </div>
-                
+
                 {/* Action Buttons */}
                 <div className="flex space-x-3 pt-4 border-t border-gray-200 mt-4">
-                  <button className="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors">
+                  <button
+                    className="flex-1 text-white py-2 px-4 rounded-lg text-sm font-medium transition-opacity hover:opacity-90"
+                    style={{ background: '#4CAF50' }}
+                  >
                     Download PDF
                   </button>
                   <button className="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
@@ -944,7 +923,7 @@ export default function MarketingHomePage() {
                   </button>
                 </div>
               </div>
-              
+
               <div className="mt-4 text-center">
                 <p className="text-sm text-gray-600">
                   Professional reports that administrators understand and trust
@@ -1030,17 +1009,18 @@ export default function MarketingHomePage() {
             <p className="text-xl mb-8 opacity-90">
               Get your initial field assessment and see what professional monitoring can reveal
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                className="bg-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                style={{ color: '#4CAF50' }}
               >
                 <Calendar className="w-5 h-5" />
                 <span>Schedule Assessment</span>
               </motion.button>
-              
+
               <div className="flex items-center space-x-4 text-white">
                 <Mail className="w-5 h-5" />
                 <a href="mailto:andrew@fieldhealthsystems.com" className="text-lg font-semibold hover:text-green-200 transition-colors">
@@ -1048,7 +1028,7 @@ export default function MarketingHomePage() {
                 </a>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm opacity-80">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4" />
@@ -1081,7 +1061,7 @@ export default function MarketingHomePage() {
                 </div>
               </div>
               <p className="text-gray-300 mb-4">
-                Professional field monitoring and data insights that protect your investment 
+                Professional field monitoring and data insights that protect your investment
                 and your athletes through expert analysis and predictable maintenance planning.
               </p>
               <div className="flex items-center space-x-4">
@@ -1091,7 +1071,7 @@ export default function MarketingHomePage() {
                 </a>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-300">
@@ -1122,7 +1102,7 @@ export default function MarketingHomePage() {
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-300">
@@ -1159,7 +1139,7 @@ export default function MarketingHomePage() {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Field Health Systems. All rights reserved.</p>
           </div>

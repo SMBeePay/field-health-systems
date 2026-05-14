@@ -51,7 +51,7 @@ export default function TestingResourcesPage() {
     <>
       {/* Breadcrumbs */}
       <nav className="flex mb-8 text-sm">
-        <Link href="/resources" className="text-green-600 hover:text-green-700">Resources</Link>
+        <Link href="/resources" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Resources</Link>
         <span className="mx-2 text-gray-500">/</span>
         <span className="text-gray-700">Testing</span>
       </nav>
@@ -63,8 +63,8 @@ export default function TestingResourcesPage() {
             Sports Surface Testing Resources
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Professional testing guides, procedures, and compliance resources for artificial turf fields. 
-            From GMAX testing to equipment selection, find everything you need to ensure field safety, 
+            Professional testing guides, procedures, and compliance resources for artificial turf fields.
+            From GMAX testing to equipment selection, find everything you need to ensure field safety,
             regulatory compliance, and optimal athletic performance.
           </p>
         </header>
@@ -80,7 +80,7 @@ export default function TestingResourcesPage() {
             <div className="text-sm text-blue-800">Recommended GMAX testing frequency</div>
           </div>
           <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-            <div className="text-2xl font-bold text-green-600 mb-2">ASTM</div>
+            <div className="text-2xl font-bold mb-2" style={{ color: '#4CAF50' }}>ASTM</div>
             <div className="text-sm text-green-800">F355A & F1936 compliance standards</div>
           </div>
         </div>
@@ -100,10 +100,10 @@ export default function TestingResourcesPage() {
                   Sports Surface Testing Education Hub
                 </h2>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Your complete educational resource for athletic field safety testing and compliance. 
+                  Your complete educational resource for athletic field safety testing and compliance.
                   Comprehensive guides organized by role - Athletic Directors, Facility Managers, and Maintenance Teams.
                 </p>
-                <Link 
+                <Link
                   href="/resources/testing/education-hub"
                   className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
                 >
@@ -117,9 +117,9 @@ export default function TestingResourcesPage() {
         {/* Resource Categories */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Testing Resource Categories</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <Link 
+            <Link
               href="/resources/testing/gmax"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -128,7 +128,7 @@ export default function TestingResourcesPage() {
               <p className="text-gray-600 text-sm">Complete GMAX testing procedures and compliance</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/testing/procedures"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -137,7 +137,7 @@ export default function TestingResourcesPage() {
               <p className="text-gray-600 text-sm">Standardized protocols and methodologies</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/testing/equipment"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -146,7 +146,7 @@ export default function TestingResourcesPage() {
               <p className="text-gray-600 text-sm">Testing equipment reviews and specifications</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/testing/compliance"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -160,15 +160,15 @@ export default function TestingResourcesPage() {
         {/* All Testing Resources */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">All Testing Resources</h2>
-          
+
           <div className="space-y-6">
             {testingResources.map((resource, index) => {
-              const cardClasses = resource.featured 
-                ? "bg-gradient-to-br from-blue-50 to-green-50 border-2 border-blue-200" 
+              const cardClasses = resource.featured
+                ? "bg-gradient-to-br from-blue-50 to-green-50 border-2 border-blue-200"
                 : "bg-white border border-gray-200"
-              
+
               return (
-                <Link 
+                <Link
                   key={index}
                   href={resource.href}
                   className={`block rounded-lg p-6 hover:shadow-lg transition-all ${cardClasses}`}
@@ -177,11 +177,14 @@ export default function TestingResourcesPage() {
                     <span className="text-2xl flex-shrink-0">{resource.icon}</span>
                     <div className="flex-grow">
                       <div className="flex items-center space-x-2 mb-2">
-                        <span className={`text-xs font-semibold px-2 py-1 rounded ${
-                          resource.featured 
-                            ? 'text-blue-600 bg-blue-100' 
-                            : 'text-green-600 bg-green-100'
-                        }`}>
+                        <span
+                          className={`text-xs font-semibold px-2 py-1 rounded ${
+                            resource.featured
+                              ? 'text-blue-600 bg-blue-100'
+                              : 'bg-green-100'
+                          }`}
+                          style={!resource.featured ? { color: '#4CAF50' } : {}}
+                        >
                           {resource.category}
                         </span>
                         <span className="text-xs text-gray-500">{resource.readTime}</span>
@@ -204,10 +207,10 @@ export default function TestingResourcesPage() {
         <section className="bg-gradient-to-r from-red-600 to-orange-600 rounded-lg p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-4">Need Professional Field Testing?</h2>
           <p className="text-lg mb-6 opacity-90">
-            Get certified GMAX testing and comprehensive field safety assessment from independent 
+            Get certified GMAX testing and comprehensive field safety assessment from independent
             testing specialists. Ensure compliance and protect your athletes with professional testing services.
           </p>
-          <Link 
+          <Link
             href="/contact"
             className="inline-block bg-white text-red-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
           >

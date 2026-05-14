@@ -3,15 +3,16 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { 
-  LayoutDashboard, 
-  MapPin, 
-  TestTube, 
-  Wrench, 
-  FileText, 
-  BarChart3, 
+import {
+  LayoutDashboard,
+  MapPin,
+  TestTube,
+  Wrench,
+  FileText,
+  BarChart3,
   Users,
-  Settings
+  Settings,
+  Shield
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -30,55 +31,81 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ x: -20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.1 }}
-      className="w-64 bg-white border-r border-gray-200 px-3 py-6"
+      className="w-64 flex-shrink-0 flex flex-col"
+      style={{ background: '#12324A', borderRight: '1px solid #0d2438', minHeight: '100vh' }}
     >
-      <div className="space-y-1">
+      {/* Logo area */}
+      <div className="px-5 py-5 border-b" style={{ borderColor: '#0d2438' }}>
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: '#4CAF50' }}>
+            <Shield className="w-4 h-4 text-white" />
+          </div>
+          <div>
+            <div className="text-white font-bold text-sm leading-tight">Field Health</div>
+            <div className="text-xs leading-tight" style={{ color: '#64748b' }}>Systems</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Nav items */}
+      <div className="flex-1 px-3 py-4 space-y-0.5">
         {navigation.map((item, index) => {
-          const isActive = pathname === item.href
+          const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
           return (
             <motion.div
               key={item.name}
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.2, delay: index * 0.05 }}
+              transition={{ duration: 0.2, delay: index * 0.04 }}
             >
               <Link
                 href={item.href}
                 className={cn(
-                  'group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200',
+                  'group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-150 relative',
                   isActive
-                    ? 'bg-green-50 text-green-700 border-r-2 border-green-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                    ? 'text-white'
+                    : 'hover:text-white'
                 )}
+                style={isActive ? {
+                  background: '#1a4466',
+                  color: '#fff',
+                  borderLeft: '3px solid #1F8A8A',
+                  paddingLeft: '9px',
+                } : {
+                  color: '#94a3b8',
+                }}
+                onMouseEnter={e => {
+                  if (!isActive) {
+                    (e.currentTarget as HTMLElement).style.background = '#1a4466'
+                    ;(e.currentTarget as HTMLElement).style.color = '#fff'
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (!isActive) {
+                    (e.currentTarget as HTMLElement).style.background = ''
+                    ;(e.currentTarget as HTMLElement).style.color = '#94a3b8'
+                  }
+                }}
               >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <item.icon
-                    className={cn(
-                      'mr-3 h-5 w-5 flex-shrink-0 transition-colors duration-200',
-                      isActive 
-                        ? 'text-green-600' 
-                        : 'text-gray-500 group-hover:text-gray-900'
-                    )}
-                  />
-                </motion.div>
+                <item.icon
+                  className="mr-3 h-4 w-4 flex-shrink-0 transition-colors duration-150"
+                  style={{ color: isActive ? '#1F8A8A' : undefined }}
+                />
                 {item.name}
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute right-0 w-1 h-6 bg-green-600 rounded-l-full"
-                  />
-                )}
               </Link>
             </motion.div>
           )
         })}
+      </div>
+
+      {/* Bottom org label */}
+      <div className="px-5 py-4 border-t" style={{ borderColor: '#0d2438' }}>
+        <div className="text-xs font-medium" style={{ color: '#64748b' }}>Lincoln High School</div>
+        <div className="text-xs mt-0.5" style={{ color: '#475569' }}>Athletic Director</div>
       </div>
     </motion.nav>
   )

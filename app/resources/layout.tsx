@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export const metadata: Metadata = {
   title: "Artificial Turf Resources & Guides | Field Health Systems",
@@ -34,44 +35,47 @@ interface ResourcesLayoutProps {
 
 export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
+      <MarketingNav activePath="/resources" />
       <div className="border-b bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex space-x-8 py-4" aria-label="Resources Navigation">
-            <a 
-              href="/resources" 
-              className="text-green-600 hover:text-green-700 font-medium px-3 py-2 rounded-md hover:bg-green-50"
+            <a
+              href="/resources"
+              className="font-medium px-3 py-2 rounded-md"
+              style={{ color: '#1F8A8A' }}
             >
               All Resources
             </a>
-            <a 
-              href="/resources/maintenance" 
-              className="text-gray-600 hover:text-green-700 font-medium px-3 py-2 rounded-md hover:bg-green-50"
+            <a
+              href="/resources/maintenance"
+              className="text-gray-600 font-medium px-3 py-2 rounded-md hover:bg-gray-50"
+              style={{}}
             >
               Maintenance
             </a>
-            <a 
-              href="/resources/testing" 
-              className="text-gray-600 hover:text-green-700 font-medium px-3 py-2 rounded-md hover:bg-green-50"
+            <a
+              href="/resources/testing"
+              className="text-gray-600 font-medium px-3 py-2 rounded-md hover:bg-gray-50"
             >
               Testing
             </a>
-            <a 
-              href="/resources/cost-analysis" 
-              className="text-gray-600 hover:text-green-700 font-medium px-3 py-2 rounded-md hover:bg-green-50"
+            <a
+              href="/resources/cost-analysis"
+              className="text-gray-600 font-medium px-3 py-2 rounded-md hover:bg-gray-50"
             >
               Cost Analysis
             </a>
-            <a 
-              href="/resources/industry-insights" 
-              className="text-gray-600 hover:text-green-700 font-medium px-3 py-2 rounded-md hover:bg-green-50"
+            <a
+              href="/resources/industry-insights"
+              className="text-gray-600 font-medium px-3 py-2 rounded-md hover:bg-gray-50"
             >
               Industry Insights
             </a>
           </nav>
         </div>
       </div>
-      
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>

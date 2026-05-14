@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 import ContactForm from '@/components/forms/ContactForm'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export const metadata: Metadata = {
   title: "Contact Field Health Systems | Professional Field Testing & Consultation",
@@ -42,10 +43,12 @@ const contactInfo = [
 export default function ContactPage() {
 
   return (
-    <>
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
+      <MarketingNav activePath="/contact" />
+      <div className="max-w-7xl mx-auto px-6 py-10">
       {/* Breadcrumbs */}
       <nav className="flex mb-8 text-sm">
-        <Link href="/" className="text-green-600 hover:text-green-700">Home</Link>
+        <Link href="/" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Home</Link>
         <span className="mx-2 text-gray-500">/</span>
         <span className="text-gray-700">Contact</span>
       </nav>
@@ -57,7 +60,7 @@ export default function ContactPage() {
             Contact Our Field Testing Experts
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Get professional consultation for your artificial turf fields. From GMAX testing to maintenance 
+            Get professional consultation for your artificial turf fields. From GMAX testing to maintenance
             planning, our experts are ready to help ensure your fields are safe, compliant, and performing at their best.
           </p>
         </header>
@@ -67,7 +70,7 @@ export default function ContactPage() {
           {/* Contact Information */}
           <div className="lg:col-span-1">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-            
+
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-start space-x-4">
@@ -79,8 +82,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
                     {info.link ? (
-                      <a 
-                        href={info.link} 
+                      <a
+                        href={info.link}
                         className="text-gray-600 hover:text-green-600 transition-colors"
                       >
                         {info.details}
@@ -97,19 +100,21 @@ export default function ContactPage() {
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-4">Quick Actions</h3>
               <div className="space-y-3">
-                <Link 
+                <Link
                   href="/schedule-assessment"
-                  className="block w-full bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-center"
+                  className="block w-full text-white font-semibold px-4 py-2 rounded-lg transition-colors text-center"
+                  style={{ background: '#4CAF50' }}
                 >
                   Schedule Field Assessment
                 </Link>
-                <Link 
+                <Link
                   href="/resources"
-                  className="block w-full border-2 border-green-600 text-green-600 font-semibold px-4 py-2 rounded-lg hover:bg-green-50 transition-colors text-center"
+                  className="block w-full border-2 font-semibold px-4 py-2 rounded-lg hover:bg-green-50 transition-colors text-center"
+                  style={{ borderColor: '#4CAF50', color: '#4CAF50' }}
                 >
                   Browse Resources
                 </Link>
-                <a 
+                <a
                   href="mailto:andrew@fieldhealthsystems.com?subject=Emergency Field Issue"
                   className="block w-full bg-red-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-center"
                 >
@@ -132,35 +137,36 @@ export default function ContactPage() {
             <div className="bg-white border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-3">How quickly can you schedule field testing?</h3>
               <p className="text-gray-600 text-sm">
-                Standard testing can typically be scheduled within 1-2 weeks. Emergency assessments 
+                Standard testing can typically be scheduled within 1-2 weeks. Emergency assessments
                 can often be arranged within 24-48 hours depending on location and availability.
               </p>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-3">What areas do you serve?</h3>
               <p className="text-gray-600 text-sm">
-                We provide field testing services nationwide. Travel costs may apply for locations 
+                We provide field testing services nationwide. Travel costs may apply for locations
                 outside our primary service areas. Contact us for specific availability in your area.
               </p>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-3">Do you provide consultation services?</h3>
               <p className="text-gray-600 text-sm">
-                Yes, we offer comprehensive consultation services including maintenance planning, 
+                Yes, we offer comprehensive consultation services including maintenance planning,
                 cost analysis, compliance guidance, and staff training programs.
               </p>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
               <h3 className="font-semibold text-gray-900 mb-3">What testing certifications do you hold?</h3>
               <p className="text-gray-600 text-sm">
-                Our testing professionals are certified in ASTM testing procedures and maintain 
+                Our testing professionals are certified in ASTM testing procedures and maintain
                 current certifications for all major testing equipment and methodologies.
               </p>
             </div>
           </div>
         </section>
       </div>
-    </>
+      </div>
+    </div>
   )
 }
 

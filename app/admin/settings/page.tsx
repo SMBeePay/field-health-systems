@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { 
-  Settings, 
-  Save, 
+import {
+  Settings,
+  Save,
   Shield,
   Bell,
   Globe,
@@ -97,7 +97,7 @@ export default function AdminSettingsPage() {
 
   const handleSave = async () => {
     if (!settings) return
-    
+
     setSaving(true)
     setSaveMessage(null)
 
@@ -125,7 +125,7 @@ export default function AdminSettingsPage() {
 
   const updateSettings = (section: keyof SystemSettings, key: string, value: string | number | boolean) => {
     if (!settings) return
-    
+
     setSettings({
       ...settings,
       [section]: {
@@ -138,7 +138,7 @@ export default function AdminSettingsPage() {
   if (loading || !settings) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: '#4CAF50' }}></div>
       </div>
     )
   }
@@ -154,10 +154,11 @@ export default function AdminSettingsPage() {
           </h1>
           <p className="text-gray-600 mt-1">Configure system-wide settings and preferences</p>
         </div>
-        <button 
+        <button
           onClick={handleSave}
           disabled={saving}
-          className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{ background: '#4CAF50' }}
         >
           <Save className="w-4 h-4" />
           <span>{saving ? 'Saving...' : 'Save Changes'}</span>
@@ -166,7 +167,7 @@ export default function AdminSettingsPage() {
 
       {/* Breadcrumbs */}
       <nav className="flex text-sm text-gray-600">
-        <Link href="/admin" className="hover:text-green-600">Admin</Link>
+        <Link href="/admin" className="hover:text-teal-600">Admin</Link>
         <span className="mx-2">/</span>
         <span>Settings</span>
       </nav>
@@ -174,15 +175,15 @@ export default function AdminSettingsPage() {
       {/* Save Message */}
       {saveMessage && (
         <div className={`p-4 rounded-lg flex items-center space-x-3 ${
-          saveMessage.type === 'success' 
-            ? 'bg-green-50 border border-green-200' 
+          saveMessage.type === 'success'
+            ? 'bg-teal-50 border border-teal-200'
             : 'bg-red-50 border border-red-200'
         }`}>
-          {saveMessage.type === 'success' 
-            ? <CheckCircle className="w-5 h-5 text-green-600" />
+          {saveMessage.type === 'success'
+            ? <CheckCircle className="w-5 h-5 text-teal-600" />
             : <AlertTriangle className="w-5 h-5 text-red-600" />
           }
-          <span className={saveMessage.type === 'success' ? 'text-green-800' : 'text-red-800'}>
+          <span className={saveMessage.type === 'success' ? 'text-teal-800' : 'text-red-800'}>
             {saveMessage.message}
           </span>
         </div>
@@ -192,10 +193,10 @@ export default function AdminSettingsPage() {
         {/* General Settings */}
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <div className="flex items-center space-x-3 mb-6">
-            <Globe className="w-6 h-6 text-blue-600" />
+            <Globe className="w-6 h-6 text-teal-600" />
             <h2 className="text-lg font-semibold text-gray-900">General Settings</h2>
           </div>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Site Name</label>
@@ -203,7 +204,9 @@ export default function AdminSettingsPage() {
                 type="text"
                 value={settings.general.siteName}
                 onChange={(e) => updateSettings('general', 'siteName', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div>
@@ -212,7 +215,9 @@ export default function AdminSettingsPage() {
                 type="url"
                 value={settings.general.siteUrl}
                 onChange={(e) => updateSettings('general', 'siteUrl', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div>
@@ -221,7 +226,9 @@ export default function AdminSettingsPage() {
                 type="email"
                 value={settings.general.adminEmail}
                 onChange={(e) => updateSettings('general', 'adminEmail', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div>
@@ -230,7 +237,9 @@ export default function AdminSettingsPage() {
                 type="email"
                 value={settings.general.supportEmail}
                 onChange={(e) => updateSettings('general', 'supportEmail', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div>
@@ -238,7 +247,9 @@ export default function AdminSettingsPage() {
               <select
                 value={settings.general.timezone}
                 onChange={(e) => updateSettings('general', 'timezone', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               >
                 <option value="America/New_York">Eastern Time</option>
                 <option value="America/Chicago">Central Time</option>
@@ -255,7 +266,7 @@ export default function AdminSettingsPage() {
             <Shield className="w-6 h-6 text-red-600" />
             <h2 className="text-lg font-semibold text-gray-900">Security Settings</h2>
           </div>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Session Timeout (minutes)</label>
@@ -263,7 +274,9 @@ export default function AdminSettingsPage() {
                 type="number"
                 value={settings.security.sessionTimeout}
                 onChange={(e) => updateSettings('security', 'sessionTimeout', parseInt(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div>
@@ -271,7 +284,9 @@ export default function AdminSettingsPage() {
               <select
                 value={settings.security.passwordRequirements}
                 onChange={(e) => updateSettings('security', 'passwordRequirements', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               >
                 <option value="basic">Basic (8+ characters)</option>
                 <option value="strong">Strong (8+ with special chars)</option>
@@ -284,7 +299,9 @@ export default function AdminSettingsPage() {
                 type="number"
                 value={settings.security.apiRateLimit}
                 onChange={(e) => updateSettings('security', 'apiRateLimit', parseInt(e.target.value))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div className="flex items-center justify-between">
@@ -311,7 +328,7 @@ export default function AdminSettingsPage() {
             <Bell className="w-6 h-6 text-purple-600" />
             <h2 className="text-lg font-semibold text-gray-900">Notifications</h2>
           </div>
-          
+
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-gray-700">Email Notifications</span>
@@ -389,10 +406,10 @@ export default function AdminSettingsPage() {
         {/* Integration Settings */}
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <div className="flex items-center space-x-3 mb-6">
-            <Key className="w-6 h-6 text-green-600" />
+            <Key className="w-6 h-6 text-teal-600" />
             <h2 className="text-lg font-semibold text-gray-900">Integrations</h2>
           </div>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Google Analytics ID</label>
@@ -401,7 +418,9 @@ export default function AdminSettingsPage() {
                 value={settings.integrations.googleAnalyticsId}
                 onChange={(e) => updateSettings('integrations', 'googleAnalyticsId', e.target.value)}
                 placeholder="G-XXXXXXXXXX"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
             <div>
@@ -409,7 +428,9 @@ export default function AdminSettingsPage() {
               <select
                 value={settings.integrations.emailProvider}
                 onChange={(e) => updateSettings('integrations', 'emailProvider', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               >
                 <option value="sendgrid">SendGrid</option>
                 <option value="ses">Amazon SES</option>
@@ -422,7 +443,9 @@ export default function AdminSettingsPage() {
               <select
                 value={settings.integrations.storageProvider}
                 onChange={(e) => updateSettings('integrations', 'storageProvider', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               >
                 <option value="aws-s3">Amazon S3</option>
                 <option value="gcs">Google Cloud Storage</option>
@@ -434,7 +457,9 @@ export default function AdminSettingsPage() {
               <select
                 value={settings.integrations.backupFrequency}
                 onChange={(e) => updateSettings('integrations', 'backupFrequency', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               >
                 <option value="hourly">Hourly</option>
                 <option value="daily">Daily</option>
@@ -449,10 +474,10 @@ export default function AdminSettingsPage() {
       {/* System Status */}
       <div className="bg-white rounded-lg border border-gray-200 p-6">
         <div className="flex items-center space-x-3 mb-6">
-          <Activity className="w-6 h-6 text-blue-600" />
+          <Activity className="w-6 h-6 text-teal-600" />
           <h2 className="text-lg font-semibold text-gray-900">System Status</h2>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="flex items-center space-x-3">
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>

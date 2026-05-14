@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { 
-  Users, 
-  UserPlus, 
-  Search, 
- 
+import {
+  Users,
+  UserPlus,
+  Search,
   MoreHorizontal,
   Edit,
   Trash2,
@@ -55,11 +54,11 @@ export default function AdminUsersPage() {
   }
 
   const filteredUsers = users.filter(user => {
-    const matchesSearch = 
+    const matchesSearch =
       user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase())
-    
+
     const matchesRole = roleFilter === 'ALL' || user.role === roleFilter
     const matchesStatus = statusFilter === 'ALL' || user.status === statusFilter
 
@@ -71,7 +70,7 @@ export default function AdminUsersPage() {
       case 'ADMIN':
         return <ShieldCheck className="w-4 h-4 text-red-600" />
       case 'MANAGER':
-        return <Shield className="w-4 h-4 text-blue-600" />
+        return <Shield className="w-4 h-4 text-teal-600" />
       default:
         return <Users className="w-4 h-4 text-gray-600" />
     }
@@ -102,7 +101,10 @@ export default function AdminUsersPage() {
           </h1>
           <p className="text-gray-600 mt-1">Manage system users and permissions</p>
         </div>
-        <button className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center space-x-2">
+        <button
+          className="text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center space-x-2"
+          style={{ background: '#4CAF50' }}
+        >
           <UserPlus className="w-4 h-4" />
           <span>Add User</span>
         </button>
@@ -110,7 +112,7 @@ export default function AdminUsersPage() {
 
       {/* Breadcrumbs */}
       <nav className="flex text-sm text-gray-600">
-        <Link href="/admin" className="hover:text-green-600">Admin</Link>
+        <Link href="/admin" className="hover:text-teal-600">Admin</Link>
         <span className="mx-2">/</span>
         <span>Users</span>
       </nav>
@@ -123,7 +125,7 @@ export default function AdminUsersPage() {
               <p className="text-sm font-medium text-gray-600">Total Users</p>
               <p className="text-2xl font-bold text-gray-900">{users.length}</p>
             </div>
-            <Users className="w-8 h-8 text-blue-600" />
+            <Users className="w-8 h-8 text-teal-600" />
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg border border-gray-200">
@@ -172,14 +174,18 @@ export default function AdminUsersPage() {
                 placeholder="Search users..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+                onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
               />
             </div>
           </div>
           <select
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+            onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+            onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
           >
             <option value="ALL">All Roles</option>
             <option value="ADMIN">Admin</option>
@@ -189,7 +195,9 @@ export default function AdminUsersPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+            onFocus={(e) => { e.target.style.borderColor = '#1F8A8A'; e.target.style.boxShadow = '0 0 0 2px rgba(31,138,138,0.2)' }}
+            onBlur={(e) => { e.target.style.borderColor = '#d1d5db'; e.target.style.boxShadow = 'none' }}
           >
             <option value="ALL">All Status</option>
             <option value="ACTIVE">Active</option>
@@ -204,7 +212,7 @@ export default function AdminUsersPage() {
         <div className="overflow-x-auto">
           {loading ? (
             <div className="p-8 text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto mb-4" style={{ borderColor: '#4CAF50' }}></div>
               <p className="text-gray-600">Loading users...</p>
             </div>
           ) : filteredUsers.length === 0 ? (
@@ -214,7 +222,7 @@ export default function AdminUsersPage() {
             </div>
           ) : (
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead style={{ background: '#F7FAFC' }}>
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     User
@@ -242,8 +250,8 @@ export default function AdminUsersPage() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
-                          <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
-                            <span className="text-sm font-medium text-green-600">
+                          <div className="h-10 w-10 rounded-full bg-teal-100 flex items-center justify-center">
+                            <span className="text-sm font-medium text-teal-600">
                               {user.firstName[0]}{user.lastName[0]}
                             </span>
                           </div>
@@ -274,14 +282,14 @@ export default function AdminUsersPage() {
                       {user.organization?.name || 'No Organization'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {user.lastLogin 
+                      {user.lastLogin
                         ? new Date(user.lastLogin).toLocaleDateString()
                         : 'Never'
                       }
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <div className="flex items-center justify-end space-x-2">
-                        <button className="text-blue-600 hover:text-blue-900">
+                        <button className="text-teal-600 hover:text-teal-900">
                           <Edit className="w-4 h-4" />
                         </button>
                         <button className="text-red-600 hover:text-red-900">

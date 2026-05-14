@@ -28,9 +28,9 @@ export function StatusOverview({ stats }: StatusOverviewProps) {
       label: 'Good',
       value: stats.good,
       icon: CheckCircle,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
-      borderColor: 'border-blue-200',
+      color: 'text-teal-600',
+      bgColor: 'bg-teal-50',
+      borderColor: 'border-teal-200',
     },
     {
       label: 'Monitor',
@@ -81,7 +81,7 @@ export function StatusOverview({ stats }: StatusOverviewProps) {
                 <div className={designTokens.typography.body.small + ' text-gray-600'}>{item.label}</div>
               </div>
             </div>
-            
+
             {stats.total > 0 && (
               <div className="mt-3">
                 <div className="flex justify-between text-xs text-gray-600 mb-1">

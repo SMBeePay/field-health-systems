@@ -27,12 +27,12 @@ export default function Dashboard() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-7xl mx-auto">
             {/* Page Header */}
@@ -77,7 +77,7 @@ export default function Dashboard() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                       >
-                        <FieldStatusCard 
+                        <FieldStatusCard
                           field={field}
                           onClick={() => router.push(`/fields/${field.id}`)}
                         />

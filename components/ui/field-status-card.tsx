@@ -14,13 +14,13 @@ interface FieldStatusCardProps {
 
 export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
   const latestTest = mockTestingData.find(test => test.fieldId === field.id)
-  
+
   const getStatusIcon = () => {
     switch (field.status) {
       case 'excellent':
         return <CheckCircle className="w-5 h-5 text-green-600" />
       case 'good':
-        return <CheckCircle className="w-5 h-5 text-blue-600" />
+        return <CheckCircle className="w-5 h-5 text-teal-600" />
       case 'monitor':
         return <Clock className="w-5 h-5 text-yellow-600" />
       case 'critical':
@@ -50,7 +50,7 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
             <p className={designTokens.typography.body.small}>{field.type.replace('_', ' ')} • {field.surface}</p>
           </div>
         </div>
-        
+
         <div className="flex items-center space-x-2">
           {getStatusIcon()}
           <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getStatusColor(field.status)}`}>
@@ -65,7 +65,7 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
           <div className="text-center">
             <div className={`text-lg font-semibold ${
               latestTest.gmaxStatus === 'excellent' ? 'text-green-600' :
-              latestTest.gmaxStatus === 'good' ? 'text-blue-600' :
+              latestTest.gmaxStatus === 'good' ? 'text-teal-600' :
               latestTest.gmaxStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
             }`}>
               {latestTest.gmaxAverage.toFixed(1)}
@@ -75,7 +75,7 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
           <div className="text-center">
             <div className={`text-lg font-semibold ${
               latestTest.shearStatus === 'excellent' ? 'text-green-600' :
-              latestTest.shearStatus === 'good' ? 'text-blue-600' :
+              latestTest.shearStatus === 'good' ? 'text-teal-600' :
               latestTest.shearStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
             }`}>
               {latestTest.shearAverage.toFixed(1)}
@@ -85,7 +85,7 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
           <div className="text-center">
             <div className={`text-lg font-semibold ${
               latestTest.infillDepthStatus === 'excellent' ? 'text-green-600' :
-              latestTest.infillDepthStatus === 'good' ? 'text-blue-600' :
+              latestTest.infillDepthStatus === 'good' ? 'text-teal-600' :
               latestTest.infillDepthStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
             }`}>
               {latestTest.infillDepthAverage.toFixed(1)}mm
@@ -103,7 +103,7 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
             Last tested: {field.lastTestingDate ? formatDate(field.lastTestingDate) : 'Never'}
           </span>
         </div>
-        
+
         {field.status === 'critical' && (
           <motion.div
             animate={{ scale: [1, 1.1, 1] }}

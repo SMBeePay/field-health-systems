@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 // This will be replaced with actual blog posts from your content management system
 const blogPosts = [
@@ -21,45 +22,8 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white border-b border-gray-200 sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Link href="/">
-                <img
-                  src="/logo-header.svg"
-                  alt="Field Health Systems"
-                  className="h-20 w-auto cursor-pointer"
-                />
-              </Link>
-            </div>
-
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/#services" className="text-gray-700 hover:text-green-600 font-medium">Platform</Link>
-              <Link href="/#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Field Safety</Link>
-              <Link href="/resources" className="text-gray-700 hover:text-green-600 font-medium">Resources</Link>
-              <Link href="/blog" className="text-green-600 font-medium border-b-2 border-green-600">Blog</Link>
-              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
-              <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
-              <Link href="/schedule-assessment">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
-                >
-                  Request Demo
-                </motion.button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </motion.header>
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
+      <MarketingNav activePath="/blog" />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-white py-16">
@@ -83,7 +47,10 @@ export default function BlogPage() {
       {/* Categories */}
       <section className="max-w-7xl mx-auto px-6 py-8">
         <div className="flex flex-wrap gap-3">
-          <button className="px-4 py-2 bg-green-600 text-white rounded-full font-medium hover:bg-green-700 transition-colors">
+          <button
+            className="px-4 py-2 text-white rounded-full font-medium transition-colors"
+            style={{ background: '#4CAF50' }}
+          >
             All Posts
           </button>
           <button className="px-4 py-2 bg-white text-gray-700 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-200">
@@ -162,7 +129,8 @@ export default function BlogPage() {
                 {/* Read More Link */}
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center space-x-2 text-green-600 hover:text-green-700 font-medium"
+                  className="inline-flex items-center space-x-2 font-medium"
+                  style={{ color: '#4CAF50' }}
                 >
                   <span>Read More</span>
                   <ArrowRight className="w-4 h-4" />
@@ -178,7 +146,8 @@ export default function BlogPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-12 text-center"
+          className="rounded-2xl p-12 text-center"
+          style={{ background: 'linear-gradient(to bottom right, #4CAF50, #3d9140)' }}
         >
           <h2 className="text-3xl font-bold text-white mb-4">
             Stay Updated on Field Safety
@@ -192,7 +161,7 @@ export default function BlogPage() {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300"
             />
-            <button className="px-6 py-3 bg-white text-green-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+            <button className="px-6 py-3 bg-white rounded-lg font-medium hover:bg-gray-100 transition-colors" style={{ color: '#4CAF50' }}>
               Subscribe
             </button>
           </div>

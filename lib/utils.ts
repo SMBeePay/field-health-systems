@@ -41,7 +41,7 @@ export function calculateOverallStatus(gmaxStatus: FieldStatus, shearStatus: Fie
   const statusValues = { excellent: 4, good: 3, monitor: 2, critical: 1 }
   const scores = [statusValues[gmaxStatus], statusValues[shearStatus], statusValues[infillStatus]]
   const minScore = Math.min(...scores)
-  
+
   if (minScore === 1) return 'critical'
   if (minScore === 2) return 'monitor'
   if (scores.every(score => score >= 4)) return 'excellent'
@@ -53,9 +53,9 @@ export function getStatusColor(status: FieldStatus): string {
     case 'excellent':
       return 'text-green-700 bg-green-50 border-green-200'
     case 'good':
-      return 'text-blue-700 bg-blue-50 border-blue-200'
+      return 'text-teal-700 bg-teal-50 border-teal-200'
     case 'monitor':
-      return 'text-yellow-700 bg-yellow-50 border-yellow-200'
+      return 'text-amber-700 bg-amber-50 border-amber-200'
     case 'critical':
       return 'text-red-700 bg-red-50 border-red-200'
     default:
@@ -93,7 +93,7 @@ export function calculateAverage(numbers: number[]): number {
 }
 
 export function generateRecommendations(
-  testingData: TestingData, 
+  testingData: TestingData,
   sport: FieldType = 'multi_purpose',
   temperature?: number,
   fieldAge?: number

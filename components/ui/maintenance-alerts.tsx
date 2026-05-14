@@ -43,20 +43,21 @@ export function MaintenanceAlerts({ recommendations, onViewAll }: MaintenanceAle
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={onViewAll}
-            className="text-green-600 hover:text-green-700 text-sm font-medium"
+            className="text-sm font-medium"
+            style={{ color: '#1F8A8A' }}
           >
             View All
           </motion.button>
         </div>
-        
+
         <div className="text-center py-8">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4"
           >
-            <Wrench className="w-8 h-8 text-green-600" />
+            <Wrench className="w-8 h-8 text-teal-600" />
           </motion.div>
           <p className={designTokens.typography.body.base + ' text-gray-600'}>
             No critical maintenance alerts at this time.
@@ -77,7 +78,8 @@ export function MaintenanceAlerts({ recommendations, onViewAll }: MaintenanceAle
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={onViewAll}
-          className="text-green-600 hover:text-green-700 text-sm font-medium flex items-center space-x-1"
+          className="text-sm font-medium flex items-center space-x-1"
+          style={{ color: '#1F8A8A' }}
         >
           <span>View All</span>
           <span className="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full">
@@ -106,12 +108,12 @@ export function MaintenanceAlerts({ recommendations, onViewAll }: MaintenanceAle
                     {recommendation.category.replace('_', ' ')}
                   </span>
                 </div>
-                
+
                 <h4 className={designTokens.typography.heading.h4 + ' mb-1'}>{recommendation.title}</h4>
                 <p className={designTokens.typography.body.small + ' text-gray-600 mb-3 line-clamp-2'}>
                   {recommendation.description}
                 </p>
-                
+
                 <div className="flex items-center space-x-4">
                   {recommendation.estimatedCost && (
                     <div className="flex items-center space-x-1">
@@ -131,7 +133,7 @@ export function MaintenanceAlerts({ recommendations, onViewAll }: MaintenanceAle
                   )}
                 </div>
               </div>
-              
+
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -143,7 +145,7 @@ export function MaintenanceAlerts({ recommendations, onViewAll }: MaintenanceAle
           </motion.div>
         ))}
       </div>
-      
+
       {recommendations.filter(r => r.status === 'pending').length > 3 && (
         <motion.div
           initial={{ opacity: 0 }}

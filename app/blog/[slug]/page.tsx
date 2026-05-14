@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, Tag, Share2, Facebook, Twitter, Linkedin } from 'lucide-react'
 import { useParams } from 'next/navigation'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 // This will be replaced with your CMS or database
 const getBlogPost = (slug: string) => {
@@ -38,44 +39,7 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white border-b border-gray-200 sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Link href="/">
-                <img
-                  src="/logo-header.svg"
-                  alt="Field Health Systems"
-                  className="h-20 w-auto cursor-pointer"
-                />
-              </Link>
-            </div>
-
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/#services" className="text-gray-700 hover:text-green-600 font-medium">Platform</Link>
-              <Link href="/#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Field Safety</Link>
-              <Link href="/resources" className="text-gray-700 hover:text-green-600 font-medium">Resources</Link>
-              <Link href="/blog" className="text-green-600 font-medium">Blog</Link>
-              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
-              <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
-              <Link href="/schedule-assessment">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
-                >
-                  Request Demo
-                </motion.button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </motion.header>
+      <MarketingNav activePath="/blog" />
 
       {/* Article Header */}
       <article className="max-w-4xl mx-auto px-6 py-12">
@@ -193,7 +157,7 @@ export default function BlogPostPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 text-center mb-12">
+        <div className="rounded-2xl p-8 text-center mb-12" style={{ background: 'linear-gradient(to bottom right, #4CAF50, #3d9140)' }}>
           <h3 className="text-2xl font-bold text-white mb-4">
             Ready to Schedule Your Field Assessment?
           </h3>
@@ -204,7 +168,8 @@ export default function BlogPostPage() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-green-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+              className="bg-white px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+              style={{ color: '#4CAF50' }}
             >
               Schedule Assessment
             </motion.button>
@@ -218,7 +183,7 @@ export default function BlogPostPage() {
             {/* Placeholder for related posts */}
             <Link href="/blog/related-post-1" className="group">
               <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
-                <span className="text-sm text-green-600 font-medium">Field Safety</span>
+                <span className="text-sm font-medium" style={{ color: '#4CAF50' }}>Field Safety</span>
                 <h4 className="text-lg font-bold text-gray-900 mt-2 mb-2 group-hover:text-green-600">
                   How Often Should You Test Your Athletic Field?
                 </h4>
@@ -227,7 +192,7 @@ export default function BlogPostPage() {
             </Link>
             <Link href="/blog/related-post-2" className="group">
               <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow">
-                <span className="text-sm text-green-600 font-medium">Compliance</span>
+                <span className="text-sm font-medium" style={{ color: '#4CAF50' }}>Compliance</span>
                 <h4 className="text-lg font-bold text-gray-900 mt-2 mb-2 group-hover:text-green-600">
                   Understanding ASTM F1936 Standards
                 </h4>

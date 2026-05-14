@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
-import { 
-  Shield, 
-  TrendingDown, 
-  Users, 
-  CheckCircle, 
-  Mail, 
-  Building, 
+import {
+  Shield,
+  TrendingDown,
+  Users,
+  CheckCircle,
+  Mail,
+  Building,
   AlertTriangle,
   FileText,
   Handshake,
@@ -18,6 +18,7 @@ import {
   Clock,
   Calculator
 } from 'lucide-react'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export default function PartnershipsPage() {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ export default function PartnershipsPage() {
   const handleInterestChange = (interest, checked) => {
     setFormData(prev => ({
       ...prev,
-      interests: checked 
+      interests: checked
         ? [...prev.interests, interest]
         : prev.interests.filter(i => i !== interest)
     }))
@@ -87,7 +88,7 @@ export default function PartnershipsPage() {
 
       // Show success message
       setShowSuccess(true)
-      
+
       // Reset form
       setFormData({
         firstName: '',
@@ -145,35 +146,7 @@ export default function PartnershipsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-4">
-              <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
-                <img src="/logo-icon.svg" alt="Field Health Systems" className="w-12 h-12" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900 leading-tight">Field Health Systems</h1>
-                <p className="text-sm text-gray-600 leading-tight">Insurance Partnerships</p>
-              </div>
-            </Link>
-            
-            <div className="flex items-center space-x-6">
-              <nav className="hidden md:flex items-center space-x-6">
-                <Link href="/" className="text-gray-600 hover:text-gray-900">Home</Link>
-                <Link href="/schedule-assessment" className="text-gray-600 hover:text-gray-900">Schedule Assessment</Link>
-                <Link href="/athlete-safety" className="text-gray-600 hover:text-gray-900">Safety</Link>
-                <Link href="/marketing" className="text-gray-600 hover:text-gray-900">Marketing</Link>
-              </nav>
-              
-              <a href="#partnership-form" className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
-                Request Partnership Info
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <MarketingNav activePath="/partnerships" />
 
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
@@ -187,14 +160,14 @@ export default function PartnershipsPage() {
               <Handshake className="w-5 h-5 mr-2" />
               Partnership Opportunity Available
             </div>
-            
+
             <h1 className="text-5xl font-bold text-gray-900 mb-6">
               Reduce Field-Related Claims<br />
-              <span className="text-green-600">Through Partnership</span>
+              <span style={{ color: '#4CAF50' }}>Through Partnership</span>
             </h1>
-            
+
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Partner with us to offer comprehensive field safety monitoring to your education sector clients. 
+              Partner with us to offer comprehensive field safety monitoring to your education sector clients.
               Our monitoring technology helps prevent costly emergency repairs and reduce liability exposure while strengthening member relationships.
             </p>
 
@@ -203,13 +176,14 @@ export default function PartnershipsPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-10 py-5 rounded-lg text-xl font-bold hover:bg-green-700 transition-colors flex items-center space-x-3 shadow-lg"
+                  className="text-white px-10 py-5 rounded-lg text-xl font-bold transition-colors flex items-center space-x-3 shadow-lg"
+                  style={{ background: '#4CAF50' }}
                 >
                   <Handshake className="w-6 h-6" />
                   <span>Request Partnership Information</span>
                 </motion.button>
               </a>
-              
+
             </div>
 
             {/* Value Proposition Boxes */}
@@ -221,7 +195,7 @@ export default function PartnershipsPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Reduce Claims</h3>
                 <p className="text-gray-600 text-center text-sm">Fewer emergency field repairs through proactive monitoring</p>
               </div>
-              
+
               <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-blue-200">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Users className="w-6 h-6 text-blue-600" />
@@ -229,7 +203,7 @@ export default function PartnershipsPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-2 text-center">Retain Members</h3>
                 <p className="text-gray-600 text-center text-sm">Unique value-add service that differentiates your offerings</p>
               </div>
-              
+
               <div className="bg-white p-6 rounded-2xl shadow-lg border-2 border-purple-200">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                   <Award className="w-6 h-6 text-purple-600" />
@@ -296,7 +270,7 @@ export default function PartnershipsPage() {
               viewport={{ once: true }}
             >
               <h3 className="text-3xl font-bold text-gray-900 mb-6">Program Benefits</h3>
-              
+
               <div className="space-y-4">
                 {[
                   "Preferred pricing for partner organization members",
@@ -338,7 +312,7 @@ export default function PartnershipsPage() {
                     <li>• Marketing value of proactive safety partnership</li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                   <div className="font-semibold text-blue-800">6-Month Outcomes</div>
                   <ul className="text-sm text-blue-700 mt-2 space-y-1">
@@ -347,7 +321,7 @@ export default function PartnershipsPage() {
                     <li>• Enhanced underwriting data quality</li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
                   <div className="font-semibold text-purple-800">Long-term Impact</div>
                   <ul className="text-sm text-purple-700 mt-2 space-y-1">
@@ -390,7 +364,8 @@ export default function PartnershipsPage() {
                 </p>
                 <button
                   onClick={() => setShowSuccess(false)}
-                  className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                  className="text-white px-6 py-2 rounded-lg transition-colors"
+                  style={{ background: '#4CAF50' }}
                 >
                   Submit Another Request
                 </button>
@@ -427,7 +402,7 @@ export default function PartnershipsPage() {
                     placeholder="John"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Last Name *
@@ -460,7 +435,7 @@ export default function PartnershipsPage() {
                     placeholder="john@insurancecompany.com"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number
@@ -493,7 +468,7 @@ export default function PartnershipsPage() {
                     placeholder="ABC Insurance Company"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Your Title *
@@ -514,7 +489,7 @@ export default function PartnershipsPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Company Type
                 </label>
-                <select 
+                <select
                   name="companyType"
                   value={formData.companyType}
                   onChange={handleInputChange}
@@ -560,7 +535,7 @@ export default function PartnershipsPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Current Education Sector Exposure
                 </label>
-                <select 
+                <select
                   name="educationExposure"
                   value={formData.educationExposure}
                   onChange={handleInputChange}
@@ -594,10 +569,11 @@ export default function PartnershipsPage() {
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 className={`w-full py-4 px-6 rounded-lg text-lg font-semibold transition-all flex items-center justify-center space-x-2 ${
-                  isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed text-white' 
-                    : 'bg-green-600 hover:bg-green-700 text-white'
+                  isSubmitting
+                    ? 'bg-gray-400 cursor-not-allowed text-white'
+                    : 'text-white'
                 }`}
+                style={!isSubmitting ? { background: '#4CAF50' } : {}}
               >
                 <Handshake className="w-5 h-5" />
                 <span>{isSubmitting ? 'Submitting...' : 'Request Partnership Information'}</span>
@@ -621,38 +597,38 @@ export default function PartnershipsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center px-4 py-2 bg-green-600 rounded-full text-white font-semibold mb-6">
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-white font-semibold mb-6" style={{ background: '#4CAF50' }}>
               <Target className="w-5 h-5 mr-2" />
               Partnership Program Available
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Secure Your Competitive Advantage
             </h2>
             <p className="text-xl mb-8 opacity-90 max-w-4xl mx-auto">
-              Partner with us to enhance your risk management offerings with innovative field safety monitoring. 
+              Partner with us to enhance your risk management offerings with innovative field safety monitoring.
               While others rely solely on traditional approaches, you&apos;ll be proactively protecting student athletes and reducing claims.
             </p>
-            
+
             <div className="bg-white/10 p-8 rounded-2xl mb-8 max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold mb-4 text-green-400">What Happens Next?</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: '#4CAF50' }}>1</div>
                   <div>
                     <div className="font-semibold">15-Minute Discovery Call</div>
                     <div className="text-sm opacity-75">We&apos;ll discuss your member base and partnership goals</div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: '#4CAF50' }}>2</div>
                   <div>
                     <div className="font-semibold">Custom Proposal</div>
                     <div className="text-sm opacity-75">Tailored partnership structure with ROI projections</div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0" style={{ background: '#4CAF50' }}>3</div>
                   <div>
                     <div className="font-semibold">Pilot Program Launch</div>
                     <div className="text-sm opacity-75">Start with select districts to demonstrate value</div>
@@ -660,19 +636,20 @@ export default function PartnershipsPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
               <a href="#partnership-form">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-12 py-5 rounded-lg text-xl font-bold hover:bg-green-700 transition-colors flex items-center space-x-3 shadow-2xl"
+                  className="text-white px-12 py-5 rounded-lg text-xl font-bold transition-colors flex items-center space-x-3 shadow-2xl"
+                  style={{ background: '#4CAF50' }}
                 >
                   <Handshake className="w-6 h-6" />
                   <span>Request Partnership Information</span>
                 </motion.button>
               </a>
-              
+
               <div className="text-green-400 font-semibold">
                 <div className="flex items-center space-x-2 mb-1">
                   <Clock className="w-4 h-4" />
@@ -681,7 +658,7 @@ export default function PartnershipsPage() {
                 <div className="text-sm opacity-75">Professional partnership consultation</div>
               </div>
             </div>
-            
+
             <div className="border-t border-white/20 pt-8">
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-12 text-white/60">
                 <div className="flex items-center space-x-2">

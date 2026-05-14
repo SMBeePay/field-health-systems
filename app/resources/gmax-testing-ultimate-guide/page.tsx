@@ -11,6 +11,7 @@ import {
   Download,
   ExternalLink
 } from 'lucide-react'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export const metadata = {
   title: 'GMAX Testing Ultimate Guide for School Districts | ASTM F1936 Compliance',
@@ -141,36 +142,7 @@ export default function GMAXTestingGuidePage() {
         }}
       />
 
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Link href="/">
-                <img
-                  src="/logo-header.svg"
-                  alt="Field Health Systems"
-                  className="h-20 w-auto cursor-pointer"
-                />
-              </Link>
-            </div>
-
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/#services" className="text-gray-700 hover:text-green-600 font-medium">Platform</Link>
-              <Link href="/#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Field Safety</Link>
-              <Link href="/resources" className="text-green-600 font-medium border-b-2 border-green-600">Resources</Link>
-              <Link href="/blog" className="text-gray-700 hover:text-green-600 font-medium">Blog</Link>
-              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
-              <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
-              <Link href="/schedule-assessment">
-                <button className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors">
-                  Request Demo
-                </button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <MarketingNav activePath="/resources" />
 
       {/* Breadcrumbs */}
       <div className="max-w-5xl mx-auto px-6 pt-6">
@@ -216,7 +188,10 @@ export default function GMAXTestingGuidePage() {
           </div>
 
           <Link href="/schedule-assessment">
-            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors mb-8">
+            <button
+              className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors mb-8"
+              style={{ background: '#4CAF50' }}
+            >
               Schedule Your Field Assessment →
             </button>
           </Link>
@@ -339,7 +314,10 @@ export default function GMAXTestingGuidePage() {
           <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
             <h3 className="text-xl font-bold text-green-900 mb-4">Free Resources for Athletic Directors</h3>
             <p className="text-green-800 mb-4">Download our complete Field Safety Compliance Checklist to ensure your athletic program meets all safety requirements.</p>
-            <button className="inline-flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors">
+            <button
+              className="inline-flex items-center space-x-2 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              style={{ background: '#4CAF50' }}
+            >
               <Download className="w-5 h-5" />
               <span>Download Free Checklist</span>
             </button>
@@ -401,31 +379,31 @@ export default function GMAXTestingGuidePage() {
 
           <ol className="space-y-4 mb-8 text-gray-700">
             <li className="flex items-start space-x-3">
-              <span className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">1</span>
+              <span className="flex-shrink-0 w-8 h-8 text-white rounded-full flex items-center justify-center font-bold" style={{ background: '#4CAF50' }}>1</span>
               <div>
                 <strong>Pre-test Preparation:</strong> Technician verifies weather conditions are appropriate (temperature between 41°F-120°F, no precipitation, surface dry) and equipment is properly calibrated.
               </div>
             </li>
             <li className="flex items-start space-x-3">
-              <span className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">2</span>
+              <span className="flex-shrink-0 w-8 h-8 text-white rounded-full flex items-center justify-center font-bold" style={{ background: '#4CAF50' }}>2</span>
               <div>
                 <strong>Location Marking:</strong> Ten standardized test locations are marked across the field according to ASTM F1936 specifications, ensuring even coverage of high-use areas.
               </div>
             </li>
             <li className="flex items-start space-x-3">
-              <span className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">3</span>
+              <span className="flex-shrink-0 w-8 h-8 text-white rounded-full flex items-center justify-center font-bold" style={{ background: '#4CAF50' }}>3</span>
               <div>
                 <strong>Impact Testing:</strong> At each location, the 20-pound missile is dropped three times from exactly 24 inches. The accelerometer measures maximum G-force on each impact.
               </div>
             </li>
             <li className="flex items-start space-x-3">
-              <span className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">4</span>
+              <span className="flex-shrink-0 w-8 h-8 text-white rounded-full flex items-center justify-center font-bold" style={{ background: '#4CAF50' }}>4</span>
               <div>
                 <strong>Data Recording:</strong> Results are recorded for each drop. The highest of the three readings at each location is used as that location&apos;s GMAX score.
               </div>
             </li>
             <li className="flex items-start space-x-3">
-              <span className="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">5</span>
+              <span className="flex-shrink-0 w-8 h-8 text-white rounded-full flex items-center justify-center font-bold" style={{ background: '#4CAF50' }}>5</span>
               <div>
                 <strong>Analysis & Reporting:</strong> Technician analyzes all results, creates a comprehensive report with field diagram, scores at each location, pass/fail determination, and recommendations.
               </div>
@@ -456,7 +434,10 @@ export default function GMAXTestingGuidePage() {
           </p>
 
           <Link href="/schedule-assessment">
-            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center space-x-2">
+            <button
+              className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-flex items-center space-x-2"
+              style={{ background: '#4CAF50' }}
+            >
               <span>Schedule Professional GMAX Testing</span>
               <Shield className="w-5 h-5" />
             </button>
@@ -509,7 +490,7 @@ export default function GMAXTestingGuidePage() {
 
           <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-8">
             <p className="text-yellow-900">
-              <strong>Athletic Director's Legal Obligation:</strong> As an athletic director, you have a duty of care to provide reasonably safe playing conditions for student-athletes. Failure to monitor and maintain field safety can result in personal and district liability.
+              <strong>Athletic Director&apos;s Legal Obligation:</strong> As an athletic director, you have a duty of care to provide reasonably safe playing conditions for student-athletes. Failure to monitor and maintain field safety can result in personal and district liability.
             </p>
           </div>
 
@@ -564,7 +545,7 @@ export default function GMAXTestingGuidePage() {
             Districts that maintain regular testing records have successfully defended against injury lawsuits by demonstrating proactive safety management. Conversely, districts without testing documentation face significantly higher liability exposure and settlement costs.
           </p>
 
-          <Link href="/partnerships" className="inline-flex items-center space-x-2 text-green-600 hover:text-green-700 font-medium mb-8">
+          <Link href="/partnerships" className="inline-flex items-center space-x-2 font-medium mb-8" style={{ color: '#4CAF50' }}>
             <span>Learn about our insurance partnerships</span>
             <ExternalLink className="w-4 h-4" />
           </Link>
@@ -644,7 +625,7 @@ export default function GMAXTestingGuidePage() {
             <div className="border-l-4 border-green-500 bg-green-50 p-6 rounded-r-xl">
               <div className="flex items-center justify-between mb-2">
                 <h4 className="text-xl font-bold text-green-900">80-115 G: EXCELLENT</h4>
-                <span className="px-3 py-1 bg-green-600 text-white rounded-full text-sm font-bold">IDEAL</span>
+                <span className="px-3 py-1 text-white rounded-full text-sm font-bold" style={{ background: '#4CAF50' }}>IDEAL</span>
               </div>
               <p className="text-green-800 mb-2">
                 Comparable to natural grass. Provides optimal shock absorption and player protection.
@@ -682,7 +663,7 @@ export default function GMAXTestingGuidePage() {
               <p className="text-red-800 mb-2">
                 FAILS ASTM F1936 standard. Life-threatening injury risk. Do not allow play.
               </p>
-              <p className="text-red-700 font-medium">🚨 Action: Close field immediately; contact testing provider and field manufacturer; emergency remediation required</p>
+              <p className="text-red-700 font-medium">Action: Close field immediately; contact testing provider and field manufacturer; emergency remediation required</p>
             </div>
           </div>
 
@@ -700,7 +681,10 @@ export default function GMAXTestingGuidePage() {
           </p>
 
           <Link href="/schedule-assessment">
-            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center space-x-2">
+            <button
+              className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-flex items-center space-x-2"
+              style={{ background: '#4CAF50' }}
+            >
               <span>Get Your Field Tested Today</span>
               <TrendingUp className="w-5 h-5" />
             </button>
@@ -899,13 +883,19 @@ export default function GMAXTestingGuidePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/schedule-assessment">
-                <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center justify-center space-x-2">
+                <button
+                  className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-flex items-center justify-center space-x-2"
+                  style={{ background: '#4CAF50' }}
+                >
                   <Calendar className="w-5 h-5" />
                   <span>Schedule Assessment</span>
                 </button>
               </Link>
               <Link href="/services/gmax-testing">
-                <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors inline-flex items-center justify-center space-x-2 border-2 border-green-600">
+                <button
+                  className="bg-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-flex items-center justify-center space-x-2 border-2"
+                  style={{ color: '#4CAF50', borderColor: '#4CAF50' }}
+                >
                   <FileText className="w-5 h-5" />
                   <span>Learn More</span>
                 </button>
@@ -932,7 +922,7 @@ export default function GMAXTestingGuidePage() {
             <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-3">How long does GMAX testing take?</h3>
               <p className="text-gray-700">
-                A complete GMAX field test takes 60-90 minutes from setup to completion. This includes marking the 10 test locations, conducting three drops at each location (30 total impacts), recording data, and preliminary analysis. You'll receive a comprehensive written report within 24-48 hours showing results at each location and recommendations.
+                A complete GMAX field test takes 60-90 minutes from setup to completion. This includes marking the 10 test locations, conducting three drops at each location (30 total impacts), recording data, and preliminary analysis. You&apos;ll receive a comprehensive written report within 24-48 hours showing results at each location and recommendations.
               </p>
             </div>
 
@@ -983,7 +973,7 @@ export default function GMAXTestingGuidePage() {
       </article>
 
       {/* Footer CTA */}
-      <section className="bg-gradient-to-br from-green-600 to-green-700 py-16 mt-16">
+      <section className="py-16 mt-16" style={{ background: 'linear-gradient(to bottom right, #4CAF50, #3d9140)' }}>
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Protect Your Athletes and Your District?
@@ -993,13 +983,13 @@ export default function GMAXTestingGuidePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/schedule-assessment">
-              <button className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center space-x-2">
+              <button className="bg-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center space-x-2" style={{ color: '#4CAF50' }}>
                 <Calendar className="w-5 h-5" />
                 <span>Schedule Assessment</span>
               </button>
             </Link>
             <Link href="tel:+1234567890">
-              <button className="bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-800 transition-colors inline-flex items-center space-x-2 border-2 border-white">
+              <button className="px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-flex items-center space-x-2 border-2 border-white text-white hover:bg-green-700">
                 <Phone className="w-5 h-5" />
                 <span>Call for Quote</span>
               </button>

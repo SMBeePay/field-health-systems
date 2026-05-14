@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { 
-  Shield, 
-  DollarSign, 
-  TrendingUp, 
-  CheckCircle, 
-  Users, 
+import {
+  Shield,
+  DollarSign,
+  TrendingUp,
+  CheckCircle,
+  Users,
   Phone,
   Mail,
   MapPin,
@@ -21,6 +21,7 @@ import {
   Satellite,
   X
 } from 'lucide-react'
+import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export default function MarketingHomePage() {
   // const [activeTestimonial] = useState(0)
@@ -35,7 +36,7 @@ export default function MarketingHomePage() {
     },
     {
       name: "Field Research",
-      title: "University Study", 
+      title: "University Study",
       organization: "Sports Surface Research",
       quote: "Regular GMAX testing and maintenance scheduling can extend artificial turf field life by maintaining optimal playing conditions throughout the field's lifecycle.",
       image: "/api/placeholder/64/64"
@@ -58,50 +59,13 @@ export default function MarketingHomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <motion.header 
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white border-b border-gray-200 sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <img 
-                src="/logo-header.svg" 
-                alt="Field Health Systems" 
-                className="h-20 w-auto"
-              />
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-700 hover:text-green-600 font-medium">Platform</a>
-              <a href="#athlete-safety" className="text-gray-700 hover:text-green-600 font-medium">Field Safety</a>
-              <a href="#solutions" className="text-gray-700 hover:text-green-600 font-medium">Solutions</a>
-              <a href="#pricing" className="text-gray-700 hover:text-green-600 font-medium">Pricing</a>
-              <Link href="/resources" className="text-gray-700 hover:text-green-600 font-medium">Resources</Link>
-              <Link href="/blog" className="text-gray-700 hover:text-green-600 font-medium">Blog</Link>
-              <Link href="/partnerships" className="text-gray-700 hover:text-green-600 font-medium">Partnerships</Link>
-              <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">Login</Link>
-              <Link href="/schedule-assessment">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
-                >
-                  Request Demo
-                </motion.button>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </motion.header>
+      <MarketingNav />
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Background Image with Dark Gradient Overlay */}
         <div className="absolute inset-0 z-0">
-          <div 
+          <div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url('/sports-field-bg.jpg')`,
@@ -112,7 +76,7 @@ export default function MarketingHomePage() {
           {/* Dark gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/30" />
         </div>
-        
+
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -126,28 +90,29 @@ export default function MarketingHomePage() {
                   Independent 3rd Party Testing & Field Management Software
                 </span>
               </div>
-              
+
               <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
                 Data-Driven Athletic Field
                 <span className="text-green-400"> Management Platform</span>
               </h1>
-              
+
               <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                <strong>Protect Your Athletes & Investment.</strong> Independent 3rd party field testing combined with intelligent software that tracks, monitors, and predicts maintenance needs. 
+                <strong>Protect Your Athletes & Investment.</strong> Independent 3rd party field testing combined with intelligent software that tracks, monitors, and predicts maintenance needs.
                 Our platform helps organizations make data-driven decisions about field safety and maintenance scheduling.*
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                  className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-opacity hover:opacity-90 flex items-center justify-center space-x-2"
+                  style={{ background: '#4CAF50' }}
                 >
                   <BarChart3 className="w-5 h-5" />
                   <span>See Platform Demo</span>
                 </motion.button>
               </div>
-              
+
               <div className="flex items-center space-x-6 text-sm text-gray-300">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-green-400" />
@@ -159,7 +124,7 @@ export default function MarketingHomePage() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -182,7 +147,7 @@ export default function MarketingHomePage() {
                       </div>
                       <TrendingUp className="w-5 h-5 text-green-500" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
@@ -195,7 +160,7 @@ export default function MarketingHomePage() {
                       </div>
                       <BarChart3 className="w-5 h-5 text-blue-500" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
@@ -210,7 +175,7 @@ export default function MarketingHomePage() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="p-4 bg-gray-50 rounded-lg">
                   <h4 className="font-medium text-gray-900 mb-2">AI-Powered Maintenance Predictions</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
@@ -220,7 +185,7 @@ export default function MarketingHomePage() {
                   </ul>
                 </div>
               </div>
-              
+
               {/* Floating elements */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
@@ -250,7 +215,7 @@ export default function MarketingHomePage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl font-bold text-green-600 mb-2">{stat.number}</div>
+                <div className="text-4xl font-bold mb-2" style={{ color: '#4CAF50' }}>{stat.number}</div>
                 <div className="text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
@@ -296,7 +261,7 @@ export default function MarketingHomePage() {
                 <AlertTriangle className="w-8 h-8 text-red-500" />
                 <h3 className="text-2xl font-bold text-red-800">Head Injury & Concussion Risks</h3>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="bg-red-50 p-4 rounded-lg">
                   <p className="font-semibold text-red-800 mb-2">Critical Safety Thresholds:</p>
@@ -307,7 +272,7 @@ export default function MarketingHomePage() {
                     <li>• NFL uses pre-game limit of 156</li>
                   </ul>
                 </div>
-                
+
                 <div className="space-y-2">
                   <p className="text-gray-700"><strong>Research Data:</strong> 21.5% of sports-related head injuries result from surface impact</p>
                   <p className="text-gray-700"><strong>Real Case:</strong> Boston field repeatedly failed GMAX tests with scores &gt;200, exposing thousands of youth athletes</p>
@@ -327,7 +292,7 @@ export default function MarketingHomePage() {
                 <AlertTriangle className="w-8 h-8 text-orange-500" />
                 <h3 className="text-2xl font-bold text-orange-800">Foot, Ankle & Knee Injuries</h3>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="bg-orange-50 p-4 rounded-lg">
                   <p className="font-semibold text-orange-800 mb-2">Increased Injury Rates on Poor Turf:</p>
@@ -337,7 +302,7 @@ export default function MarketingHomePage() {
                     <li>• Foot injuries: elevated risk in 75% of studies</li>
                   </ul>
                 </div>
-                
+
                 <div className="space-y-2">
                   <p className="text-gray-700"><strong>NCAA Data (2004-2014):</strong> 142 ACL tears per 10,000 exposures on turf vs 111 on grass</p>
                   <p className="text-gray-700"><strong>2022 Review:</strong> Systematic analysis of 53 studies confirmed higher foot/ankle injury rates</p>
@@ -358,24 +323,28 @@ export default function MarketingHomePage() {
               <h3 className="text-2xl font-bold text-green-800 mb-4">How Professional Testing Protects Athletes</h3>
               <p className="text-gray-600">Regular maintenance can reduce injury risks by 20-50% while extending field life by 2+ years</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">165</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: '#4CAF50' }}>165</div>
                 <div className="text-sm text-gray-600">GMAX safety limit recommended by Synthetic Turf Council</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">20-50%</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: '#4CAF50' }}>20-50%</div>
                 <div className="text-sm text-gray-600">Potential injury risk reduction with proper maintenance</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">&lt;$1,000</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: '#4CAF50' }}>&lt;$1,000</div>
                 <div className="text-sm text-gray-600">Annual GMAX testing cost vs. potential injury liability</div>
               </div>
             </div>
-            
+
             <div className="mt-6 text-center">
-              <a href="/athlete-safety" className="inline-flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              <a
+                href="/athlete-safety"
+                className="inline-flex items-center space-x-2 text-white px-6 py-3 rounded-lg font-semibold transition-opacity hover:opacity-90"
+                style={{ background: '#4CAF50' }}
+              >
                 <Shield className="w-5 h-5" />
                 <span>Learn More About Athlete Safety</span>
               </a>
@@ -414,7 +383,7 @@ export default function MarketingHomePage() {
                 <AlertTriangle className="w-8 h-8 text-red-500" />
                 <h3 className="text-2xl font-bold text-red-800">The Current Reality</h3>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
@@ -446,7 +415,7 @@ export default function MarketingHomePage() {
                 <Shield className="w-8 h-8 text-green-600" />
                 <h3 className="text-2xl font-bold text-green-800">Our Solution</h3>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
@@ -483,7 +452,7 @@ export default function MarketingHomePage() {
                 Our software platform gives you instant visibility into field conditions with professional insights
               </p>
             </div>
-            
+
             {/* Dashboard Mockup */}
             <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
@@ -500,7 +469,7 @@ export default function MarketingHomePage() {
                     <span className="text-sm text-gray-600">Live Data</span>
                   </div>
                 </div>
-                
+
                 {/* Status Overview */}
                 <div className="grid grid-cols-4 gap-4 mb-6">
                   <div className="bg-green-50 p-3 rounded-lg text-center">
@@ -520,7 +489,7 @@ export default function MarketingHomePage() {
                     <div className="text-xs text-gray-600">Critical</div>
                   </div>
                 </div>
-                
+
                 {/* Field Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-green-50 p-4 rounded-lg border border-green-200">
@@ -539,7 +508,7 @@ export default function MarketingHomePage() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="font-medium text-gray-900">South Field - Soccer</h5>
@@ -616,7 +585,7 @@ export default function MarketingHomePage() {
                 <Users className="w-8 h-8 text-green-600" />
                 <h3 className="text-2xl font-bold text-green-800">Independent 3rd Party Testing</h3>
               </div>
-              
+
               <div className="space-y-4 mb-6">
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
@@ -647,10 +616,10 @@ export default function MarketingHomePage() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                 <p className="text-sm text-green-800">
-                  <strong>Professional Service:</strong> We don&apos;t just give you software - we provide expert analysis, 
+                  <strong>Professional Service:</strong> We don&apos;t just give you software - we provide expert analysis,
                   immediate response, and professional accountability for athlete safety.
                 </p>
               </div>
@@ -667,7 +636,7 @@ export default function MarketingHomePage() {
                 <BarChart3 className="w-8 h-8 text-blue-600" />
                 <h3 className="text-2xl font-bold text-blue-800">Advanced Technology Platform</h3>
               </div>
-              
+
               {/* App Screenshot Mockup - Laptop */}
               <div className="mb-6">
                 <div className="bg-gray-900 rounded-lg p-1 shadow-2xl">
@@ -688,7 +657,7 @@ export default function MarketingHomePage() {
                           <span className="text-xs text-gray-600">Live Data</span>
                         </div>
                       </div>
-                      
+
                       {/* Satellite Field View */}
                       <div className="bg-green-600 rounded-lg p-4 mb-3 relative">
                         <div className="text-white text-center mb-2">
@@ -702,7 +671,7 @@ export default function MarketingHomePage() {
                         </div>
                         <div className="text-xs text-green-100 text-center mt-1">8 Test Locations</div>
                       </div>
-                      
+
                       {/* Metrics */}
                       <div className="grid grid-cols-3 gap-2 text-center">
                         <div className="bg-white rounded p-2">
@@ -764,7 +733,7 @@ export default function MarketingHomePage() {
                         <span className="text-sm font-semibold text-gray-900">Field Health</span>
                       </div>
                     </div>
-                    
+
                     {/* Alert notification */}
                     <div className="bg-red-50 border border-red-200 rounded-lg p-2 mb-3">
                       <div className="flex items-center space-x-2">
@@ -775,7 +744,7 @@ export default function MarketingHomePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Field status cards */}
                     <div className="space-y-2">
                       <div className="bg-green-50 border border-green-200 rounded p-2">
@@ -806,7 +775,7 @@ export default function MarketingHomePage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-3 text-center">
                       <div className="text-xs text-gray-500">Tap for emergency contact</div>
                       <div className="bg-red-600 text-white text-xs py-1 px-3 rounded mt-1">Call Tech</div>
@@ -814,7 +783,7 @@ export default function MarketingHomePage() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-left max-w-md">
                 <h4 className="text-xl font-bold text-gray-900 mb-4">Instant Safety Alerts</h4>
                 <div className="space-y-3">
@@ -852,7 +821,7 @@ export default function MarketingHomePage() {
             className="mt-16 bg-gray-50 p-8 rounded-2xl"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Why Apps Alone Aren&apos;t Enough</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-red-100 p-6 rounded-lg border-2 border-red-200">
                 <h4 className="font-bold text-red-800 mb-4 flex items-center">
@@ -871,7 +840,7 @@ export default function MarketingHomePage() {
                   <div className="font-bold text-red-800">Risk: Missed safety issues = potential athlete injuries</div>
                 </div>
               </div>
-              
+
               <div className="bg-green-100 p-6 rounded-lg border-2 border-green-200">
                 <h4 className="font-bold text-green-800 mb-4 flex items-center">
                   <CheckCircle className="w-5 h-5 mr-2" />
@@ -911,7 +880,7 @@ export default function MarketingHomePage() {
               </p>
               <div className="bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-lg p-6 max-w-3xl mx-auto">
                 <p className="text-blue-900 font-semibold text-lg">
-                  While basic apps only log simple numbers, our system provides comprehensive field analysis 
+                  While basic apps only log simple numbers, our system provides comprehensive field analysis
                   with satellite integration, predictive analytics, and professional-grade equipment calibration
                 </p>
               </div>
@@ -1016,7 +985,7 @@ export default function MarketingHomePage() {
             <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
               Professional Technology vs Basic App Logging
             </h3>
-            
+
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -1111,7 +1080,7 @@ export default function MarketingHomePage() {
             <div className="mt-8 bg-gradient-to-r from-green-100 to-blue-100 p-6 rounded-lg border border-green-200 text-center">
               <h4 className="text-xl font-bold text-gray-900 mb-2">The Technology Advantage</h4>
               <p className="text-gray-700">
-                Our advanced testing platform provides <strong>comprehensive field analysis</strong> that basic logging apps simply cannot match. 
+                Our advanced testing platform provides <strong>comprehensive field analysis</strong> that basic logging apps simply cannot match.
                 Professional equipment, expert analysis, and emergency response capabilities ensure your athletes&apos; safety and your liability protection.
               </p>
             </div>
@@ -1151,7 +1120,7 @@ export default function MarketingHomePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Independent Field Testing</h3>
               <p className="text-gray-600 mb-4">Unbiased 3rd party testing by certified technicians using professional-grade equipment for accurate, reliable data</p>
-              
+
               {/* Field Testing Image Placeholder */}
               <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-lg p-4 border border-green-200">
                 <div className="flex items-center space-x-3 mb-3">
@@ -1193,7 +1162,7 @@ export default function MarketingHomePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Data Analytics Platform</h3>
               <p className="text-gray-600 mb-4">Proprietary software platform with real-time dashboards, trend analysis, and predictive insights</p>
-              
+
               {/* Dashboard Screenshot Mockup */}
               <div className="bg-white rounded-lg border-2 border-gray-200 p-3">
                 <div className="flex items-center justify-between mb-3">
@@ -1246,7 +1215,7 @@ export default function MarketingHomePage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Predictive Maintenance Insights</h3>
               <p className="text-gray-600 mb-4">AI-powered recommendations with cost predictions, timeline forecasting, and proactive maintenance scheduling</p>
-              
+
               {/* Report Preview */}
               <div className="bg-white rounded-lg border-2 border-gray-200 p-3">
                 <div className="flex items-center space-x-2 mb-3">
@@ -1274,7 +1243,7 @@ export default function MarketingHomePage() {
                 <div className="mt-3 pt-2 border-t border-gray-200">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-500">12 pages • PDF</span>
-                    <span className="text-xs text-green-600 font-medium">Ready for Review</span>
+                    <span className="text-xs font-medium" style={{ color: '#4CAF50' }}>Ready for Review</span>
                   </div>
                 </div>
               </div>
@@ -1289,7 +1258,7 @@ export default function MarketingHomePage() {
             className="bg-gray-50 p-8 rounded-2xl"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">What&apos;s Included in Every Assessment</h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { icon: Target, title: "GMAX Testing", desc: "Shock absorption measurement" },
@@ -1338,14 +1307,14 @@ export default function MarketingHomePage() {
             >
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">One-Time Testing</h3>
-                <div className="text-4xl font-bold text-green-600 mb-2">$1,500</div>
+                <div className="text-4xl font-bold mb-2" style={{ color: '#4CAF50' }}>$1,500</div>
                 <div className="text-gray-600">single field inspection</div>
               </div>
-              
+
               <div className="space-y-4 mb-8">
                 {[
                   "Comprehensive GMAX, shear, infill testing",
-                  "Digital photo documentation", 
+                  "Digital photo documentation",
                   "Professional written report",
                   "Safety compliance assessment",
                   "Maintenance recommendations",
@@ -1357,9 +1326,12 @@ export default function MarketingHomePage() {
                   </div>
                 ))}
               </div>
-              
+
               <Link href="/schedule-assessment" className="w-full">
-                <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                <button
+                  className="w-full text-white py-3 rounded-lg font-semibold transition-opacity hover:opacity-90"
+                  style={{ background: '#4CAF50' }}
+                >
                   Schedule Assessment
                 </button>
               </Link>
@@ -1371,20 +1343,21 @@ export default function MarketingHomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-green-600 p-8 rounded-2xl shadow-lg border-2 border-green-600 text-white relative"
+              className="p-8 rounded-2xl shadow-lg border-2 text-white relative"
+              style={{ background: '#4CAF50', borderColor: '#4CAF50' }}
             >
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <span className="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-medium">
                   Most Popular
                 </span>
               </div>
-              
+
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">Premium Monitoring</h3>
                 <div className="text-4xl font-bold mb-2">$2,500</div>
                 <div className="text-green-100">per field, per year</div>
               </div>
-              
+
               <div className="space-y-4 mb-8">
                 {[
                   "4 quarterly professional assessments",
@@ -1406,7 +1379,7 @@ export default function MarketingHomePage() {
                   </div>
                 ))}
               </div>
-              
+
               {/* Mobile App Preview */}
               <div className="mb-6">
                 <div className="bg-white bg-opacity-10 p-4 rounded-lg">
@@ -1437,9 +1410,9 @@ export default function MarketingHomePage() {
                   <p className="text-center text-green-100 text-sm">Mobile access included</p>
                 </div>
               </div>
-              
+
               <Link href="/schedule-assessment" className="w-full">
-                <button className="w-full bg-white text-green-600 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                <button className="w-full bg-white py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors" style={{ color: '#4CAF50' }}>
                   Start Monitoring
                 </button>
               </Link>
@@ -1458,7 +1431,7 @@ export default function MarketingHomePage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Multiple Fields?</h3>
               <p className="text-gray-600">We offer volume discounts for facilities with multiple artificial turf fields</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -1484,7 +1457,10 @@ export default function MarketingHomePage() {
             </div>
 
             <Link href="/schedule-assessment">
-              <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              <button
+                className="text-white px-8 py-3 rounded-lg font-semibold transition-opacity hover:opacity-90"
+                style={{ background: '#4CAF50' }}
+              >
                 Get Custom Quote
               </button>
             </Link>
@@ -1526,11 +1502,11 @@ export default function MarketingHomePage() {
                       <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  
+
                   <blockquote className="text-gray-700 mb-4 text-base leading-relaxed">
                     &ldquo;{testimonial.quote}&rdquo;
                   </blockquote>
-                  
+
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
                       <span className="text-green-600 font-semibold text-sm">
@@ -1546,7 +1522,7 @@ export default function MarketingHomePage() {
                 </motion.div>
               ))}
             </div>
-            
+
             {/* Professional Report Interface Screenshot */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -1558,13 +1534,13 @@ export default function MarketingHomePage() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Professional Reporting Interface</h3>
                 <p className="text-gray-600">Generate comprehensive reports that administrators trust</p>
               </div>
-              
+
               <div className="bg-white rounded-lg border-2 border-gray-200 p-4 shadow-lg">
                 {/* Report Header */}
                 <div className="border-b border-gray-200 pb-4 mb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: '#4CAF50' }}>
                         <FileText className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -1573,12 +1549,12 @@ export default function MarketingHomePage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm font-medium text-green-600">Report Ready</div>
+                      <div className="text-sm font-medium" style={{ color: '#4CAF50' }}>Report Ready</div>
                       <div className="text-xs text-gray-500">Generated: Jan 28, 2025</div>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Report Sections */}
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
@@ -1589,7 +1565,7 @@ export default function MarketingHomePage() {
                     </div>
                     <div className="text-xs text-green-600 font-medium">Complete</div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
                     <BarChart3 className="w-5 h-5 text-blue-600" />
                     <div className="flex-1">
@@ -1598,7 +1574,7 @@ export default function MarketingHomePage() {
                     </div>
                     <div className="text-xs text-blue-600 font-medium">Complete</div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3 p-3 bg-yellow-50 rounded-lg">
                     <Calendar className="w-5 h-5 text-yellow-600" />
                     <div className="flex-1">
@@ -1607,7 +1583,7 @@ export default function MarketingHomePage() {
                     </div>
                     <div className="text-xs text-yellow-600 font-medium">Action Required</div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
                     <DollarSign className="w-5 h-5 text-gray-600" />
                     <div className="flex-1">
@@ -1617,10 +1593,13 @@ export default function MarketingHomePage() {
                     <div className="text-xs text-gray-600 font-medium">Complete</div>
                   </div>
                 </div>
-                
+
                 {/* Action Buttons */}
                 <div className="flex space-x-3 pt-4 border-t border-gray-200 mt-4">
-                  <button className="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors">
+                  <button
+                    className="flex-1 text-white py-2 px-4 rounded-lg text-sm font-medium transition-opacity hover:opacity-90"
+                    style={{ background: '#4CAF50' }}
+                  >
                     Download PDF
                   </button>
                   <button className="flex-1 border border-gray-300 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
@@ -1628,7 +1607,7 @@ export default function MarketingHomePage() {
                   </button>
                 </div>
               </div>
-              
+
               <div className="mt-4 text-center">
                 <p className="text-sm text-gray-600">
                   Professional reports that administrators understand and trust
@@ -1714,19 +1693,20 @@ export default function MarketingHomePage() {
             <p className="text-xl mb-8 opacity-90">
               Get your initial field safety assessment and protect your athletes from preventable injuries
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <Link href="/schedule-assessment">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                  className="bg-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
+                  style={{ color: '#4CAF50' }}
                 >
                   <Calendar className="w-5 h-5" />
                   <span>Schedule Assessment</span>
                 </motion.button>
               </Link>
-              
+
               <div className="flex justify-center">
                 <a href="mailto:andrew@fieldhealthsystems.com" className="flex items-center space-x-2 hover:text-green-200 transition-colors text-white">
                   <Mail className="w-5 h-5" />
@@ -1734,7 +1714,7 @@ export default function MarketingHomePage() {
                 </a>
               </div>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm opacity-80">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4" />
@@ -1767,7 +1747,7 @@ export default function MarketingHomePage() {
                 </div>
               </div>
               <p className="text-gray-300 mb-4">
-                Professional field monitoring that protects your athletes from injury risks while safeguarding your investment 
+                Professional field monitoring that protects your athletes from injury risks while safeguarding your investment
                 through expert safety analysis and predictive maintenance planning.
               </p>
               <div className="flex items-center space-x-4">
@@ -1777,7 +1757,7 @@ export default function MarketingHomePage() {
                 </a>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-gray-300">
@@ -1808,7 +1788,7 @@ export default function MarketingHomePage() {
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-300">
@@ -1845,7 +1825,7 @@ export default function MarketingHomePage() {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Field Health Systems. All rights reserved.</p>
           </div>

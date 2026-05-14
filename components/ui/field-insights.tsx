@@ -49,7 +49,7 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
       case 'low':
         return 'text-green-700 bg-green-50 border-green-200'
       case 'moderate':
-        return 'text-blue-700 bg-blue-50 border-blue-200'
+        return 'text-teal-700 bg-teal-50 border-teal-200'
       case 'high':
         return 'text-yellow-700 bg-yellow-50 border-yellow-200'
       case 'severe':
@@ -59,7 +59,7 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
     }
   }
 
-  const tempAdjustedGmax = temperature 
+  const tempAdjustedGmax = temperature
     ? calculateTemperatureAdjustedGMAX(latestTestingData.gmaxAverage, temperature)
     : latestTestingData.gmaxAverage
 
@@ -75,7 +75,7 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
       {/* Performance Metrics vs Standards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         {/* GMAX Analysis */}
-        <div className="bg-gray-50 rounded-lg p-4">
+        <div className="rounded-lg p-4" style={{ background: '#F7FAFC' }}>
           <div className="flex items-center justify-between mb-2">
             <span className={designTokens.typography.body.small + ' font-medium text-gray-700'}>
               GMAX (Shock Absorption)
@@ -90,7 +90,7 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
           <div className="flex items-end space-x-2 mb-2">
             <span className={`text-2xl font-bold ${
               insights.overallStatus === 'excellent' ? 'text-green-600' :
-              insights.overallStatus === 'good' ? 'text-blue-600' :
+              insights.overallStatus === 'good' ? 'text-teal-600' :
               insights.overallStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
             }`}>
               {latestTestingData.gmaxAverage.toFixed(1)}
@@ -107,10 +107,10 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
               <span>Limit: &lt;{standards.gmax.safetyLimit}</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
-              <div 
+              <div
                 className={`h-2 rounded-full ${
                   latestTestingData.gmaxAverage <= standards.gmax.optimal.max ? 'bg-green-500' :
-                  latestTestingData.gmaxAverage <= standards.gmax.safetyLimit * 0.8 ? 'bg-blue-500' :
+                  latestTestingData.gmaxAverage <= standards.gmax.safetyLimit * 0.8 ? 'bg-teal-500' :
                   latestTestingData.gmaxAverage <= standards.gmax.safetyLimit ? 'bg-yellow-500' : 'bg-red-500'
                 }`}
                 style={{ width: `${Math.min((latestTestingData.gmaxAverage / standards.gmax.safetyLimit) * 100, 100)}%` }}
@@ -120,14 +120,14 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
         </div>
 
         {/* Shear Analysis */}
-        <div className="bg-gray-50 rounded-lg p-4">
+        <div className="rounded-lg p-4" style={{ background: '#F7FAFC' }}>
           <span className={designTokens.typography.body.small + ' font-medium text-gray-700 block mb-2'}>
             Shear Factor (Traction)
           </span>
           <div className="flex items-end space-x-2 mb-2">
             <span className={`text-2xl font-bold ${
               latestTestingData.shearStatus === 'excellent' ? 'text-green-600' :
-              latestTestingData.shearStatus === 'good' ? 'text-blue-600' :
+              latestTestingData.shearStatus === 'good' ? 'text-teal-600' :
               latestTestingData.shearStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
             }`}>
               {latestTestingData.shearAverage.toFixed(1)}
@@ -140,15 +140,15 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
               <span>Balance is key</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
-              <div 
+              <div
                 className={`h-2 rounded-full ${
-                  latestTestingData.shearAverage >= standards.shear.optimal.min && 
+                  latestTestingData.shearAverage >= standards.shear.optimal.min &&
                   latestTestingData.shearAverage <= standards.shear.optimal.max ? 'bg-green-500' :
-                  latestTestingData.shearAverage >= standards.shear.range.min && 
-                  latestTestingData.shearAverage <= standards.shear.range.max ? 'bg-blue-500' : 'bg-yellow-500'
+                  latestTestingData.shearAverage >= standards.shear.range.min &&
+                  latestTestingData.shearAverage <= standards.shear.range.max ? 'bg-teal-500' : 'bg-yellow-500'
                 }`}
-                style={{ 
-                  width: `${Math.min(Math.max((latestTestingData.shearAverage / standards.shear.range.max) * 100, 10), 100)}%` 
+                style={{
+                  width: `${Math.min(Math.max((latestTestingData.shearAverage / standards.shear.range.max) * 100, 10), 100)}%`
                 }}
               />
             </div>
@@ -156,14 +156,14 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
         </div>
 
         {/* Infill Depth Analysis */}
-        <div className="bg-gray-50 rounded-lg p-4">
+        <div className="rounded-lg p-4" style={{ background: '#F7FAFC' }}>
           <span className={designTokens.typography.body.small + ' font-medium text-gray-700 block mb-2'}>
             Infill Depth
           </span>
           <div className="flex items-end space-x-2 mb-2">
             <span className={`text-2xl font-bold ${
               latestTestingData.infillDepthStatus === 'excellent' ? 'text-green-600' :
-              latestTestingData.infillDepthStatus === 'good' ? 'text-blue-600' :
+              latestTestingData.infillDepthStatus === 'good' ? 'text-teal-600' :
               latestTestingData.infillDepthStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
             }`}>
               {latestTestingData.infillDepthAverage.toFixed(1)}
@@ -176,15 +176,15 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
               <span>{field.type.replace('_', ' ')}</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
-              <div 
+              <div
                 className={`h-2 rounded-full ${
-                  latestTestingData.infillDepthAverage >= standards.infillDepth.optimal.min && 
+                  latestTestingData.infillDepthAverage >= standards.infillDepth.optimal.min &&
                   latestTestingData.infillDepthAverage <= standards.infillDepth.optimal.max ? 'bg-green-500' :
-                  latestTestingData.infillDepthAverage >= standards.infillDepth.range.min && 
-                  latestTestingData.infillDepthAverage <= standards.infillDepth.range.max ? 'bg-blue-500' : 'bg-yellow-500'
+                  latestTestingData.infillDepthAverage >= standards.infillDepth.range.min &&
+                  latestTestingData.infillDepthAverage <= standards.infillDepth.range.max ? 'bg-teal-500' : 'bg-yellow-500'
                 }`}
-                style={{ 
-                  width: `${Math.min((latestTestingData.infillDepthAverage / standards.infillDepth.range.max) * 100, 100)}%` 
+                style={{
+                  width: `${Math.min((latestTestingData.infillDepthAverage / standards.infillDepth.range.max) * 100, 100)}%`
                 }}
               />
             </div>
@@ -265,14 +265,14 @@ export function FieldInsights({ field, latestTestingData, temperature, fieldAge 
       </div>
 
       {/* Next Testing Schedule */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
         <div className="flex items-center space-x-2 mb-2">
-          <Clock className="w-4 h-4 text-blue-600" />
-          <span className={designTokens.typography.body.small + ' font-medium text-blue-900'}>
+          <Clock className="w-4 h-4 text-teal-600" />
+          <span className={designTokens.typography.body.small + ' font-medium text-teal-900'}>
             Next Testing Recommended
           </span>
         </div>
-        <p className={designTokens.typography.body.small + ' text-blue-800'}>
+        <p className={designTokens.typography.body.small + ' text-teal-800'}>
           Based on current field status, next testing should occur in{' '}
           <span className="font-medium">{insights.nextTestingRecommended} days</span>
           {insights.overallStatus === 'critical' && (

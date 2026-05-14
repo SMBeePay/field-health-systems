@@ -10,8 +10,8 @@ import { PerformanceChart } from '@/components/ui/performance-chart'
 import { MaintenanceAlerts } from '@/components/ui/maintenance-alerts'
 import { mockFields, mockTestingData, mockMaintenanceRecommendations } from '@/lib/mock-data'
 import { designTokens } from '@/lib/design-tokens'
-import { 
-  ArrowLeft, 
+import {
+  ArrowLeft,
   Calendar,
   Thermometer,
   MapPin,
@@ -32,10 +32,10 @@ interface FieldDetailPageProps {
 
 export default function FieldDetailPage({ params }: FieldDetailPageProps) {
   const [selectedTab, setSelectedTab] = useState<'overview' | 'testing' | 'maintenance' | 'compliance'>('overview')
-  
+
   // Find field by ID
   const field = mockFields.find(f => f.id === params.id)
-  
+
   if (!field) {
     notFound()
   }
@@ -68,12 +68,12 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-7xl mx-auto">
             {/* Navigation Header */}
@@ -89,7 +89,7 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
                   Back to Fields
                 </Link>
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <div>
                   <h1 className={designTokens.typography.heading.h1}>{field.name}</h1>
@@ -227,7 +227,7 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
                               <AlertTriangle className={`w-4 h-4 mt-0.5 ${
                                 rec.priority === 'critical' ? 'text-red-500' :
                                 rec.priority === 'high' ? 'text-orange-500' :
-                                rec.priority === 'medium' ? 'text-yellow-500' : 'text-blue-500'
+                                rec.priority === 'medium' ? 'text-yellow-500' : 'text-teal-500'
                               }`} />
                               <div>
                                 <p className="text-sm font-medium">{rec.title}</p>
@@ -263,7 +263,7 @@ export default function FieldDetailPage({ params }: FieldDetailPageProps) {
                 <div className="space-y-6">
                   {/* Field Diagram with Testing Data */}
                   <FieldDiagram field={field} testingData={latestTesting} />
-                  
+
                   {/* Testing History */}
                   <div className={designTokens.components.card}>
                     <div className="px-6 py-4 border-b border-gray-200">

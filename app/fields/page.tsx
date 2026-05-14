@@ -7,8 +7,8 @@ import { Sidebar } from '@/components/layout/sidebar'
 import { FieldStatusCard } from '@/components/ui/field-status-card'
 import { mockFields } from '@/lib/mock-data'
 import { designTokens } from '@/lib/design-tokens'
-import { 
-  Search, 
+import {
+  Search,
   MapPin,
   Calendar,
   Plus,
@@ -39,12 +39,12 @@ export default function FieldsPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-7xl mx-auto">
             {/* Page Header */}
@@ -83,7 +83,7 @@ export default function FieldsPage() {
             >
               {[
                 { status: 'excellent', count: statusCounts.excellent, label: 'Excellent', color: 'green' },
-                { status: 'good', count: statusCounts.good, label: 'Good', color: 'blue' },
+                { status: 'good', count: statusCounts.good, label: 'Good', color: 'teal' },
                 { status: 'monitor', count: statusCounts.monitor, label: 'Monitor', color: 'yellow' },
                 { status: 'critical', count: statusCounts.critical, label: 'Critical', color: 'red' }
               ].map((item, index) => (
@@ -99,7 +99,7 @@ export default function FieldsPage() {
                 >
                   <div className={`text-3xl font-bold ${
                     item.color === 'green' ? 'text-green-600' :
-                    item.color === 'blue' ? 'text-blue-600' :
+                    item.color === 'teal' ? 'text-teal-600' :
                     item.color === 'yellow' ? 'text-yellow-600' :
                     'text-red-600'
                   }`}>
@@ -143,13 +143,15 @@ export default function FieldsPage() {
                   <div className="flex border border-gray-300 rounded-md overflow-hidden">
                     <button
                       onClick={() => setViewMode('grid')}
-                      className={`px-3 py-2 ${viewMode === 'grid' ? 'bg-green-600 text-white' : 'bg-white text-gray-600'}`}
+                      className={`px-3 py-2 ${viewMode === 'grid' ? 'text-white' : 'bg-white text-gray-600'}`}
+                      style={viewMode === 'grid' ? { background: '#4CAF50' } : undefined}
                     >
                       Grid
                     </button>
                     <button
                       onClick={() => setViewMode('list')}
-                      className={`px-3 py-2 ${viewMode === 'list' ? 'bg-green-600 text-white' : 'bg-white text-gray-600'}`}
+                      className={`px-3 py-2 ${viewMode === 'list' ? 'text-white' : 'bg-white text-gray-600'}`}
+                      style={viewMode === 'list' ? { background: '#4CAF50' } : undefined}
                     >
                       List
                     </button>
@@ -173,7 +175,7 @@ export default function FieldsPage() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
                     >
-                      <FieldStatusCard 
+                      <FieldStatusCard
                         field={field}
                         onClick={() => router.push(`/fields/${field.id}`)}
                       />
@@ -182,7 +184,7 @@ export default function FieldsPage() {
                 </div>
               ) : (
                 <div className={`${designTokens.components.card} overflow-hidden`}>
-                  <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                  <div className="px-6 py-4 border-b border-gray-200" style={{ background: '#F7FAFC' }}>
                     <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-600">
                       <div className="col-span-3">Field Name</div>
                       <div className="col-span-2">Location</div>
@@ -229,12 +231,12 @@ export default function FieldsPage() {
                             <span className="text-sm font-medium text-gray-900">N/A</span>
                           </div>
                           <div className="col-span-1">
-                            <button 
+                            <button
                               onClick={(e) => {
                                 e.stopPropagation()
                                 router.push(`/fields/${field.id}`)
                               }}
-                              className="text-green-600 hover:text-green-700"
+                              className="text-teal-600 hover:text-teal-700"
                             >
                               <Eye className="w-4 h-4" />
                             </button>
@@ -259,8 +261,8 @@ export default function FieldsPage() {
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">No fields found</h3>
                 <p className="text-gray-600">
-                  {searchQuery ? 
-                    `No fields match your search for "${searchQuery}"` : 
+                  {searchQuery ?
+                    `No fields match your search for "${searchQuery}"` :
                     `No fields with ${filterStatus} status`
                   }
                 </p>

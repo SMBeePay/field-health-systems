@@ -41,13 +41,13 @@ const testingProcess = [
     description: "Comprehensive field evaluation and testing point identification"
   },
   {
-    step: "2", 
+    step: "2",
     title: "GMAX Testing",
     description: "Precise impact testing using calibrated ASTM F355 equipment"
   },
   {
     step: "3",
-    title: "Data Analysis", 
+    title: "Data Analysis",
     description: "Professional analysis of test results against safety standards"
   },
   {
@@ -81,9 +81,9 @@ export default function GMAXTestingPage() {
     <>
       {/* Breadcrumbs */}
       <nav className="flex mb-8 text-sm">
-        <Link href="/" className="text-green-600 hover:text-green-700">Home</Link>
+        <Link href="/" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Home</Link>
         <span className="mx-2 text-gray-500">/</span>
-        <Link href="/services" className="text-green-600 hover:text-green-700">Services</Link>
+        <Link href="/services" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Services</Link>
         <span className="mx-2 text-gray-500">/</span>
         <span className="text-gray-700">GMAX Testing</span>
       </nav>
@@ -95,19 +95,21 @@ export default function GMAXTestingPage() {
             Professional GMAX Testing Services
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-8">
-            Ensure player safety and regulatory compliance with professional ASTM F355 GMAX testing. 
+            Ensure player safety and regulatory compliance with professional ASTM F355 GMAX testing.
             Our certified technicians provide accurate impact testing and detailed reporting for artificial turf fields nationwide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
+            <Link
               href="/schedule-assessment"
-              className="bg-green-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
+              className="text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+              style={{ background: '#4CAF50' }}
             >
               Schedule GMAX Testing
             </Link>
-            <a 
+            <a
               href="tel:+15551234567"
-              className="border-2 border-green-600 text-green-600 font-semibold px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
+              className="border-2 font-semibold px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
+              style={{ borderColor: '#4CAF50', color: '#4CAF50' }}
             >
               Call for Urgent Testing
             </a>
@@ -140,7 +142,10 @@ export default function GMAXTestingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {testingProcess.map((step, index) => (
               <div key={index} className="text-center">
-                <div className="bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
+                <div
+                  className="text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4"
+                  style={{ background: '#4CAF50' }}
+                >
                   {step.step}
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">{step.title}</h3>
@@ -154,7 +159,7 @@ export default function GMAXTestingPage() {
         <section className="mb-16 bg-green-50 border border-green-200 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Get Professional GMAX Testing Today</h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Don&apos;t risk player safety or compliance violations. Our ASTM F355 certified testing ensures 
+            Don&apos;t risk player safety or compliance violations. Our ASTM F355 certified testing ensures
             your artificial turf meets all safety requirements with fast, accurate results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -196,10 +201,10 @@ export default function GMAXTestingPage() {
             <div>
               <h3 className="font-semibold text-yellow-900 mb-2">Emergency Field Testing</h3>
               <p className="text-yellow-800 text-sm">
-                If you suspect your field has become dangerously hard or have had recent injuries, 
+                If you suspect your field has become dangerously hard or have had recent injuries,
                 contact us immediately for emergency GMAX testing. Player safety cannot wait.
               </p>
-              <a 
+              <a
                 href="tel:+15551234567"
                 className="inline-block mt-3 bg-yellow-600 text-white font-semibold px-4 py-2 rounded hover:bg-yellow-700 transition-colors"
               >

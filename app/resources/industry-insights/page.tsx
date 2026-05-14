@@ -74,7 +74,7 @@ export default function IndustryInsightsPage() {
     <>
       {/* Breadcrumbs */}
       <nav className="flex mb-8 text-sm">
-        <Link href="/resources" className="text-green-600 hover:text-green-700">Resources</Link>
+        <Link href="/resources" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Resources</Link>
         <span className="mx-2 text-gray-500">/</span>
         <span className="text-gray-700">Industry Insights</span>
       </nav>
@@ -86,8 +86,8 @@ export default function IndustryInsightsPage() {
             Sports Surface Industry Insights
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Stay informed with the latest trends, innovations, and professional insights in the artificial 
-            turf and sports surface industry. From safety standard updates to emerging technologies, 
+            Stay informed with the latest trends, innovations, and professional insights in the artificial
+            turf and sports surface industry. From safety standard updates to emerging technologies,
             access expert analysis and data-driven perspectives that shape the future of athletic field management.
           </p>
         </header>
@@ -99,7 +99,7 @@ export default function IndustryInsightsPage() {
             {industryStats.map((stat, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-lg p-6 text-center">
                 <span className="text-3xl block mb-3">{stat.icon}</span>
-                <div className="text-2xl font-bold text-green-600 mb-2">{stat.stat}</div>
+                <div className="text-2xl font-bold mb-2" style={{ color: '#4CAF50' }}>{stat.stat}</div>
                 <div className="text-sm text-gray-600">{stat.description}</div>
               </div>
             ))}
@@ -121,11 +121,11 @@ export default function IndustryInsightsPage() {
                   2024 Artificial Turf Safety Standards Update
                 </h2>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Critical updates to ASTM testing protocols that affect field safety compliance, 
-                  maintenance requirements, and testing frequency. Essential reading for facility managers 
+                  Critical updates to ASTM testing protocols that affect field safety compliance,
+                  maintenance requirements, and testing frequency. Essential reading for facility managers
                   and athletic directors planning field assessments.
                 </p>
-                <Link 
+                <Link
                   href="/resources/industry-insights/safety-standards/2024-astm-updates"
                   className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
                 >
@@ -139,9 +139,9 @@ export default function IndustryInsightsPage() {
         {/* Insight Categories */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Industry Insight Categories</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <Link 
+            <Link
               href="/resources/industry-insights/safety-standards"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -150,7 +150,7 @@ export default function IndustryInsightsPage() {
               <p className="text-gray-600 text-sm">Updates on testing protocols and compliance requirements</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/industry-insights/technology"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -159,7 +159,7 @@ export default function IndustryInsightsPage() {
               <p className="text-gray-600 text-sm">Innovations in materials and monitoring systems</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/industry-insights/budget-trends"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -168,7 +168,7 @@ export default function IndustryInsightsPage() {
               <p className="text-gray-600 text-sm">Market analysis and spending pattern insights</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/industry-insights/sustainability"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -182,15 +182,15 @@ export default function IndustryInsightsPage() {
         {/* All Insights */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Latest Industry Insights</h2>
-          
+
           <div className="space-y-6">
             {industryInsights.map((insight, index) => {
-              const cardClasses = insight.featured 
-                ? "bg-gradient-to-br from-blue-50 to-green-50 border-2 border-blue-200" 
+              const cardClasses = insight.featured
+                ? "bg-gradient-to-br from-blue-50 to-green-50 border-2 border-blue-200"
                 : "bg-white border border-gray-200"
-              
+
               return (
-                <Link 
+                <Link
                   key={index}
                   href={insight.href}
                   className={`block rounded-lg p-6 hover:shadow-lg transition-all ${cardClasses}`}
@@ -200,10 +200,12 @@ export default function IndustryInsightsPage() {
                     <div className="flex-grow">
                       <div className="flex items-center space-x-2 mb-2">
                         <span className={`text-xs font-semibold px-2 py-1 rounded ${
-                          insight.featured 
-                            ? 'text-blue-600 bg-blue-100' 
-                            : 'text-green-600 bg-green-100'
-                        }`}>
+                          insight.featured
+                            ? 'text-blue-600 bg-blue-100'
+                            : 'bg-green-100'
+                        }`}
+                          style={!insight.featured ? { color: '#4CAF50' } : {}}
+                        >
                           {insight.category}
                         </span>
                         <span className="text-xs text-gray-500">{insight.readTime}</span>
@@ -227,12 +229,12 @@ export default function IndustryInsightsPage() {
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">🤝 Professional Network Insights</h2>
             <p className="text-gray-600 mb-6">
-              Connect with industry professionals and access exclusive insights from field managers, 
+              Connect with industry professionals and access exclusive insights from field managers,
               athletic directors, and maintenance specialists across the country.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600 mb-2">500+</div>
+                <div className="text-2xl font-bold mb-2" style={{ color: '#4CAF50' }}>500+</div>
                 <div className="text-sm text-gray-600">Professional members</div>
               </div>
               <div className="text-center">
@@ -251,17 +253,17 @@ export default function IndustryInsightsPage() {
         <section className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-4">Stay Ahead of Industry Trends</h2>
           <p className="text-lg mb-6 opacity-90">
-            Get expert insights, trend analysis, and professional perspectives delivered to help you 
+            Get expert insights, trend analysis, and professional perspectives delivered to help you
             make informed decisions about field management and safety compliance.
           </p>
           <div className="space-x-4">
-            <Link 
+            <Link
               href="/resources/industry-insights/safety-standards/2024-astm-updates"
               className="inline-block bg-white text-purple-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
             >
               Read Latest Updates
             </Link>
-            <Link 
+            <Link
               href="/contact"
               className="inline-block border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-purple-600 transition-colors"
             >

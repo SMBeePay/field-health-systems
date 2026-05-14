@@ -47,7 +47,7 @@ export default function AdminDashboard() {
   if (status === 'loading') {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: '#4CAF50' }}></div>
       </div>
     )
   }
@@ -64,13 +64,13 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+              <h1 className="text-2xl font-bold" style={{ color: '#12324A' }}>Admin Dashboard</h1>
               <p className="text-sm text-gray-600">Field Health Systems</p>
             </div>
             <div className="flex items-center space-x-4">
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center">
-              <Users className="w-8 h-8 text-blue-600" />
+              <Users className="w-8 h-8 text-teal-600" />
               <div className="ml-4">
                 <p className="text-sm text-gray-600">Total Users</p>
                 <p className="text-2xl font-semibold text-gray-900">
@@ -148,7 +148,7 @@ export default function AdminDashboard() {
             className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
           >
             <div className="flex items-center">
-              <Users className="w-8 h-8 text-blue-600" />
+              <Users className="w-8 h-8 text-teal-600" />
               <div className="ml-4">
                 <h3 className="text-lg font-semibold text-gray-900">Manage Users</h3>
                 <p className="text-sm text-gray-600">Add, edit, and manage user accounts</p>
@@ -195,7 +195,7 @@ export default function AdminDashboard() {
               <div className="space-y-4">
                 {stats.recentActivity.map((activity) => (
                   <div key={activity.id} className="flex items-center space-x-3">
-                    <div className="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="flex-shrink-0 w-2 h-2 bg-teal-500 rounded-full"></div>
                     <div className="flex-1">
                       <p className="text-sm text-gray-900">
                         {activity.user} {activity.action} {activity.resource}

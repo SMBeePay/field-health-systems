@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
 import { designTokens } from '@/lib/design-tokens'
-import { 
+import {
   User,
   Bell,
   Shield,
@@ -33,7 +33,7 @@ export default function SettingsPage() {
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
   const [autoBackup, setAutoBackup] = useState(true)
-  
+
   // Mock user profile data
   const userProfile = {
     name: 'Sarah Johnson',
@@ -87,12 +87,12 @@ export default function SettingsPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-7xl mx-auto">
             {/* Page Header */}
@@ -169,7 +169,7 @@ export default function SettingsPage() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-lg font-semibold text-gray-900 mb-4">Profile Information</h2>
-                        
+
                         {/* Avatar Section */}
                         <div className="flex items-center space-x-4 mb-6">
                           <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center">
@@ -216,7 +216,8 @@ export default function SettingsPage() {
                               type="text"
                               defaultValue={userProfile.role}
                               disabled
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-500"
+                              style={{ background: '#F7FAFC' }}
                             />
                           </div>
                           <div>
@@ -225,7 +226,8 @@ export default function SettingsPage() {
                               type="text"
                               defaultValue={userProfile.department}
                               disabled
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-500"
+                              style={{ background: '#F7FAFC' }}
                             />
                           </div>
                           <div>
@@ -246,7 +248,7 @@ export default function SettingsPage() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-lg font-semibold text-gray-900 mb-4">Notification Preferences</h2>
-                        
+
                         <div className="space-y-4">
                           <div className="flex items-center justify-between py-3 border-b border-gray-200">
                             <div className="flex items-center space-x-3">
@@ -322,7 +324,7 @@ export default function SettingsPage() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-lg font-semibold text-gray-900 mb-4">Security Settings</h2>
-                        
+
                         <div className="space-y-6">
                           <div>
                             <h4 className="font-medium text-gray-900 mb-3">Change Password</h4>
@@ -424,7 +426,7 @@ export default function SettingsPage() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-lg font-semibold text-gray-900 mb-4">System Configuration</h2>
-                        
+
                         <div className="space-y-6">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
@@ -445,7 +447,7 @@ export default function SettingsPage() {
                             </div>
                             <div>
                               <label className="block text-sm font-medium text-gray-700 mb-1">Backup Frequency</label>
-                              <select 
+                              <select
                                 defaultValue={systemSettings.backupFrequency}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
                               >
@@ -514,7 +516,7 @@ export default function SettingsPage() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-lg font-semibold text-gray-900 mb-4">Appearance Preferences</h2>
-                        
+
                         <div className="space-y-6">
                           <div className="flex items-center justify-between py-3">
                             <div className="flex items-center space-x-3">
@@ -543,7 +545,7 @@ export default function SettingsPage() {
                             <div className="flex space-x-3">
                               {[
                                 { color: 'bg-green-600', name: 'Green' },
-                                { color: 'bg-blue-600', name: 'Blue' },
+                                { color: 'bg-teal-600', name: 'Teal' },
                                 { color: 'bg-purple-600', name: 'Purple' },
                                 { color: 'bg-red-600', name: 'Red' },
                                 { color: 'bg-yellow-600', name: 'Yellow' }
@@ -586,24 +588,24 @@ export default function SettingsPage() {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-lg font-semibold text-gray-900 mb-4">Connected Services</h2>
-                        
+
                         <div className="space-y-4">
                           {integrations.map((integration) => (
                             <div key={integration.id} className="border border-gray-200 rounded-lg p-4">
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center space-x-4">
                                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                                    integration.status === 'connected' ? 'bg-green-100' : 'bg-gray-100'
+                                    integration.status === 'connected' ? 'bg-teal-100' : 'bg-gray-100'
                                   }`}>
                                     <Globe className={`w-6 h-6 ${
-                                      integration.status === 'connected' ? 'text-green-600' : 'text-gray-400'
+                                      integration.status === 'connected' ? 'text-teal-600' : 'text-gray-400'
                                     }`} />
                                   </div>
                                   <div>
                                     <h4 className="font-medium text-gray-900 flex items-center space-x-2">
                                       {integration.name}
                                       {integration.status === 'connected' ? (
-                                        <Check className="w-4 h-4 text-green-600" />
+                                        <Check className="w-4 h-4 text-teal-600" />
                                       ) : (
                                         <X className="w-4 h-4 text-gray-400" />
                                       )}
@@ -645,7 +647,8 @@ export default function SettingsPage() {
                                   type="password"
                                   value="••••••••••••••••••••••••••••••••"
                                   readOnly
-                                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md bg-gray-50"
+                                  className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
+                                  style={{ background: '#F7FAFC' }}
                                 />
                                 <button className={designTokens.components.button.outline}>
                                   Regenerate

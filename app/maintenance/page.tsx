@@ -6,7 +6,7 @@ import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
 import { mockMaintenanceRecommendations, mockFields } from '@/lib/mock-data'
 import { designTokens } from '@/lib/design-tokens'
-import { 
+import {
   Calendar,
   Clock,
   AlertTriangle,
@@ -85,12 +85,12 @@ export default function MaintenancePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-7xl mx-auto">
             {/* Page Header */}
@@ -149,11 +149,11 @@ export default function MaintenancePage() {
                 </div>
               </div>
               <div className={`${designTokens.components.card} p-6 text-center`}>
-                <div className="text-3xl font-bold text-green-600">
+                <div className="text-3xl font-bold" style={{ color: '#4CAF50' }}>
                   ${(mockMaintenanceRecommendations.reduce((sum, rec) => sum + (rec.estimatedCost || 0), 0) / 1000).toFixed(0)}K
                 </div>
                 <div className="text-sm text-gray-600 mt-1 flex items-center justify-center">
-                  <DollarSign className="w-4 h-4 mr-1 text-green-500" />
+                  <DollarSign className="w-4 h-4 mr-1" style={{ color: '#4CAF50' }} />
                   Est. Costs
                 </div>
               </div>
@@ -293,7 +293,7 @@ export default function MaintenancePage() {
                         <div className="flex-1">
                           <div className="flex items-center space-x-3 mb-3">
                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                              item.status === 'scheduled' ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800'
+                              item.status === 'scheduled' ? 'bg-teal-100 text-teal-800' : 'bg-yellow-100 text-yellow-800'
                             }`}>
                               {item.status === 'scheduled' ? 'Scheduled' : 'In Progress'}
                             </span>

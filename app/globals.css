@@ -10,6 +10,20 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ── Field Health Systems Brand Colors ── */
+  --color-brand-navy:       #12324A;
+  --color-brand-navy-light: #1a4466;
+  --color-brand-navy-dark:  #0d2438;
+  --color-brand-teal:       #1F8A8A;
+  --color-brand-teal-light: #2aabab;
+  --color-brand-teal-dark:  #166868;
+  --color-brand-green:      #4CAF50;
+  --color-brand-green-light:#66BB6A;
+  --color-brand-green-dark: #388E3C;
+  --color-brand-bg:         #F7FAFC;
+  --color-brand-slate:      #334155;
+  --color-brand-slate-light:#64748b;
 }
 
 @media (prefers-color-scheme: dark) {

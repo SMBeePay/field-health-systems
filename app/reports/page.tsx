@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
 import { designTokens } from '@/lib/design-tokens'
-import { 
+import {
   FileText,
   Download,
   Eye,
@@ -139,7 +139,7 @@ export default function ReportsPage() {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'quarterly': return 'bg-blue-100 text-blue-800'
+      case 'quarterly': return 'bg-teal-100 text-teal-800'
       case 'safety': return 'bg-red-100 text-red-800'
       case 'budget': return 'bg-green-100 text-green-800'
       case 'compliance': return 'bg-yellow-100 text-yellow-800'
@@ -148,12 +148,12 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-7xl mx-auto">
             {/* Page Header */}
@@ -198,7 +198,7 @@ export default function ReportsPage() {
                 </div>
               </div>
               <div className={`${designTokens.components.card} p-6 text-center`}>
-                <div className="text-3xl font-bold text-blue-600">{scheduledReports.length}</div>
+                <div className="text-3xl font-bold text-teal-600">{scheduledReports.length}</div>
                 <div className="text-sm text-gray-600 mt-1 flex items-center justify-center">
                   <Calendar className="w-4 h-4 mr-1" />
                   Scheduled
@@ -305,7 +305,7 @@ export default function ReportsPage() {
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center space-x-3 mb-3">
-                              <FileText className="w-5 h-5 text-green-600" />
+                              <FileText className="w-5 h-5 text-teal-600" />
                               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getTypeColor(report.type)}`}>
                                 {report.type.charAt(0).toUpperCase() + report.type.slice(1)}
                               </span>
@@ -343,13 +343,13 @@ export default function ReportsPage() {
                             )}
                           </div>
                           <div className="flex items-center space-x-2 ml-4">
-                            <button className="p-2 text-gray-400 hover:text-green-600 transition-colors">
+                            <button className="p-2 text-gray-400 hover:text-teal-600 transition-colors">
                               <Eye className="w-4 h-4" />
                             </button>
-                            <button className="p-2 text-gray-400 hover:text-green-600 transition-colors">
+                            <button className="p-2 text-gray-400 hover:text-teal-600 transition-colors">
                               <Download className="w-4 h-4" />
                             </button>
-                            <button className="p-2 text-gray-400 hover:text-green-600 transition-colors">
+                            <button className="p-2 text-gray-400 hover:text-teal-600 transition-colors">
                               <Share2 className="w-4 h-4" />
                             </button>
                             <ChevronRight className="w-5 h-5 text-gray-400" />
@@ -374,11 +374,11 @@ export default function ReportsPage() {
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <div className="flex items-center space-x-3 mb-3">
-                            <Calendar className="w-5 h-5 text-blue-600" />
+                            <Calendar className="w-5 h-5 text-teal-600" />
                             <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getTypeColor(report.type)}`}>
                               {report.type.charAt(0).toUpperCase() + report.type.slice(1)}
                             </span>
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
                               <Clock className="w-3 h-3 mr-1" />
                               Scheduled
                             </span>
@@ -423,8 +423,8 @@ export default function ReportsPage() {
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                            <FileText className="w-5 h-5 text-green-600" />
+                          <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
+                            <FileText className="w-5 h-5 text-teal-600" />
                           </div>
                           <div>
                             <h3 className="font-semibold text-gray-900">{template.name}</h3>

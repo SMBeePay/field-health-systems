@@ -23,7 +23,7 @@ const costAnalysisTools = [
     title: "ROI Analysis Tool",
     description: "Calculate the return on investment for professional maintenance programs versus reactive maintenance approaches.",
     href: "/resources/cost-analysis/calculators/roi-analysis-tool",
-    category: "Calculator", 
+    category: "Calculator",
     type: "Interactive Tool",
     icon: "📈"
   },
@@ -77,7 +77,7 @@ export default function CostAnalysisResourcesPage() {
     <>
       {/* Breadcrumbs */}
       <nav className="flex mb-8 text-sm">
-        <Link href="/resources" className="text-green-600 hover:text-green-700">Resources</Link>
+        <Link href="/resources" className="hover:text-green-700" style={{ color: '#4CAF50' }}>Resources</Link>
         <span className="mx-2 text-gray-500">/</span>
         <span className="text-gray-700">Cost Analysis</span>
       </nav>
@@ -89,8 +89,8 @@ export default function CostAnalysisResourcesPage() {
             Field Maintenance Cost Analysis
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed">
-            Professional tools and resources to help you understand, budget, and optimize your artificial 
-            turf maintenance costs. From interactive calculators to comprehensive budget templates, 
+            Professional tools and resources to help you understand, budget, and optimize your artificial
+            turf maintenance costs. From interactive calculators to comprehensive budget templates,
             make data-driven decisions that maximize your field investment.
           </p>
         </header>
@@ -118,7 +118,7 @@ export default function CostAnalysisResourcesPage() {
               <span className="text-4xl flex-shrink-0">💰</span>
               <div>
                 <div className="flex items-center space-x-2 mb-3">
-                  <span className="text-xs font-semibold text-green-600 bg-green-100 px-3 py-1 rounded">
+                  <span className="text-xs font-semibold bg-green-100 px-3 py-1 rounded" style={{ color: '#4CAF50' }}>
                     Featured Tool
                   </span>
                 </div>
@@ -126,12 +126,13 @@ export default function CostAnalysisResourcesPage() {
                   Maintenance Cost Calculator
                 </h2>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Get instant estimates for your artificial turf maintenance costs based on field size, age, 
+                  Get instant estimates for your artificial turf maintenance costs based on field size, age,
                   usage patterns, and testing frequency. Plan your budget with confidence using real industry data.
                 </p>
-                <Link 
+                <Link
                   href="/resources/cost-analysis/calculators/maintenance-cost-calculator"
-                  className="inline-block bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
+                  className="inline-block text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                  style={{ background: '#4CAF50' }}
                 >
                   Use Cost Calculator
                 </Link>
@@ -143,9 +144,9 @@ export default function CostAnalysisResourcesPage() {
         {/* Resource Categories */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Cost Analysis Resource Categories</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Link 
+            <Link
               href="/resources/cost-analysis/calculators"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -154,7 +155,7 @@ export default function CostAnalysisResourcesPage() {
               <p className="text-gray-600 text-sm">Interactive tools for cost estimation and ROI analysis</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/cost-analysis/budgeting"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -163,7 +164,7 @@ export default function CostAnalysisResourcesPage() {
               <p className="text-gray-600 text-sm">Templates and guides for comprehensive budget planning</p>
             </Link>
 
-            <Link 
+            <Link
               href="/resources/cost-analysis/savings"
               className="p-6 bg-white border border-gray-200 rounded-lg hover:border-green-300 hover:shadow-lg transition-all text-center"
             >
@@ -177,10 +178,10 @@ export default function CostAnalysisResourcesPage() {
         {/* Cost Analysis Tools */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Cost Analysis Tools & Resources</h2>
-          
+
           <div className="space-y-6">
             {costAnalysisTools.map((tool, index) => (
-              <Link 
+              <Link
                 key={index}
                 href={tool.href}
                 className="block bg-white border border-gray-200 rounded-lg p-6 hover:border-green-300 hover:shadow-lg transition-all"
@@ -189,7 +190,7 @@ export default function CostAnalysisResourcesPage() {
                   <span className="text-2xl flex-shrink-0">{tool.icon}</span>
                   <div className="flex-grow">
                     <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-xs font-semibold text-green-600 bg-green-100 px-2 py-1 rounded">
+                      <span className="text-xs font-semibold bg-green-100 px-2 py-1 rounded" style={{ color: '#4CAF50' }}>
                         {tool.category}
                       </span>
                       <span className="text-xs text-gray-500">{tool.type}</span>
@@ -211,10 +212,10 @@ export default function CostAnalysisResourcesPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Key Cost Factors</h2>
           <p className="text-gray-600 mb-6">
-            Understanding the primary factors that influence artificial turf maintenance costs helps you 
+            Understanding the primary factors that influence artificial turf maintenance costs helps you
             budget more accurately and identify optimization opportunities.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {costFactors.map((factor, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-lg p-6">
@@ -222,7 +223,7 @@ export default function CostAnalysisResourcesPage() {
                   <span className="text-2xl flex-shrink-0">{factor.icon}</span>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{factor.factor}</h3>
-                    <p className="text-sm font-medium text-green-600 mb-2">{factor.impact}</p>
+                    <p className="text-sm font-medium mb-2" style={{ color: '#4CAF50' }}>{factor.impact}</p>
                     <p className="text-gray-600 text-sm">{factor.description}</p>
                   </div>
                 </div>
@@ -273,20 +274,20 @@ export default function CostAnalysisResourcesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gradient-to-r from-blue-600 to-green-600 rounded-lg p-8 text-center text-white">
+        <section className="rounded-lg p-8 text-center text-white" style={{ background: 'linear-gradient(to right, #2563eb, #4CAF50)' }}>
           <h2 className="text-2xl font-bold mb-4">Ready to Optimize Your Maintenance Costs?</h2>
           <p className="text-lg mb-6 opacity-90">
-            Get professional cost analysis and maintenance planning consultation to maximize your field 
+            Get professional cost analysis and maintenance planning consultation to maximize your field
             investment and minimize unexpected expenses.
           </p>
           <div className="space-x-4">
-            <Link 
+            <Link
               href="/resources/cost-analysis/calculators/maintenance-cost-calculator"
               className="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
             >
               Start Cost Calculator
             </Link>
-            <Link 
+            <Link
               href="/contact"
               className="inline-block border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
             >

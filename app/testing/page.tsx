@@ -32,22 +32,22 @@ export default function TestingDataPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Parse readings
     const gmaxReadings = parseNumberArray(formData.gmaxReadings)
     const shearReadings = parseNumberArray(formData.shearReadings)
     const infillReadings = parseNumberArray(formData.infillDepthReadings)
-    
+
     // Calculate averages and statuses
     const gmaxAverage = calculateAverage(gmaxReadings)
     const shearAverage = calculateAverage(shearReadings)
     const infillAverage = calculateAverage(infillReadings)
-    
+
     const gmaxStatus = calculateGMAXStatus(gmaxAverage)
     const shearStatus = calculateShearStatus(shearAverage)
     const infillStatus = calculateInfillDepthStatus(infillAverage)
     const overallStatus = calculateOverallStatus(gmaxStatus, shearStatus, infillStatus)
-    
+
     console.log('New testing data:', {
       ...formData,
       gmaxReadings,
@@ -61,7 +61,7 @@ export default function TestingDataPage() {
       infillStatus,
       overallStatus,
     })
-    
+
     // Reset form
     setFormData({
       fieldId: '',
@@ -78,12 +78,12 @@ export default function TestingDataPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
       <Header />
-      
+
       <div className="flex">
         <Sidebar />
-        
+
         <main className="flex-1 p-6">
           <div className="max-w-4xl mx-auto">
             {/* Page Header */}
@@ -99,7 +99,7 @@ export default function TestingDataPage() {
                   Input and track field testing measurements
                 </p>
               </div>
-              
+
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -223,7 +223,7 @@ export default function TestingDataPage() {
                     {/* Testing Readings */}
                     <div className="space-y-4">
                       <h3 className={designTokens.typography.heading.h4}>Testing Measurements</h3>
-                      
+
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                           GMAX Readings * <span className="text-gray-500 font-normal">(comma-separated values)</span>
@@ -323,7 +323,7 @@ export default function TestingDataPage() {
               className={designTokens.components.card + ' p-6 mb-6'}
             >
               <h2 className={designTokens.typography.heading.h3 + ' mb-4'}>Testing Guidelines</h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                   <h4 className={designTokens.typography.heading.h4 + ' text-red-600 mb-2'}>GMAX Testing</h4>
@@ -334,9 +334,9 @@ export default function TestingDataPage() {
                     <li>• Take 8+ readings across field</li>
                   </ul>
                 </div>
-                
+
                 <div>
-                  <h4 className={designTokens.typography.heading.h4 + ' text-blue-600 mb-2'}>Shear Factor</h4>
+                  <h4 className={designTokens.typography.heading.h4 + ' text-teal-600 mb-2'}>Shear Factor</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Measures traction/grip</li>
                     <li>• Minimum safe: &gt;20</li>
@@ -344,7 +344,7 @@ export default function TestingDataPage() {
                     <li>• Test in multiple directions</li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className={designTokens.typography.heading.h4 + ' text-green-600 mb-2'}>Infill Depth</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
@@ -365,7 +365,7 @@ export default function TestingDataPage() {
               className={designTokens.components.card + ' p-6'}
             >
               <h2 className={designTokens.typography.heading.h3 + ' mb-4'}>Recent Testing Data</h2>
-              
+
               <div className="text-center py-12">
                 <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <p className={designTokens.typography.body.base + ' text-gray-600'}>
