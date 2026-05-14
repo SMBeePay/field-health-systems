@@ -297,7 +297,7 @@ function CoverSlide() {
       </p>
       <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto w-full">
         {[
-          { icon: 'truck', label: 'On-Site Field Testing', sub: 'ASTM F1936 certified technicians' },
+          { icon: 'truck', label: 'On-Site Field Testing', sub: 'Trained technicians, ASTM F1936 protocol' },
           { icon: 'shield', label: 'Independent Results', sub: 'Zero installer ties or conflicts' },
           { icon: 'monitor', label: 'Compliance Software', sub: 'Records, history, maintenance alerts' },
         ].map(({ icon, label, sub }) => (
@@ -585,73 +585,164 @@ function Platform2Slide() {
   )
 }
 
-function InsuranceSlide() {
+function SafetyInvestmentSlide() {
   return (
     <div className="flex flex-col justify-center h-full px-20">
-      <div className="mb-10">
-        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">For Risk Managers</div>
-        <h2 className="text-5xl font-black text-white mb-4">The documentation<br />your underwriters need.</h2>
+      <div className="mb-8">
+        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">Why It Matters</div>
+        <h2 className="text-5xl font-black text-white mb-3">Protect your athletes.<br />Protect your investment.</h2>
         <p className="text-slate-400 text-lg max-w-2xl">
-          When a claim is filed, the question is always &ldquo;what did you know, and when did you know it?&rdquo; FHS gives you a defensible, timestamped answer.
+          Independent testing isn&apos;t just about being defensible if something goes wrong. It&apos;s about catching problems before they become injuries — and before they become expensive.
         </p>
       </div>
       <div className="grid grid-cols-2 gap-8">
-        <div className="space-y-4">
-          {[
-            {
-              icon: 'building',
-              title: 'TASB Risk Management Fund',
-              desc: 'Covers 1,000+ member ISDs across Texas. A preferred partner relationship converts the entire member network from cold prospect to warm referral.',
-              tag: 'Primary Target',
-              tagColor: 'bg-emerald-500/20 text-emerald-400',
-            },
-            {
-              icon: 'person',
-              title: 'United Educators',
-              desc: 'Serves premium Texas districts. Independent testing documentation directly supports their underwriting requirements for turf field liability coverage.',
-              tag: 'Secondary Target',
-              tagColor: 'bg-sky-500/20 text-sky-400',
-            },
-            {
-              icon: 'handshake',
-              title: 'Regional Brokers',
-              desc: 'Epic Insurance, Hotchkiss, and regional specialists. Commission-based referral structure — FHS pays per enrolled district.',
-              tag: 'Partnership Channel',
-              tagColor: 'bg-violet-500/20 text-violet-400',
-            },
-          ].map(({ icon, title, desc, tag, tagColor }) => (
-            <div key={title} className="flex gap-4 rounded-xl border border-slate-700 bg-slate-800/40 p-5">
-              <div className="text-slate-400 flex-shrink-0 mt-0.5"><Icon name={icon} className="w-5 h-5" /></div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-white font-semibold text-sm">{title}</span>
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${tagColor}`}>{tag}</span>
-                </div>
-                <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
-              </div>
+        {/* Athlete safety */}
+        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-7">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <Icon name="person" className="w-5 h-5" />
             </div>
-          ))}
-        </div>
-        <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8">
-          <div className="text-emerald-400 font-bold text-sm uppercase tracking-widest mb-6">What FHS Provides Insurers</div>
-          <div className="space-y-5">
+            <div className="text-emerald-400 font-bold text-base uppercase tracking-wide">Student Athlete Safety</div>
+          </div>
+          <div className="space-y-4">
             {[
-              { label: 'Timestamped test records', sub: 'Every test logged with technician, weather conditions, and GPS coordinates' },
-              { label: 'Chain of custody documentation', sub: 'Who tested, when, with what calibrated equipment, and certification numbers' },
-              { label: 'GMAX & HIC trend analysis', sub: 'Year-over-year trajectory — shows proactive risk management at the district level' },
-              { label: 'Pre-injury documentation', sub: 'If a claim is filed, the district already has a complete independent record on file' },
-              { label: 'Insurer portal access', sub: 'Direct read-only access for underwriters and risk managers — no email requests needed' },
+              {
+                label: 'GMAX is a concussion predictor',
+                sub: 'Research links rising GMAX scores directly to increased head impact severity. A field trending toward 200 is not a safe field — even if it has never technically failed.',
+              },
+              {
+                label: 'Students play hundreds of hours per year',
+                sub: 'Practices, games, and PE classes add up fast. Cumulative exposure on a degraded surface compounds risk in ways a single incident report never shows.',
+              },
+              {
+                label: 'Proactive vs. reactive',
+                sub: 'Finding a GMAX of 188 in November is a chance to act before the December playoffs. Finding out after an athlete is hurt is a different conversation entirely.',
+              },
+              {
+                label: 'Districts have a duty to know',
+                sub: 'You cannot manage a risk you are not measuring. Regular independent testing is how you demonstrate that student safety is actively monitored — not assumed.',
+              },
             ].map(({ label, sub }) => (
               <div key={label} className="flex gap-3">
-                <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 flex-shrink-0 mt-0.5">
-                  <Icon name="check" className="w-3 h-3" />
-                </div>
+                <div className="w-1 rounded-full bg-emerald-500/40 flex-shrink-0 self-stretch" />
                 <div>
-                  <div className="text-white text-sm font-semibold">{label}</div>
-                  <div className="text-slate-500 text-xs mt-0.5">{sub}</div>
+                  <div className="text-white text-sm font-semibold mb-0.5">{label}</div>
+                  <div className="text-slate-400 text-xs leading-relaxed">{sub}</div>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Turf investment */}
+        <div className="rounded-2xl border border-sky-500/30 bg-sky-500/5 p-7">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400">
+              <Icon name="wrench" className="w-5 h-5" />
+            </div>
+            <div className="text-sky-400 font-bold text-base uppercase tracking-wide">Turf Investment Protection</div>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                label: 'A turf field is a $500K–$1.2M asset',
+                sub: 'Most districts finance or bond for turf installation. That investment deserves the same monitoring discipline as any other major capital asset.',
+              },
+              {
+                label: 'Low infill is the silent killer',
+                sub: 'Infill compacts and migrates over time. When depth drops below spec, GMAX rises — often without any visible sign on the surface. Testing catches this early.',
+              },
+              {
+                label: 'A $400 top-up vs. a $60,000 emergency',
+                sub: 'Infill redistribution and grooming caught early is routine maintenance. Caught after a major reading spike — or after a failure — it becomes an urgent capital expense.',
+              },
+              {
+                label: 'Data-driven maintenance scheduling',
+                sub: 'The platform shows which zones are wearing fastest, so maintenance crews work where it matters — not just wherever they happen to start.',
+              },
+            ].map(({ label, sub }) => (
+              <div key={label} className="flex gap-3">
+                <div className="w-1 rounded-full bg-sky-500/40 flex-shrink-0 self-stretch" />
+                <div>
+                  <div className="text-white text-sm font-semibold mb-0.5">{label}</div>
+                  <div className="text-slate-400 text-xs leading-relaxed">{sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function InsuranceSlide() {
+  return (
+    <div className="flex flex-col justify-center h-full px-20">
+      <div className="mb-8">
+        <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">For Risk Managers</div>
+        <h2 className="text-5xl font-black text-white mb-3">The documentation<br />your underwriters need.</h2>
+        <p className="text-slate-400 text-lg max-w-2xl">
+          When a claim is filed, the question is always &ldquo;what did you know, and when did you know it?&rdquo;
+          FHS gives you a complete, timestamped, independent record — before anyone has to ask for it.
+        </p>
+      </div>
+      <div className="grid grid-cols-3 gap-6 mb-6">
+        {[
+          {
+            icon: 'document',
+            title: 'Chain of Custody',
+            desc: 'Every test record includes technician name, calibrated equipment ID, date, weather conditions, and GPS coordinates. Nothing is left to memory or a spreadsheet.',
+          },
+          {
+            icon: 'chart',
+            title: 'Trend Documentation',
+            desc: 'Year-over-year GMAX and HIC trajectories show underwriters that the district is actively monitoring — not discovering problems after the fact.',
+          },
+          {
+            icon: 'shield',
+            title: 'Independent Standing',
+            desc: 'Because FHS has no financial relationship with the field installer or maintenance contractor, our records carry the credibility that a self-reported test cannot.',
+          },
+        ].map(({ icon, title, desc }) => (
+          <div key={title} className="rounded-xl border border-slate-700 bg-slate-800/40 p-5">
+            <div className="text-emerald-400 mb-3"><Icon name={icon} className="w-6 h-6" /></div>
+            <div className="text-white font-bold text-sm mb-2">{title}</div>
+            <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-6">
+        <div className="rounded-xl border border-slate-700 bg-slate-800/40 p-5">
+          <div className="text-slate-300 text-sm font-semibold mb-3">What a complete FHS record includes</div>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+            {[
+              'GMAX readings — all 12+ test points',
+              'HIC scores at every location',
+              'Shear factor measurements',
+              'Infill depth by zone',
+              'Technician credentials on file',
+              'Equipment calibration certificate',
+              'Weather and surface temperature',
+              'Signed compliance declaration',
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-2 text-slate-400 text-xs">
+                <div className="text-emerald-400 flex-shrink-0 mt-0.5"><Icon name="check" className="w-3 h-3" /></div>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+          <div className="text-emerald-400 text-sm font-semibold mb-3">Insurer portal access</div>
+          <p className="text-slate-400 text-sm leading-relaxed mb-4">
+            Risk managers and underwriters can be granted direct read-only access to a district&apos;s full testing history — no email requests, no waiting for a PDF.
+            Every report is available the moment it is uploaded.
+          </p>
+          <div className="border-t border-emerald-500/20 pt-4">
+            <p className="text-slate-400 text-xs leading-relaxed">
+              For districts that carry turf field coverage, an active independent testing program is the single strongest indicator of proactive risk management — and the clearest argument against negligence in the event of a claim.
+            </p>
           </div>
         </div>
       </div>
@@ -769,6 +860,7 @@ const slides = [
   { id: 'risk' },
   { id: 'conflict' },
   { id: 'testing' },
+  { id: 'safety' },
   { id: 'platform' },
   { id: 'platform2' },
   { id: 'insurance' },
@@ -781,6 +873,7 @@ const slideTitles: Record<string, string> = {
   risk: 'The Stakes',
   conflict: 'The Testing Problem',
   testing: 'How We Test',
+  safety: 'Athletes & Investment',
   platform: 'The Software Platform',
   platform2: 'Field Detail View',
   insurance: 'For Risk Managers',
@@ -793,6 +886,7 @@ const slideComponents: Record<string, React.ComponentType> = {
   risk: RiskSlide,
   conflict: ConflictSlide,
   testing: TestingProcessSlide,
+  safety: SafetyInvestmentSlide,
   platform: PlatformSlide,
   platform2: Platform2Slide,
   insurance: InsuranceSlide,
