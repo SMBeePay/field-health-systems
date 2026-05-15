@@ -5,18 +5,36 @@ import { MapPin, Calendar, AlertTriangle, CheckCircle, Clock, XCircle } from 'lu
 import { Field } from '@/lib/schemas'
 import { designTokens } from '@/lib/design-tokens'
 import { getStatusColor, formatDate } from '@/lib/utils'
-import { mockTestingData } from '@/lib/mock-data'
+
+// The card accepts an optional latestTest prop.  When omitted the metrics section
+// is simply hidden — no mock-data import needed.
+interface LatestTest {
+  gmaxAverage: number
+  gmaxStatus: string
+  shearAverage: number
+  shearStatus: string
+  infillDepthAverage: number
+  infillDepthStatus: string
+}
 
 interface FieldStatusCardProps {
   field: Field
+  latestTest?: LatestTest | null
   onClick?: () => void
 }
 
-export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
-  const latestTest = mockTestingData.find(test => test.fieldId === field.id)
+function metricColor(status: string): string {
+  const s = status.toLowerCase()
+  if (s === 'excellent' || s === 'passed') return 'text-green-600'
+  if (s === 'good') return 'text-teal-600'
+  if (s === 'monitor') return 'text-yellow-600'
+  return 'text-red-600'
+}
 
+export function FieldStatusCard({ field, latestTest, onClick }: FieldStatusCardProps) {
   const getStatusIcon = () => {
-    switch (field.status) {
+    const s = (field.status as string).toLowerCase()
+    switch (s) {
       case 'excellent':
         return <CheckCircle className="w-5 h-5 text-green-600" />
       case 'good':
@@ -29,6 +47,9 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
         return <AlertTriangle className="w-5 h-5 text-gray-600" />
     }
   }
+
+  // Normalise status for getStatusColor (which expects lowercase)
+  const normalisedStatus = (field.status as string).toLowerCase() as Field['status']
 
   return (
     <motion.div
@@ -47,47 +68,40 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
           </div>
           <div>
             <h3 className={designTokens.typography.heading.h4}>{field.name}</h3>
-            <p className={designTokens.typography.body.small}>{field.type.replace('_', ' ')} • {field.surface}</p>
+            <p className={designTokens.typography.body.small}>
+              {(field.type as string).replace('_', ' ')}
+              {field.surface ? ` • ${field.surface}` : ''}
+            </p>
           </div>
         </div>
 
         <div className="flex items-center space-x-2">
           {getStatusIcon()}
-          <span className={`px-2 py-1 text-xs font-medium rounded-full border ${getStatusColor(field.status)}`}>
-            {field.status}
+          <span
+            className={`px-2 py-1 text-xs font-medium rounded-full border capitalize ${getStatusColor(normalisedStatus)}`}
+          >
+            {normalisedStatus}
           </span>
         </div>
       </div>
 
-      {/* Status Metrics */}
+      {/* Status Metrics — shown only when latestTest data is available */}
       {latestTest && (
         <div className="grid grid-cols-3 gap-4 mb-4">
           <div className="text-center">
-            <div className={`text-lg font-semibold ${
-              latestTest.gmaxStatus === 'excellent' ? 'text-green-600' :
-              latestTest.gmaxStatus === 'good' ? 'text-teal-600' :
-              latestTest.gmaxStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
-            }`}>
+            <div className={`text-lg font-semibold ${metricColor(latestTest.gmaxStatus)}`}>
               {latestTest.gmaxAverage.toFixed(1)}
             </div>
             <div className={designTokens.typography.body.xs + ' text-gray-500'}>GMAX</div>
           </div>
           <div className="text-center">
-            <div className={`text-lg font-semibold ${
-              latestTest.shearStatus === 'excellent' ? 'text-green-600' :
-              latestTest.shearStatus === 'good' ? 'text-teal-600' :
-              latestTest.shearStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
-            }`}>
+            <div className={`text-lg font-semibold ${metricColor(latestTest.shearStatus)}`}>
               {latestTest.shearAverage.toFixed(1)}
             </div>
             <div className={designTokens.typography.body.xs + ' text-gray-500'}>Shear</div>
           </div>
           <div className="text-center">
-            <div className={`text-lg font-semibold ${
-              latestTest.infillDepthStatus === 'excellent' ? 'text-green-600' :
-              latestTest.infillDepthStatus === 'good' ? 'text-teal-600' :
-              latestTest.infillDepthStatus === 'monitor' ? 'text-yellow-600' : 'text-red-600'
-            }`}>
+            <div className={`text-lg font-semibold ${metricColor(latestTest.infillDepthStatus)}`}>
               {latestTest.infillDepthAverage.toFixed(1)}mm
             </div>
             <div className={designTokens.typography.body.xs + ' text-gray-500'}>Infill Depth</div>
@@ -100,11 +114,12 @@ export function FieldStatusCard({ field, onClick }: FieldStatusCardProps) {
         <div className="flex items-center space-x-2">
           <Calendar className="w-4 h-4 text-gray-500" />
           <span className={designTokens.typography.body.small}>
-            Last tested: {field.lastTestingDate ? formatDate(field.lastTestingDate) : 'Never'}
+            Last tested:{' '}
+            {field.lastTestingDate ? formatDate(field.lastTestingDate) : 'Never'}
           </span>
         </div>
 
-        {field.status === 'critical' && (
+        {normalisedStatus === 'critical' && (
           <motion.div
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 2, repeat: Infinity }}

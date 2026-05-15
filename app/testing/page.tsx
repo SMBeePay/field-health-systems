@@ -1,81 +1,241 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Plus, Upload, Calendar, User, Thermometer, Cloud } from 'lucide-react'
 import { Header } from '@/components/layout/header'
 import { Sidebar } from '@/components/layout/sidebar'
 import { designTokens } from '@/lib/design-tokens'
-import { mockFields } from '@/lib/mock-data'
-import { parseNumberArray, calculateAverage, calculateGMAXStatus, calculateShearStatus, calculateInfillDepthStatus, calculateOverallStatus } from '@/lib/utils'
+import { Activity, Calendar, Plus, ArrowRight, Loader2, ChevronDown, ChevronUp } from 'lucide-react'
+import Link from 'next/link'
 
+// ── Types coming from the API ──────────────────────────────────────────────────
+interface ApiField {
+  id: string
+  name: string
+  type: string
+  status: string
+  lastTestingDate: string | null
+  testingData?: ApiTestRecord[]
+}
+
+interface ApiTestRecord {
+  id: string
+  fieldId: string
+  testingDate: string
+  testingTechnician: string
+  weatherConditions?: string
+  temperature?: number
+  gmaxAverage: number
+  gmaxStatus: string
+  shearAverage: number
+  shearStatus: string
+  infillDepthAverage: number
+  infillDepthStatus: string
+  overallStatus: string
+  notes?: string
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function statusBadgeClass(s: string) {
+  const lower = s.toLowerCase()
+  switch (lower) {
+    case 'excellent':
+    case 'passed':
+      return designTokens.colors.status.excellent.bg + ' ' + designTokens.colors.status.excellent.text
+    case 'good':
+      return designTokens.colors.status.good.bg + ' ' + designTokens.colors.status.good.text
+    case 'monitor':
+      return designTokens.colors.status.monitor.bg + ' ' + designTokens.colors.status.monitor.text
+    default:
+      return designTokens.colors.status.critical.bg + ' ' + designTokens.colors.status.critical.text
+  }
+}
+
+function formatStatus(s: string) {
+  const lower = s.toLowerCase()
+  if (lower === 'passed') return 'Passed'
+  if (lower === 'failed') return 'Failed'
+  return lower.charAt(0).toUpperCase() + lower.slice(1)
+}
+
+function gmaxColor(avg: number) {
+  if (avg < 165) return 'text-green-600'
+  if (avg < 200) return 'text-amber-600'
+  return 'text-red-600'
+}
+
+// ── Testing history row for a single field ────────────────────────────────────
+function FieldTestingRow({ field }: { field: ApiField }) {
+  const [expanded, setExpanded] = useState(false)
+  const tests = field.testingData ?? []
+  const latestTest = tests[0] ?? null
+
+  return (
+    <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+      {/* Summary row */}
+      <div className="px-5 py-4 flex items-center gap-4 flex-wrap">
+        {/* Field info */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-3 flex-wrap">
+            <h3 className="font-semibold text-slate-800">{field.name}</h3>
+            <span
+              className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium capitalize ${statusBadgeClass(field.status)}`}
+            >
+              {formatStatus(field.status)}
+            </span>
+          </div>
+          <p className="text-xs text-slate-400 mt-0.5 capitalize">
+            {field.type.replace(/_/g, ' ')}
+          </p>
+        </div>
+
+        {/* Last test date */}
+        <div className="flex items-center gap-1.5 text-sm text-slate-500 shrink-0">
+          <Calendar className="w-4 h-4 shrink-0" />
+          {field.lastTestingDate
+            ? new Date(field.lastTestingDate).toLocaleDateString()
+            : 'Never tested'}
+        </div>
+
+        {/* Latest averages */}
+        {latestTest && (
+          <div className="flex items-center gap-5 text-sm">
+            <div className="text-center">
+              <div className={`font-semibold ${gmaxColor(latestTest.gmaxAverage)}`}>
+                {latestTest.gmaxAverage.toFixed(1)}
+              </div>
+              <div className="text-xs text-slate-400">GMAX</div>
+            </div>
+            <div className="text-center">
+              <div className="font-semibold text-slate-700">
+                {latestTest.shearAverage.toFixed(1)}
+              </div>
+              <div className="text-xs text-slate-400">Shear</div>
+            </div>
+            <div className="text-center">
+              <div className="font-semibold text-slate-700">
+                {latestTest.infillDepthAverage.toFixed(1)}mm
+              </div>
+              <div className="text-xs text-slate-400">Infill</div>
+            </div>
+          </div>
+        )}
+
+        {/* Action buttons */}
+        <div className="flex items-center gap-2 shrink-0">
+          <Link
+            href={`/fields/${field.id}/test/new`}
+            className="inline-flex items-center gap-1.5 text-white rounded-lg px-3 py-1.5 text-xs font-semibold"
+            style={{ background: '#4CAF50' }}
+          >
+            <Plus className="w-3.5 h-3.5" />
+            Log Test
+          </Link>
+
+          <Link
+            href={`/fields/${field.id}`}
+            className="inline-flex items-center gap-1 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50 transition-colors"
+          >
+            View Field
+            <ArrowRight className="w-3 h-3" />
+          </Link>
+
+          {tests.length > 0 && (
+            <button
+              onClick={() => setExpanded((v) => !v)}
+              className="p-1.5 text-slate-400 hover:text-slate-600 transition-colors border border-slate-200 rounded-lg"
+              aria-label={expanded ? 'Collapse history' : 'Expand history'}
+            >
+              {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Expanded history */}
+      {expanded && tests.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.2 }}
+          className="border-t border-slate-100"
+        >
+          <div className="px-5 py-3 text-xs text-slate-500 font-medium grid grid-cols-12 gap-2 bg-slate-50">
+            <div className="col-span-3">Date</div>
+            <div className="col-span-3">Technician</div>
+            <div className="col-span-1 text-center">GMAX</div>
+            <div className="col-span-1 text-center">Shear</div>
+            <div className="col-span-2 text-center">Infill (mm)</div>
+            <div className="col-span-2 text-center">Overall</div>
+          </div>
+          <div className="divide-y divide-slate-100">
+            {tests.map((t) => (
+              <div
+                key={t.id}
+                className="px-5 py-3 text-sm grid grid-cols-12 gap-2 items-center hover:bg-slate-50"
+              >
+                <div className="col-span-3 text-slate-700">
+                  {new Date(t.testingDate).toLocaleDateString()}
+                </div>
+                <div className="col-span-3 text-slate-600 text-xs truncate">
+                  {t.testingTechnician}
+                </div>
+                <div className={`col-span-1 text-center font-medium ${gmaxColor(t.gmaxAverage)}`}>
+                  {t.gmaxAverage.toFixed(1)}
+                </div>
+                <div className="col-span-1 text-center font-medium text-slate-700">
+                  {t.shearAverage.toFixed(1)}
+                </div>
+                <div className="col-span-2 text-center font-medium text-slate-700">
+                  {t.infillDepthAverage.toFixed(1)}
+                </div>
+                <div className="col-span-2 text-center">
+                  <span
+                    className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${statusBadgeClass(t.overallStatus)}`}
+                  >
+                    {formatStatus(t.overallStatus)}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </div>
+  )
+}
+
+// ── Page ───────────────────────────────────────────────────────────────────────
 export default function TestingDataPage() {
-  const [isFormOpen, setIsFormOpen] = useState(false)
-  const [formData, setFormData] = useState({
-    fieldId: '',
-    testingDate: new Date().toISOString().split('T')[0],
-    testingTechnician: '',
-    weatherConditions: '',
-    temperature: '',
-    gmaxReadings: '',
-    shearReadings: '',
-    infillDepthReadings: '',
-    notes: '',
-  })
+  const [fields, setFields] = useState<ApiField[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }))
-  }
+  useEffect(() => {
+    let cancelled = false
+    async function load() {
+      try {
+        const res = await fetch('/api/fields')
+        if (!res.ok) {
+          const d = await res.json().catch(() => ({}))
+          throw new Error(d.error ?? `HTTP ${res.status}`)
+        }
+        const { fields: raw } = await res.json()
+        if (!cancelled) setFields(raw ?? [])
+      } catch (err) {
+        if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to load fields')
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    }
+    load()
+    return () => { cancelled = true }
+  }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    // Parse readings
-    const gmaxReadings = parseNumberArray(formData.gmaxReadings)
-    const shearReadings = parseNumberArray(formData.shearReadings)
-    const infillReadings = parseNumberArray(formData.infillDepthReadings)
-
-    // Calculate averages and statuses
-    const gmaxAverage = calculateAverage(gmaxReadings)
-    const shearAverage = calculateAverage(shearReadings)
-    const infillAverage = calculateAverage(infillReadings)
-
-    const gmaxStatus = calculateGMAXStatus(gmaxAverage)
-    const shearStatus = calculateShearStatus(shearAverage)
-    const infillStatus = calculateInfillDepthStatus(infillAverage)
-    const overallStatus = calculateOverallStatus(gmaxStatus, shearStatus, infillStatus)
-
-    console.log('New testing data:', {
-      ...formData,
-      gmaxReadings,
-      shearReadings,
-      infillReadings,
-      gmaxAverage,
-      shearAverage,
-      infillAverage,
-      gmaxStatus,
-      shearStatus,
-      infillStatus,
-      overallStatus,
-    })
-
-    // Reset form
-    setFormData({
-      fieldId: '',
-      testingDate: new Date().toISOString().split('T')[0],
-      testingTechnician: '',
-      weatherConditions: '',
-      temperature: '',
-      gmaxReadings: '',
-      shearReadings: '',
-      infillDepthReadings: '',
-      notes: '',
-    })
-    setIsFormOpen(false)
-  }
+  // Total test counts across all fields
+  const totalTests = fields.reduce((n, f) => n + (f.testingData?.length ?? 0), 0)
+  const fieldsWithTests = fields.filter((f) => (f.testingData?.length ?? 0) > 0).length
 
   return (
     <div className="min-h-screen" style={{ background: '#F7FAFC' }}>
@@ -85,297 +245,145 @@ export default function TestingDataPage() {
         <Sidebar />
 
         <main className="flex-1 p-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             {/* Page Header */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="flex items-center justify-between mb-8"
+              className="flex items-start justify-between mb-8 gap-4 flex-wrap"
             >
               <div>
-                <h1 className={designTokens.typography.heading.h1}>Testing Data Management</h1>
+                <h1 className={designTokens.typography.heading.h1}>Testing Data</h1>
                 <p className={designTokens.typography.body.large + ' text-gray-600 mt-2'}>
-                  Input and track field testing measurements
+                  Track GMAX, shear, and infill depth measurements across all fields
                 </p>
               </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => setIsFormOpen(true)}
-                className={designTokens.components.button.primary + ' flex items-center space-x-2'}
-              >
-                <Plus className="w-4 h-4" />
-                <span>Add Test Data</span>
-              </motion.button>
             </motion.div>
 
-            {/* Testing Form Modal */}
-            {isFormOpen && (
+            {/* Summary stats */}
+            {!loading && !error && (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-                onClick={(e) => e.target === e.currentTarget && setIsFormOpen(false)}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8"
               >
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
-                >
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className={designTokens.typography.heading.h2}>New Field Test</h2>
-                    <button
-                      onClick={() => setIsFormOpen(false)}
-                      className="text-gray-400 hover:text-gray-600 text-2xl"
-                    >
-                      ×
-                    </button>
+                <div className="bg-white border border-slate-200 rounded-xl p-5 text-center">
+                  <div className="text-3xl font-bold" style={{ color: '#12324A' }}>
+                    {fields.length}
                   </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Field Selection */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Field *
-                      </label>
-                      <select
-                        name="fieldId"
-                        value={formData.fieldId}
-                        onChange={handleInputChange}
-                        required
-                        className={designTokens.components.input}
-                      >
-                        <option value="">Select a field</option>
-                        {mockFields.map(field => (
-                          <option key={field.id} value={field.id}>
-                            {field.name} - {field.type.replace('_', ' ')}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Test Details Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          <Calendar className="w-4 h-4 inline mr-1" />
-                          Testing Date *
-                        </label>
-                        <input
-                          type="date"
-                          name="testingDate"
-                          value={formData.testingDate}
-                          onChange={handleInputChange}
-                          required
-                          className={designTokens.components.input}
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          <User className="w-4 h-4 inline mr-1" />
-                          Testing Technician *
-                        </label>
-                        <input
-                          type="text"
-                          name="testingTechnician"
-                          value={formData.testingTechnician}
-                          onChange={handleInputChange}
-                          placeholder="Name, Company"
-                          required
-                          className={designTokens.components.input}
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          <Cloud className="w-4 h-4 inline mr-1" />
-                          Weather Conditions
-                        </label>
-                        <input
-                          type="text"
-                          name="weatherConditions"
-                          value={formData.weatherConditions}
-                          onChange={handleInputChange}
-                          placeholder="e.g., Clear, 65°F"
-                          className={designTokens.components.input}
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          <Thermometer className="w-4 h-4 inline mr-1" />
-                          Temperature (°F)
-                        </label>
-                        <input
-                          type="number"
-                          name="temperature"
-                          value={formData.temperature}
-                          onChange={handleInputChange}
-                          placeholder="65"
-                          className={designTokens.components.input}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Testing Readings */}
-                    <div className="space-y-4">
-                      <h3 className={designTokens.typography.heading.h4}>Testing Measurements</h3>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          GMAX Readings * <span className="text-gray-500 font-normal">(comma-separated values)</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="gmaxReadings"
-                          value={formData.gmaxReadings}
-                          onChange={handleInputChange}
-                          placeholder="75, 78, 72, 76, 74, 77, 73, 75"
-                          required
-                          className={designTokens.components.input}
-                        />
-                        <p className="text-xs text-gray-500 mt-1">
-                          Enter multiple readings separated by commas. Safe limit: &lt;100
-                        </p>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Shear Factor Readings * <span className="text-gray-500 font-normal">(comma-separated values)</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="shearReadings"
-                          value={formData.shearReadings}
-                          onChange={handleInputChange}
-                          placeholder="22, 24, 21, 23, 22, 25, 23, 22"
-                          required
-                          className={designTokens.components.input}
-                        />
-                        <p className="text-xs text-gray-500 mt-1">
-                          Enter multiple readings separated by commas. Minimum safe: &gt;20
-                        </p>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Infill Depth Readings (mm) * <span className="text-gray-500 font-normal">(comma-separated values)</span>
-                        </label>
-                        <input
-                          type="text"
-                          name="infillDepthReadings"
-                          value={formData.infillDepthReadings}
-                          onChange={handleInputChange}
-                          placeholder="48, 52, 47, 53, 49, 51, 50, 48"
-                          required
-                          className={designTokens.components.input}
-                        />
-                        <p className="text-xs text-gray-500 mt-1">
-                          Enter multiple readings separated by commas. Target: ~50mm
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Notes */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Notes
-                      </label>
-                      <textarea
-                        name="notes"
-                        value={formData.notes}
-                        onChange={handleInputChange}
-                        rows={3}
-                        placeholder="Any additional observations or concerns..."
-                        className={designTokens.components.input}
-                      />
-                    </div>
-
-                    {/* Form Actions */}
-                    <div className="flex items-center justify-end space-x-3 pt-6 border-t">
-                      <button
-                        type="button"
-                        onClick={() => setIsFormOpen(false)}
-                        className={designTokens.components.button.secondary}
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="submit"
-                        className={designTokens.components.button.primary}
-                      >
-                        Save Test Data
-                      </button>
-                    </div>
-                  </form>
-                </motion.div>
+                  <div className="text-sm text-slate-500 mt-1">Total Fields</div>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-xl p-5 text-center">
+                  <div className="text-3xl font-bold" style={{ color: '#1F8A8A' }}>
+                    {fieldsWithTests}
+                  </div>
+                  <div className="text-sm text-slate-500 mt-1">Fields Tested</div>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-xl p-5 text-center">
+                  <div className="text-3xl font-bold" style={{ color: '#4CAF50' }}>
+                    {totalTests}
+                  </div>
+                  <div className="text-sm text-slate-500 mt-1">Total Test Records</div>
+                </div>
               </motion.div>
             )}
 
-            {/* Instructions Card */}
+            {/* Testing Guidelines */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
               className={designTokens.components.card + ' p-6 mb-6'}
             >
               <h2 className={designTokens.typography.heading.h3 + ' mb-4'}>Testing Guidelines</h2>
-
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <h4 className={designTokens.typography.heading.h4 + ' text-red-600 mb-2'}>GMAX Testing</h4>
+                  <h4 className="text-sm font-semibold text-red-700 mb-2">GMAX Testing</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Measures surface hardness</li>
-                    <li>• Safe limit: &lt;100</li>
-                    <li>• Critical: &gt;100</li>
+                    <li>• Safe limit: &lt;165 (football: &lt;200)</li>
+                    <li>• Critical: &gt;200</li>
                     <li>• Take 8+ readings across field</li>
                   </ul>
                 </div>
-
                 <div>
-                  <h4 className={designTokens.typography.heading.h4 + ' text-teal-600 mb-2'}>Shear Factor</h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Measures traction/grip</li>
-                    <li>• Minimum safe: &gt;20</li>
-                    <li>• Critical: &lt;15</li>
-                    <li>• Test in multiple directions</li>
+                  <h4 className="text-sm font-semibold" style={{ color: '#1F8A8A' }}>Shear Factor</h4>
+                  <ul className="text-sm text-gray-600 space-y-1 mt-2">
+                    <li>• Measures traction / grip</li>
+                    <li>• Target: ≥40 N·m</li>
+                    <li>• Monitor: 25–40 N·m</li>
+                    <li>• Critical: &lt;25 N·m</li>
                   </ul>
                 </div>
-
                 <div>
-                  <h4 className={designTokens.typography.heading.h4 + ' text-green-600 mb-2'}>Infill Depth</h4>
+                  <h4 className="text-sm font-semibold text-green-700 mb-2">Infill Depth</h4>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Measures infill level</li>
-                    <li>• Target: ~50mm</li>
-                    <li>• ±20% deviation OK</li>
-                    <li>• Check high-traffic areas</li>
+                    <li>• Target: ≥38mm</li>
+                    <li>• Monitor: 25–38mm</li>
+                    <li>• Critical: &lt;25mm</li>
                   </ul>
                 </div>
               </div>
             </motion.div>
 
-            {/* Recent Tests Placeholder */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              className={designTokens.components.card + ' p-6'}
-            >
-              <h2 className={designTokens.typography.heading.h3 + ' mb-4'}>Recent Testing Data</h2>
-
-              <div className="text-center py-12">
-                <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                <p className={designTokens.typography.body.base + ' text-gray-600'}>
-                  No testing data entries yet.
-                </p>
-                <p className={designTokens.typography.body.small + ' text-gray-500 mt-1'}>
-                  Click &quot;Add Test Data&quot; to create your first entry.
-                </p>
+            {/* Loading */}
+            {loading && (
+              <div className="flex items-center justify-center py-20 gap-3 text-slate-400">
+                <Loader2 className="w-6 h-6 animate-spin" style={{ color: '#1F8A8A' }} />
+                <span className="text-sm">Loading fields…</span>
               </div>
-            </motion.div>
+            )}
+
+            {/* Error */}
+            {!loading && error && (
+              <div className="bg-white border border-slate-200 rounded-xl p-10 text-center">
+                <p className="text-red-600 font-medium mb-1">Unable to load data</p>
+                <p className="text-sm text-slate-500">{error}</p>
+              </div>
+            )}
+
+            {/* No fields */}
+            {!loading && !error && fields.length === 0 && (
+              <div className="bg-white border border-slate-200 rounded-xl p-12 text-center">
+                <Activity className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                <h3 className="text-lg font-semibold text-slate-700 mb-1">No fields yet</h3>
+                <p className="text-sm text-slate-500 mb-6">
+                  Add a field first, then log test results.
+                </p>
+                <Link
+                  href="/fields/new"
+                  className="inline-flex items-center gap-2 text-white rounded-lg px-5 py-2.5 text-sm font-semibold"
+                  style={{ background: '#4CAF50' }}
+                >
+                  <Plus className="w-4 h-4" />
+                  Add First Field
+                </Link>
+              </div>
+            )}
+
+            {/* Field rows */}
+            {!loading && !error && fields.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+                className="space-y-4"
+              >
+                {fields.map((field, i) => (
+                  <motion.div
+                    key={field.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.25, delay: 0.25 + i * 0.06 }}
+                  >
+                    <FieldTestingRow field={field} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
           </div>
         </main>
       </div>
