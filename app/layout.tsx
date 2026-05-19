@@ -154,24 +154,30 @@ const structuredData = {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "GMAX Testing",
-              "description": "Professional shock absorption testing using calibrated equipment"
+              "name": "Field Health Essential",
+              "description": "2 on-site testing visits per year with platform access, compliance reports, and historical trend tracking"
             },
-            "price": "500",
-            "priceCurrency": "USD"
+            "price": "3000",
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "3000",
+              "priceCurrency": "USD",
+              "unitText": "per field per year"
+            }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Quarterly Field Monitoring",
-              "description": "Comprehensive field health assessment and maintenance planning"
+              "name": "Field Health Pro",
+              "description": "Quarterly on-site monitoring with full platform access, maintenance alerts, and insurer-ready documentation"
             },
-            "price": "2500",
+            "price": "5400",
             "priceCurrency": "USD",
             "priceSpecification": {
               "@type": "UnitPriceSpecification",
-              "price": "2500",
+              "price": "5400",
               "priceCurrency": "USD",
               "unitText": "per field per year"
             }
@@ -199,11 +205,11 @@ const structuredData = {
       },
       "offers": {
         "@type": "Offer",
-        "price": "2500",
+        "price": "3000",
         "priceCurrency": "USD",
         "priceSpecification": {
           "@type": "PriceSpecification",
-          "price": "2500",
+          "price": "3000",
           "priceCurrency": "USD",
           "unitText": "per field per year"
         },

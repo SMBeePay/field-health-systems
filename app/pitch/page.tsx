@@ -482,7 +482,7 @@ function TestingProcessSlide() {
       {/* Steps */}
       <div className="flex items-start gap-4 mb-10">
         {[
-          { icon: 'calendar', step: '01', label: 'Schedule', desc: 'We coordinate a visit around your game calendar — 4 times per year per field.' },
+          { icon: 'calendar', step: '01', label: 'Schedule', desc: 'We coordinate visits around your game calendar — 2 or 4 times per year per field.' },
           { icon: 'truck', step: '02', label: 'Arrive On-Site', desc: 'A certified ASTF technician arrives with calibrated testing equipment.' },
           { icon: 'grid', step: '03', label: 'Test the Grid', desc: 'Minimum 12 points across the field using a standardized location protocol.' },
           { icon: 'clipboard', step: '04', label: 'Report & Upload', desc: 'Full results delivered within 24 hours and synced to your dashboard.' },
@@ -872,43 +872,47 @@ function PricingSlide() {
       <div className="mb-10">
         <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">Pricing</div>
         <h2 className="text-5xl font-black text-white mb-4">Simple. Predictable. Defensible.</h2>
-        <p className="text-slate-400 text-lg">Annual contracts. Four on-site visits per field per year. Platform included.</p>
+        <p className="text-slate-400 text-lg">Annual contracts. On-site visits + platform access included. No one-off tests.</p>
       </div>
       <div className="grid grid-cols-3 gap-6">
         {[
           {
-            name: 'Standard',
-            price: '$2,500',
+            name: 'Essential',
+            price: '$3,000',
             per: 'per field / year',
-            desc: '1–2 fields',
-            features: ['4 on-site testing visits', 'GMAX, HIC, shear, infill depth', 'ASTM F1936 compliance reports', 'Field Health dashboard access', '24-hr report turnaround'],
+            sub: '$250 / month',
+            desc: '1–4 fields · 2 visits/year',
+            features: ['Pre-season + post-season testing', 'GMAX, shear factor, infill depth', 'ASTM F1936 compliance reports', 'Field Health dashboard access', 'Historical trend tracking', '24-hr report turnaround'],
             highlight: false,
           },
           {
-            name: 'District',
-            price: '$2,000',
+            name: 'Pro',
+            price: '$5,400',
             per: 'per field / year',
-            desc: '6–10 fields',
-            features: ['Everything in Standard', 'Priority scheduling', 'Athletic Director dashboard', 'Year-over-year trend reports', 'Dedicated account rep'],
+            sub: '$450 / month',
+            desc: '1–4 fields · 4 visits/year',
+            features: ['Quarterly on-site monitoring', 'Everything in Essential', 'Mid-season issue detection', 'Maintenance alert notifications', 'Insurer-ready documentation', 'Priority scheduling'],
             highlight: true,
           },
           {
-            name: 'Enterprise',
-            price: '$1,750',
-            per: 'per field / year',
-            desc: '11+ fields',
-            features: ['Everything in District', 'Insurer portal access', 'Custom compliance reports', 'Board presentation materials', 'Risk manager briefings'],
+            name: 'District Shield',
+            price: 'Custom',
+            per: 'tailored to your district',
+            sub: '5+ fields',
+            desc: 'Flat district rate · 5+ fields',
+            features: ['Everything in Pro', 'Unlimited fields — one price', 'Dedicated technician', 'District-wide dashboard', 'Board presentation materials', 'Risk manager portal access'],
             highlight: false,
           },
-        ].map(({ name, price, per, desc, features, highlight }) => (
+        ].map(({ name, price, per, sub, desc, features, highlight }) => (
           <div key={name} className={`rounded-2xl border p-7 relative ${highlight ? 'border-emerald-500/50 bg-emerald-500/5 ring-1 ring-emerald-500/20' : 'border-slate-700 bg-slate-800/40'}`}>
             {highlight && (
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 text-black text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
             )}
             <div className="text-slate-400 text-sm font-semibold mb-1">{name}</div>
             <div className="text-4xl font-black text-white mb-1">{price}</div>
-            <div className="text-slate-500 text-xs mb-1">{per}</div>
-            <div className="text-emerald-400 text-xs font-medium mb-5">{desc}</div>
+            <div className="text-slate-500 text-xs mb-0.5">{per}</div>
+            <div className="text-emerald-400 text-xs font-medium mb-1">{sub}</div>
+            <div className="text-slate-500 text-xs mb-5 border-t border-slate-700 pt-3">{desc}</div>
             <ul className="space-y-2">
               {features.map((f) => (
                 <li key={f} className="text-slate-400 text-sm flex items-start gap-2">
@@ -921,9 +925,9 @@ function PricingSlide() {
         ))}
       </div>
       <div className="mt-6 flex items-center justify-center gap-8 text-slate-400 text-sm">
-        <span>+ <span className="text-white font-medium">$200/field/year</span> for advanced platform features</span>
+        <span>Platform access <span className="text-white font-medium">included in all plans</span> — historical records, compliance docs, trend tracking</span>
         <span>·</span>
-        <span>Volume pricing available for multi-district contracts</span>
+        <span>No one-time testing. Annual contracts only.</span>
       </div>
     </div>
   )
