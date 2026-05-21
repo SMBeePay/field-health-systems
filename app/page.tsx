@@ -66,7 +66,7 @@ export default function MarketingHomePage() {
           <div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1554992489-bf8679d57ac1?w=1920&q=80&auto=format&fit=crop')`,
+              backgroundImage: `url('/sports-field-bg.jpg')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
