@@ -1,11 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import { z } from 'zod'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
 const prisma = new PrismaClient()
+const resend = new Resend(process.env.RESEND_API_KEY)
+
+const ADMIN_EMAIL = 'andrew@fieldhealthsystems.com'
+const FROM_EMAIL = 'noreply@fieldhealthsystems.com'
 
 // Validation schemas
+const contactFormSchema = z.object({
+  formType: z.literal('CONTACT'),
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
+  email: z.string().email('Valid email is required'),
+  phone: z.string().optional(),
+  organization: z.string().optional(),
+  title: z.string().optional(),
+  serviceType: z.string().optional(),
+  message: z.string().min(1, 'Message is required'),
+  urgency: z.string().optional(),
+})
+
 const partnershipFormSchema = z.object({
   formType: z.literal('PARTNERSHIP'),
   firstName: z.string().min(1, 'First name is required'),
@@ -39,177 +56,118 @@ const scheduleAssessmentSchema = z.object({
 })
 
 const formSchema = z.discriminatedUnion('formType', [
+  contactFormSchema,
   partnershipFormSchema,
   scheduleAssessmentSchema,
 ])
 
-// Email transporter setup
-function createEmailTransporter() {
-  // Check if we have real email credentials (not placeholders)
-  const hasRealCredentials = process.env.EMAIL_SERVER_USER && 
-                           process.env.EMAIL_SERVER_PASSWORD &&
-                           process.env.EMAIL_SERVER_USER !== 'your-email@gmail.com' &&
-                           process.env.EMAIL_SERVER_PASSWORD !== 'your-app-password'
-
-  if (!hasRealCredentials) {
-    console.log('📧 Email configuration uses placeholder values - skipping email sending')
-    return null
-  }
-
-  console.log('📧 Creating email transporter with real credentials')
-  return nodemailer.createTransport({
-    host: process.env.EMAIL_SERVER_HOST,
-    port: parseInt(process.env.EMAIL_SERVER_PORT || '587'),
-    secure: false,
-    auth: {
-      user: process.env.EMAIL_SERVER_USER,
-      pass: process.env.EMAIL_SERVER_PASSWORD,
-    },
-  })
-}
-
-async function sendNotificationEmail(submission: {
+function generateEmailHtml(submission: {
   formType: string
   firstName: string
   lastName: string
   email: string
   phone?: string
   company?: string
-  title?: string
-  formData: Record<string, unknown>
-}, transporter: nodemailer.Transporter | null) {
-  if (!transporter) return { sent: false, error: 'Email not configured' }
-
-  try {
-    const emailContent = generateEmailContent(submission)
-    
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM || 'noreply@fieldhealthsystems.com',
-      to: process.env.ADMIN_EMAIL || 'andrew@fieldhealthsystems.com',
-      subject: emailContent.subject,
-      html: emailContent.html,
-      text: emailContent.text,
-    })
-
-    return { sent: true, error: null }
-  } catch (error) {
-    console.error('Email sending failed:', error)
-    return { 
-      sent: false, 
-      error: error instanceof Error ? error.message : 'Unknown email error' 
-    }
-  }
-}
-
-function generateEmailContent(submission: {
-  formType: string
-  firstName: string
-  lastName: string
-  email: string
-  phone?: string
-  company?: string
+  organization?: string
   title?: string
   formData: Record<string, unknown>
 }) {
-  const { formType, firstName, lastName, email, phone, company, title, formData } = submission
+  const { formType, firstName, lastName, email, phone, company, organization, title, formData } = submission
 
   let subject = ''
-  let content = ''
+  let bodyRows = ''
+
+  const row = (label: string, value: string | undefined) =>
+    value ? `<tr><td style="padding:6px 12px;font-weight:600;color:#555;width:160px;vertical-align:top">${label}</td><td style="padding:6px 12px;color:#222">${value}</td></tr>` : ''
 
   switch (formType) {
+    case 'CONTACT':
+      subject = `New Contact Form Submission from ${firstName} ${lastName}`
+      bodyRows = `
+        ${row('Name', `${firstName} ${lastName}`)}
+        ${row('Email', email)}
+        ${row('Phone', phone)}
+        ${row('Organization', organization)}
+        ${row('Title', title)}
+        ${row('Service Needed', formData.serviceType as string)}
+        ${row('Urgency', formData.urgency as string)}
+        ${row('Message', formData.message as string)}
+      `
+      break
+
     case 'PARTNERSHIP':
       subject = `New Partnership Inquiry from ${company}`
-      content = `
-        <h2>New Partnership Form Submission</h2>
-        <h3>Contact Information:</h3>
-        <ul>
-          <li><strong>Name:</strong> ${firstName} ${lastName}</li>
-          <li><strong>Email:</strong> ${email}</li>
-          <li><strong>Phone:</strong> ${phone || 'Not provided'}</li>
-          <li><strong>Company:</strong> ${company}</li>
-          <li><strong>Title:</strong> ${title}</li>
-        </ul>
-        
-        <h3>Company Details:</h3>
-        <ul>
-          <li><strong>Company Type:</strong> ${(formData as Record<string, unknown>).companyType || 'Not specified'}</li>
-          <li><strong>Education Sector Exposure:</strong> ${(formData as Record<string, unknown>).educationExposure || 'Not specified'}</li>
-          <li><strong>Areas of Interest:</strong> ${Array.isArray((formData as Record<string, unknown>).interests) ? ((formData as Record<string, unknown>).interests as string[]).join(', ') : 'None specified'}</li>
-        </ul>
-        
-        ${(formData as Record<string, unknown>).additionalInfo ? `
-        <h3>Additional Information:</h3>
-        <p>${(formData as Record<string, unknown>).additionalInfo}</p>
-        ` : ''}
-        
-        <p><small>Submitted: ${new Date().toLocaleString()}</small></p>
+      bodyRows = `
+        ${row('Name', `${firstName} ${lastName}`)}
+        ${row('Email', email)}
+        ${row('Phone', phone)}
+        ${row('Company', company)}
+        ${row('Title', title)}
+        ${row('Company Type', formData.companyType as string)}
+        ${row('Education Exposure', formData.educationExposure as string)}
+        ${row('Interests', Array.isArray(formData.interests) ? (formData.interests as string[]).join(', ') : undefined)}
+        ${row('Additional Info', formData.additionalInfo as string)}
       `
       break
-    
-    case 'SCHEDULE_ASSESSMENT':
+
+    case 'SCHEDULE_ASSESSMENT': {
       subject = `New Field Assessment Request from ${firstName} ${lastName}`
-      content = `
-        <h2>New Field Assessment Request</h2>
-        <h3>Contact Information:</h3>
-        <ul>
-          <li><strong>Name:</strong> ${firstName} ${lastName}</li>
-          <li><strong>Email:</strong> ${email}</li>
-          <li><strong>Phone:</strong> ${phone || 'Not provided'}</li>
-          <li><strong>Company:</strong> ${company || 'Not provided'}</li>
-          <li><strong>Title:</strong> ${title || 'Not provided'}</li>
-        </ul>
-        
-        ${(formData as Record<string, unknown>).fieldDetails ? `
-        <h3>Field Details:</h3>
-        <ul>
-          <li><strong>Field Name:</strong> ${((formData as Record<string, unknown>).fieldDetails as Record<string, unknown>)?.fieldName || 'Not provided'}</li>
-          <li><strong>Field Type:</strong> ${((formData as Record<string, unknown>).fieldDetails as Record<string, unknown>)?.fieldType || 'Not provided'}</li>
-          <li><strong>Install Date:</strong> ${((formData as Record<string, unknown>).fieldDetails as Record<string, unknown>)?.installDate || 'Not provided'}</li>
-          <li><strong>Last Testing:</strong> ${((formData as Record<string, unknown>).fieldDetails as Record<string, unknown>)?.lastTestingDate || 'Not provided'}</li>
-          <li><strong>Urgency:</strong> ${((formData as Record<string, unknown>).fieldDetails as Record<string, unknown>)?.urgency || 'Not specified'}</li>
-        </ul>
-        
-        ${((formData as Record<string, unknown>).fieldDetails as Record<string, unknown>)?.notes ? `
-        <h3>Additional Notes:</h3>
-        <p>${((formData as Record<string, unknown>).fieldDetails as Record<string, unknown>)?.notes}</p>
-        ` : ''}
-        ` : ''}
-        
-        <p><small>Submitted: ${new Date().toLocaleString()}</small></p>
+      const fd = formData.fieldDetails as Record<string, string> | undefined
+      bodyRows = `
+        ${row('Name', `${firstName} ${lastName}`)}
+        ${row('Email', email)}
+        ${row('Phone', phone)}
+        ${row('Organization', company)}
+        ${row('Title', title)}
+        ${fd ? row('Field Name', fd.fieldName) : ''}
+        ${fd ? row('Field Type', fd.fieldType) : ''}
+        ${fd ? row('Install Date', fd.installDate) : ''}
+        ${fd ? row('Last Testing', fd.lastTestingDate) : ''}
+        ${fd ? row('Urgency', fd.urgency) : ''}
+        ${fd ? row('Notes', fd.notes) : ''}
       `
       break
+    }
   }
 
-  const text = content.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+  const html = `
+    <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+      <div style="background:#12324A;padding:20px 24px">
+        <h2 style="color:#fff;margin:0;font-size:18px">Field Health Systems</h2>
+        <p style="color:#a0b8cc;margin:4px 0 0;font-size:14px">${subject}</p>
+      </div>
+      <table style="width:100%;border-collapse:collapse;margin:16px 0">
+        ${bodyRows}
+      </table>
+      <div style="padding:12px 24px;background:#f9fafb;border-top:1px solid #e5e7eb">
+        <p style="margin:0;font-size:12px;color:#888">Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })} CT</p>
+      </div>
+    </div>
+  `
 
-  return { subject, html: content, text }
+  return { subject, html }
 }
 
 export async function POST(request: NextRequest) {
   console.log('📧 Form submission received')
-  
+
   try {
     const body = await request.json()
-    console.log('📧 Request body parsed:', { ...body, email: body.email ? '[REDACTED]' : 'missing' })
-    
-    // Validate the form data
     const validatedData = formSchema.parse(body)
-    console.log('✅ Form data validated successfully')
-    
-    // Get request metadata
-    const ipAddress = request.headers.get('x-forwarded-for') || 
-                     request.headers.get('x-real-ip') || 
-                     'unknown'
+
+    const ipAddress = request.headers.get('x-forwarded-for') ||
+                      request.headers.get('x-real-ip') ||
+                      'unknown'
     const userAgent = request.headers.get('user-agent') || 'unknown'
-    
-    // Prepare form-specific data
-    const { formType, firstName, lastName, email, phone, company, title, ...formSpecificData } = validatedData
-    
-    console.log('💾 Attempting to save to database...')
-    
+
+    const { formType, firstName, lastName, email, phone, ...formSpecificData } = validatedData
+    const company = 'company' in formSpecificData ? formSpecificData.company as string : undefined
+    const organization = 'organization' in formSpecificData ? formSpecificData.organization as string : undefined
+    const title = 'title' in formSpecificData ? formSpecificData.title as string : undefined
+
+    // Save to database
     let submission
     try {
-      // Save to database
       submission = await prisma.formSubmission.create({
         data: {
           formType,
@@ -217,7 +175,7 @@ export async function POST(request: NextRequest) {
           lastName,
           email,
           phone,
-          company,
+          company: company || organization,
           title,
           formData: formSpecificData,
           ipAddress,
@@ -225,115 +183,79 @@ export async function POST(request: NextRequest) {
           source: 'website',
         }
       })
-      console.log('✅ Saved to database with ID:', submission.id)
+      console.log('✅ Saved to database:', submission.id)
     } catch (dbError) {
-      console.error('❌ Database save failed:', dbError.message)
-      
-      // Fallback: Create a submission object for logging
-      submission = {
-        id: 'fallback-' + Date.now(),
+      console.error('❌ Database save failed:', dbError instanceof Error ? dbError.message : dbError)
+      submission = { id: 'fallback-' + Date.now() }
+    }
+
+    // Send email via Resend
+    let emailSent = false
+    let emailError: string | null = null
+
+    try {
+      const { subject, html } = generateEmailHtml({
         formType,
         firstName,
         lastName,
         email,
         phone,
         company,
+        organization,
         title,
         formData: formSpecificData,
-        createdAt: new Date(),
-      }
-      
-      console.log('📋 Using fallback submission logging')
+      })
+
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: ADMIN_EMAIL,
+        replyTo: email,
+        subject,
+        html,
+      })
+
+      emailSent = true
+      console.log('✅ Email sent via Resend')
+    } catch (err) {
+      emailError = err instanceof Error ? err.message : 'Unknown email error'
+      console.error('❌ Resend email failed:', emailError)
     }
-    
-    // Send notification email (non-blocking)
-    console.log('📨 Attempting to send notification email...')
-    const transporter = createEmailTransporter()
-    const emailResult = await sendNotificationEmail(submission, transporter)
-    
-    if (emailResult.sent) {
-      console.log('✅ Email sent successfully')
-    } else {
-      console.log('❌ Email failed:', emailResult.error)
-      
-      // Fallback: Log to console for manual checking
-      console.log('📋 FORM SUBMISSION RECEIVED (for manual review):')
-      console.log('=====================================')
-      console.log(`Name: ${firstName} ${lastName}`)
-      console.log(`Email: ${email}`)
-      console.log(`Company: ${company}`)
-      console.log(`Title: ${title}`)
-      console.log(`Phone: ${phone || 'Not provided'}`)
-      console.log(`Form Type: ${formType}`)
-      console.log(`Submission ID: ${submission.id}`)
-      console.log(`Time: ${new Date().toLocaleString()}`)
-      if (formSpecificData.additionalInfo) {
-        console.log(`Additional Info: ${formSpecificData.additionalInfo}`)
-      }
-      console.log('=====================================')
-    }
-    
-    // Update submission with email status (only if saved to database)
-    if (!submission.id.startsWith('fallback-')) {
+
+    // Update DB with email status
+    if (!String(submission.id).startsWith('fallback-')) {
       try {
         await prisma.formSubmission.update({
-          where: { id: submission.id },
+          where: { id: submission.id as string },
           data: {
-            emailSent: emailResult.sent,
-            emailSentAt: emailResult.sent ? new Date() : null,
-            emailError: emailResult.error,
+            emailSent,
+            emailSentAt: emailSent ? new Date() : null,
+            emailError,
           }
         })
-      } catch (updateError) {
-        console.log('❌ Could not update submission email status:', updateError.message)
+      } catch (e) {
+        console.log('❌ Could not update email status:', e instanceof Error ? e.message : e)
       }
     }
-    
-    console.log('✅ Form submission completed successfully')
-    
+
     return NextResponse.json({
       success: true,
-      message: 'Form submitted successfully. We\'ll respond within 24 hours.',
+      message: "We'll be in touch within 24 hours.",
       submissionId: submission.id,
-      emailSent: emailResult.sent
+      emailSent,
     })
-    
+
   } catch (error) {
     console.error('❌ Form submission error:', error)
-    
+
     if (error instanceof z.ZodError) {
-      console.error('❌ Validation error:', error.errors)
       return NextResponse.json(
-        { 
-          success: false, 
-          message: 'Please check all required fields and try again.',
-          errors: error.errors 
-        },
+        { success: false, message: 'Please check all required fields and try again.', errors: error.errors },
         { status: 400 }
       )
     }
-    
-    // Database connection errors
-    if (error.message?.includes('PrismaClient') || 
-        error.message?.includes('SQLITE') ||
-        error.message?.includes('database') ||
-        error.code === 'P1001' ||
-        error.code === 'P2002') {
-      console.error('❌ Database connection error:', error.message)
-      return NextResponse.json(
-        { 
-          success: false, 
-          message: 'Database connection failed. Please try again in a moment.' 
-        },
-        { status: 500 }
-      )
-    }
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
-        message: 'An unexpected error occurred. Please try again or contact support.' 
-      },
+      { success: false, message: 'An unexpected error occurred. Please try again.' },
       { status: 500 }
     )
   } finally {

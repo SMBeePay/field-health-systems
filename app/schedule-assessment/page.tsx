@@ -71,11 +71,11 @@ export default function ScheduleAssessmentPage() {
         body: JSON.stringify(formData)
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to submit assessment request')
-      }
-
       const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || result.message || 'Failed to submit assessment request')
+      }
       console.log('Assessment request submitted successfully:', result)
 
       // Track the conversion in Google Analytics

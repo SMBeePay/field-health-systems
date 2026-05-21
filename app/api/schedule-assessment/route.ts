@@ -1,13 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { Resend } from 'resend'
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+
+const ADMIN_EMAIL = 'andrew@fieldhealthsystems.com'
+const FROM_EMAIL = 'noreply@fieldhealthsystems.com'
 
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.json()
-    
-    // Validate required fields
+
     const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'organization', 'numberOfFields']
     const missingFields = requiredFields.filter(field => !formData[field])
-    
+
     if (missingFields.length > 0) {
       return NextResponse.json(
         { error: 'Missing required fields', fields: missingFields },
@@ -15,62 +20,41 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create email content
-    const emailContent = `
-New Field Assessment Request
+    const html = `
+      <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden">
+        <div style="background:#12324A;padding:20px 24px">
+          <h2 style="color:#fff;margin:0;font-size:18px">Field Health Systems</h2>
+          <p style="color:#a0b8cc;margin:4px 0 0;font-size:14px">New Field Assessment Request from ${formData.organization}</p>
+        </div>
+        <table style="width:100%;border-collapse:collapse;margin:16px 0">
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555;width:160px">Name</td><td style="padding:6px 12px;color:#222">${formData.firstName} ${formData.lastName}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Email</td><td style="padding:6px 12px;color:#222">${formData.email}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Phone</td><td style="padding:6px 12px;color:#222">${formData.phone}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Organization</td><td style="padding:6px 12px;color:#222">${formData.organization}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Title</td><td style="padding:6px 12px;color:#222">${formData.title || 'Not provided'}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Number of Fields</td><td style="padding:6px 12px;color:#222">${formData.numberOfFields}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Field Types</td><td style="padding:6px 12px;color:#222">${formData.fieldTypes?.join(', ') || 'Not specified'}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Primary Concern</td><td style="padding:6px 12px;color:#222">${formData.primaryConcern || 'Not specified'}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Contact Method</td><td style="padding:6px 12px;color:#222">${formData.preferredContact || 'Not specified'}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:600;color:#555">Timeframe</td><td style="padding:6px 12px;color:#222">${formData.timeframe || 'Not specified'}</td></tr>
+          ${formData.additionalInfo ? `<tr><td style="padding:6px 12px;font-weight:600;color:#555;vertical-align:top">Additional Info</td><td style="padding:6px 12px;color:#222">${formData.additionalInfo}</td></tr>` : ''}
+        </table>
+        <div style="padding:12px 24px;background:#f9fafb;border-top:1px solid #e5e7eb">
+          <p style="margin:0;font-size:12px;color:#888">Submitted: ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })} CT</p>
+        </div>
+      </div>
+    `
 
-CONTACT INFORMATION:
-- Name: ${formData.firstName} ${formData.lastName}
-- Email: ${formData.email}
-- Phone: ${formData.phone}
-- Organization: ${formData.organization}
-- Title: ${formData.title || 'Not provided'}
-
-FIELD INFORMATION:
-- Number of Fields: ${formData.numberOfFields}
-- Field Types: ${formData.fieldTypes?.join(', ') || 'Not specified'}
-- Primary Concern: ${formData.primaryConcern || 'Not specified'}
-
-SCHEDULING PREFERENCES:
-- Preferred Contact Method: ${formData.preferredContact}
-- Preferred Timeframe: ${formData.timeframe || 'Not specified'}
-
-ADDITIONAL INFORMATION:
-${formData.additionalInfo || 'None provided'}
-
----
-Submitted at: ${new Date().toLocaleString()}
-Lead Source: Schedule Assessment Landing Page
-`
-
-    // For now, we'll log the submission and return success
-    // In production, you would integrate with an email service like SendGrid, Resend, or AWS SES
-    console.log('Assessment Request Received:', {
-      timestamp: new Date().toISOString(),
-      organization: formData.organization,
-      email: formData.email,
-      numberOfFields: formData.numberOfFields,
-      fieldTypes: formData.fieldTypes
-    })
-    
-    console.log('Email Content to send to andrew@fieldhealthsystems.com:')
-    console.log(emailContent)
-
-    // TODO: Implement actual email sending
-    // Example with Resend (you would need to install @resend/node and configure):
-    /*
-    const resend = new Resend(process.env.RESEND_API_KEY)
-    
     await resend.emails.send({
-      from: 'noreply@fieldhealthsystems.com',
-      to: 'andrew@fieldhealthsystems.com',
+      from: FROM_EMAIL,
+      to: ADMIN_EMAIL,
+      replyTo: formData.email,
       subject: `New Assessment Request from ${formData.organization}`,
-      text: emailContent,
-      html: emailContent.replace(/\n/g, '<br>')
+      html,
     })
-    */
 
-    // For now, simulate successful email sending
+    console.log('✅ Assessment request email sent for:', formData.organization)
+
     return NextResponse.json({
       success: true,
       message: 'Assessment request submitted successfully',
