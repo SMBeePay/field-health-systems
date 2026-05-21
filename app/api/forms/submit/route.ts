@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { Resend } from 'resend'
 
 const prisma = new PrismaClient()
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Resend initialized lazily inside handler to avoid module-level crash if key is missing
 
 const ADMIN_EMAIL = 'andrew@fieldhealthsystems.com'
 const FROM_EMAIL = 'noreply@fieldhealthsystems.com'
@@ -194,6 +194,11 @@ export async function POST(request: NextRequest) {
     let emailError: string | null = null
 
     try {
+      const apiKey = process.env.RESEND_API_KEY
+      console.log('RESEND_API_KEY present:', !!apiKey)
+      if (!apiKey) throw new Error('RESEND_API_KEY is not configured')
+      const resend = new Resend(apiKey)
+
       const { subject, html } = generateEmailHtml({
         formType,
         firstName,
