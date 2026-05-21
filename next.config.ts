@@ -81,6 +81,17 @@ const nextConfig: NextConfig = {
     ]
   },
 
+  // Redirect old URLs
+  async redirects() {
+    return [
+      {
+        source: '/services/gmax-testing',
+        destination: '/services/turf-testing',
+        permanent: true,
+      },
+    ]
+  },
+
   // Redirect trailing slashes for SEO
   trailingSlash: false,
 };

@@ -28,7 +28,7 @@ export async function GET() {
   ]
 
   const services = [
-    'gmax-testing',
+    'turf-testing',
     'field-inspection',
     'quarterly-monitoring',
     'emergency-assessment',

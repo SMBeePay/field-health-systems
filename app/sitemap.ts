@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Service-specific pages
     {
-      url: `${baseUrl}/services/gmax-testing`,
+      url: `${baseUrl}/services/turf-testing`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.95,

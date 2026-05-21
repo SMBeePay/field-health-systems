@@ -891,7 +891,7 @@ export default function GMAXTestingGuidePage() {
                   <span>Schedule Assessment</span>
                 </button>
               </Link>
-              <Link href="/services/gmax-testing">
+              <Link href="/services/turf-testing">
                 <button
                   className="bg-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-flex items-center justify-center space-x-2 border-2"
                   style={{ color: '#4CAF50', borderColor: '#4CAF50' }}
