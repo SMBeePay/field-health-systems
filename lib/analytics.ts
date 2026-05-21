@@ -93,8 +93,8 @@ export const trackConversion = (conversionAction: string, parameters: {
   value?: number
   [key: string]: string | number | undefined
 }) => {
-  if (typeof window === 'undefined') return
-  
+  if (typeof window === 'undefined' || typeof window.gtag === 'undefined') return
+
   // Track the specific conversion event
   window.gtag('event', conversionAction, {
     event_category: 'Lead Generation',
