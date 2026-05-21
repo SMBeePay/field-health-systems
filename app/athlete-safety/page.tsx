@@ -25,35 +25,46 @@ export default function AthleteSafetyPage() {
       <MarketingNav activePath="/athlete-safety" />
 
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-red-50 via-white to-red-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative py-28 overflow-hidden">
+        {/* Background photo */}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1681407980741-4d25e03b2ece?w=1920&q=80&auto=format&fit=crop')`,
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/60 to-red-900/50" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
             <div className="mb-6">
-              <span className="bg-red-100 text-red-700 border border-red-200 px-4 py-2 rounded-full text-sm font-medium">
+              <span className="bg-red-500/20 text-red-300 border border-red-400/30 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
                 Critical Information for Athletic Directors
               </span>
             </div>
 
-            <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
               The Hidden Dangers of Poorly Maintained
-              <span className="text-red-600"> Artificial Turf Fields</span>
+              <span className="text-red-400"> Artificial Turf Fields</span>
             </h1>
 
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-xl text-gray-200 mb-8 leading-relaxed max-w-4xl mx-auto">
               Comprehensive research shows that artificial turf fields with poor maintenance significantly increase
               the risk of serious athlete injuries, including life-threatening head trauma and career-ending ACL tears.
             </p>
 
-            <div className="bg-red-100 border-2 border-red-200 rounded-lg p-6 max-w-3xl mx-auto">
+            <div className="bg-black/40 backdrop-blur-sm border-2 border-red-500/40 rounded-lg p-6 max-w-3xl mx-auto">
               <div className="flex items-center justify-center space-x-3 mb-3">
-                <AlertTriangle className="w-8 h-8 text-red-600" />
-                <h3 className="text-xl font-bold text-red-800">Critical Safety Alert</h3>
+                <AlertTriangle className="w-8 h-8 text-red-400" />
+                <h3 className="text-xl font-bold text-red-300">Critical Safety Alert</h3>
               </div>
-              <p className="text-red-800 font-semibold text-lg">
+              <p className="text-red-200 font-semibold text-lg">
                 Fields with GMAX scores above 200 can increase the risk of fatal head injuries.
                 The Synthetic Turf Council recommends GMAX below 165 for safety.
               </p>

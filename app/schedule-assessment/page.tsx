@@ -166,8 +166,25 @@ export default function ScheduleAssessmentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen bg-gray-50">
       <MarketingNav activePath="/schedule-assessment" />
+
+      {/* Hero banner */}
+      <div className="relative h-48 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1506296756558-7622088b2656?w=1920&q=80&auto=format&fit=crop')`,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/40" />
+        <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
+          <div>
+            <h1 className="text-3xl font-bold text-white mb-2">Schedule Your Field Assessment</h1>
+            <p className="text-gray-300 text-lg">Professional testing for every turf field across your district</p>
+          </div>
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
