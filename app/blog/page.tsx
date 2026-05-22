@@ -5,19 +5,40 @@ import Link from 'next/link'
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 
-// This will be replaced with actual blog posts from your content management system
 const blogPosts = [
   {
-    slug: 'placeholder-post-1',
-    title: 'Coming Soon: Expert Insights on Field Safety',
-    description: 'Our blog will feature in-depth articles on GMAX testing, field maintenance, and compliance requirements.',
-    publishedAt: '2025-01-15',
-    author: 'Field Health Systems',
-    category: 'Field Safety & Compliance',
-    tags: ['GMAX Testing', 'Field Safety'],
+    slug: 'artificial-turf-maintenance-guide',
+    title: 'Artificial Turf Maintenance: A Practical Guide for Athletic Directors',
+    description: 'Your turf field represents a significant capital investment. Here is what proper maintenance looks like, what to watch for, and how regular testing keeps you ahead of problems.',
+    publishedAt: '2026-05-22',
+    author: 'Andrew Neal',
+    category: 'Maintenance',
+    tags: ['Maintenance', 'Athletic Directors', 'Field Management'],
     featured: true,
+    readTime: '7 min read'
+  },
+  {
+    slug: 'artificial-turf-problems',
+    title: 'Artificial Turf Problems: How to Spot Field Issues Before They Become Injuries',
+    description: 'Many synthetic turf field problems are invisible to the naked eye. Here is what to watch for, what the warning signs actually mean, and when to call for professional testing.',
+    publishedAt: '2026-05-22',
+    author: 'Andrew Neal',
+    category: 'Field Safety',
+    tags: ['Field Safety', 'Injury Prevention', 'GMAX Testing'],
+    featured: false,
+    readTime: '6 min read'
+  },
+  {
+    slug: 'what-is-gmax-testing',
+    title: 'What is GMAX Testing? A Plain-English Explanation for Athletic Directors',
+    description: 'GMAX is the most important safety measurement for any synthetic turf field. Here is what it actually measures, what the numbers mean, and why testing matters.',
+    publishedAt: '2026-05-22',
+    author: 'Andrew Neal',
+    category: 'GMAX Testing',
+    tags: ['GMAX Testing', 'ASTM F1936', 'Field Safety'],
+    featured: false,
     readTime: '5 min read'
-  }
+  },
 ]
 
 export default function BlogPage() {

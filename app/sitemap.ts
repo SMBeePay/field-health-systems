@@ -30,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/service-areas/abilene',
   ]
 
+  const blogPosts = [
+    '/blog/artificial-turf-maintenance-guide',
+    '/blog/artificial-turf-problems',
+    '/blog/what-is-gmax-testing',
+  ]
+
   const resourcePages = [
     '/resources',
     '/resources/testing',
@@ -85,6 +91,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: i === 0 ? 0.85 : 0.75, // Texas hub gets slightly higher priority
+    })),
+    // Blog posts
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    ...blogPosts.map(path => ({
+      url: `${baseUrl}${path}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
     })),
     // Resource pages
     ...resourcePages.map(path => ({
