@@ -10,12 +10,11 @@ interface MarketingNavProps {
 }
 
 const NAV_LINKS = [
-  { label: 'Services',     href: '/services/gmax-testing' },
+  { label: 'Services',     href: '/services/turf-testing' },
   { label: 'Solutions',    href: '/#solutions' },
   { label: 'Resources',    href: '/resources' },
   { label: 'Athlete Safety', href: '/athlete-safety' },
   { label: 'Partnerships', href: '/partnerships' },
-  { label: 'Blog',         href: '/blog' },
   { label: 'Contact',      href: '/contact' },
 ]
 
