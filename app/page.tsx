@@ -1485,31 +1485,31 @@ export default function MarketingHomePage() {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Services</h4>
+              <h4 className="font-semibold mb-4">Testing Services</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <Link href="/dashboard" className="hover:text-white transition-colors">
-                    Field Health Monitoring
+                  <Link href="/services/gmax-testing" className="hover:text-white transition-colors">
+                    GMAX Testing
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/shear-factor-testing" className="hover:text-white transition-colors">
+                    Shear Factor Testing
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/infill-depth-testing" className="hover:text-white transition-colors">
+                    Infill Depth Testing
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/field-condition-assessment" className="hover:text-white transition-colors">
+                    Field Condition Assessment
                   </Link>
                 </li>
                 <li>
                   <Link href="/schedule-assessment" className="hover:text-white transition-colors">
-                    Professional Assessments
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/analytics" className="hover:text-white transition-colors">
-                    Data Analytics Platform
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/maintenance" className="hover:text-white transition-colors">
-                    Maintenance Planning
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/reports" className="hover:text-white transition-colors">
-                    Compliance Reporting
+                    Schedule an Assessment
                   </Link>
                 </li>
               </ul>
@@ -1519,41 +1519,41 @@ export default function MarketingHomePage() {
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <Link href="/marketing" className="hover:text-white transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
                   <Link href="/athlete-safety" className="hover:text-white transition-colors">
-                    Success Stories
-                  </Link>
-                </li>
-                <li>
-                  <a href="mailto:andrew@fieldhealthsystems.com" className="hover:text-white transition-colors">
-                    Contact Us
-                  </a>
-                </li>
-                <li>
-                  <Link href="/schedule-assessment" className="hover:text-white transition-colors">
-                    Schedule Assessment
+                    Athlete Safety
                   </Link>
                 </li>
                 <li>
                   <Link href="/partnerships" className="hover:text-white transition-colors">
-                    Insurance Partnerships
+                    Partnerships
                   </Link>
                 </li>
                 <li>
-                  <a href="mailto:andrew@fieldhealthsystems.com?subject=Support Request" className="hover:text-white transition-colors">
-                    Support
-                  </a>
+                  <Link href="/resources" className="hover:text-white transition-colors">
+                    Resources
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="hover:text-white transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service-areas/texas" className="hover:text-white transition-colors">
+                    Service Areas
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-white transition-colors">
+                    Contact
+                  </Link>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Field Health Systems. All rights reserved.</p>
+            <p>&copy; 2026 Field Health Systems. All rights reserved.</p>
           </div>
         </div>
       </footer>
