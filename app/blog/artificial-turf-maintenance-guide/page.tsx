@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { Calendar, Clock, ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react'
