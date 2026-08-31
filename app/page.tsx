@@ -1320,10 +1320,13 @@ export default function MarketingHomePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Simple, Transparent Pricing
+                Custom Pricing for Your Needs
               </h2>
               <p className="text-xl text-gray-600">
-                Professional monitoring at a price that fits your budget
+                Get a free quote tailored to your facility and testing schedule
+              </p>
+              <p className="text-lg text-green-600 mt-2 font-medium">
+                Volume discounts available for multiple fields and regular testing
               </p>
             </motion.div>
           </div>
@@ -1338,8 +1341,11 @@ export default function MarketingHomePage() {
             >
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">One-Time Testing</h3>
-                <div className="text-4xl font-bold text-green-600 mb-2">$1,500</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">Custom Quote</div>
                 <div className="text-gray-600">single field inspection</div>
+                <div className="mt-2 text-sm text-green-600 font-medium">
+                  Free quote • No obligation
+                </div>
               </div>
               
               <div className="space-y-4 mb-8">
@@ -1381,8 +1387,11 @@ export default function MarketingHomePage() {
               
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">Premium Monitoring</h3>
-                <div className="text-4xl font-bold mb-2">$2,500</div>
+                <div className="text-3xl font-bold mb-2">Custom Quote</div>
                 <div className="text-green-100">per field, per year</div>
+                <div className="mt-2 text-sm text-green-200 font-medium">
+                  Free quote • Volume discounts available
+                </div>
               </div>
               
               <div className="space-y-4 mb-8">
@@ -1455,39 +1464,53 @@ export default function MarketingHomePage() {
             className="mt-12 bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center max-w-4xl mx-auto"
           >
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Multiple Fields?</h3>
-              <p className="text-gray-600">We offer volume discounts for facilities with multiple artificial turf fields</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Common Discounts Available</h3>
+              <p className="text-gray-600">Save more with volume and frequency discounts tailored to your facility</p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="text-center">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="text-center p-6 bg-green-50 rounded-xl">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Target className="w-8 h-8 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1">2-5 Fields</h4>
-                <p className="text-sm text-gray-600">Significant savings on multi-field packages</p>
+                <h4 className="font-semibold text-gray-900 mb-2">Multiple Fields</h4>
+                <p className="text-sm text-gray-600">Save more as you add fields to your monitoring program</p>
+                <p className="text-xs text-green-600 font-medium mt-2">2+ fields qualify for discounts</p>
               </div>
-              <div className="text-center">
+              <div className="text-center p-6 bg-blue-50 rounded-xl">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-8 h-8 text-blue-600" />
+                  <Calendar className="w-8 h-8 text-blue-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1">6-10 Fields</h4>
-                <p className="text-sm text-gray-600">Enhanced discounts for large facilities</p>
+                <h4 className="font-semibold text-gray-900 mb-2">Testing Frequency</h4>
+                <p className="text-sm text-gray-600">Lower per-test costs with quarterly or bi-annual programs</p>
+                <p className="text-xs text-blue-600 font-medium mt-2">Annual programs get best rates</p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Star className="w-8 h-8 text-purple-600" />
+            </div>
+
+            <div className="mb-6 p-6 bg-gray-50 rounded-xl">
+              <h4 className="font-semibold text-gray-900 mb-3">What affects your quote?</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>Number of fields</span>
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-1">11+ Fields</h4>
-                <p className="text-sm text-gray-600">Enterprise pricing with premium support</p>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>Testing frequency</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>Service level selected</span>
+                </div>
               </div>
             </div>
 
             <Link href="/schedule-assessment">
               <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                Get Custom Quote
+                Get Your Free Custom Quote
               </button>
             </Link>
+            <p className="text-sm text-gray-500 mt-3">No obligation • Typically respond within 24 hours</p>
           </motion.div>
         </div>
       </section>
