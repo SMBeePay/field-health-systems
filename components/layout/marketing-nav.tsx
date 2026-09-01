@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Shield } from 'lucide-react'
+import Image from 'next/image'
 
 interface MarketingNavProps {
   /** Highlight one nav link as active (matches href) */
@@ -23,62 +23,64 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="sticky top-0 z-50 border-b"
-      style={{ background: '#12324A', borderColor: '#0d2438' }}
+      className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur-sm shadow-sm"
+      style={{ borderColor: '#E6E6EA' }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105"
-              style={{ background: '#4CAF50' }}
-            >
-              <Shield className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <span className="text-white font-bold text-lg leading-tight block">Field Health Systems</span>
-            </div>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/logo-header.svg"
+              alt="Field Health Systems"
+              width={180}
+              height={48}
+              className="h-12 w-auto transition-opacity group-hover:opacity-80"
+              priority
+            />
           </Link>
 
           {/* Nav links — desktop */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map(({ label, href }) => {
               const isActive = activePath === href
               return (
                 <Link
                   key={href}
                   href={href}
-                  className="text-sm font-medium transition-colors"
-                  style={{ color: isActive ? '#4CAF50' : '#94a3b8' }}
-                  onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#4CAF50' }}
-                  onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#94a3b8' }}
+                  className="text-sm font-semibold transition-colors relative group/link"
+                  style={{ color: isActive ? '#1E88E5' : '#0D1B2A' }}
+                  onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#1E88E5' }}
+                  onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#0D1B2A' }}
                 >
                   {label}
+                  {isActive && (
+                    <span className="absolute -bottom-3 left-0 right-0 h-0.5 bg-[#1E88E5]" />
+                  )}
                 </Link>
               )
             })}
           </nav>
 
           {/* CTA */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <Link
               href="/app/login"
-              className="hidden md:block text-sm font-medium transition-colors"
-              style={{ color: '#94a3b8' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#fff')}
-              onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#94a3b8')}
+              className="hidden md:block text-sm font-semibold transition-colors"
+              style={{ color: '#0D1B2A' }}
+              onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#1E88E5')}
+              onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#0D1B2A')}
             >
               Sign in
             </Link>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/schedule-assessment"
-                className="inline-block text-sm font-semibold text-white px-5 py-2 rounded-lg transition-opacity hover:opacity-90"
-                style={{ background: '#4CAF50' }}
+                className="inline-block text-sm font-bold text-white px-6 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg"
+                style={{ background: '#1E88E5' }}
               >
-                Schedule Assessment
+                Get Your Free Quote
               </Link>
             </motion.div>
           </div>

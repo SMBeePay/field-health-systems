@@ -1,13 +1,19 @@
 export const designTokens = {
   colors: {
-    // Brand Colors
+    // Brand Colors - From Brand Guide
+    brand: {
+      navy: '#0D1B2A',      // Primary - Navy
+      blue: '#1E88E5',      // Secondary - Blue
+      green: '#43B02A',     // Accent - Grass Green
+      lightGray: '#E6E6EA', // Neutral
+    },
     primary: {
-      50: '#f0fdf4',
-      100: '#dcfce7',
-      500: '#22c55e',
-      600: '#16a34a',
-      700: '#15803d',
-      900: '#14532d',
+      50: '#f0f9ff',
+      100: '#e0f2fe',
+      500: '#1E88E5',  // Brand Blue
+      600: '#1976D2',
+      700: '#1565C0',
+      900: '#0D1B2A',  // Brand Navy
     },
     
     // Status Colors
@@ -74,16 +80,16 @@ export const designTokens = {
   
   typography: {
     heading: {
-      h1: 'text-3xl font-bold text-gray-900',
-      h2: 'text-2xl font-semibold text-gray-900',
-      h3: 'text-xl font-semibold text-gray-900',
-      h4: 'text-lg font-medium text-gray-900',
+      h1: 'text-4xl md:text-5xl font-bold text-gray-900',  // Montserrat Bold
+      h2: 'text-3xl md:text-4xl font-bold text-gray-900',  // Montserrat Bold
+      h3: 'text-2xl md:text-3xl font-semibold text-gray-900',  // Montserrat Medium
+      h4: 'text-xl md:text-2xl font-semibold text-gray-900',  // Montserrat Medium
     },
     body: {
-      large: 'text-lg text-gray-700',
-      base: 'text-base text-gray-700',
-      small: 'text-sm text-gray-600',
-      xs: 'text-xs text-gray-500',
+      large: 'text-lg md:text-xl text-gray-700',  // Open Sans
+      base: 'text-base md:text-lg text-gray-700',  // Open Sans
+      small: 'text-sm text-gray-600',  // Open Sans
+      xs: 'text-xs text-gray-500',  // Open Sans
     },
   },
   
@@ -109,13 +115,13 @@ export const designTokens = {
   },
   
   components: {
-    card: 'bg-white border border-gray-200 rounded-lg shadow-sm',
+    card: 'bg-white border border-gray-200 rounded-xl shadow-sm',
     button: {
-      primary: 'bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-md transition-colors duration-200',
-      secondary: 'bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium px-4 py-2 rounded-md transition-colors duration-200',
-      outline: 'border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-md transition-colors duration-200',
+      primary: 'bg-[#1E88E5] hover:bg-[#1976D2] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg',
+      secondary: 'bg-[#43B02A] hover:bg-[#3a9624] text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200',
+      outline: 'border-2 border-[#0D1B2A] hover:bg-[#0D1B2A] hover:text-white text-[#0D1B2A] font-semibold px-6 py-3 rounded-lg transition-all duration-200',
     },
-    input: 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500',
-    badge: 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
+    input: 'block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-[#1E88E5] focus:border-[#1E88E5]',
+    badge: 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium',
   },
 }

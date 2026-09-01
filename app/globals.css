@@ -8,20 +8,21 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-open-sans);
+  --font-heading: var(--font-montserrat);
 
-  /* ── Field Health Systems Brand Colors ── */
-  --color-brand-navy:       #12324A;
-  --color-brand-navy-light: #1a4466;
-  --color-brand-navy-dark:  #0d2438;
-  --color-brand-teal:       #1F8A8A;
-  --color-brand-teal-light: #2aabab;
-  --color-brand-teal-dark:  #166868;
-  --color-brand-green:      #4CAF50;
-  --color-brand-green-light:#66BB6A;
-  --color-brand-green-dark: #388E3C;
-  --color-brand-bg:         #F7FAFC;
+  /* ── Field Health Systems Brand Colors (Updated) ── */
+  --color-brand-navy:       #0D1B2A;  /* Primary Navy */
+  --color-brand-navy-light: #1a2e42;
+  --color-brand-navy-dark:  #070f17;
+  --color-brand-blue:       #1E88E5;  /* Secondary Blue */
+  --color-brand-blue-light: #42A5F5;
+  --color-brand-blue-dark:  #1976D2;
+  --color-brand-green:      #43B02A;  /* Accent Green - Grass */
+  --color-brand-green-light:#5BC73D;
+  --color-brand-green-dark: #3a9624;
+  --color-brand-gray:       #E6E6EA;  /* Neutral Gray */
+  --color-brand-bg:         #FFFFFF;
   --color-brand-slate:      #334155;
   --color-brand-slate-light:#64748b;
 }
@@ -36,10 +37,15 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-open-sans), 'Open Sans', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), 'Montserrat', Arial, Helvetica, sans-serif;
+  font-weight: 700;
 }
 
 /* Performance optimizations */
@@ -117,14 +123,8 @@ a {
 /* Improve focus accessibility */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #059669;
+  outline: 2px solid #1E88E5;
   outline-offset: 2px;
-}
-
-/* Optimize font loading */
-@font-face {
-  font-family: 'Geist';
-  font-display: swap;
 }
 
 /* Prevent layout shift */

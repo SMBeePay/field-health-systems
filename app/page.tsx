@@ -60,19 +60,15 @@ export default function MarketingHomePage() {
       <MarketingNav />
 
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Background Image with Dark Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
-          <div
-            className="w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('/sports-field-bg.jpg')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-          />
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/30" />
+      <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-[#0D1B2A] via-[#0D1B2A] to-[#1a2e42]">
+        {/* Subtle Pattern Overlay */}
+        <div className="absolute inset-0 z-0 opacity-5">
+          <div className="w-full h-full" style={{
+            backgroundImage: `url('/field-satellite.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(100%)'
+          }} />
         </div>
 
         {/* Content */}
@@ -83,42 +79,58 @@ export default function MarketingHomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="mb-6">
-                <span className="bg-green-500/20 text-green-300 border border-green-400/30 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
-                  Independent 3rd Party Testing & Field Management Software
+              <div className="mb-8">
+                <span className="inline-flex items-center bg-[#1E88E5]/10 text-[#1E88E5] border border-[#1E88E5]/20 px-5 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
+                  Independent Testing • Field Management Software
                 </span>
               </div>
 
-              <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
-                Data-Driven Athletic Field
-                <span className="text-green-400"> Management Platform</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                Professional Field Health
+                <span className="block text-[#1E88E5] mt-2">Management</span>
               </h1>
 
-              <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                <strong>Protect Your Athletes & Investment.</strong> Independent 3rd party field testing combined with intelligent software that tracks, monitors, and predicts maintenance needs.
-                Our platform helps organizations make data-driven decisions about field safety and maintenance scheduling.*
+              <p className="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
+                <strong className="text-white">MEASURE. MAINTAIN. MAXIMIZE.</strong><br/>
+                Independent 3rd party testing combined with intelligent software that protects athletes and extends field life.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="text-white px-8 py-4 rounded-lg text-lg font-semibold transition-opacity hover:opacity-90 flex items-center justify-center space-x-2"
-                  style={{ background: '#4CAF50' }}
-                >
-                  <BarChart3 className="w-5 h-5" />
-                  <span>See Platform Demo</span>
-                </motion.button>
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <Link href="/schedule-assessment">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="text-white px-10 py-4 rounded-lg text-lg font-bold transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 w-full sm:w-auto"
+                    style={{ background: '#1E88E5' }}
+                  >
+                    <Calendar className="w-5 h-5" />
+                    <span>Get Your Free Quote</span>
+                  </motion.button>
+                </Link>
+                <Link href="#platform">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white px-10 py-4 rounded-lg text-lg font-bold transition-all hover:bg-white/20 flex items-center justify-center space-x-2 w-full sm:w-auto"
+                  >
+                    <BarChart3 className="w-5 h-5" />
+                    <span>View Platform</span>
+                  </motion.button>
+                </Link>
               </div>
 
-              <div className="flex items-center space-x-6 text-sm text-gray-300">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-300">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Independent 3rd party testing</span>
+                  <div className="w-5 h-5 rounded-full bg-[#43B02A] flex items-center justify-center">
+                    <CheckCircle className="w-3.5 h-3.5 text-white" />
+                  </div>
+                  <span>Independent 3rd Party Testing</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span>Predictive maintenance insights</span>
+                  <div className="w-5 h-5 rounded-full bg-[#43B02A] flex items-center justify-center">
+                    <CheckCircle className="w-3.5 h-3.5 text-white" />
+                  </div>
+                  <span>Predictive Analytics</span>
                 </div>
               </div>
             </motion.div>
@@ -129,57 +141,69 @@ export default function MarketingHomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-white rounded-2xl shadow-2xl p-8">
+              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Intelligent Field Management Dashboard</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                  <h3 className="text-xl font-bold text-[#0D1B2A] mb-6">Intelligent Field Management</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#43B02A]/5 to-[#43B02A]/10 rounded-xl border border-[#43B02A]/20">
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
+                        <div className="w-10 h-10 bg-[#43B02A] rounded-lg flex items-center justify-center shadow-sm">
+                          <CheckCircle className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900">GMAX Safety</p>
+                          <p className="font-semibold text-[#0D1B2A]">GMAX Safety</p>
                           <p className="text-sm text-gray-600">68.5 (Excellent)</p>
                         </div>
                       </div>
-                      <TrendingUp className="w-5 h-5 text-green-500" />
+                      <TrendingUp className="w-5 h-5 text-[#43B02A]" />
                     </div>
 
-                    <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#1E88E5]/5 to-[#1E88E5]/10 rounded-xl border border-[#1E88E5]/20">
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-5 h-5 text-white" />
+                        <div className="w-10 h-10 bg-[#1E88E5] rounded-lg flex items-center justify-center shadow-sm">
+                          <CheckCircle className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900">Shear Factor</p>
+                          <p className="font-semibold text-[#0D1B2A]">Shear Factor</p>
                           <p className="text-sm text-gray-600">28.7 Nm (Good)</p>
                         </div>
                       </div>
-                      <BarChart3 className="w-5 h-5 text-blue-500" />
+                      <BarChart3 className="w-5 h-5 text-[#1E88E5]" />
                     </div>
 
-                    <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
+                    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-amber-500/5 to-amber-500/10 rounded-xl border border-amber-500/20">
                       <div className="flex items-center space-x-3">
-                        <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-                          <AlertTriangle className="w-5 h-5 text-white" />
+                        <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center shadow-sm">
+                          <AlertTriangle className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900">Infill Depth</p>
+                          <p className="font-semibold text-[#0D1B2A]">Infill Depth</p>
                           <p className="text-sm text-gray-600">12.3mm (Monitor)</p>
                         </div>
                       </div>
-                      <Target className="w-5 h-5 text-yellow-500" />
+                      <Target className="w-5 h-5 text-amber-500" />
                     </div>
                   </div>
                 </div>
 
-                <div className="p-4 bg-gray-50 rounded-lg">
-                  <h4 className="font-medium text-gray-900 mb-2">AI-Powered Maintenance Predictions</h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Infill redistribution recommended within 30 days</li>
-                    <li>• Predicted maintenance cost: $3,200</li>
-                    <li>• 67% chance of emergency repair if delayed*</li>
+                <div className="p-5 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-200">
+                  <h4 className="font-bold text-[#0D1B2A] mb-3 flex items-center gap-2">
+                    <Satellite className="w-5 h-5 text-[#1E88E5]" />
+                    Predictive Insights
+                  </h4>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E88E5] font-bold mt-0.5">•</span>
+                      <span>Infill redistribution recommended within 30 days</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E88E5] font-bold mt-0.5">•</span>
+                      <span>Estimated cost: $3,200</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E88E5] font-bold mt-0.5">•</span>
+                      <span>Prevent potential emergency repairs</span>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -188,7 +212,7 @@ export default function MarketingHomePage() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-4 -right-4 bg-green-500 text-white p-3 rounded-full shadow-lg"
+                className="absolute -top-4 -right-4 bg-gradient-to-br from-[#1E88E5] to-[#1976D2] text-white p-4 rounded-2xl shadow-xl"
               >
                 <Shield className="w-6 h-6" />
               </motion.div>
