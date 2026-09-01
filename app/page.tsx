@@ -66,10 +66,10 @@ export default function MarketingHomePage() {
           <div className="w-full h-full" style={{
             backgroundImage: `url('/aidan-tottori-3zIZZ-9yIhM-unsplash.jpg')`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center 35%'
           }} />
           {/* Lighter navy gradient overlay to show field photo */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A]/75 via-[#0D1B2A]/60 to-[#1E88E5]/50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A]/70 via-[#0D1B2A]/55 to-[#1E88E5]/45" />
         </div>
 
         {/* Content */}
