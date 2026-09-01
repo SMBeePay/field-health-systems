@@ -178,7 +178,7 @@ export default function Dashboard() {
                         Add your first field to start monitoring field health data.
                       </p>
                       <Link
-                        href="/fields/new"
+                        href="/app/fields/new"
                         className="inline-flex items-center space-x-2 text-white rounded-lg px-6 py-2.5 font-semibold text-sm"
                         style={{ background: '#4CAF50' }}
                       >

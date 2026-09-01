@@ -49,7 +49,7 @@ export default function ForgotPasswordPage() {
             </p>
             <div className="mt-6">
               <Link
-                href="/auth/login"
+                href="/app/login"
                 className="text-sm font-medium hover:underline"
                 style={{ color: '#1F8A8A' }}
               >
@@ -112,7 +112,7 @@ export default function ForgotPasswordPage() {
 
           <div className="text-center">
             <Link
-              href="/auth/login"
+              href="/app/login"
               className="text-sm font-medium hover:underline"
               style={{ color: '#1F8A8A' }}
             >

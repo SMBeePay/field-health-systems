@@ -124,7 +124,7 @@ function FieldTestingRow({ field }: { field: ApiField }) {
         {/* Action buttons */}
         <div className="flex items-center gap-2 shrink-0">
           <Link
-            href={`/fields/${field.id}/test/new`}
+            href={`/app/fields/${field.id}/test/new`}
             className="inline-flex items-center gap-1.5 text-white rounded-lg px-3 py-1.5 text-xs font-semibold"
             style={{ background: '#4CAF50' }}
           >
@@ -133,7 +133,7 @@ function FieldTestingRow({ field }: { field: ApiField }) {
           </Link>
 
           <Link
-            href={`/fields/${field.id}`}
+            href={`/app/fields/${field.id}`}
             className="inline-flex items-center gap-1 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-50 transition-colors"
           >
             View Field
@@ -354,7 +354,7 @@ export default function TestingDataPage() {
                   Add a field first, then log test results.
                 </p>
                 <Link
-                  href="/fields/new"
+                  href="/app/fields/new"
                   className="inline-flex items-center gap-2 text-white rounded-lg px-5 py-2.5 text-sm font-semibold"
                   style={{ background: '#4CAF50' }}
                 >

@@ -32,7 +32,7 @@ function LoginForm() {
       } else {
         const session = await getSession()
         if (session?.user.role === 'SUPER_ADMIN') {
-          router.push('/admin')
+          router.push('/app/admin')
         } else if (session?.user.organizationSlug) {
           router.push(`/app/${session.user.organizationSlug}`)
         } else {
@@ -110,7 +110,7 @@ function LoginForm() {
 
             <div className="flex justify-end">
               <Link
-                href="/auth/forgot-password"
+                href="/app/forgot-password"
                 className="text-sm font-medium transition-colors"
                 style={{ color: '#1F8A8A' }}
               >

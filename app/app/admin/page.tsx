@@ -144,7 +144,7 @@ export default function AdminDashboard() {
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Link
-            href="/admin/users"
+            href="/app/admin/users"
             className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
           >
             <div className="flex items-center">
@@ -157,7 +157,7 @@ export default function AdminDashboard() {
           </Link>
 
           <Link
-            href="/admin/organizations"
+            href="/app/admin/organizations"
             className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
           >
             <div className="flex items-center">
@@ -170,7 +170,7 @@ export default function AdminDashboard() {
           </Link>
 
           <Link
-            href="/admin/settings"
+            href="/app/admin/settings"
             className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
           >
             <div className="flex items-center">

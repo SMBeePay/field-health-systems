@@ -127,7 +127,7 @@ export default function FieldsPage() {
                     <span>Export</span>
                   </button>
                   <Link
-                    href="/fields/new"
+                    href="/app/fields/new"
                     className={designTokens.components.button.primary + ' flex items-center space-x-2'}
                   >
                     <Plus className="w-4 h-4" />
@@ -390,7 +390,7 @@ export default function FieldsPage() {
                       Add your first field to start monitoring field health data.
                     </p>
                     <Link
-                      href="/fields/new"
+                      href="/app/fields/new"
                       className="inline-flex items-center space-x-2 text-white rounded-lg px-6 py-2.5 font-semibold text-sm"
                       style={{ background: '#4CAF50' }}
                     >

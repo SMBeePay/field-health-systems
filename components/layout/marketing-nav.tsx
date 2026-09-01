@@ -64,7 +64,7 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
           {/* CTA */}
           <div className="flex items-center gap-3">
             <Link
-              href="/auth/login"
+              href="/app/login"
               className="hidden md:block text-sm font-medium transition-colors"
               style={{ color: '#94a3b8' }}
               onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#fff')}

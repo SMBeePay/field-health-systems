@@ -14,7 +14,7 @@ export default function UnauthorizedPage() {
           <div className="mt-6 space-y-4">
             <div>
               <Link
-                href="/dashboard"
+                href="/app/dashboard"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2"
                 style={{ background: '#4CAF50' }}
               >
@@ -23,7 +23,7 @@ export default function UnauthorizedPage() {
             </div>
             <div>
               <Link
-                href="/auth/login"
+                href="/app/login"
                 className="text-sm font-medium hover:underline"
                 style={{ color: '#1F8A8A' }}
               >

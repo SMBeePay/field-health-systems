@@ -1,17 +1,14 @@
 User-agent: *
 Allow: /
 
-# Block admin and internal pages
-Disallow: /admin/
+# Block internal application and API
+Disallow: /app/
 Disallow: /api/
-Disallow: /dashboard/
 Disallow: /_next/
-Disallow: /auth/
 
-# Allow important pages
+# Allow important marketing pages
 Allow: /contact
 Allow: /resources/
-Allow: /testing
 Allow: /maintenance
 
 # Sitemap location

@@ -70,7 +70,7 @@ function ResetPasswordForm() {
       if (response.ok) {
         setSuccess(true)
         setTimeout(() => {
-          router.push('/auth/login')
+          router.push('/app/login')
         }, 3000)
       } else {
         const data = await response.json()
@@ -107,7 +107,7 @@ function ResetPasswordForm() {
             </p>
             <div className="mt-6">
               <Link
-                href="/auth/forgot-password"
+                href="/app/forgot-password"
                 className="text-sm font-medium hover:underline"
                 style={{ color: '#1F8A8A' }}
               >
@@ -133,7 +133,7 @@ function ResetPasswordForm() {
             </p>
             <div className="mt-6">
               <Link
-                href="/auth/login"
+                href="/app/login"
                 className="text-sm font-medium hover:underline"
                 style={{ color: '#1F8A8A' }}
               >
