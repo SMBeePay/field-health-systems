@@ -68,8 +68,8 @@ export default function MarketingHomePage() {
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }} />
-          {/* Navy gradient overlay for brand consistency */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A]/95 via-[#0D1B2A]/90 to-[#0D1B2A]/85" />
+          {/* Lighter navy gradient overlay to show field photo */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A]/75 via-[#0D1B2A]/60 to-[#1E88E5]/50" />
         </div>
 
         {/* Content */}
@@ -250,7 +250,7 @@ export default function MarketingHomePage() {
       </section>
 
       {/* Athlete Safety Section */}
-      <section className="py-20 bg-red-50" id="athlete-safety">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30" id="athlete-safety">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <motion.div
@@ -258,15 +258,15 @@ export default function MarketingHomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                The Hidden Risks of Poorly Maintained Artificial Turf
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0D1B2A] mb-6">
+                Athlete Safety First
               </h2>
-              <p className="text-xl text-gray-600 mb-4">
+              <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
                 Professional testing protects athletes from serious injuries caused by unsafe field conditions
               </p>
-              <div className="bg-red-100 border border-red-200 rounded-lg p-4 max-w-2xl mx-auto">
-                <p className="text-red-800 font-semibold">
-                  Fields with GMAX scores above 200 increase the risk of life-threatening head injuries
+              <div className="bg-[#0D1B2A]/5 border-2 border-[#0D1B2A]/20 rounded-xl p-6 max-w-3xl mx-auto">
+                <p className="text-[#0D1B2A] font-bold text-lg">
+                  ⚠️ Fields with GMAX scores above 200 increase the risk of life-threatening head injuries
                 </p>
               </div>
             </motion.div>
@@ -278,21 +278,35 @@ export default function MarketingHomePage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-red-200"
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-[#0D1B2A]/20"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <AlertTriangle className="w-8 h-8 text-red-500" />
-                <h3 className="text-2xl font-bold text-red-800">Head Injury & Concussion Risks</h3>
+                <div className="w-12 h-12 rounded-full bg-[#0D1B2A] flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0D1B2A]">Head Injury & Concussion Risks</h3>
               </div>
 
               <div className="space-y-4">
-                <div className="bg-red-50 p-4 rounded-lg">
-                  <p className="font-semibold text-red-800 mb-2">Critical Safety Thresholds:</p>
-                  <ul className="text-red-700 space-y-1 text-sm">
-                    <li>• GMAX below 165: Safe for most sports</li>
-                    <li>• GMAX 165-200: Monitor closely</li>
-                    <li>• GMAX above 200: Life-threatening risk</li>
-                    <li>• NFL uses pre-game limit of 156</li>
+                <div className="bg-gradient-to-br from-[#0D1B2A]/5 to-[#0D1B2A]/10 p-5 rounded-xl border border-[#0D1B2A]/20">
+                  <p className="font-bold text-[#0D1B2A] mb-3">Critical Safety Thresholds:</p>
+                  <ul className="text-gray-700 space-y-2 text-sm">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#43B02A] font-bold mt-0.5">•</span>
+                      <span>GMAX below 165: Safe for most sports</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-amber-500 font-bold mt-0.5">•</span>
+                      <span>GMAX 165-200: Monitor closely</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#0D1B2A] font-bold mt-0.5">•</span>
+                      <span>GMAX above 200: Life-threatening risk</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E88E5] font-bold mt-0.5">•</span>
+                      <span>NFL uses pre-game limit of 156</span>
+                    </li>
                   </ul>
                 </div>
 
@@ -309,20 +323,31 @@ export default function MarketingHomePage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-orange-200"
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-[#1E88E5]/30"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <AlertTriangle className="w-8 h-8 text-orange-500" />
-                <h3 className="text-2xl font-bold text-orange-800">Foot, Ankle & Knee Injuries</h3>
+                <div className="w-12 h-12 rounded-full bg-[#1E88E5] flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0D1B2A]">Foot, Ankle & Knee Injuries</h3>
               </div>
 
               <div className="space-y-4">
-                <div className="bg-orange-50 p-4 rounded-lg">
-                  <p className="font-semibold text-orange-800 mb-2">Increased Injury Rates on Poor Turf:</p>
-                  <ul className="text-orange-700 space-y-1 text-sm">
-                    <li>• ACL tears: 1.6x higher on artificial turf</li>
-                    <li>• Ankle sprains: up to 2x higher on compromised fields</li>
-                    <li>• Foot injuries: elevated risk in 75% of studies</li>
+                <div className="bg-gradient-to-br from-[#1E88E5]/5 to-[#1E88E5]/10 p-5 rounded-xl border border-[#1E88E5]/20">
+                  <p className="font-bold text-[#0D1B2A] mb-3">Increased Injury Rates on Poor Turf:</p>
+                  <ul className="text-gray-700 space-y-2 text-sm">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E88E5] font-bold mt-0.5">•</span>
+                      <span>ACL tears: 1.6x higher on artificial turf</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E88E5] font-bold mt-0.5">•</span>
+                      <span>Ankle sprains: up to 2x higher on compromised fields</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E88E5] font-bold mt-0.5">•</span>
+                      <span>Foot injuries: elevated risk in 75% of studies</span>
+                    </li>
                   </ul>
                 </div>
 
@@ -340,24 +365,24 @@ export default function MarketingHomePage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white p-8 rounded-2xl shadow-lg border-2 border-green-200"
+            className="bg-white p-8 rounded-2xl shadow-lg border-2 border-[#43B02A]/30"
           >
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-green-800 mb-4">How Professional Testing Protects Athletes</h3>
-              <p className="text-gray-600">Regular maintenance can reduce injury risks by 20-50% while extending field life by 2+ years</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0D1B2A] mb-4">How Professional Testing Protects Athletes</h3>
+              <p className="text-lg text-gray-600">Regular maintenance can reduce injury risks by 20-50% while extending field life by 2+ years</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold mb-2" style={{ color: '#4CAF50' }}>165</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: '#43B02A' }}>165</div>
                 <div className="text-sm text-gray-600">GMAX safety limit recommended by Synthetic Turf Council</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold mb-2" style={{ color: '#4CAF50' }}>20-50%</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: '#43B02A' }}>20-50%</div>
                 <div className="text-sm text-gray-600">Potential injury risk reduction with proper maintenance</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold mb-2" style={{ color: '#4CAF50' }}>&lt;$1,000</div>
+                <div className="text-3xl font-bold mb-2" style={{ color: '#43B02A' }}>&lt;$1,000</div>
                 <div className="text-sm text-gray-600">Annual GMAX testing cost vs. potential injury liability</div>
               </div>
             </div>
@@ -366,7 +391,7 @@ export default function MarketingHomePage() {
               <a
                 href="/athlete-safety"
                 className="inline-flex items-center space-x-2 text-white px-6 py-3 rounded-lg font-semibold transition-opacity hover:opacity-90"
-                style={{ background: '#4CAF50' }}
+                style={{ background: '#43B02A' }}
               >
                 <Shield className="w-5 h-5" />
                 <span>Learn More About Athlete Safety</span>
@@ -435,25 +460,25 @@ export default function MarketingHomePage() {
               className="bg-green-50 p-8 rounded-2xl border-2 border-green-200"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <Shield className="w-8 h-8 text-green-600" />
+                <Shield className="w-8 h-8 text-[#43B02A]" />
                 <h3 className="text-2xl font-bold text-green-800">Our Solution</h3>
               </div>
 
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#43B02A] mt-1 flex-shrink-0" />
                   <p className="text-green-700">Professional quarterly assessments catch problems before they become disasters</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#43B02A] mt-1 flex-shrink-0" />
                   <p className="text-green-700">Predictable budgeting with 3-5 year maintenance forecasts</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#43B02A] mt-1 flex-shrink-0" />
                   <p className="text-green-700">Safety compliance documentation for insurance and liability protection</p>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-[#43B02A] mt-1 flex-shrink-0" />
                   <p className="text-green-700">Expert guidance without hiring full-time staff or buying equipment</p>
                 </div>
               </div>
@@ -488,7 +513,7 @@ export default function MarketingHomePage() {
                     <h4 className="font-semibold text-gray-900">Field Health Systems Dashboard</h4>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#43B02A] rounded-full"></div>
                     <span className="text-sm text-gray-600">Live Data</span>
                   </div>
                 </div>
@@ -496,7 +521,7 @@ export default function MarketingHomePage() {
                 {/* Status Overview */}
                 <div className="grid grid-cols-4 gap-4 mb-6">
                   <div className="bg-green-50 p-3 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-green-600">4</div>
+                    <div className="text-2xl font-bold text-[#43B02A]">4</div>
                     <div className="text-xs text-gray-600">Excellent</div>
                   </div>
                   <div className="bg-blue-50 p-3 rounded-lg text-center">
@@ -523,7 +548,7 @@ export default function MarketingHomePage() {
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span className="text-gray-600">GMAX:</span>
-                        <span className="font-medium text-green-600">68.5</span>
+                        <span className="font-medium text-[#43B02A]">68.5</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Last Test:</span>
@@ -675,22 +700,22 @@ export default function MarketingHomePage() {
                     <div className="flex items-center space-x-2 mb-3">
                       <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                       <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-[#43B02A] rounded-full"></div>
                     </div>
                     <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded p-4">
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center space-x-2">
-                          <Shield className="w-5 h-5 text-green-600" />
+                          <Shield className="w-5 h-5 text-[#43B02A]" />
                           <span className="font-semibold text-gray-900">Field Health Dashboard</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                          <div className="w-2 h-2 bg-[#43B02A] rounded-full animate-pulse"></div>
                           <span className="text-xs text-gray-600">Live Data</span>
                         </div>
                       </div>
 
                       {/* Satellite Field View */}
-                      <div className="bg-green-600 rounded-lg p-4 mb-3 relative">
+                      <div className="bg-[#43B02A] rounded-lg p-4 mb-3 relative">
                         <div className="text-white text-center mb-2">
                           <div className="text-xs font-medium">Main Football Field - Satellite View</div>
                         </div>
@@ -706,7 +731,7 @@ export default function MarketingHomePage() {
                       {/* Metrics */}
                       <div className="grid grid-cols-3 gap-2 text-center">
                         <div className="bg-white rounded p-2">
-                          <div className="text-lg font-bold text-green-600">118.6</div>
+                          <div className="text-lg font-bold text-[#43B02A]">118.6</div>
                           <div className="text-xs text-gray-600">GMAX</div>
                         </div>
                         <div className="bg-white rounded p-2">
@@ -760,7 +785,7 @@ export default function MarketingHomePage() {
                     <div className="text-center mb-3">
                       <div className="w-24 h-1 bg-gray-900 rounded mx-auto mb-3"></div>
                       <div className="flex items-center justify-center space-x-2 mb-3">
-                        <Shield className="w-4 h-4 text-green-600" />
+                        <Shield className="w-4 h-4 text-[#43B02A]" />
                         <span className="text-sm font-semibold text-gray-900">Field Health</span>
                       </div>
                     </div>
@@ -782,9 +807,9 @@ export default function MarketingHomePage() {
                         <div className="flex items-center justify-between">
                           <div className="text-xs">
                             <div className="font-semibold text-gray-900">Main Field</div>
-                            <div className="text-green-600">GMAX: 118.6</div>
+                            <div className="text-[#43B02A]">GMAX: 118.6</div>
                           </div>
-                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                          <div className="w-3 h-3 bg-[#43B02A] rounded-full"></div>
                         </div>
                       </div>
                       <div className="bg-blue-50 border border-blue-200 rounded p-2">
@@ -826,7 +851,7 @@ export default function MarketingHomePage() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Phone className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <Phone className="w-5 h-5 text-[#43B02A] mt-1 flex-shrink-0" />
                     <div>
                       <p className="font-semibold text-gray-900 text-sm">Direct Technician Contact</p>
                       <p className="text-sm text-gray-600">One-tap access to certified professionals for emergency response</p>
@@ -875,7 +900,7 @@ export default function MarketingHomePage() {
               className="bg-white border-2 border-gray-200 p-8 rounded-2xl hover:border-green-200 hover:shadow-lg transition-all duration-300"
             >
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                <Users className="w-6 h-6 text-green-600" />
+                <Users className="w-6 h-6 text-[#43B02A]" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Independent Field Testing</h3>
               <p className="text-gray-600 mb-4">Unbiased 3rd party testing by certified technicians using professional-grade equipment for accurate, reliable data</p>
@@ -883,7 +908,7 @@ export default function MarketingHomePage() {
               {/* Field Testing Image Placeholder */}
               <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-lg p-4 border border-green-200">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#43B02A] rounded-lg flex items-center justify-center">
                     <Target className="w-4 h-4 text-white" />
                   </div>
                   <div>
@@ -894,14 +919,14 @@ export default function MarketingHomePage() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">GMAX Reading:</span>
-                    <span className="font-medium text-green-600">68.5 (Excellent)</span>
+                    <span className="font-medium text-[#43B02A]">68.5 (Excellent)</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Technician:</span>
                     <span className="font-medium">J. Martinez, Certified</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{width: '85%'}}></div>
+                    <div className="bg-[#43B02A] h-2 rounded-full" style={{width: '85%'}}></div>
                   </div>
                   <p className="text-xs text-gray-500">Assessment: 85% complete</p>
                 </div>
@@ -917,7 +942,7 @@ export default function MarketingHomePage() {
               className="bg-white border-2 border-gray-200 p-8 rounded-2xl hover:border-green-200 hover:shadow-lg transition-all duration-300"
             >
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                <BarChart3 className="w-6 h-6 text-green-600" />
+                <BarChart3 className="w-6 h-6 text-[#43B02A]" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Data Analytics Platform</h3>
               <p className="text-gray-600 mb-4">Proprietary software platform with real-time dashboards, trend analysis, and predictive insights</p>
@@ -927,14 +952,14 @@ export default function MarketingHomePage() {
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-medium text-gray-900 text-sm">Field Health Dashboard</h4>
                   <div className="flex space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#43B02A] rounded-full"></div>
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mb-3">
                   <div className="bg-green-50 p-2 rounded text-center">
-                    <div className="text-lg font-bold text-green-600">4</div>
+                    <div className="text-lg font-bold text-[#43B02A]">4</div>
                     <div className="text-xs text-gray-600">Excellent</div>
                   </div>
                   <div className="bg-blue-50 p-2 rounded text-center">
@@ -944,9 +969,9 @@ export default function MarketingHomePage() {
                 </div>
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-[#43B02A] rounded-full"></div>
                     <div className="flex-1 bg-gray-200 h-1 rounded-full">
-                      <div className="bg-green-500 h-1 rounded-full" style={{width: '75%'}}></div>
+                      <div className="bg-[#43B02A] h-1 rounded-full" style={{width: '75%'}}></div>
                     </div>
                     <span className="text-xs text-gray-600">75%</span>
                   </div>
@@ -970,7 +995,7 @@ export default function MarketingHomePage() {
               className="bg-white border-2 border-gray-200 p-8 rounded-2xl hover:border-green-200 hover:shadow-lg transition-all duration-300"
             >
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-                <FileText className="w-6 h-6 text-green-600" />
+                <FileText className="w-6 h-6 text-[#43B02A]" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Predictive Maintenance Insights</h3>
               <p className="text-gray-600 mb-4">AI-powered recommendations with cost predictions, timeline forecasting, and proactive maintenance scheduling</p>
@@ -978,31 +1003,31 @@ export default function MarketingHomePage() {
               {/* Report Preview */}
               <div className="bg-white rounded-lg border-2 border-gray-200 p-3">
                 <div className="flex items-center space-x-2 mb-3">
-                  <FileText className="w-4 h-4 text-green-600" />
+                  <FileText className="w-4 h-4 text-[#43B02A]" />
                   <span className="font-medium text-sm text-gray-900">Q1 2025 Field Report</span>
                 </div>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Executive Summary</span>
-                    <CheckCircle className="w-3 h-3 text-green-500" />
+                    <CheckCircle className="w-3 h-3 text-[#43B02A]" />
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Field Performance Data</span>
-                    <CheckCircle className="w-3 h-3 text-green-500" />
+                    <CheckCircle className="w-3 h-3 text-[#43B02A]" />
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Maintenance Calendar</span>
-                    <CheckCircle className="w-3 h-3 text-green-500" />
+                    <CheckCircle className="w-3 h-3 text-[#43B02A]" />
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Budget Planning</span>
-                    <CheckCircle className="w-3 h-3 text-green-500" />
+                    <CheckCircle className="w-3 h-3 text-[#43B02A]" />
                   </div>
                 </div>
                 <div className="mt-3 pt-2 border-t border-gray-200">
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-gray-500">12 pages • PDF</span>
-                    <span className="text-xs font-medium" style={{ color: '#4CAF50' }}>Ready for Review</span>
+                    <span className="text-xs font-medium" style={{ color: '#43B02A' }}>Ready for Review</span>
                   </div>
                 </div>
               </div>
@@ -1027,7 +1052,7 @@ export default function MarketingHomePage() {
               ].map((item, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-8 h-8 text-green-600" />
+                    <item.icon className="w-8 h-8 text-[#43B02A]" />
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">{item.title}</h4>
                   <p className="text-sm text-gray-600">{item.desc}</p>
@@ -1167,7 +1192,7 @@ export default function MarketingHomePage() {
                         <div className="space-y-1">
                           <div className="flex justify-between items-center p-1 bg-green-50 rounded">
                             <div className="text-xs text-gray-900">North Field</div>
-                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-[#43B02A] rounded-full"></div>
                           </div>
                           <div className="flex justify-between items-center p-1 bg-blue-50 rounded">
                             <div className="text-xs text-gray-900">East Field</div>
@@ -1300,7 +1325,7 @@ export default function MarketingHomePage() {
 
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                      <span className="text-green-600 font-semibold text-sm">
+                      <span className="text-[#43B02A] font-semibold text-sm">
                         {testimonial.name.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
@@ -1331,7 +1356,7 @@ export default function MarketingHomePage() {
                 <div className="border-b border-gray-200 pb-4 mb-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: '#4CAF50' }}>
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: '#43B02A' }}>
                         <FileText className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -1340,7 +1365,7 @@ export default function MarketingHomePage() {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-sm font-medium" style={{ color: '#4CAF50' }}>Report Ready</div>
+                      <div className="text-sm font-medium" style={{ color: '#43B02A' }}>Report Ready</div>
                       <div className="text-xs text-gray-500">Generated: Jan 28, 2025</div>
                     </div>
                   </div>
@@ -1349,12 +1374,12 @@ export default function MarketingHomePage() {
                 {/* Report Sections */}
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
+                    <CheckCircle className="w-5 h-5 text-[#43B02A]" />
                     <div className="flex-1">
                       <div className="font-medium text-gray-900 text-sm">Executive Summary</div>
                       <div className="text-xs text-gray-600">Overall field health assessment</div>
                     </div>
-                    <div className="text-xs text-green-600 font-medium">Complete</div>
+                    <div className="text-xs text-[#43B02A] font-medium">Complete</div>
                   </div>
 
                   <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
@@ -1389,7 +1414,7 @@ export default function MarketingHomePage() {
                 <div className="flex space-x-3 pt-4 border-t border-gray-200 mt-4">
                   <button
                     className="flex-1 text-white py-2 px-4 rounded-lg text-sm font-medium transition-opacity hover:opacity-90"
-                    style={{ background: '#4CAF50' }}
+                    style={{ background: '#43B02A' }}
                   >
                     Download PDF
                   </button>
@@ -1491,7 +1516,7 @@ export default function MarketingHomePage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
-                  style={{ color: '#4CAF50' }}
+                  style={{ color: '#43B02A' }}
                 >
                   <Calendar className="w-5 h-5" />
                   <span>Schedule Assessment</span>
