@@ -26,37 +26,37 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
       className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur-sm shadow-sm"
       style={{ borderColor: '#E6E6EA' }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-3">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between gap-8">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
+          <Link href="/" className="flex items-center group flex-shrink-0">
             <Image
               src="/fhs-horizontal-approved.svg"
               alt="Field Health Systems"
-              width={200}
-              height={32}
-              className="h-10 w-auto transition-opacity group-hover:opacity-80"
+              width={180}
+              height={28}
+              className="h-7 w-auto transition-opacity group-hover:opacity-80"
               priority
             />
           </Link>
 
           {/* Nav links — desktop */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map(({ label, href }) => {
               const isActive = activePath === href
               return (
                 <Link
                   key={href}
                   href={href}
-                  className="text-sm font-semibold transition-colors relative group/link"
+                  className="text-sm font-semibold transition-colors relative group/link whitespace-nowrap"
                   style={{ color: isActive ? '#1E88E5' : '#0D1B2A' }}
                   onMouseEnter={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#1E88E5' }}
                   onMouseLeave={e => { if (!isActive) (e.currentTarget as HTMLElement).style.color = '#0D1B2A' }}
                 >
                   {label}
                   {isActive && (
-                    <span className="absolute -bottom-3 left-0 right-0 h-0.5 bg-[#1E88E5]" />
+                    <span className="absolute -bottom-4 left-0 right-0 h-0.5 bg-[#1E88E5]" />
                   )}
                 </Link>
               )
@@ -64,23 +64,23 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
           </nav>
 
           {/* CTA */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5 flex-shrink-0">
             <Link
               href="/app/login"
-              className="hidden md:block text-sm font-semibold transition-colors"
+              className="hidden lg:block text-sm font-semibold transition-colors whitespace-nowrap"
               style={{ color: '#0D1B2A' }}
               onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = '#1E88E5')}
               onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = '#0D1B2A')}
             >
-              Sign in
+              Sign In
             </Link>
             <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/schedule-assessment"
-                className="inline-block text-sm font-bold text-white px-6 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg"
+                className="inline-block text-sm font-semibold text-white px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg whitespace-nowrap"
                 style={{ background: '#1E88E5' }}
               >
-                Get Your Free Quote
+                Get Free Quote
               </Link>
             </motion.div>
           </div>
