@@ -60,15 +60,16 @@ export default function MarketingHomePage() {
       <MarketingNav />
 
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-[#0D1B2A] via-[#0D1B2A] to-[#1a2e42]">
-        {/* Subtle Pattern Overlay */}
-        <div className="absolute inset-0 z-0 opacity-5">
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Background Image with Navy Overlay */}
+        <div className="absolute inset-0 z-0">
           <div className="w-full h-full" style={{
-            backgroundImage: `url('/field-satellite.png')`,
+            backgroundImage: `url('/aidan-tottori-3zIZZ-9yIhM-unsplash.jpg')`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'grayscale(100%)'
+            backgroundPosition: 'center'
           }} />
+          {/* Navy gradient overlay for brand consistency */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A]/95 via-[#0D1B2A]/90 to-[#0D1B2A]/85" />
         </div>
 
         {/* Content */}
@@ -222,11 +223,11 @@ export default function MarketingHomePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Data-Driven Field Management Results</h2>
-            <p className="text-gray-600">Our platform combines independent testing with predictive analytics to maximize field safety and longevity</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-4">Proven Results</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">Professional field management delivers measurable impact on safety and cost savings</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -235,14 +236,14 @@ export default function MarketingHomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
+                className="text-center p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow"
               >
-                <div className="text-4xl font-bold mb-2" style={{ color: '#4CAF50' }}>{stat.number}</div>
-                <div className="text-gray-600">{stat.label}</div>
+                <div className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-br from-[#1E88E5] to-[#1976D2] bg-clip-text text-transparent">{stat.number}</div>
+                <div className="text-sm md:text-base text-gray-700 font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
-          <div className="text-center mt-6">
+          <div className="text-center mt-8">
             <p className="text-sm text-gray-500">* Statistics based on industry research and potential outcomes</p>
           </div>
         </div>
@@ -557,15 +558,15 @@ export default function MarketingHomePage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center bg-gradient-to-r from-green-600 to-blue-600 text-white p-12 rounded-2xl"
+            className="text-center bg-gradient-to-r from-[#0D1B2A] to-[#1a2e42] text-white p-12 rounded-2xl shadow-2xl"
           >
-            <h3 className="text-3xl font-bold mb-4">
-              Independent testing + intelligent software = unbiased field management decisions
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              Independent Testing + Intelligent Software = Unbiased Decisions
             </h3>
-            <p className="text-xl mb-6 opacity-90">
-              No conflicts of interest, no upselling - just data-driven recommendations
+            <p className="text-xl mb-6 text-gray-300">
+              No conflicts of interest, no upselling — just data-driven recommendations
             </p>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl md:text-3xl font-bold text-[#1E88E5]">
               Predictive insights prevent 60-75% of emergency repairs*
             </div>
           </motion.div>
@@ -573,7 +574,7 @@ export default function MarketingHomePage() {
       </section>
 
       {/* Service-First Positioning */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-green-50">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30" id="platform">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <motion.div
@@ -581,14 +582,14 @@ export default function MarketingHomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0D1B2A] mb-6">
                 Independent Testing + Intelligent Analytics
               </h2>
-              <p className="text-xl text-gray-600 mb-4">
+              <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
                 3rd party objectivity combined with AI-powered predictive maintenance recommendations
               </p>
-              <div className="bg-blue-100 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
-                <p className="text-blue-800 font-semibold">
+              <div className="bg-[#1E88E5]/10 border-2 border-[#1E88E5]/30 rounded-xl p-6 max-w-3xl mx-auto">
+                <p className="text-[#0D1B2A] font-semibold text-lg">
                   Unbiased testing data feeds intelligent software that predicts maintenance needs before they become costly problems
                 </p>
               </div>
@@ -601,46 +602,54 @@ export default function MarketingHomePage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-green-200"
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-[#43B02A]/30"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <Users className="w-8 h-8 text-green-600" />
-                <h3 className="text-2xl font-bold text-green-800">Independent 3rd Party Testing</h3>
+                <Users className="w-8 h-8 text-[#43B02A]" />
+                <h3 className="text-2xl font-bold text-[#0D1B2A]">Independent 3rd Party Testing</h3>
               </div>
 
               <div className="space-y-4 mb-6">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div className="w-6 h-6 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
                   <div>
-                    <p className="font-semibold text-gray-900">20+ Years Industry Experience</p>
+                    <p className="font-semibold text-[#0D1B2A]">20+ Years Industry Experience</p>
                     <p className="text-sm text-gray-600">Certified technicians with decades of turf management expertise</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div className="w-6 h-6 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Professional-Grade Equipment</p>
+                    <p className="font-semibold text-[#0D1B2A]">Professional-Grade Equipment</p>
                     <p className="text-sm text-gray-600">$15,000+ calibrated GMAX testing equipment, not basic consumer tools</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div className="w-6 h-6 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Unbiased Recommendations</p>
+                    <p className="font-semibold text-[#0D1B2A]">Unbiased Recommendations</p>
                     <p className="text-sm text-gray-600">No maintenance services to upsell - just objective data and insights</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                  <div className="w-6 h-6 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0 mt-1">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                  </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Legal Documentation</p>
+                    <p className="font-semibold text-[#0D1B2A]">Legal Documentation</p>
                     <p className="text-sm text-gray-600">Professional liability coverage and compliance reporting</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <p className="text-sm text-green-800">
+              <div className="bg-gradient-to-br from-[#43B02A]/5 to-[#43B02A]/10 p-5 rounded-xl border border-[#43B02A]/20">
+                <p className="text-sm text-[#0D1B2A]">
                   <strong>Professional Service:</strong> We don&apos;t just give you software - we provide expert analysis,
                   immediate response, and professional accountability for athlete safety.
                 </p>
@@ -652,11 +661,11 @@ export default function MarketingHomePage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-blue-200"
+              className="bg-white p-8 rounded-2xl shadow-lg border-2 border-[#1E88E5]/30"
             >
               <div className="flex items-center space-x-3 mb-6">
-                <BarChart3 className="w-8 h-8 text-blue-600" />
-                <h3 className="text-2xl font-bold text-blue-800">Advanced Technology Platform</h3>
+                <BarChart3 className="w-8 h-8 text-[#1E88E5]" />
+                <h3 className="text-2xl font-bold text-[#0D1B2A]">Advanced Technology Platform</h3>
               </div>
 
               {/* App Screenshot Mockup - Laptop */}
