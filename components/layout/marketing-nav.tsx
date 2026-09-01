@@ -32,11 +32,11 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
-              src="/logo-header.svg"
+              src="/fhs-horizontal-approved.svg"
               alt="Field Health Systems"
-              width={180}
-              height={48}
-              className="h-12 w-auto transition-opacity group-hover:opacity-80"
+              width={200}
+              height={50}
+              className="h-11 w-auto transition-opacity group-hover:opacity-80"
               priority
             />
           </Link>
