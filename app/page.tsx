@@ -1039,7 +1039,7 @@ export default function MarketingHomePage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-green-50" id="pricing">
+      <section className="py-20 bg-gradient-to-br from-white to-gray-50" id="pricing">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <motion.div
@@ -1047,13 +1047,13 @@ export default function MarketingHomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0D1B2A] mb-4">
                 Custom Pricing for Your Needs
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Get a free quote tailored to your facility and testing schedule
               </p>
-              <p className="text-lg text-green-600 mt-2 font-medium">
+              <p className="text-lg text-[#1E88E5] mt-3 font-semibold">
                 Volume discounts available for multiple fields and regular testing
               </p>
             </motion.div>
@@ -1068,10 +1068,11 @@ export default function MarketingHomePage() {
               className="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-200"
             >
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">One-Time Testing</h3>
-                <div className="text-3xl font-bold text-green-600 mb-2">Custom Quote</div>
+                <h3 className="text-2xl font-bold text-[#0D1B2A] mb-2">One-Time Testing</h3>
+                <div className="text-4xl font-bold bg-gradient-to-r from-[#1E88E5] to-[#1976D2] bg-clip-text text-transparent mb-2">Custom Quote</div>
                 <div className="text-gray-600">single field inspection</div>
-                <div className="mt-2 text-sm text-green-600 font-medium">
+                <div className="mt-3 inline-flex items-center gap-2 text-sm text-[#43B02A] font-semibold bg-[#43B02A]/10 px-4 py-2 rounded-full">
+                  <CheckCircle className="w-4 h-4" />
                   Free quote • No obligation
                 </div>
               </div>
@@ -1086,7 +1087,9 @@ export default function MarketingHomePage() {
                   "No ongoing software access"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className={`w-5 h-5 flex-shrink-0 ${index === 5 ? 'text-gray-400' : 'text-green-500'}`} />
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${index === 5 ? 'bg-gray-200' : 'bg-[#43B02A]'}`}>
+                      <CheckCircle className="w-4 h-4 text-white" />
+                    </div>
                     <span className={`${index === 5 ? 'text-gray-500' : 'text-gray-700'}`}>{feature}</span>
                   </div>
                 ))}
@@ -1094,8 +1097,8 @@ export default function MarketingHomePage() {
 
               <Link href="/schedule-assessment" className="w-full">
                 <button
-                  className="w-full text-white py-3 rounded-lg font-semibold transition-opacity hover:opacity-90"
-                  style={{ background: '#4CAF50' }}
+                  className="w-full text-white py-4 rounded-lg font-bold transition-all shadow-md hover:shadow-lg"
+                  style={{ background: '#1E88E5' }}
                 >
                   Schedule Assessment
                 </button>
@@ -1108,20 +1111,21 @@ export default function MarketingHomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-8 rounded-2xl shadow-lg border-2 text-white relative"
-              style={{ background: '#4CAF50', borderColor: '#4CAF50' }}
+              className="p-8 rounded-2xl shadow-2xl border-2 text-white relative bg-gradient-to-br from-[#0D1B2A] to-[#1a2e42]"
+              style={{ borderColor: '#1E88E5' }}
             >
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-medium">
+                <span className="bg-[#1E88E5] text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg">
                   Most Popular
                 </span>
               </div>
 
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">Premium Monitoring</h3>
-                <div className="text-3xl font-bold mb-2">Custom Quote</div>
-                <div className="text-green-100">per field, per year</div>
-                <div className="mt-2 text-sm text-green-200 font-medium">
+                <div className="text-4xl font-bold mb-2">Custom Quote</div>
+                <div className="text-gray-300">per field, per year</div>
+                <div className="mt-3 inline-flex items-center gap-2 text-sm text-[#43B02A] font-semibold bg-[#43B02A]/20 px-4 py-2 rounded-full">
+                  <CheckCircle className="w-4 h-4" />
                   Free quote • Volume discounts available
                 </div>
               </div>
@@ -1142,7 +1146,9 @@ export default function MarketingHomePage() {
                   "Mobile app access"
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-green-200 flex-shrink-0" />
+                    <div className="w-6 h-6 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-white" />
+                    </div>
                     <span className="text-white">{feature}</span>
                   </div>
                 ))}
@@ -1180,8 +1186,8 @@ export default function MarketingHomePage() {
               </div>
 
               <Link href="/schedule-assessment" className="w-full">
-                <button className="w-full bg-white py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors" style={{ color: '#4CAF50' }}>
-                  Start Monitoring
+                <button className="w-full bg-[#1E88E5] py-4 rounded-lg font-bold hover:bg-[#1976D2] transition-all shadow-lg text-white">
+                  Get Your Free Quote
                 </button>
               </Link>
             </motion.div>
@@ -1201,44 +1207,50 @@ export default function MarketingHomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="text-center p-6 bg-green-50 rounded-xl">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Target className="w-8 h-8 text-green-600" />
+              <div className="text-center p-6 bg-gradient-to-br from-[#43B02A]/5 to-[#43B02A]/10 rounded-xl border border-[#43B02A]/20">
+                <div className="w-16 h-16 bg-[#43B02A] rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                  <Target className="w-8 h-8 text-white" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Multiple Fields</h4>
+                <h4 className="font-bold text-[#0D1B2A] mb-2">Multiple Fields</h4>
                 <p className="text-sm text-gray-600">Save more as you add fields to your monitoring program</p>
-                <p className="text-xs text-green-600 font-medium mt-2">2+ fields qualify for discounts</p>
+                <p className="text-xs text-[#43B02A] font-bold mt-2">2+ fields qualify for discounts</p>
               </div>
-              <div className="text-center p-6 bg-blue-50 rounded-xl">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Calendar className="w-8 h-8 text-blue-600" />
+              <div className="text-center p-6 bg-gradient-to-br from-[#1E88E5]/5 to-[#1E88E5]/10 rounded-xl border border-[#1E88E5]/20">
+                <div className="w-16 h-16 bg-[#1E88E5] rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                  <Calendar className="w-8 h-8 text-white" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Testing Frequency</h4>
+                <h4 className="font-bold text-[#0D1B2A] mb-2">Testing Frequency</h4>
                 <p className="text-sm text-gray-600">Lower per-test costs with quarterly or bi-annual programs</p>
-                <p className="text-xs text-blue-600 font-medium mt-2">Annual programs get best rates</p>
+                <p className="text-xs text-[#1E88E5] font-bold mt-2">Annual programs get best rates</p>
               </div>
             </div>
 
-            <div className="mb-6 p-6 bg-gray-50 rounded-xl">
-              <h4 className="font-semibold text-gray-900 mb-3">What affects your quote?</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+            <div className="mb-6 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-200">
+              <h4 className="font-bold text-[#0D1B2A] mb-4">What affects your quote?</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span>Number of fields</span>
+                  <div className="w-5 h-5 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-3 h-3 text-white" />
+                  </div>
+                  <span className="font-medium">Number of fields</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span>Testing frequency</span>
+                  <div className="w-5 h-5 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-3 h-3 text-white" />
+                  </div>
+                  <span className="font-medium">Testing frequency</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span>Service level selected</span>
+                  <div className="w-5 h-5 rounded-full bg-[#43B02A] flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-3 h-3 text-white" />
+                  </div>
+                  <span className="font-medium">Service level selected</span>
                 </div>
               </div>
             </div>
 
             <Link href="/schedule-assessment">
-              <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              <button className="bg-[#1E88E5] text-white px-10 py-4 rounded-lg font-bold hover:bg-[#1976D2] transition-all shadow-md hover:shadow-lg">
                 Get Your Free Custom Quote
               </button>
             </Link>
