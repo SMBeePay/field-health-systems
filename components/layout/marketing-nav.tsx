@@ -37,9 +37,9 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
             <Image
               src="/fhs-horizontal-approved.svg"
               alt="Field Health Systems"
-              width={160}
-              height={24}
-              className="h-5 sm:h-6 w-auto transition-opacity group-hover:opacity-80"
+              width={120}
+              height={18}
+              className="h-3 w-auto transition-opacity group-hover:opacity-80"
               priority
             />
           </Link>
