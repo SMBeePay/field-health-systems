@@ -5,7 +5,8 @@ export const designTokens = {
       navy: '#0D1B2A',      // Primary - Navy
       blue: '#1E88E5',      // Secondary - Blue
       green: '#43B02A',     // Accent - Grass Green
-      lightGray: '#E6E6EA', // Neutral
+      lightGray: '#F5F7FA', // Neutral surface
+      borderGray: '#E2E8F0', // Neutral border
     },
     primary: {
       50: '#f0f9ff',

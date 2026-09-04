@@ -54,6 +54,7 @@ model VerificationToken {
 enum UserRole {
   SUPER_ADMIN
   ORG_ADMIN
+  TECHNICIAN
   USER
   DEMO
 }
@@ -182,7 +183,8 @@ model Field {
   name             String
   type             FieldType
   status           FieldStatus @default(GOOD)
-  
+  facility         String?     // Site/school within the organization that houses this field
+
   // Organization relationship
   organizationId   String
   organization     Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
@@ -257,7 +259,8 @@ model TestingData {
   infillDepthStatus   TestingStatus @default(PASSED)
   
   overallStatus      TestingStatus @default(PASSED)
-  
+  isDraft            Boolean       @default(false) // true while a technician is still entering points in the field
+
   // Additional Information
   notes              String?
   photos             Json?         // Store as JSON array
@@ -329,6 +332,7 @@ enum ComplianceStatus {
   NON_COMPLIANT
   PENDING_REVIEW
   EXPIRED
+  VERIFIED
 }
 
 model ComplianceReport {
@@ -341,6 +345,7 @@ model ComplianceReport {
   organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   
   // Report Details
+  title          String?          // Display title, e.g. "Annual Assessment Report"
   reportType     String           // e.g., "ASTM F1936", "FIFA Quality", "Safety Inspection"
   status         ComplianceStatus
   issuedDate     DateTime

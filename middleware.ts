@@ -10,7 +10,7 @@ export default withAuth(
     // Allow public routes
     if (
       pathname.startsWith('/api/auth') ||
-      pathname.startsWith('/auth') ||
+      pathname.startsWith('/app/auth') ||
       pathname === '/' ||
       pathname.startsWith('/partnerships') ||
       pathname.startsWith('/schedule-assessment') ||
@@ -30,7 +30,7 @@ export default withAuth(
 
     // Redirect unauthenticated users to login
     if (!token) {
-      const loginUrl = new URL('/auth/login', request.url)
+      const loginUrl = new URL('/app/auth/login', request.url)
       loginUrl.searchParams.set('callbackUrl', pathname)
       return NextResponse.redirect(loginUrl)
     }
@@ -38,7 +38,7 @@ export default withAuth(
     // Admin routes - only SUPER_ADMIN can access
     if (pathname.startsWith('/admin')) {
       if (token.role !== 'SUPER_ADMIN') {
-        return NextResponse.redirect(new URL('/auth/unauthorized', request.url))
+        return NextResponse.redirect(new URL('/app/auth/unauthorized', request.url))
       }
       return NextResponse.next()
     }
@@ -55,7 +55,7 @@ export default withAuth(
 
       // Users can only access their own organization
       if (token.organizationSlug !== orgSlug) {
-        return NextResponse.redirect(new URL('/auth/unauthorized', request.url))
+        return NextResponse.redirect(new URL('/app/auth/unauthorized', request.url))
       }
 
       return NextResponse.next()
@@ -76,7 +76,7 @@ export default withAuth(
         
         if (
           pathname.startsWith('/api/auth') ||
-          pathname.startsWith('/auth') ||
+          pathname.startsWith('/app/auth') ||
           pathname === '/' ||
           pathname.startsWith('/partnerships') ||
           pathname.startsWith('/schedule-assessment') ||

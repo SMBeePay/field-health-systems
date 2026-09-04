@@ -180,6 +180,7 @@ async function main() {
     data: {
       fieldId: demoField.id,
       organizationId: demoOrg.id,
+      title: 'Annual Assessment Report',
       reportType: 'ASTM F1936 - Standard Specification for Impact Attenuation of Turf Playing Systems',
       status: 'COMPLIANT',
       issuedDate: new Date('2024-08-15'),
