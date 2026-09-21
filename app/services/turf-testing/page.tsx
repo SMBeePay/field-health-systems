@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Shield, CheckCircle, BarChart3, Bell, FileText, Layers, Activity, Gauge, ArrowRight, Monitor } from 'lucide-react'
 import { MarketingNav } from '@/components/layout/marketing-nav'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Testing Services | GMAX, Shear Factor & Infill Depth',
+  description: 'Independent artificial turf testing -- GMAX, shear factor, and infill depth measured on-site and tracked in one platform. ASTM-compliant results. Schedule an assessment.',
+  keywords: 'artificial turf testing, synthetic turf testing, turf testing company, GMAX testing, shear factor testing, infill depth testing, ASTM F1936, ASTM F1337, sports field testing',
+  openGraph: {
+    title: 'Artificial Turf Testing Services | Field Health Systems',
+    description: 'Independent, on-site artificial turf testing -- GMAX, shear factor, and infill depth -- backed by a platform that tracks every result over time.',
+    url: 'https://www.fieldhealthsystems.com/services/turf-testing',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial turf testing services -- GMAX, shear factor, and infill depth'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Testing Services | Field Health Systems',
+    description: 'Independent, on-site artificial turf testing -- GMAX, shear factor, and infill depth -- backed by a platform that tracks every result over time.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/services/turf-testing'
+  }
+}
 
 const testingServices = [
   {
@@ -201,7 +226,7 @@ function LaptopMockup() {
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      <MarketingNav activePath="/services/gmax-testing" />
+      <MarketingNav activePath="/services/turf-testing" />
 
       {/* Hero */}
       <section className="relative py-24 overflow-hidden">
