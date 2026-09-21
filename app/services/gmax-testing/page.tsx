@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { CheckCircle, AlertTriangle, BarChart2, ClipboardList, ArrowRight, Shield } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'GMAX Testing for Artificial Turf Fields | ASTM F1936',
+  description: 'Independent GMAX impact testing measures how hard your turf surface hits back -- the critical safety metric for head injury prevention. ASTM F1936 compliant.',
+  keywords: 'gmax testing, g-max testing, artificial turf gmax testing, ASTM F1936, shock absorption testing, turf impact testing, artificial turf testing',
+  openGraph: {
+    title: 'GMAX Testing for Artificial Turf Fields | Field Health Systems',
+    description: 'Independent GMAX impact testing measures how hard your turf surface hits back -- the critical safety metric for head injury prevention. ASTM F1936 compliant.',
+    url: 'https://www.fieldhealthsystems.com/services/gmax-testing',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'GMAX Testing for Artificial Turf Fields | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GMAX Testing for Artificial Turf Fields | Field Health Systems',
+    description: 'Independent GMAX impact testing measures how hard your turf surface hits back -- the critical safety metric for head injury prevention. ASTM F1936 compliant.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/services/gmax-testing'
+  }
+}
 
 export default function GmaxTestingPage() {
   return (

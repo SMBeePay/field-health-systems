@@ -1,6 +1,33 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { Calendar, Clock, ArrowLeft, ArrowRight, AlertTriangle } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Problems: How to Spot Issues Before They Become Injuries',
+  description: 'Many synthetic turf field problems are invisible to the naked eye. Here is what to watch for, what the warning signs mean, and when to call for professional testing.',
+  keywords: 'artificial turf problems, synthetic turf warning signs, turf field damage, artificial turf testing, turf field inspection',
+  openGraph: {
+    title: 'Artificial Turf Problems: How to Spot Issues Before They Become Injuries',
+    description: 'Many synthetic turf field problems are invisible to the naked eye. Here is what to watch for, what the warning signs mean, and when to call for professional testing.',
+    url: 'https://www.fieldhealthsystems.com/blog/artificial-turf-problems',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Problems: How to Spot Issues Before They Become Injuries'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Problems: How to Spot Issues Before They Become Injuries',
+    description: 'Many synthetic turf field problems are invisible to the naked eye. Here is what to watch for, what the warning signs mean, and when to call for professional testing.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/blog/artificial-turf-problems'
+  }
+}
 
 export default function ArtificialTurfProblemsPage() {
   return (

@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { MapPin, CheckCircle, Phone, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Field Testing Across Texas | Field Health Systems',
+  description: 'Independent GMAX, shear factor, infill depth, and field condition testing for school districts, municipalities, and universities throughout Texas.',
+  keywords: 'artificial turf testing, Artificial Turf Field Testing Across Texas, gmax testing, shear factor testing, infill depth testing, sports field testing, school district turf testing',
+  openGraph: {
+    title: 'Artificial Turf Field Testing Across Texas | Field Health Systems',
+    description: 'Independent GMAX, shear factor, infill depth, and field condition testing for school districts, municipalities, and universities throughout Texas.',
+    url: 'https://www.fieldhealthsystems.com/service-areas/texas',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Field Testing Across Texas | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Field Testing Across Texas | Field Health Systems',
+    description: 'Independent GMAX, shear factor, infill depth, and field condition testing for school districts, municipalities, and universities throughout Texas.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/service-areas/texas'
+  }
+}
 
 const SERVICE_AREAS = [
   { label: 'Dallas-Fort Worth', href: '/service-areas/dallas-fort-worth', note: 'Largest metro, Andrew\'s home base' },

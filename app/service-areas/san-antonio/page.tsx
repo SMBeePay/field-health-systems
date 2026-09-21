@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { MapPin, CheckCircle, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Testing in San Antonio, TX | Field Health Systems',
+  description: 'Independent turf field testing and condition assessments for Bexar County school districts and military installation athletic facilities.',
+  keywords: 'artificial turf testing, San Antonio, gmax testing, shear factor testing, infill depth testing, sports field testing, school district turf testing',
+  openGraph: {
+    title: 'Artificial Turf Testing in San Antonio, TX | Field Health Systems',
+    description: 'Independent turf field testing and condition assessments for Bexar County school districts and military installation athletic facilities.',
+    url: 'https://www.fieldhealthsystems.com/service-areas/san-antonio',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Testing in San Antonio, TX | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Testing in San Antonio, TX | Field Health Systems',
+    description: 'Independent turf field testing and condition assessments for Bexar County school districts and military installation athletic facilities.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/service-areas/san-antonio'
+  }
+}
 
 const DISTRICTS = [
   'North East ISD (NEISD)',

@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { CheckCircle, AlertTriangle, BarChart2, ClipboardList, ArrowRight, Shield, Eye } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Field Condition Assessment',
+  description: 'A structured, comprehensive inspection of seam integrity, fiber wear, drainage, and infill distribution -- the complete picture GMAX and shear data alone can\'t provide.',
+  keywords: 'field condition assessment, turf field inspection, artificial turf inspection, seam integrity inspection, turf fiber wear assessment, artificial turf testing',
+  openGraph: {
+    title: 'Artificial Turf Field Condition Assessment | Field Health Systems',
+    description: 'A structured, comprehensive inspection of seam integrity, fiber wear, drainage, and infill distribution -- the complete picture GMAX and shear data alone can\'t provide.',
+    url: 'https://www.fieldhealthsystems.com/services/field-condition-assessment',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Field Condition Assessment | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Field Condition Assessment | Field Health Systems',
+    description: 'A structured, comprehensive inspection of seam integrity, fiber wear, drainage, and infill distribution -- the complete picture GMAX and shear data alone can\'t provide.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/services/field-condition-assessment'
+  }
+}
 
 export default function FieldConditionAssessmentPage() {
   return (

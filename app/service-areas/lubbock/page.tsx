@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { MapPin, CheckCircle, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Testing in Lubbock, TX | Field Health Systems',
+  description: 'Independent GMAX, shear, and infill depth testing for Lubbock-area school districts and the Texas Tech University campus.',
+  keywords: 'artificial turf testing, Lubbock, gmax testing, shear factor testing, infill depth testing, sports field testing, school district turf testing',
+  openGraph: {
+    title: 'Artificial Turf Testing in Lubbock, TX | Field Health Systems',
+    description: 'Independent GMAX, shear, and infill depth testing for Lubbock-area school districts and the Texas Tech University campus.',
+    url: 'https://www.fieldhealthsystems.com/service-areas/lubbock',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Testing in Lubbock, TX | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Testing in Lubbock, TX | Field Health Systems',
+    description: 'Independent GMAX, shear, and infill depth testing for Lubbock-area school districts and the Texas Tech University campus.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/service-areas/lubbock'
+  }
+}
 
 const DISTRICTS = [
   'Lubbock ISD',

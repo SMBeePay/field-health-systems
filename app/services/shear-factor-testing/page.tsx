@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { CheckCircle, AlertTriangle, BarChart2, ClipboardList, ArrowRight, Shield } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Shear Factor Testing for Artificial Turf | ASTM F1337',
+  description: 'Independent rotational traction testing measures whether your field\'s grip is putting athletes at risk of ACL tears. ASTM F1337 compliant. Schedule an assessment.',
+  keywords: 'shear factor testing, rotational traction testing, ASTM F1337, turf traction testing, ACL injury prevention testing, artificial turf testing',
+  openGraph: {
+    title: 'Shear Factor Testing for Artificial Turf | Field Health Systems',
+    description: 'Independent rotational traction testing measures whether your field\'s grip is putting athletes at risk of ACL tears. ASTM F1337 compliant. Schedule an assessment.',
+    url: 'https://www.fieldhealthsystems.com/services/shear-factor-testing',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Shear Factor Testing for Artificial Turf | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shear Factor Testing for Artificial Turf | Field Health Systems',
+    description: 'Independent rotational traction testing measures whether your field\'s grip is putting athletes at risk of ACL tears. ASTM F1337 compliant. Schedule an assessment.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/services/shear-factor-testing'
+  }
+}
 
 export default function ShearFactorTestingPage() {
   return (

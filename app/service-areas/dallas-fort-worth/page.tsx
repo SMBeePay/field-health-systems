@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { MapPin, CheckCircle, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Testing in Dallas-Fort Worth | Field Health Systems',
+  description: 'Independent GMAX, shear, and infill testing for school district athletic facilities across the DFW Metroplex, from Prosper and Frisco to Mansfield and Crowley.',
+  keywords: 'artificial turf testing, Dallas-Fort Worth, gmax testing, shear factor testing, infill depth testing, sports field testing, school district turf testing',
+  openGraph: {
+    title: 'Artificial Turf Testing in Dallas-Fort Worth | Field Health Systems',
+    description: 'Independent GMAX, shear, and infill testing for school district athletic facilities across the DFW Metroplex, from Prosper and Frisco to Mansfield and Crowley.',
+    url: 'https://www.fieldhealthsystems.com/service-areas/dallas-fort-worth',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Testing in Dallas-Fort Worth | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Testing in Dallas-Fort Worth | Field Health Systems',
+    description: 'Independent GMAX, shear, and infill testing for school district athletic facilities across the DFW Metroplex, from Prosper and Frisco to Mansfield and Crowley.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/service-areas/dallas-fort-worth'
+  }
+}
 
 const DISTRICTS = [
   'Frisco ISD',

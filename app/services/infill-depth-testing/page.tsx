@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { CheckCircle, AlertTriangle, BarChart2, ClipboardList, ArrowRight, Shield, Layers } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Infill Depth Testing for Artificial Turf Fields',
+  description: 'Independent infill depth measurement across your entire field, benchmarked against manufacturer spec, to catch migration and compaction before it affects safety.',
+  keywords: 'infill depth testing, turf infill measurement, artificial turf infill, infill migration, infill compaction testing, artificial turf testing',
+  openGraph: {
+    title: 'Infill Depth Testing for Artificial Turf | Field Health Systems',
+    description: 'Independent infill depth measurement across your entire field, benchmarked against manufacturer spec, to catch migration and compaction before it affects safety.',
+    url: 'https://www.fieldhealthsystems.com/services/infill-depth-testing',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Infill Depth Testing for Artificial Turf | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Infill Depth Testing for Artificial Turf | Field Health Systems',
+    description: 'Independent infill depth measurement across your entire field, benchmarked against manufacturer spec, to catch migration and compaction before it affects safety.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/services/infill-depth-testing'
+  }
+}
 
 export default function InfillDepthTestingPage() {
   return (

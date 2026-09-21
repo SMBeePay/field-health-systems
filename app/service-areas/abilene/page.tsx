@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { MapPin, CheckCircle, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Testing in Abilene, TX | Field Health Systems',
+  description: 'Independent GMAX, shear, and infill depth testing for Abilene-area school districts and university athletic programs throughout the Big Country.',
+  keywords: 'artificial turf testing, Abilene, gmax testing, shear factor testing, infill depth testing, sports field testing, school district turf testing',
+  openGraph: {
+    title: 'Artificial Turf Testing in Abilene, TX | Field Health Systems',
+    description: 'Independent GMAX, shear, and infill depth testing for Abilene-area school districts and university athletic programs throughout the Big Country.',
+    url: 'https://www.fieldhealthsystems.com/service-areas/abilene',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Testing in Abilene, TX | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Testing in Abilene, TX | Field Health Systems',
+    description: 'Independent GMAX, shear, and infill depth testing for Abilene-area school districts and university athletic programs throughout the Big Country.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/service-areas/abilene'
+  }
+}
 
 const DISTRICTS = [
   'Abilene ISD',

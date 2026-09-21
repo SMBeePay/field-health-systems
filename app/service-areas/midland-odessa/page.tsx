@@ -1,8 +1,33 @@
-'use client'
-
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { MapPin, CheckCircle, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Artificial Turf Testing in Midland & Odessa, TX | Field Health Systems',
+  description: 'Independent artificial turf testing for Permian Basin school districts, built for extreme West Texas heat and dust.',
+  keywords: 'artificial turf testing, Midland & Odessa, gmax testing, shear factor testing, infill depth testing, sports field testing, school district turf testing',
+  openGraph: {
+    title: 'Artificial Turf Testing in Midland & Odessa, TX | Field Health Systems',
+    description: 'Independent artificial turf testing for Permian Basin school districts, built for extreme West Texas heat and dust.',
+    url: 'https://www.fieldhealthsystems.com/service-areas/midland-odessa',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'Artificial Turf Testing in Midland & Odessa, TX | Field Health Systems'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artificial Turf Testing in Midland & Odessa, TX | Field Health Systems',
+    description: 'Independent artificial turf testing for Permian Basin school districts, built for extreme West Texas heat and dust.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/service-areas/midland-odessa'
+  }
+}
 
 const DISTRICTS = [
   'Midland ISD',

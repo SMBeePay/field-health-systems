@@ -1,6 +1,33 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'What Is GMAX Testing? A Plain-English Guide for Athletic Directors',
+  description: 'GMAX is the most important safety measurement for any synthetic turf field. Here is what it actually measures, what the numbers mean, and why testing matters.',
+  keywords: 'what is gmax testing, gmax testing explained, gmax testing, artificial turf testing, turf field safety testing',
+  openGraph: {
+    title: 'What Is GMAX Testing? A Plain-English Guide for Athletic Directors',
+    description: 'GMAX is the most important safety measurement for any synthetic turf field. Here is what it actually measures, what the numbers mean, and why testing matters.',
+    url: 'https://www.fieldhealthsystems.com/blog/what-is-gmax-testing',
+    type: 'website',
+    images: [{
+      url: 'https://www.fieldhealthsystems.com/og-image.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'What Is GMAX Testing? A Plain-English Guide for Athletic Directors'
+    }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'What Is GMAX Testing? A Plain-English Guide for Athletic Directors',
+    description: 'GMAX is the most important safety measurement for any synthetic turf field. Here is what it actually measures, what the numbers mean, and why testing matters.'
+  },
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/blog/what-is-gmax-testing'
+  }
+}
 
 export default function WhatIsGmaxTestingPage() {
   return (
