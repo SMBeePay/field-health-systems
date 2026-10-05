@@ -11,7 +11,6 @@ import {
   Phone,
   Mail,
   MapPin,
-  Star,
   Target,
   AlertTriangle,
   FileText,
@@ -24,27 +23,18 @@ import { MarketingNav } from '@/components/layout/marketing-nav'
 export default function MarketingHomePage() {
   // const [activeTestimonial] = useState(0)
 
-  const testimonials = [
+  const reportContents = [
     {
-      name: "Industry Research",
-      title: "Case Study",
-      organization: "Sports Field Management",
-      quote: "Professional field monitoring programs typically reduce emergency repairs by identifying issues early, allowing for planned maintenance rather than crisis response.",
-      image: "/api/placeholder/64/64"
+      title: "GMAX at every test point",
+      detail: "Measured to the ASTM F1936 method, with any point above the Synthetic Turf Council's 165G recommendation flagged."
     },
     {
-      name: "Field Research",
-      title: "University Study",
-      organization: "Sports Surface Research",
-      quote: "Regular GMAX testing and maintenance scheduling can extend artificial turf field life by maintaining optimal playing conditions throughout the field's lifecycle.",
-      image: "/api/placeholder/64/64"
+      title: "Infill depth and surface condition",
+      detail: "Depth readings at each test point so compaction and migration show up before they become a hard spot."
     },
     {
-      name: "Industry Standards",
-      title: "Best Practices",
-      organization: "Synthetic Turf Council",
-      quote: "Professional testing and documentation provides administrators with the data needed to make informed decisions about field maintenance budgets.",
-      image: "/api/placeholder/64/64"
+      title: "A summary administrators can use",
+      detail: "Plain-language pass, watch, or act ratings to hand to a superintendent, board, or insurer."
     }
   ]
 
@@ -52,7 +42,7 @@ export default function MarketingHomePage() {
     { number: "60-75%", label: "Potential reduction in emergency repairs*" },
     { number: "$10-25K", label: "Typical emergency repair costs*" },
     { number: "2-4 years", label: "Potential field life extension*" },
-    { number: "Demo", label: "System showcasing capabilities" }
+    { number: "ASTM", label: "F1936 GMAX test method" }
   ]
 
   return (
@@ -1285,7 +1275,7 @@ export default function MarketingHomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white" id="testimonials">
+      <section className="py-20 bg-white" id="reports">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <motion.div
@@ -1294,46 +1284,31 @@ export default function MarketingHomePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Industry Research & Insights
+                What Every Report Includes
               </h2>
               <p className="text-xl text-gray-600">
-                Data-driven insights on proactive field monitoring benefits
+                Independent results your administrators can act on
               </p>
             </motion.div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <div className="space-y-8">
-              {testimonials.map((testimonial, index) => (
+              {reportContents.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white border border-gray-200 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+                  className="bg-white border border-gray-200 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow flex items-start space-x-4"
                 >
-                  <div className="flex items-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                    ))}
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-[#43B02A]" />
                   </div>
-
-                  <blockquote className="text-gray-700 mb-4 text-base leading-relaxed">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </blockquote>
-
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                      <span className="text-[#43B02A] font-semibold text-sm">
-                        {testimonial.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <div>
-                      <div className="font-semibold text-gray-900 text-sm">{testimonial.name}</div>
-                      <div className="text-xs text-gray-600">{testimonial.title}</div>
-                      <div className="text-xs text-gray-500">{testimonial.organization}</div>
-                    </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
+                    <p className="text-gray-700 text-base leading-relaxed">{item.detail}</p>
                   </div>
                 </motion.div>
               ))}

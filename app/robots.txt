@@ -6,6 +6,13 @@ Disallow: /app/
 Disallow: /api/
 Disallow: /_next/
 
+# Block internal demo and design pages
+Disallow: /wireframes
+Disallow: /mockup
+Disallow: /pitch
+Disallow: /marketing
+Disallow: /team
+
 # Allow important marketing pages
 Allow: /contact
 Allow: /resources/

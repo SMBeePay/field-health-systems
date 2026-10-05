@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   }
 }
 
+// Set NEXT_PUBLIC_CONTACT_PHONE (e.g. "(512) 555-0100") in Vercel to show a phone number
+const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE
+
 const contactInfo = [
   {
     icon: <Mail className="w-6 h-6" />,
@@ -20,12 +23,12 @@ const contactInfo = [
     details: "andrew@fieldhealthsystems.com",
     link: "mailto:andrew@fieldhealthsystems.com"
   },
-  {
+  ...(contactPhone ? [{
     icon: <Phone className="w-6 h-6" />,
     title: "Phone",
-    details: "(555) 123-4567",
-    link: "tel:+15551234567"
-  },
+    details: contactPhone,
+    link: `tel:${contactPhone.replace(/[^\d+]/g, '')}`
+  }] : []),
   {
     icon: <MapPin className="w-6 h-6" />,
     title: "Service Area",
