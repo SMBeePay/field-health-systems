@@ -1179,37 +1179,6 @@ export default function MarketingHomePage() {
                 ))}
               </div>
 
-              {/* Mobile App Preview */}
-              <div className="mb-6">
-                <div className="bg-white bg-opacity-10 p-4 rounded-lg">
-                  <div className="flex items-center justify-center mb-3">
-                    <div className="w-32 h-56 bg-gray-900 rounded-2xl p-1">
-                      <div className="w-full h-full bg-white rounded-xl p-2">
-                        <div className="text-center mb-2">
-                          <div className="w-16 h-4 bg-gray-900 rounded mx-auto mb-1"></div>
-                          <div className="text-xs text-gray-900 font-medium">Field Health App</div>
-                        </div>
-                        <div className="space-y-1">
-                          <div className="flex justify-between items-center p-1 bg-green-50 rounded">
-                            <div className="text-xs text-gray-900">North Field</div>
-                            <div className="w-3 h-3 bg-[#43B02A] rounded-full"></div>
-                          </div>
-                          <div className="flex justify-between items-center p-1 bg-blue-50 rounded">
-                            <div className="text-xs text-gray-900">East Field</div>
-                            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                          </div>
-                          <div className="flex justify-between items-center p-1 bg-yellow-50 rounded">
-                            <div className="text-xs text-gray-900">South Field</div>
-                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-center text-green-100 text-sm">Mobile access included</p>
-                </div>
-              </div>
-
               <Link href="/schedule-assessment" className="w-full">
                 <button className="w-full bg-[#1E88E5] py-4 rounded-lg font-bold hover:bg-[#1976D2] transition-all shadow-lg text-white">
                   Get Your Free Quote
