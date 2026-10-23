@@ -20,8 +20,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.fieldhealthsystems.com"),
   title: "Field Health Systems - Artificial Turf Field Maintenance & Testing | Professional Sports Field Analytics",
-  description: "Professional artificial turf field maintenance monitoring and testing services. Expert GMAX testing, infill depth analysis, and predictive maintenance planning for synthetic sports fields. Reduce emergency repairs by 73% with quarterly field health assessments.",
+  description: "Professional artificial turf field maintenance monitoring and testing services. Expert GMAX testing, infill depth analysis, and predictive maintenance planning for synthetic sports fields. Independent ASTM F1936 testing for school, college, and municipal fields.",
   keywords: "artificial turf maintenance, synthetic field testing, turf field monitoring, artificial grass maintenance, sports field maintenance, turf field inspection, synthetic turf care, field safety testing, GMAX testing, infill depth measurement, artificial field repair, turf maintenance services, sports surface testing, field health monitoring, synthetic sports fields, turf field management, artificial turf testing equipment, field maintenance planning, sports facility management, turf field safety",
   authors: [{ name: "Field Health Systems" }],
   creator: "Field Health Systems",
@@ -42,22 +43,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.fieldhealthsystems.com",
     title: "Professional Artificial Turf Field Maintenance & Testing Services",
-    description: "Expert monitoring and maintenance planning for synthetic sports fields. Professional GMAX testing, safety compliance, and predictive maintenance that reduces emergency repairs by 73%.",
+    description: "Expert monitoring and maintenance planning for synthetic sports fields. Independent GMAX testing, infill depth analysis, and written reports administrators can act on.",
     siteName: "Field Health Systems",
-    images: [
-      {
-        url: "https://www.fieldhealthsystems.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Field Health Systems - Professional Artificial Turf Maintenance"
-      }
-    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Professional Artificial Turf Field Maintenance & Testing Services",
-    description: "Expert monitoring and maintenance planning for synthetic sports fields. Reduce emergency repairs by 73% with professional field health assessments.",
-    images: ["https://www.fieldhealthsystems.com/twitter-image.jpg"]
+    description: "Expert monitoring and maintenance planning for synthetic sports fields. Independent GMAX and infill testing with written reports administrators can act on.",
   },
   alternates: {
     canonical: "https://www.fieldhealthsystems.com"
@@ -87,7 +79,7 @@ const structuredData = {
       },
       "image": {
         "@type": "ImageObject",
-        "url": "https://www.fieldhealthsystems.com/og-image.jpg",
+        "url": "https://www.fieldhealthsystems.com/opengraph-image",
         "width": 1200,
         "height": 630
       },
