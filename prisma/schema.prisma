@@ -193,6 +193,7 @@ model Field {
   surface          String?
   infillType       String?
   totalArea        Float?
+  replacementCost  Float?   // Estimated replacement cost in today's dollars (capital planning)
   lastTestingDate  DateTime?
   
   // Location Data

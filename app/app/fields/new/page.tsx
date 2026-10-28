@@ -33,6 +33,7 @@ export default function NewFieldPage() {
     manufacturer: '',
     infillType: '',
     installDate: '',
+    replacementCost: '',
     length: '',
     width: '',
   })
@@ -58,6 +59,8 @@ export default function NewFieldPage() {
       if (form.manufacturer.trim()) payload.manufacturer = form.manufacturer.trim()
       if (form.infillType.trim()) payload.infillType = form.infillType.trim()
       if (form.installDate) payload.installDate = form.installDate
+      const cost = Number(form.replacementCost.replace(/[$,\s]/g, ''))
+      if (form.replacementCost.trim() && Number.isFinite(cost) && cost > 0) payload.replacementCost = cost
       if (form.length) payload.length = Number(form.length)
       if (form.width) payload.width = Number(form.width)
 
@@ -295,6 +298,26 @@ export default function NewFieldPage() {
                           className={inputClass}
                         />
                       </div>
+                    </div>
+
+                    <div className="sm:col-span-3">
+                      <label htmlFor="replacementCost" className={labelClass}>
+                        Estimated Replacement Cost (optional)
+                      </label>
+                      <input
+                        id="replacementCost"
+                        name="replacementCost"
+                        type="text"
+                        inputMode="numeric"
+                        placeholder="e.g. 850000"
+                        value={form.replacementCost}
+                        onChange={handleChange}
+                        className={inputClass}
+                      />
+                      <p className="text-xs text-slate-500 mt-1">
+                        Used for the replacement forecast and annual reserve. If left blank, it&apos;s
+                        estimated from field size.
+                      </p>
                     </div>
                   </div>
                 </section>

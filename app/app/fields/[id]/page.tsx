@@ -7,6 +7,7 @@ import { Sidebar } from '@/components/layout/sidebar'
 import { FieldDiagram } from '@/components/ui/field-diagram'
 import { PerformanceChart } from '@/components/ui/performance-chart'
 import { MaintenanceAlerts } from '@/components/ui/maintenance-alerts'
+import { CapitalForecastCard } from '@/components/ui/capital-forecast-card'
 import { designTokens } from '@/lib/design-tokens'
 import {
   ArrowLeft,
@@ -388,6 +389,21 @@ export default function FieldDetailPage() {
                       <p className="text-sm text-gray-500">No open maintenance items.</p>
                     </div>
                   </div>
+
+                  {/* Replacement forecast & capital planning */}
+                  <CapitalForecastCard
+                    fieldId={id}
+                    installDate={(field.installDate as Date | undefined) ?? null}
+                    replacementCost={((field as Record<string, unknown>).replacementCost as number | null) ?? null}
+                    totalArea={((field as Record<string, unknown>).totalArea as number | null) ?? null}
+                    length={((field as Record<string, unknown>).length as number | null) ?? null}
+                    width={((field as Record<string, unknown>).width as number | null) ?? null}
+                    tests={testingData.map((t) => ({
+                      testingDate: t.testingDate as Date,
+                      gmaxAverage: (t as Record<string, unknown>).gmaxAverage as number,
+                    }))}
+                    onSaved={(updated) => setField((prev) => (prev ? { ...prev, ...normaliseField(updated) } : prev))}
+                  />
 
                   {/* Field Diagram */}
                   <FieldDiagram

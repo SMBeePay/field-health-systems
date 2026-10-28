@@ -10,6 +10,7 @@ import { StatusOverview } from '@/components/ui/status-overview'
 import { FieldStatusCard } from '@/components/ui/field-status-card'
 import { MaintenanceAlerts } from '@/components/ui/maintenance-alerts'
 import { PerformanceChart } from '@/components/ui/performance-chart'
+import { CapitalPlanSummary } from '@/components/ui/capital-plan-summary'
 import { designTokens } from '@/lib/design-tokens'
 import { Plus } from 'lucide-react'
 
@@ -220,6 +221,18 @@ export default function Dashboard() {
                 />
               </motion.div>
             </div>
+
+            {/* Capital Plan */}
+            {!loading && !error && fields.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.45 }}
+                className="mb-8"
+              >
+                <CapitalPlanSummary />
+              </motion.div>
+            )}
 
             {/* Performance Chart */}
             <motion.div

@@ -96,6 +96,7 @@ export async function PATCH(
       'surface',
       'infillType',
       'totalArea',
+      'replacementCost',
       'lastTestingDate',
       'latitude',
       'longitude',
@@ -115,7 +116,22 @@ export async function PATCH(
           return NextResponse.json({ error: `Invalid field status: ${body[key]}` }, { status: 400 })
         }
         if ((key === 'installDate' || key === 'lastTestingDate') && body[key]) {
-          updateData[key] = new Date(body[key])
+          const d = new Date(body[key])
+          if (Number.isNaN(d.getTime())) {
+            return NextResponse.json({ error: `Invalid date for ${key}` }, { status: 400 })
+          }
+          updateData[key] = d
+        } else if (key === 'replacementCost') {
+          const v = body[key]
+          if (v === null || v === '') {
+            updateData[key] = null
+          } else {
+            const n = Number(v)
+            if (!Number.isFinite(n) || n < 0) {
+              return NextResponse.json({ error: 'Replacement cost must be a positive number' }, { status: 400 })
+            }
+            updateData[key] = n
+          }
         } else {
           updateData[key] = body[key]
         }

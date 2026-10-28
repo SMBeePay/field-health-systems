@@ -81,6 +81,7 @@ export async function POST(req: NextRequest) {
       infillType,
       length,
       width,
+      replacementCost,
     } = body
 
     // Validation
@@ -115,6 +116,10 @@ export async function POST(req: NextRequest) {
         infillType: infillType ?? undefined,
         length: length !== undefined ? Number(length) : undefined,
         width: width !== undefined ? Number(width) : undefined,
+        replacementCost:
+          replacementCost !== undefined && replacementCost !== '' && Number(replacementCost) > 0
+            ? Number(replacementCost)
+            : undefined,
         createdBy: dbUser.id,
         updatedBy: dbUser.id,
       },
