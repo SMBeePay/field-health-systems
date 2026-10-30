@@ -33,13 +33,15 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
         <div className="flex items-center justify-between gap-4">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center group flex-shrink-0">
+          {/* Height set on the wrapper: the global `img { height: auto }` rule overrides Tailwind height utilities on <img> */}
+          <Link href="/" className="flex items-center group min-w-0 h-10 sm:h-14 lg:h-[70px]">
             <Image
               src="/fhs-horizontal-approved.svg"
               alt="Field Health Systems"
               width={120}
               height={18}
-              className="h-3 w-auto transition-opacity group-hover:opacity-80"
+              className="transition-opacity group-hover:opacity-80"
+              style={{ height: '100%', width: 'auto' }}
               priority
             />
           </Link>
@@ -83,7 +85,8 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
                 className="inline-block text-sm font-semibold text-white px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg whitespace-nowrap"
                 style={{ background: '#1E88E5' }}
               >
-                Get Free Quote
+                <span className="xl:hidden">Request Assessment</span>
+                <span className="hidden xl:inline">Request a Field Assessment</span>
               </Link>
             </motion.div>
           </div>
@@ -153,7 +156,7 @@ export function MarketingNav({ activePath }: MarketingNavProps) {
                   className="block text-center text-base font-semibold text-white px-5 py-3 rounded-lg"
                   style={{ background: '#1E88E5' }}
                 >
-                  Get Free Quote
+                  Request a Field Assessment
                 </Link>
               </div>
             </nav>

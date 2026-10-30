@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: "Field Maintenance Cost Analysis Tools | Field Health Systems",
   description: "Interactive calculators and budgeting tools for artificial turf maintenance costs. ROI analysis, budget templates, and cost optimization strategies.",
-  keywords: "turf maintenance cost calculator, artificial turf budget planning, field maintenance ROI, synthetic turf cost analysis, maintenance cost optimization",
   alternates: {
     canonical: "https://www.fieldhealthsystems.com/resources/cost-analysis"
   }

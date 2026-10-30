@@ -1,6 +1,13 @@
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { Calendar, Clock, ArrowLeft, ArrowRight, AlertTriangle } from 'lucide-react'
+
+export const metadata = pageMetadata({
+  title: 'Artificial Turf Problems: How to Spot Field Issues Early | Field Health Systems',
+  description: 'Common synthetic turf problems, including hard spots, low or migrated infill, seam failures and worn areas: what they look like and when to test the field.',
+  path: '/blog/artificial-turf-problems',
+})
 
 export default function ArtificialTurfProblemsPage() {
   return (

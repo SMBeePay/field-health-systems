@@ -67,20 +67,6 @@ const nextConfig: NextConfig = {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 
-  // Generate sitemap and robots.txt
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
-      {
-        source: '/robots.txt',
-        destination: '/api/robots',
-      },
-    ]
-  },
-
   // Redirect old URLs
   async redirects() {
     return [

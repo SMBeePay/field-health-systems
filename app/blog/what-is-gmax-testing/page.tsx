@@ -1,6 +1,13 @@
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { Calendar, Clock, ArrowLeft, ArrowRight } from 'lucide-react'
+
+export const metadata = pageMetadata({
+  title: 'What Is Gmax Testing? A Plain-English Guide | Field Health Systems',
+  description: 'What Gmax measures on a synthetic turf field, how a test is performed, how to read the results, and why schools test their fields on a regular schedule.',
+  path: '/blog/what-is-gmax-testing',
+})
 
 export default function WhatIsGmaxTestingPage() {
   return (

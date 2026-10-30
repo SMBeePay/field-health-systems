@@ -1,11 +1,13 @@
+import { pageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import { MarketingNav } from '@/components/layout/marketing-nav'
 import { Calendar, Clock, ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react'
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: 'Artificial Turf Maintenance: A Guide for Athletic Directors | Field Health Systems',
   description: 'Learn what artificial turf maintenance actually involves, what to expect from your maintenance provider, and how regular testing protects your field investment.',
-}
+  path: '/blog/artificial-turf-maintenance-guide',
+})
 
 export default function ArtificialTurfMaintenanceGuidePage() {
   return (

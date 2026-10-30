@@ -14,6 +14,9 @@ import {
 import { MarketingNav } from '@/components/layout/marketing-nav'
 
 export const metadata = {
+  alternates: {
+    canonical: 'https://www.fieldhealthsystems.com/resources/gmax-testing-ultimate-guide'
+  },
   title: 'GMAX Testing Ultimate Guide for School Districts | ASTM F1936 Compliance',
   description: 'Protect athletes & reduce liability with expert GMAX testing. Learn ASTM F1936 requirements, testing frequency, and how to interpret results. Free assessment.',
   openGraph: {

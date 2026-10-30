@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: "Sports Surface Testing Resources | Field Health Systems",
   description: "Comprehensive testing guides, procedures, and compliance resources for artificial turf fields. GMAX testing, safety standards, and equipment information.",
-  keywords: "sports surface testing, GMAX testing, artificial turf testing, field safety testing, ASTM compliance, synthetic field testing, turf testing equipment",
   alternates: {
     canonical: "https://www.fieldhealthsystems.com/resources/testing"
   }

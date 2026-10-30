@@ -21,9 +21,10 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fieldhealthsystems.com"),
-  title: "Field Health Systems - Artificial Turf Field Maintenance & Testing | Professional Sports Field Analytics",
-  description: "Professional artificial turf field maintenance monitoring and testing services. Expert GMAX testing, infill depth analysis, and predictive maintenance planning for synthetic sports fields. Independent ASTM F1936 testing for school, college, and municipal fields.",
-  keywords: "artificial turf maintenance, synthetic field testing, turf field monitoring, artificial grass maintenance, sports field maintenance, turf field inspection, synthetic turf care, field safety testing, GMAX testing, infill depth measurement, artificial field repair, turf maintenance services, sports surface testing, field health monitoring, synthetic sports fields, turf field management, artificial turf testing equipment, field maintenance planning, sports facility management, turf field safety",
+  // Fallback only: every indexable page sets its own title, description and
+  // canonical via pageMetadata() in lib/seo.ts.
+  title: "Synthetic Turf Field Testing & Gmax Testing | Field Health Systems",
+  description: "Independent synthetic turf field testing for schools and municipalities. Gmax, rotational resistance, infill depth, and digital field condition reports.",
   authors: [{ name: "Field Health Systems" }],
   creator: "Field Health Systems",
   publisher: "Field Health Systems",
@@ -41,36 +42,21 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.fieldhealthsystems.com",
-    title: "Professional Artificial Turf Field Maintenance & Testing Services",
-    description: "Expert monitoring and maintenance planning for synthetic sports fields. Independent GMAX testing, infill depth analysis, and written reports administrators can act on.",
     siteName: "Field Health Systems",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Professional Artificial Turf Field Maintenance & Testing Services",
-    description: "Expert monitoring and maintenance planning for synthetic sports fields. Independent GMAX and infill testing with written reports administrators can act on.",
   },
-  alternates: {
-    canonical: "https://www.fieldhealthsystems.com"
-  },
-  other: {
-    "geo.region": "US",
-    "geo.placename": "United States",
-    "business.contact_data.locality": "United States",
-    "business.contact_data.country_name": "United States"
-  }
 };
 
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "Organization"],
+      "@type": "Organization",
       "@id": "https://www.fieldhealthsystems.com/#organization",
       "name": "Field Health Systems",
-      "alternateName": "Field Health Systems - Artificial Turf Maintenance",
-      "url": "https://www.fieldhealthsystems.com",
+            "url": "https://www.fieldhealthsystems.com",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.fieldhealthsystems.com/logo.svg",
@@ -83,9 +69,9 @@ const structuredData = {
         "width": 1200,
         "height": 630
       },
-      "description": "Professional artificial turf field maintenance monitoring and testing services. Expert GMAX testing, safety compliance, and predictive maintenance for synthetic sports fields.",
+      "description": "Independent on-site synthetic turf field testing: Gmax impact attenuation, rotational resistance, infill depth, visual assessment and digital field condition reports.",
       "foundingDate": "2024",
-      "slogan": "Professional Field Health Assessments - Protecting Athletes, Preserving Fields",
+      "slogan": "Measure. Maintain. Maximize.",
       "knowsAbout": [
         "Artificial Turf Maintenance",
         "GMAX Testing",
@@ -93,13 +79,6 @@ const structuredData = {
         "Synthetic Turf Management",
         "Field Testing Equipment",
         "Athletic Field Compliance"
-      ],
-      "hasCredential": [
-        {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Professional Certification",
-          "name": "ASTM Field Testing Certification"
-        }
       ],
       "contactPoint": {
         "@type": "ContactPoint",
@@ -141,97 +120,20 @@ const structuredData = {
           "longitude": -96.7970
         },
         "geoRadius": "500 miles"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Field Testing Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Field Health Essential",
-              "description": "2 on-site testing visits per year with platform access, compliance reports, and historical trend tracking"
-            },
-            "price": "3000",
-            "priceCurrency": "USD",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "3000",
-              "priceCurrency": "USD",
-              "unitText": "per field per year"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Field Health Pro",
-              "description": "Quarterly on-site monitoring with full platform access, maintenance alerts, and insurer-ready documentation"
-            },
-            "price": "5400",
-            "priceCurrency": "USD",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "5400",
-              "priceCurrency": "USD",
-              "unitText": "per field per year"
-            }
-          }
-        ]
       }
     },
     {
-      "@type": "ProfessionalService",
+      "@type": "Service",
       "@id": "https://www.fieldhealthsystems.com/#service",
-      "name": "Artificial Turf Field Maintenance & Testing",
-      "description": "Professional quarterly field monitoring and testing services including GMAX testing, infill depth analysis, and predictive maintenance planning for synthetic sports fields.",
+      "name": "Synthetic Turf Field Testing",
+      "serviceType": "Synthetic turf field testing",
+      "description": "Independent on-site testing of synthetic turf athletic fields: Gmax impact attenuation, rotational resistance (shear), infill depth and visual condition, documented in a digital field condition report.",
       "provider": {
         "@id": "https://www.fieldhealthsystems.com/#organization"
       },
-      "serviceType": "Sports Field Maintenance",
-      "category": "Athletic Field Services",
-      "areaServed": {
-        "@type": "Country",
-        "name": "United States"
-      },
       "audience": {
         "@type": "Audience",
-        "audienceType": "Schools, Sports Facilities, Municipal Recreation Departments"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": "3000",
-        "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "PriceSpecification",
-          "price": "3000",
-          "priceCurrency": "USD",
-          "unitText": "per field per year"
-        },
-        "availability": "InStock",
-        "validFrom": "2024-01-01"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Professional Field Testing Services",
-        "itemListElement": [
-          {
-            "@type": "Service",
-            "name": "GMAX Safety Testing",
-            "description": "ASTM F1936 compliant shock absorption testing"
-          },
-          {
-            "@type": "Service", 
-            "name": "Shear Factor Analysis",
-            "description": "Rotational traction testing for injury prevention"
-          },
-          {
-            "@type": "Service",
-            "name": "Infill Depth Measurement",
-            "description": "Precise infill depth analysis and maintenance recommendations"
-          }
-        ]
+        "audienceType": "School districts, athletic directors, facility managers, municipalities, insurers and risk pools"
       }
     },
     {
@@ -239,19 +141,8 @@ const structuredData = {
       "@id": "https://www.fieldhealthsystems.com/#website",
       "url": "https://www.fieldhealthsystems.com",
       "name": "Field Health Systems",
-      "description": "Professional artificial turf field maintenance and testing services",
+      "description": "Independent synthetic turf field testing",
       "publisher": {
-        "@id": "https://www.fieldhealthsystems.com/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://www.fieldhealthsystems.com/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      },
-      "mainEntity": {
         "@id": "https://www.fieldhealthsystems.com/#organization"
       }
     }

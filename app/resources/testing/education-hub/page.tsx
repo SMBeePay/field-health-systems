@@ -4,19 +4,10 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: "Sports Surface Testing Education Hub | Field Safety & Compliance Resources",
   description: "Complete educational resource for athletic field safety testing, ASTM compliance, and sports surface maintenance. Professional guides for athletic directors, facility managers, and maintenance teams.",
-  keywords: "sports surface testing, athletic field safety, ASTM F355A compliance, GMAX testing education, field safety standards, sports facility management, artificial turf testing, field maintenance training, athletic field compliance, sports surface safety",
   openGraph: {
     title: "Sports Surface Testing Education Hub | Professional Field Safety Resources",
     description: "Comprehensive educational resources for sports surface testing, field safety compliance, and athletic facility management. Expert guidance for protecting athletes and investments.",
-    type: "website",
-    images: [
-      {
-        url: "https://www.fieldhealthsystems.com/testing-education-hub-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Sports surface testing education and field safety compliance resources"
-      }
-    ]
+    type: "website"
   },
   twitter: {
     card: "summary_large_image",
@@ -217,20 +208,12 @@ export default function TestingEducationHub() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "EducationalOrganization",
+            "@type": "CollectionPage",
             "name": "Sports Surface Testing Education Hub",
-            "description": "Comprehensive educational resource for athletic field safety testing and compliance",
+            "description": "Educational resources on athletic field surface testing, field safety documentation and compliance for synthetic turf.",
             "url": "https://www.fieldhealthsystems.com/resources/testing/education-hub",
-            "provider": {
-              "@type": "Organization",
-              "name": "Field Health Systems",
-              "url": "https://www.fieldhealthsystems.com"
-            },
-            "educationalCredentialAwarded": "Sports Surface Testing Certification",
-            "offers": {
-              "@type": "Course",
-              "name": "Sports Surface Testing Professional Development",
-              "description": "Comprehensive training in athletic field safety testing and compliance"
+            "publisher": {
+              "@id": "https://www.fieldhealthsystems.com/#organization"
             }
           })
         }}

@@ -7,7 +7,6 @@ import { MarketingNav } from '@/components/layout/marketing-nav'
 export const metadata: Metadata = {
   title: "Contact Field Health Systems | Professional Field Testing & Consultation",
   description: "Contact our field testing experts for professional GMAX testing, maintenance consultation, and artificial turf safety assessments. Get expert help for your athletic fields.",
-  keywords: "contact field health systems, field testing consultation, GMAX testing services, artificial turf experts, athletic field assessment contact",
   alternates: {
     canonical: "https://www.fieldhealthsystems.com/contact"
   }

@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: "Sports Surface Industry Insights & Trends | Field Health Systems",
   description: "Latest industry trends, market insights, and professional perspectives on artificial turf technology, safety innovations, and field management best practices.",
-  keywords: "artificial turf industry trends, sports surface technology, field management insights, synthetic turf innovations, athletic field industry analysis",
   alternates: {
     canonical: "https://www.fieldhealthsystems.com/resources/industry-insights"
   }

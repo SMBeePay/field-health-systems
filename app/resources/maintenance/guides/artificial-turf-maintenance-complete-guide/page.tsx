@@ -4,7 +4,6 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: "Complete Artificial Turf Maintenance Guide | Field Health Systems",
   description: "Expert artificial turf maintenance guide covering cleaning procedures, infill management, testing schedules, and cost optimization. Reduce field repairs by 73% with proper maintenance protocols.",
-  keywords: "artificial turf maintenance, synthetic turf care, field maintenance guide, turf cleaning procedures, infill maintenance, artificial turf maintenance schedule, synthetic field cleaning, turf field care, artificial grass maintenance, field maintenance best practices",
   openGraph: {
     title: "Complete Artificial Turf Maintenance Guide | Expert Field Care",
     description: "Comprehensive maintenance guide to extend artificial turf life and ensure player safety. Expert procedures, schedules, and cost-saving strategies.",

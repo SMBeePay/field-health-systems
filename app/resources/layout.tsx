@@ -4,20 +4,11 @@ import { MarketingNav } from '@/components/layout/marketing-nav'
 export const metadata: Metadata = {
   title: "Artificial Turf Resources & Guides | Field Health Systems",
   description: "Comprehensive resources for artificial turf maintenance, GMAX testing, cost analysis, and industry insights. Expert guides, calculators, and tools to optimize your synthetic field performance and budget.",
-  keywords: "artificial turf maintenance guide, synthetic turf resources, GMAX testing procedures, turf field cost analysis, artificial turf maintenance schedule, field testing equipment, turf maintenance best practices, synthetic field troubleshooting, artificial turf care tips, field health monitoring resources",
   openGraph: {
     title: "Artificial Turf Resources & Expert Guides | Field Health Systems",
     description: "Access expert artificial turf maintenance guides, cost calculators, testing procedures, and industry insights. Comprehensive resources to optimize field performance and extend turf life.",
     url: "https://www.fieldhealthsystems.com/resources",
-    type: "website",
-    images: [
-      {
-        url: "https://www.fieldhealthsystems.com/resources-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Field Health Systems artificial turf resources and maintenance guides"
-      }
-    ]
+    type: "website"
   },
   twitter: {
     card: "summary_large_image",

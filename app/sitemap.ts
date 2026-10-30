@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const servicePages = [
     '/services/turf-testing',
-    '/services/gmax-testing',
+    // '/services/gmax-testing' currently 308-redirects to /services/turf-testing (next.config.ts)
     '/services/shear-factor-testing',
     '/services/infill-depth-testing',
     '/services/field-condition-assessment',

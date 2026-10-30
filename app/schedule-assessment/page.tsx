@@ -180,7 +180,7 @@ export default function ScheduleAssessmentPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/40" />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Schedule Your Field Assessment</h1>
+            <p className="text-3xl font-bold text-white mb-2">Request a Field Assessment</p>
             <p className="text-gray-300 text-lg">Professional testing for every turf field across your district</p>
           </div>
         </div>

@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: "Artificial Turf Maintenance Resources | Field Health Systems",
   description: "Comprehensive maintenance guides, schedules, and troubleshooting resources for artificial turf fields. Expert procedures to extend field life and ensure optimal performance.",
-  keywords: "artificial turf maintenance, synthetic field care, turf maintenance guides, field cleaning procedures, maintenance schedules, turf troubleshooting",
   alternates: {
     canonical: "https://www.fieldhealthsystems.com/resources/maintenance"
   }
